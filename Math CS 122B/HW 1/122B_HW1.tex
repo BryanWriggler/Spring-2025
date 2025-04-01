@@ -35,7 +35,7 @@ colback=blue!10
 \begin{document}
 \maketitle
 
-\section*{1}
+\section*{1}xx
 \begin{myBox}[]{}
     \begin{question}
         Ahlfors Pg. 178 Problem 2:
@@ -60,7 +60,7 @@ since $a>1$, by p-series test, the following series converges:
 $$\sum_{n=1}^{\infty}n^{-a}$$
 Which, since the original series satisfies the following:
 $$\sum_{n=1}^{\infty}|n^{-z}| = \sum_{n=1}^{\infty}\left|n^{-a}\cdot e^{i(-b\ln(n))}\right| = \sum_{n=1}^{\infty}n^{-a}$$
-Hence, the series absolutely converges, which $\zeta(z)=\sum_{n=1}^{\infty}n^{-z}$ exists on $Re(z)>1$.
+Hence, the series absolutely converges, which $\zeta(z)=\sum_{n=1}^{\infty}n^{-z}$ is defined on $Re(z)>1$.
 
 \hfil
 
@@ -79,8 +79,9 @@ then by the theorem in Ahlfors pg. 176, $\zeta(z)$ is analytic, and the partial 
 Hence, based on the same theorem again, we can claim the folloing on the chosen half plane:
 $$\zeta'(z)=\lim_{N\rightarrow\infty}\frac{d}{dz}\sum_{n=1}^{N}n^{-z} = \lim_{N\rightarrow\infty}\sum_{n=1}^{N}\frac{d}{dz}(e^{-z\ln(n)}) = \lim_{N\rightarrow\infty}\sum_{n=1}^{N}-\ln(n)e^{-z\ln(n)} = -\sum_{n=1}^{\infty}ln(n)n^{-z}$$
 
+\hfil
 
-\break
+\hfil
 
 \section*{2}
 \begin{myBox}[]{}
@@ -126,7 +127,7 @@ Then, we can yield the following:
 $$F(z)=1+zF(z)+z^2F(z),\quad F(z)(1-z-z^2)=1,\quad F(z)=\frac{1}{1-z-z^2}$$
 Now, if $1-z-z^2=0$ (or $z^2+z-1=0$), we have $z=\frac{-1\pm\sqrt{5}}{2}$. Hence, $1-z-z^2=-\left(\frac{-1+\sqrt{5}}{2}-z\right)\left(\frac{-1-\sqrt{5}}{2}-z\right)$.
 Then, $F(z)$ can be decomposed using partial fraction:
-$$F(z)=\frac{A}{\frac{-1+\sqrt{5}}{2}-z}+\frac{B}{\frac{-1-\sqrt{5}}{2}-z}=\frac{1}{1-z-z^2},\quad B\left(\frac{-1+\sqrt{5}}{2}-z\right)+A\left(\frac{-1-\sqrt{5}}{2}-z\right)=-11$$
+$$F(z)=\frac{A}{\frac{-1+\sqrt{5}}{2}-z}+\frac{B}{\frac{-1-\sqrt{5}}{2}-z}=\frac{1}{1-z-z^2},\quad B\left(\frac{-1+\sqrt{5}}{2}-z\right)+A\left(\frac{-1-\sqrt{5}}{2}-z\right)=-1$$
 So, from the above expression, we get:
 $$B\cdot\frac{-1+\sqrt{5}}{2}+A\cdot \frac{-1-\sqrt{5}}{2}=-1,\quad -B-A=0$$
 $$\implies A=-B,\quad B\cdot\frac{-1+\sqrt{5}}{2}-B\cdot \frac{-1-\sqrt{5}}{2}=-1$$
@@ -142,6 +143,8 @@ Hence, $F(z)$ can be expressed as:
 $$F(z)=\frac{1}{\sqrt{5}}\left(\sum_{n=0}^{\infty}\left(\frac{1}{\frac{-1+\sqrt{5}}{2}}\right)^{n+1}z^n-\sum_{n=0}^{\infty}\left(\frac{1}{\frac{-1-\sqrt{5}}{2}}\right)^{n+1}z^n\right)$$
 $$=\frac{1}{\sqrt{5}}\sum_{n=0}^{\infty}\frac{\left(\frac{-1-\sqrt{5}}{2}\right)^{n+1}-\left(\frac{-1+\sqrt{5}}{2}\right)^{n+1}}{\left(\frac{-1+\sqrt{5}}{2}\right)^{n+1}\left(\frac{-1-\sqrt{5}}{2}\right)^{n+1}}z^n =\frac{1}{\sqrt{5}}\sum_{n=0}^{\infty}\frac{\left(\frac{-1-\sqrt{5}}{2}\right)^{n+1}-\left(\frac{-1+\sqrt{5}}{2}\right)^{n+1}}{\left(\frac{(-1)^2-(\sqrt{5})^2}{4}\right)^{n+1}}z^n$$
 $$=\frac{1}{\sqrt{5}}\sum_{n=0}^{\infty}\frac{\left(\frac{-1-\sqrt{5}}{2}\right)^{n+1}-\left(\frac{-1+\sqrt{5}}{2}\right)^{n+1}}{(-1)^{n+1}}z^n = \sum_{n=0}^{\infty}\frac{\left(\frac{1+\sqrt{5}}{2}\right)^{n+1}-\left(\frac{1-\sqrt{5}}{2}\right)^{n+1}}{\sqrt{5}}z^n$$
+Then, by the uniqueness of Taylor Series, the following is the closed expression of $c_n$:
+$$\forall n\in\mathbb{N},\quad c_n=\frac{\left(\frac{1+\sqrt{5}}{2}\right)^{n+1}-\left(\frac{1-\sqrt{5}}{2}\right)^{n+1}}{\sqrt{5}}$$
 
 \break
 
@@ -149,6 +152,17 @@ $$=\frac{1}{\sqrt{5}}\sum_{n=0}^{\infty}\frac{\left(\frac{-1-\sqrt{5}}{2}\right)
 \begin{myBox}[]{}
     \begin{question}
         Ahlfors Pg. 186 Problem 4:
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        Stein and Shakarchi Pg. 86 Problem 2:
     \end{question}
 \end{myBox}
 
