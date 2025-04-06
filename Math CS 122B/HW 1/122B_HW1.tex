@@ -217,12 +217,60 @@ Since regardless of $z\in\mathbb{C}$, the above equation is true, $\sum_{n=0}^{\
 
 Since $g(z)=\frac{z}{e^z-1}$ has its power series $\sum_{n=0}^{\infty}C_nz^n$ converge to itself on the whole $\mathbb{C}$,then its $n^{th}$ derivative at $0$ is given as $g^{(n)}(0)=n!C_n$. Which, $A_n$ can be rewritten as the following using Cauchy's Integral Formula:
 $$A_n=\frac{1}{2\pi i}\int_{C}\frac{1}{\zeta^{n+2}}\cdot\frac{\zeta}{e^\zeta-1}d\zeta=\frac{1}{2\pi i}\int_{C}\frac{g(\zeta)}{\zeta^{n+2}}d\zeta = \frac{g^{(n+1)}(0)}{(n+1)!}=\frac{(n+1)!C_{n+1}}{(n+1)!}=C_{n+1}$$
-Hence, with the previous section (where $A_{-1}=1$, and $A_{-n}=0$ for $n>1$), we can express the laurent series as the following:
-$$\sum_{n=-\infty}^{\infty}A_nz^n = \sum_{n=1}^{\infty}A_{-n}z^{-n}+\sum_{n=0}^{\infty}A_nz^n = \frac{1}{z}+\sum_{n=0}^{\infty}C_{n+1}z^n = \frac{1}{z}-\frac{1}{2}+\sum_{n=1}^{\infty}C_{n+1}z^n$$
 
 \hfil
 
+\textbf{Forms of Laurent Series of $(e^z-1)^{-1}$:}
 
+With the information from previous two sections, we can express the laurent series as the following:
+$$\sum_{n=-\infty}^{\infty}A_nz^n = \sum_{n=1}^{\infty}A_{-n}z^{-n}+\sum_{n=0}^{\infty}A_nz^n = \frac{1}{z}+\sum_{n=0}^{\infty}C_{n+1}z^n = \frac{1}{z}-\frac{1}{2}+\sum_{n=1}^{\infty}C_{n+1}z^n$$
+
+Now, recall that $\frac{z}{e^z-1}=\sum_{n=0}^{\infty}C_nz^n$, then for all $z\in\mathbb{C}$, consider the expression with $-z$, we get:
+$$\frac{-z}{e^{-z}-1}=\sum_{n=0}^{\infty}C_n(-z)^n = \sum_{n=0}^{\infty}(-1)^nC_nz^n$$
+Which, consider the difference of the two terms, we get:
+$$\frac{-z}{e^{-z}-1}-\frac{z}{e^z-1} = \frac{-ze^z}{1-e^z}-\frac{z}{e^z-1}=\frac{ze^z}{e^z-1}-\frac{z}{e^z-1}=\frac{z(e^z-1)}{e^z-1}=z$$
+(Note: for $z=0$, consider its extension, where evaluation at $z=0$ is the limit $\lim_{z\rightarrow 0}\frac{z}{e^z-1}=1$, then the above difference is $0$, which agrees with the formula).
+
+Hence, in power series form, we get:
+$$\sum_{n=0}^{\infty}(-1)^nC_nz^n-\sum_{n=0}^{\infty}C_nz^n = \sum_{n=0}^{\infty}((-1)^n-1)C_nz^n=z$$
+Then, all the even terms have $(-1)^n-1=0$, we're left with the odd terms. Hence:
+$$\sum_{k=1}^{\infty}((-1)^{2k-1}-1)C_{2k-1}z^{2k-1}=\sum_{k=1}^{\infty}-2C_{2k-1}z^{2k-1}=-2C_1z+\sum_{k=2}^{\infty}-2C_{2k-1}z^{2k-1}=z$$
+By the uniqueness of taylor series, we need $-2C_1=1,\ C_1=\frac{-1}{2}$ (which agrees with our previous calculation), and $-2C_{2k-1}=0,\ C_{2k-1}=0$ for all $k\geq 2$.
+Therefore, all the odd terms of $C_n$ is $0$.
+
+Hence, the laurent series can be expressed as follow:
+$$\frac{1}{z}-\frac{1}{2}+\sum_{n=1}^{\infty}C_{n+1}z^n=\frac{1}{z}-\frac{1}{2}+\sum_{k=1}^{\infty}C_{(2k-1)+1}z^{2k-1}=\frac{1}{z}-\frac{1}{2}+\sum_{k=1}^{\infty}C_{2k}z^{2k-1}$$
+(Note: Since now the odd terms of $C_n$ appears as the even degrees' coefficients).
+
+Now, if we do some modification, let $B_n' = n!C_n$ for all $n\in\mathbb{N}$ (or $C_n = \frac{B_n'}{n!}$), then the laurent series can be expressed as:
+$$(e^z-1)^{-1}=\frac{1}{z}-\frac{1}{2}+\sum_{k=1}^{\infty}\frac{B_{2k}'}{(2k)!}z^{2k-1}$$
+Then, let $B_k=(-1)^kB_{2k}'$, we get the desired form:
+$$(e^z-1)^{-1}=\frac{1}{z}-\frac{1}{2}+\sum_{k=1}^{\infty}(-1)^k\frac{B_k}{(2k)!}z^{2k-1}$$
+
+\hfil
+
+\textbf{Calculation of Bernoulli Numbers:}
+
+For $k=1,2,3$, we'll convert it back into $C_n$ for simplicity. Which, $B_k=(-1)^kB_{2k}=(-1)^k(2k)!C_{2k}$.
+
+For $k=1, 2k=2$, we have $B_1$ given as:
+$$C_2=-\sum_{k=0}^{1}C_k\frac{1}{(2-k+1)!}=-\left(\frac{C_0}{3!}+\frac{C_1}{2!}\right)=-\left(1\cdot\frac{1}{6}-\frac{1}{2}\cdot\frac{1}{2}\right)=\frac{1}{12}$$
+$$B_1=(-1)^1\cdot 2!\cdot C_2 = -\frac{1}{6}$$
+For $k=2,2k=4$, we have $B_2$ given as:
+$$C_4=-\sum_{k=0}^{3}C_k\frac{1}{(4-k+1)!}=-\left(\frac{C_0}{5!}+\frac{C_1}{4!}+\frac{C_2}{3!}+\frac{C_3}{2!}\right)=-\left(\frac{1}{120}-\frac{1}{2\cdot 24}+\frac{1}{12\cdot 6}\right)$$
+$$= -\frac{1}{12}\left(\frac{1}{10}-\frac{1}{4}+\frac{1}{6}\right)=-\frac{1}{12}\cdot\frac{1}{60}$$
+$$B_2=(-1)^2\cdot 4!\cdot C_4=-\frac{24}{12\cdot 60}=-\frac{1}{30}$$
+(Note: recall that for $k\geq 2$, all $C_{2k-1}=0$, hence all odd index $n\geq 3$ has $C_3=0$).
+
+For $k=3,2k=6$, we have $B_3$ given as:
+$$C_6=-\sum_{k=0}^{5}C_k\frac{1}{(6-k+1)!}=-\left(\frac{C_0}{7!}+\frac{C_1}{6!}+\frac{C_2}{5!}+\frac{C_3}{4!}+\frac{C_4}{3!}+\frac{C_5}{2!}\right)$$
+$$=-\left(\frac{1}{7!}-\frac{1}{2\cdot 6!}+\frac{1}{12\cdot 5!}-\frac{1}{12\cdot 60\cdot 3!}\right)$$
+
+$$B_3=(-1)^3\cdot 6!\cdot C_6 = -6!\cdot \left(-\left(\frac{1}{7!}-\frac{1}{2\cdot 6!}+\frac{1}{12\cdot 5!}-\frac{1}{12\cdot 60\cdot 3!}\right)\right)$$
+$$=\frac{1}{7}-\frac{1}{2}+\frac{6}{12}-\frac{6!}{12\cdot 60 \cdot 3!}=\frac{1}{7}-\frac{1}{6}=\frac{1}{42}$$
+
+So, we have the following:
+$$B_1=-\frac{1}{6},\quad B_2=-\frac{1}{30},\quad B_3=\frac{1}{42}$$
 
 \break
 
