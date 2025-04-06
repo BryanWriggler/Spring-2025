@@ -161,12 +161,86 @@ $$\forall n\in\mathbb{N},\quad c_n=\frac{\left(\frac{1+\sqrt{5}}{2}\right)^{n+1}
 
 \textbf{Pf:}
 
+Given the function $f(z)=(e^z-1)^{-1}$, it is analytic on $\mathbb{C}\setminus\{0\}$ (with $0<|z|<\infty$), hence there exists a laurent development that agrees on the whole $\mathbb{C}\setminus\{0\}$:
+$$f(z)=\sum_{n=-\infty}^{\infty}A_nz^n$$
+And, for all index $n$, the formula of $A_n$ is given as follow:
+$$n\geq 1,\quad A_{-n}=\frac{1}{2\pi i}\int_{C}f(\zeta)\zeta^{n-1}d\zeta\quad \quad \quad \quad \quad n\geq 0,\quad A_n=\frac{1}{2\pi i}\int_{C}\frac{f(\zeta)}{\zeta^{n+1}}d\zeta$$
+Where $C$ is a circle with radius $r>0$, centered at $z=0$.
+
+\hfil
+
+\textbf{Coefficients of Negative Degree:}
+
+First, for $n=1$, the coefficient $A_{-1}$ is given as:
+$$A_{-1}=\frac{1}{2\pi i}\int_{C}f(\zeta)\zeta^{1-1}d\zeta = \frac{1}{2\pi i}\int_{C}\frac{1}{e^{\zeta}-1}d\zeta=\frac{1}{2\pi i}\int_{C}\frac{1}{\zeta}\cdot\frac{\zeta}{e^{\zeta}-1}d\zeta$$
+Now, notice that for $\frac{\zeta}{e^\zeta-1}$ with an isolated singularity at $\zeta=0$, since $\lim_{\zeta\rightarrow 0}\frac{\zeta}{e^\zeta-1}=1$ (since the limit of its reciprical is $\lim_{\zeta\rightarrow 0}\frac{e^\zeta-e^0}{\zeta}=1$, 
+which is the derivative of $e^z$ at $0$),
+then, $\lim_{\zeta\rightarrow 0}\zeta \cdot \frac{\zeta}{e^{\zeta}-1}=0$, which is a sufficient and necessary condition for $\zeta=0$ to be a removable singularity of $\frac{\zeta}{e^{\zeta}-1}$.
+
+Hence, $\frac{\zeta}{e^\zeta-1}$ has an analytic extension onto the whole $\mathbb{C}$, with the function being $1$ at $\zeta=0$. Which, by Cauchy's Integral Formula, $A_{-1}$ of the above form, is the evaluation of $\frac{\zeta}{e^\zeta-1}$ at $0$ (more precisely, evaluation of its extension at $0$),
+which provides $A_{-1}=1$.
+
+\hfil
+
+Then, for $n>1$, the coefficient $A_{-n}$ is given by:
+$$A_{-n}=\frac{1}{2\pi i}\int_{C}f(\zeta)\zeta^{n-1}d\zeta=\frac{1}{2\pi i}\int_{C}\frac{1}{\zeta}\cdot \frac{\zeta^n}{e^\zeta-1}d\zeta$$
+Notice that for $n>1$, the function $\frac{\zeta^n}{e^\zeta-1}$ has isolated singularity at $0$, since $\lim_{\zeta\rightarrow 0}\zeta\cdot \frac{\zeta^n}{e^\zeta-1}=0$, then the singularity at $0$ is in fact removable.
+Hence, it has an analytic extension onto $\mathbb{C}$, where the evaluation at $\zeta=0$ is $\lim_{\zeta\rightarrow 0}\frac{\zeta^n}{e^\zeta-1} = 0$ (since it can be broken down into $\zeta^{n-1}$ and $\frac{\zeta}{e^\zeta-1}$; the first one has limit $0$ since $n-1\geq 1$, while the second one has limit $1$, hence the product has limit $0$).
+
+Again, the integral form of $A_{-n}$ is in fact the evaluation of the extension of $\frac{\zeta^n}{e^\zeta-1}$ at $\zeta=0$ by Cauchy's Integral Formula, hence $A_{-n}=0$.
+
+\hfil
+
+\hfil
+
+\textbf{Coefficients of Nonnegative Degree:}
+
+For $n\geq 0$, the coefficient $A_n$ is given as:
+$$A_n=\frac{1}{2\pi i}\int_{C}\frac{f(\zeta)}{\zeta^{n+1}}d\zeta=\frac{1}{2\pi i}\int_{C}\frac{1}{\zeta^{n+1}(e^\zeta-1)}d\zeta = \frac{1}{2\pi i}\int_{C}\frac{1}{\zeta^{n+2}}\cdot \frac{\zeta}{e^\zeta-1}d\zeta$$
+Since we've verified above, that $\frac{z}{e^z-1}$ has an analytic extension onto $\mathbb{C}$, it has a power series expansion about $0$, $\frac{z}{e^z-1}=\sum_{n=0}^{\infty}C_nz^n$, and it agrees with the function on the whole $\mathbb{C}$.
+We'll find the coefficient to help calculate $A_n$.
+
+Notice that since $\frac{e^z-1}{z}\cdot \frac{z}{e^z-1}=1$, while $\frac{e^z-1}{z}$ also can be extended analytically onto $\mathbb{C}$,
+given the following power series expansion of $\frac{e^z-1}{z}$:
+$$e^z=1+\sum_{n=1}^{\infty}\frac{z^n}{n!},\quad \frac{e^z-1}{z}=\frac{1}{z}\sum_{n=1}^{\infty}\frac{z^n}{n!}=\sum_{n=1}^{\infty}\frac{z^{n-1}}{n!}=\sum_{n=0}^{\infty}\frac{z^n}{(n+1)!}$$
+Which we can conclude the following:
+$$\frac{e^z-1}{z}\cdot \frac{z}{e^z-1}=\left(\sum_{n=0}^{\infty}C_nz^n\right)\left(\sum_{n=0}^{\infty}\frac{z^n}{(n+1)!}\right)=1 = 1 + \sum_{n=1}^{\infty}0\cdot z^n$$
+Since regardless of $z\in\mathbb{C}$, the above equation is true, $\sum_{n=0}^{\infty}C_nz^n$ is in fact the inverse of the formal power series $\sum_{n=0}^{\infty}\frac{z^n}{(n+1)!}\in \mathbb{C}[[z]]$. Which, they satisfy the following relationship:
+\begin{itemize}
+    \item For coefficient of degree $0$, we have $C_0\cdot \frac{1}{(0+1)!}=1$, hence $C_0=1$.
+    \item For coefficient of degree $1$, we have $C_1\cdot \frac{1}{(0+1)!}+C_0\cdot\frac{1}{(1+1)!}=0$, hence $C_1+\frac{1}{2!}=0,\quad C_1=-\frac{1}{2}$.
+    \item For coefficient of degree $n\geq 2$, we have $\sum_{k=0}^{n}C_k\cdot \frac{1}{((n-k)+1)!}=0$, hence: 
+    $$C_n=C_n\cdot\frac{1}{(0+1)!} = -\sum_{k=0}^{n-1}C_k\cdot\frac{1}{((n-k)+1)!}$$
+\end{itemize}
+
+\hfil
+
+Since $g(z)=\frac{z}{e^z-1}$ has its power series $\sum_{n=0}^{\infty}C_nz^n$ converge to itself on the whole $\mathbb{C}$,then its $n^{th}$ derivative at $0$ is given as $g^{(n)}(0)=n!C_n$. Which, $A_n$ can be rewritten as the following using Cauchy's Integral Formula:
+$$A_n=\frac{1}{2\pi i}\int_{C}\frac{1}{\zeta^{n+2}}\cdot\frac{\zeta}{e^\zeta-1}d\zeta=\frac{1}{2\pi i}\int_{C}\frac{g(\zeta)}{\zeta^{n+2}}d\zeta = \frac{g^{(n+1)}(0)}{(n+1)!}=\frac{(n+1)!C_{n+1}}{(n+1)!}=C_{n+1}$$
+Hence, with the previous section (where $A_{-1}=1$, and $A_{-n}=0$ for $n>1$), we can express the laurent series as the following:
+$$\sum_{n=-\infty}^{\infty}A_nz^n = \sum_{n=1}^{\infty}A_{-n}z^{-n}+\sum_{n=0}^{\infty}A_nz^n = \frac{1}{z}+\sum_{n=0}^{\infty}C_{n+1}z^n = \frac{1}{z}-\frac{1}{2}+\sum_{n=1}^{\infty}C_{n+1}z^n$$
+
+\hfil
+
+
+
 \break
 
 \section*{4}
 \begin{myBox}[]{}
     \begin{question}
         Stein and Shakarchi Pg. 86 Problem 2:
+
+        Let 
+        $$F(z)=\sum_{n=1}^{\infty}d(n)z^n$$
+        for $|z|<1$, where $d(n)$ denotes the number of divisors of $n$. Observe that the radius of convergence of this series is $1$.
+        Verify the identity
+        $$\sum_{n=1}^{\infty}d(n)z^n=\sum_{n=1}^{\infty}\frac{z^n}{1-z^n}$$
+        Using this identity, show that if $z=r$ with $0<r<1$, then
+        $$|F(r)|\geq c\frac{1}{1-r}\log(1/(1-r))$$
+        as $r\rightarrow 1$. Similarly, if $\theta = 2\pi p/q$ where $p$ and $q$ are positive integers and $z=re^{i\theta}$, then
+        $$|F(re^{i\theta})|\geq c_{p/q}\frac{1}{1-r}\log(1/(1-r))$$
+        as $r\rightarrow 1$. Conclude that $F$ cannot be continued analytically past the unit disk.
     \end{question}
 \end{myBox}
 
