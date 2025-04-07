@@ -66,12 +66,12 @@ Hence, the series absolutely converges, which $\zeta(z)=\sum_{n=1}^{\infty}n^{-z
 
 \textbf{Partial Sum converges uniformly on any Compact Subset:}
 
-Suppose $K\subset \mathbb{C}$ is a compact subset of the plane $Re(z)>1$, each component $n^{-z}=e^{-z\ln(n)}=n^{-a}\cdot e^{i(-b\ln(n))}$ is analytic on the half plane (also on $K$), 
-hence there exists $z_0\in K$, such that $|n^{-z_0}|$ yields the maximum.
+Suppose $K\subset \mathbb{C}$ is a compact subset of the plane $Re(z)>1$, all $z=a+bi\in K$ has the map $z\mapsto a$ being a continuous map, hence there exists $z_0=a_0+b_0i$, such that $a_0$ is the minimum (or, $1<a_0\leq Re(z)$ for all $z\in K$).
 
-Since for $z_0=a+bi$, $|n^{-z_0}|=\left|n^{-a}\cdot e^{i(-b\ln(n))}\right|=n^{-a}$, and since $z_0$ is in the half plane, so $Re(z_0)=a>1$. Then, the series $\sum_{n=1}^{\infty}n^{-a}$ converges.
+Then, each component $n^{-z}=e^{-z\ln(n)}=n^{-a}\cdot e^{i(-b\ln(n))}$ has $|n^{-z}| = n^{-a}\leq n^{-a_0}$ (since $a=Re(z)\geq a_0$, hence $n^{-a}\leq n^{-a_0}$).
+So, the series $\sum_{n=1}^{\infty}n^{-a_0}$ converges.
 
-Now, notice that for each $n\in\mathbb{N}$, $M_n=\sup_{z\in K}|n^{-z}| = \max_{z\in K}|n^{-z}|=n^{-a}$ satisfies $\sum_{n=1}^{\infty}M_n$ converges, then by Weierstrass M-Test,
+Now, notice that for each $n\in\mathbb{N}$, $M_n=\sup_{z\in K}|n^{-z}| = \max_{z\in K}|n^{-z}|=n^{-a_0}$ satisfies $\sum_{n=1}^{\infty}M_n$ converges, then by Weierstrass M-Test,
 the series $\sum_{n=1}^{\infty}n^{-z}$ in fact converges uniformly on $K$. 
 
 Then, because the series $\zeta(z)=\sum_{n=1}^{\infty}n^{-z}$ converges absolutely on $Re(z)>1$, converging uniformly on all compact subset of the half plane, and each component is analytic on the half plane,
@@ -123,7 +123,7 @@ Then, based on the definition of Fibonnaci numbers, it can be rewritten as:
 $$F(z)=1+z+\sum_{n=2}^{\infty}(c_{n-1}+c_{n-2})z^n = 1+z+\sum_{n=2}^{\infty}c_{n-1}z^n+\sum_{n=2}^{\infty}c_{n-2}z^n$$
 $$ = 1+z+\sum_{n=1}^{\infty}c_nz^{n+1}+\sum_{n=0}^{\infty}c_nz^{n+2} = 1+z\left(1+\sum_{n=1}^{\infty}c_nz^n\right)+z^2\sum_{n=0}^{\infty}c_nz^n$$
 $$=1+z\sum_{n=0}^{\infty}c_nz^n+z^2F(z) = 1+zF(z)+z^2F(z)$$
-Then, we can yield the following:
+Then, we can yield the following, showing that $F(z)$ is in fact a rational function:
 $$F(z)=1+zF(z)+z^2F(z),\quad F(z)(1-z-z^2)=1,\quad F(z)=\frac{1}{1-z-z^2}$$
 Now, if $1-z-z^2=0$ (or $z^2+z-1=0$), we have $z=\frac{-1\pm\sqrt{5}}{2}$. Hence, $1-z-z^2=-\left(\frac{-1+\sqrt{5}}{2}-z\right)\left(\frac{-1-\sqrt{5}}{2}-z\right)$.
 Then, $F(z)$ can be decomposed using partial fraction:
@@ -145,6 +145,9 @@ $$=\frac{1}{\sqrt{5}}\sum_{n=0}^{\infty}\frac{\left(\frac{-1-\sqrt{5}}{2}\right)
 $$=\frac{1}{\sqrt{5}}\sum_{n=0}^{\infty}\frac{\left(\frac{-1-\sqrt{5}}{2}\right)^{n+1}-\left(\frac{-1+\sqrt{5}}{2}\right)^{n+1}}{(-1)^{n+1}}z^n = \sum_{n=0}^{\infty}\frac{\left(\frac{1+\sqrt{5}}{2}\right)^{n+1}-\left(\frac{1-\sqrt{5}}{2}\right)^{n+1}}{\sqrt{5}}z^n$$
 Then, by the uniqueness of Taylor Series, the following is the closed expression of $c_n$:
 $$\forall n\in\mathbb{N},\quad c_n=\frac{\left(\frac{1+\sqrt{5}}{2}\right)^{n+1}-\left(\frac{1-\sqrt{5}}{2}\right)^{n+1}}{\sqrt{5}}$$
+This shows that $c_n$ is in fact taylor coefficients of rational function $\frac{1}{1-z-z^2}$.
+
+(Note: here the index $c_0=1$ instead of $c_0=0$. Which, if $c_0=0$ instead, the function is then given by $\frac{z}{1-z-z^2}$, since we need to shift the index by $1$).
 
 \break
 
@@ -183,11 +186,11 @@ which provides $A_{-1}=1$.
 \hfil
 
 Then, for $n>1$, the coefficient $A_{-n}$ is given by:
-$$A_{-n}=\frac{1}{2\pi i}\int_{C}f(\zeta)\zeta^{n-1}d\zeta=\frac{1}{2\pi i}\int_{C}\frac{1}{\zeta}\cdot \frac{\zeta^n}{e^\zeta-1}d\zeta$$
-Notice that for $n>1$, the function $\frac{\zeta^n}{e^\zeta-1}$ has isolated singularity at $0$, since $\lim_{\zeta\rightarrow 0}\zeta\cdot \frac{\zeta^n}{e^\zeta-1}=0$, then the singularity at $0$ is in fact removable.
-Hence, it has an analytic extension onto $\mathbb{C}$, where the evaluation at $\zeta=0$ is $\lim_{\zeta\rightarrow 0}\frac{\zeta^n}{e^\zeta-1} = 0$ (since it can be broken down into $\zeta^{n-1}$ and $\frac{\zeta}{e^\zeta-1}$; the first one has limit $0$ since $n-1\geq 1$, while the second one has limit $1$, hence the product has limit $0$).
+$$A_{-n}=\frac{1}{2\pi i}\int_{C}f(\zeta)\zeta^{n-1}d\zeta=\frac{1}{2\pi i}\int_{C}\frac{\zeta^{n-1}}{e^\zeta-1}d\zeta$$
+Notice that for $n>1$, the function $\frac{\zeta^{n-1}}{e^\zeta-1}$ has isolated singularity at $0$, since $\lim_{\zeta\rightarrow 0}\zeta\cdot \frac{\zeta^{n-1}}{e^\zeta-1}$ is defined due to the fact that $(n-1)\geq 1$, then the singularity at $0$ is in fact removable.
+Hence, it has an analytic extension onto $\mathbb{C}$.
 
-Again, the integral form of $A_{-n}$ is in fact the evaluation of the extension of $\frac{\zeta^n}{e^\zeta-1}$ at $\zeta=0$ by Cauchy's Integral Formula, hence $A_{-n}=0$.
+Then, the integral form of $A_{-n}$ is in fact a closed contour integral of an analytic function on $\mathbb{C}$, which $A_{-n}=0$.
 
 \hfil
 
@@ -229,13 +232,13 @@ Now, recall that $\frac{z}{e^z-1}=\sum_{n=0}^{\infty}C_nz^n$, then for all $z\in
 $$\frac{-z}{e^{-z}-1}=\sum_{n=0}^{\infty}C_n(-z)^n = \sum_{n=0}^{\infty}(-1)^nC_nz^n$$
 Which, consider the difference of the two terms, we get:
 $$\frac{-z}{e^{-z}-1}-\frac{z}{e^z-1} = \frac{-ze^z}{1-e^z}-\frac{z}{e^z-1}=\frac{ze^z}{e^z-1}-\frac{z}{e^z-1}=\frac{z(e^z-1)}{e^z-1}=z$$
-(Note: for $z=0$, consider its extension, where evaluation at $z=0$ is the limit $\lim_{z\rightarrow 0}\frac{z}{e^z-1}=1$, then the above difference is $0$, which agrees with the formula).
+(Note: for $z=0$, consider the extension of $\frac{z}{e^z-1}$, where evaluation at $z=0$ is the limit $\lim_{z\rightarrow 0}\frac{z}{e^z-1}=1$, then the above difference is $1-1=0$, which agrees with the formula).
 
 Hence, in power series form, we get:
 $$\sum_{n=0}^{\infty}(-1)^nC_nz^n-\sum_{n=0}^{\infty}C_nz^n = \sum_{n=0}^{\infty}((-1)^n-1)C_nz^n=z$$
 Then, all the even terms have $(-1)^n-1=0$, we're left with the odd terms. Hence:
 $$\sum_{k=1}^{\infty}((-1)^{2k-1}-1)C_{2k-1}z^{2k-1}=\sum_{k=1}^{\infty}-2C_{2k-1}z^{2k-1}=-2C_1z+\sum_{k=2}^{\infty}-2C_{2k-1}z^{2k-1}=z$$
-By the uniqueness of taylor series, we need $-2C_1=1,\ C_1=\frac{-1}{2}$ (which agrees with our previous calculation), and $-2C_{2k-1}=0,\ C_{2k-1}=0$ for all $k\geq 2$.
+By the uniqueness of Taylor series, we need $-2C_1=1,\ C_1=\frac{-1}{2}$ (which agrees with our previous calculation), and $-2C_{2k-1}=0,\ C_{2k-1}=0$ for all $k\geq 2$.
 Therefore, all the odd terms of $C_n$ is $0$.
 
 Hence, the laurent series can be expressed as follow:
@@ -251,7 +254,7 @@ $$(e^z-1)^{-1}=\frac{1}{z}-\frac{1}{2}+\sum_{k=1}^{\infty}(-1)^k\frac{B_k}{(2k)!
 
 \textbf{Calculation of Bernoulli Numbers:}
 
-For $k=1,2,3$, we'll convert it back into $C_n$ for simplicity. Which, $B_k=(-1)^kB_{2k}=(-1)^k(2k)!C_{2k}$.
+For $k=1,2,3$, we'll convert it back into $C_n$ for simplicity. Which, $B_k=(-1)^kB_{2k}'=(-1)^k(2k)!C_{2k}$.
 
 For $k=1, 2k=2$, we have $B_1$ given as:
 $$C_2=-\sum_{k=0}^{1}C_k\frac{1}{(2-k+1)!}=-\left(\frac{C_0}{3!}+\frac{C_1}{2!}\right)=-\left(1\cdot\frac{1}{6}-\frac{1}{2}\cdot\frac{1}{2}\right)=\frac{1}{12}$$
@@ -272,7 +275,9 @@ $$=\frac{1}{7}-\frac{1}{2}+\frac{6}{12}-\frac{6!}{12\cdot 60 \cdot 3!}=\frac{1}{
 So, we have the following:
 $$B_1=-\frac{1}{6},\quad B_2=-\frac{1}{30},\quad B_3=\frac{1}{42}$$
 
-\break
+\hfil
+
+\hfil
 
 \section*{4}
 \begin{myBox}[]{}
@@ -293,6 +298,121 @@ $$B_1=-\frac{1}{6},\quad B_2=-\frac{1}{30},\quad B_3=\frac{1}{42}$$
 \end{myBox}
 
 \textbf{Pf:}
+
+\textbf{The other form of the function:}
+
+Consider the series $\sum_{n=1}^{\infty}\frac{z^n}{1-z^n}$, since inside the radius of convergence $|\zeta|<1$, we have $\frac{\zeta}{1-\zeta}=\sum_{n=1}^{\infty}\zeta^n$,
+then since for all $|z|<1$, $|z^n|<1$ for all $n\in\mathbb{N}$, the sum can also be expressed as:
+$$\sum_{n=1}^{\infty}\frac{z^n}{1-z^n}=\sum_{n=1}^{\infty}\left(\sum_{k=1}^{\infty}(z^n)^k\right)$$ 
+Which, for all $q\in\mathbb{N}$, any $n\in\mathbb{N}$ satisfies $n\bigm| q$ iff $z^q=(z^n)^k$ for some unique $k\in\mathbb{N}$, hence $z^q$ appears precisely once in the series $\sum_{k=1}^{\infty}(z^n)^k$ for all $n\bigm| q$, and appear $0$ times if $n$ doesn't divide $q$.
+Therefore, $z^q$ appears total of $d(q)$ times in the above double series (appear once for each $n\bigm| q$, and there are total of $d(q)$ natural numbers $n$ with $n\bigm| q$). Hence:
+$$\sum_{n=1}^{\infty}\left(\sum_{k=1}^{\infty}(z^n)^k\right)=\sum_{q=1}^{\infty}d(q)z^q$$
+
+\hfil
+
+\textbf{The first inequality for $0<r<1$:}
+
+Before starting, we'll consider the power series of $\frac{1}{1-z}$, namely $\sum_{n=0}^{\infty}z^n$: This power series have radius of convergence $R=1$, which inside $|z|<1$, not only $\frac{1}{1-r}$ is analytic, we can also define a single-valued branch of $-\log(1-z)=\log(1/(1-z))$, which has the derivative being $\frac{1}{1-z}$.
+Then, express $\log(1/(1-z))$ in power series, we get:
+$$\log(1/(1-z))=-\log(1-z)=\sum_{n=0}^{\infty}c_nz^n = \sum_{n=1}^{\infty}c_nz^n$$
+$$\sum_{n=0}^{\infty}z^n=\frac{1}{1-z}=\frac{d}{dz}\log(1/(1-z))=\sum_{n=1}^{\infty}\frac{d}{dz}(c_nz^n)=\sum_{n=1}^{\infty}nc_nz^{n-1}=\sum_{n=0}^{\infty}(n+1)c_{n+1}z^n$$
+$$\forall n\in\mathbb{N}\cup \{0\},\quad (n+1)c_{n+1}=1,\quad c_{n+1}=\frac{1}{n+1}$$
+Hence, we can conclude that for all $n\in\mathbb{N}$, $c_n=\frac{1}{n}$.
+
+Then, if consider the power series of $\frac{1}{1-z}\log(1/(1-z))$, it has radius of convergence $R=1$ (since the two series in the product has radius of convergence $R=1$), which we get:
+$$\frac{1}{1-z}\log(1/(1-z))=\left(\sum_{n=0}^{\infty}z^n\right)\left(0+\sum_{n=1}^{\infty}\frac{1}{n}z^n\right)=\sum_{n=0}^{\infty}a_nz^n$$
+Which, we have the coefficient $a_0= 0 \cdot 1 = 0$, and for all $n\in\mathbb{N}$, $a_n=0\cdot 1 + \sum_{k=1}^{n}\frac{1}{k}\cdot 1 = \sum_{k=1}^{n}\frac{1}{k}=H_n$, where $H_n$ is the $n^{th}$ harmonic sum.
+Hence:
+$$\frac{1}{1-z}\log(1/(1-z))=\sum_{n=1}^{\infty}H_nz^n$$
+Now, to prove the inequality, we'll show that for all $N\in\mathbb{N}$, there exists $0<\delta<1$, with $1-\delta<r<1$ implies $\frac{1}{1-r^n}\geq H_n$ for all $ 1\leq n\leq N$.
+
+Given $N\in\mathbb{N}$, since $\lim_{r\rightarrow 1^-}\frac{1}{1-r^N}=\infty$ , for all $M>0$, there exists $0<\delta<1$, with $1-\delta<r<1$ implies $\frac{1}{1-r^N}>M$. Hence, let $M=H_N$, choose the corresponding $\delta_N$,
+any $r$ with $1-\delta_N<r<1$ satisfies $\frac{1}{1-r^N}>H_N$.
+
+Now, for all $1\leq n\leq N$, since $|r|<1$, then $r^n\geq r^N$, $1-r^n\leq 1-r^N$, or $\frac{1}{1-r^n}\geq \frac{1}{1-r^N}$; similarly, since $H_n$ is an increasing sequence, then $H_N\geq H_n$. Hence:
+$$\frac{1}{1-r^n}\geq \frac{1}{1-r^N}>H_N\geq H_n$$
+Hence, this choice of $\delta_N$ also guarantees that all index $n\leq N$ has $\frac{1}{1-r^n}>H_n$.
+
+Which, the following inequality is true for $1-\delta_N<r<1$:
+$$\sum_{n=1}^{N}\frac{r^n}{1-r^n}>\sum_{n=1}^{N}H_nr^n$$
+Hence, as $N\rightarrow\infty$ (which $H_N\rightarrow\infty$, for $\frac{1}{1-r^N}\geq H_N$, we need $r\rightarrow 1^-$), we can claim that $\sum_{n=1}^{N}\frac{r^n}{1-r^n}>\sum_{n=1}^{N}H_nr^n$, which the left side is bounded above by $F(r)$, while the right side is bounded by $\frac{1}{1-r}\log(1/(1-r))$.
+
+Therefore, we can claim that as $r\rightarrow 1$, $|F(r)|\geq \frac{1}{1-r}\log(1/(1-r))$, where the unknown constant $c$ in the question can be chosen as $c=1$.
+
+\hfil
+
+\textbf{The second inequality for $z=re^{i\theta}$, $0<r<1$, and $\theta=2\pi p/q$:}
+
+Given $0<r<1$, and $\theta=2\pi p/q$ for positive integers $p,q$ (WLOG, assume $\gcd(p,q)=1$). 
+Notice that for any $n\in\mathbb{N}$ that's divisible by $q$, $e^{i\theta}n = 1$. Then, by separating out all multiples of $q$, the value $F(re^{i\theta})$ can be expressed as:
+$$F(re^{i\theta})=\sum_{n=1}^{\infty}\frac{(re^{i\theta})^n}{1-(re^{i\theta})^n}=\sum_{k=1}^{\infty}\frac{(re^{i\theta})^{kq}}{1-(re^{i\theta})^{kq}}+\sum_{n\in\mathbb{N},\ q\nmid n}\frac{(re^{i\theta})^n}{1-(re^{i\theta})^n}$$
+$$= \sum_{k=1}^{\infty}\frac{(r^q)^k}{1-(r^q)^k}+\sum_{n\in\mathbb{N},\ q\nmid n}\frac{(re^{i\theta})^n}{1-(re^{i\theta})^n}$$
+Now, given the following equation, we can derive an inequality:
+$$\sum_{k=1}^{\infty}\frac{(r^q)^k}{1-(r^q)^k}=F(re^{i\theta})-\sum_{n\in\mathbb{N},\ q\nmid n}\frac{(re^{i\theta})^n}{1-(re^{i\theta})^n}$$
+$$\left|
+F(re^{i\theta})
+\right|+\left|
+\sum_{n\in\mathbb{N},\ q\nmid n}\frac{(re^{i\theta})^n}{1-(re^{i\theta})^n}
+\right|\geq \left|
+F(re^{i\theta})-\sum_{n\in\mathbb{N},\ q\nmid n}\frac{(re^{i\theta})^n}{1-(re^{i\theta})^n}
+\right|=\left|
+\sum_{k=1}^{\infty}\frac{(r^q)^k}{1-(r^q)^k}
+\right|$$
+$$\left|
+F(re^{i\theta})
+\right|\geq \left|
+\sum_{k=1}^{\infty}\frac{(r^q)^k}{1-(r^q)^k}
+\right|-\left|
+\sum_{n\in\mathbb{N},\ q\nmid n}\frac{(re^{i\theta})^n}{1-(re^{i\theta})^n}
+\right|\geq |F(r^q)|-\sum_{n\in\mathbb{N},\ q\nmid n}\frac{|(re^{i\theta})^n|}{|1-(re^{i\theta})^n|}$$
+Now, since for all $n\in\mathbb{N}$ with $q\nmid n$, $(e^{i\theta})^n=(e^{i\theta})^k$, where $k\in \mathbb{Z}_q$ satisfies $k\equiv n\ (mod\ q)$, and $k\neq 0$.
+Then, for all $n\in\mathbb{N}$, there exists nonzero $k\in\mathbb{Z}_q$, where $(re^{i\theta})^n\in R_k=\{r(e^{i\theta})^k\ |\ r\in\mathbb{R}\}$.
+
+For each nonzero $k\in\mathbb{Z}_q$, since the set $R_k\subset\mathbb{C}$ is closed (a straight line passing through the origin), while $1\notin R_k$ (since $(e^{i\theta})^k\notin \mathbb{R}$), 
+then since $\{1\}$ is a compact set and $R_k$ is closed, there is a nonzero distance $d_k>0$, with all $r\in\mathbb{R}$, $|1-(re^{i\theta})^k|\geq d_k$ (i.e. the two set has nonzero distance).
+
+Which, let $d_q = \min\{d_1,.,,,d_{q-1}\}>0$, for all nonzero $n\in\mathbb{N}$ with $q\nmid n$ and $r\in\mathbb{R}$, since $n\equiv k\ (mod\ q)$ for some nonzero $k\in\mathbb{Z}_q$, we get the following:
+$$|1-(re^{i\theta})^n| = |1-r^n(e^{i\theta})^k| \geq d_k\geq d_q>0$$
+Hence, $\frac{1}{|1-(re^{i\theta})^n|}\leq \frac{1}{d_q}$, or $-\frac{1}{|1-(re^{i\theta})^n|}\geq -\frac{1}{d_q}$.
+
+So, the original inequality can then be converted to:
+$$|F(re^{i\theta})|\geq |F(r^q)|-\sum_{n\in\mathbb{N},\ q\nmid n}\frac{|(re^{i\theta})^n|}{|1-(re^{i\theta})^n|}\geq |F(r^q)|-\sum_{n\in\mathbb{N},\ q\nmid n}\frac{r^n}{d_q}$$
+$$|F(re^{i\theta})|\geq|F(r^q)|-\frac{1}{d_q}\sum_{n=0}^{\infty}r^n=|F(r^q)|-\frac{1}{d_q}\cdot\frac{1}{1-r}$$
+Then, based on the previous inequality, as $r\rightarrow 1$, $r^q\rightarrow 1$, hence $|F(r^q)|\geq \frac{1}{1-r^q}\log(1/(1-r^q))$.
+
+Now, for $0<r<1$, since the function $q(1-r)\geq (1-r^q)$ (since by Bernoulli's Inequality, as $(r-1)>-1$, we have $r^q=(1+(r-1))^q\geq 1+q(r-1)$, hence $q(1-r)=-q(r-1)\geq 1-r^q$), then we get the following:
+$$\frac{1}{q(1-r)}\leq \frac{1}{1-r^q},\quad r>\frac{q-1}{q}\implies q(1-r)<q\cdot\frac{1}{q}=1\implies \frac{1}{q(1-r)}>1$$
+Which, the second impliciation above guarantees the following:
+$$0=\log(1)<\log\left(\frac{1}{q(1-r)}\right)\leq \log\left(\frac{1}{1-r^q}\right)$$
+Hence, the following is true:
+$$\frac{1}{q}\cdot \frac{1}{1-r}\cdot\left(\log\left(\frac{1}{1-r}\right)+\log\left(\frac{1}{q}\right)\right)=\frac{1}{q(1-r)}\log\left(\frac{1}{q(1-r)}\right)\leq \frac{1}{1-r^q}\log\left(\frac{1}{1-r^q}\right)$$
+Combining all the inequalities above, as $r\rightarrow 1$ (can assume $r>\frac{q-1}{q}$), we get:
+$$|F(re^{i\theta})|\geq |F(r^q)|-\frac{1}{d_q}\cdot\frac{1}{1-r}\geq \frac{1}{1-r^q}\log(1/(1-r^q))-\frac{1}{d_q}\cdot\frac{1}{1-r}$$
+$$|F(re^{i\theta})|\geq \frac{1}{q}\cdot\frac{1}{1-r}\log\left(\frac{1}{1-r}\right)-\frac{\log(q)}{q}\cdot\frac{1}{1-r}-\frac{1}{d_q}\cdot\frac{1}{1-r}$$
+$$|F(re^{i\theta})|\geq \frac{1}{1-r}\left(\frac{1}{q}\log(1/(1-r))-\frac{\log(q)}{q}-\frac{1}{d_q}\right)$$
+Since both $\frac{\log(q)}{q},\frac{1}{d_q}$ are constant for fixed $q$, and $\lim_{r\rightarrow 1^-}\log(1/(1-r))=\infty$, then there exists $R\in (0,1)$, such that $R<r<1$ implies $\frac{1}{2q}\log(1/(1-r))>\frac{\log(q)}{q}+\frac{1}{d_q}$, then as $r\rightarrow 1$, we can conclude the following;
+$$|F(re^{i\theta})|\geq \frac{1}{1-r}\left(\frac{1}{q}\log(1/(1-r))-\frac{\log(q)}{q}-\frac{1}{d_q}\right)> \frac{1}{1-r}\left(\frac{1}{q}\log(1/(1-r))-\frac{1}{2q}\log(1/(1-r))\right)$$
+$$|F(re^{i\theta})|\geq \frac{1}{2q}\cdot\frac{1}{1-r}\log(1/(1-r))$$
+Choose $c_{p/q}=\frac{1}{2q}$, as $r\rightarrow 1$, $|F(re^{i\theta})|\geq c_{p/q}\frac{1}{1-r}\log(1/(1-r))$, hence the second inequality is true.
+
+\hfil
+
+\textbf{The function can't be continued analytically past the disk:}
+
+Suppose the contrary, that $F$ can be continued analytically past the disk. To continue analytically past the unit disk, there must exists an open connected domain $V\subseteq \mathbb{C}$ that strictly contains the open unit disk $\mathbb{D}$, and an analytic function $\overline{F}$ on $V$,
+where for all $|z|<1$, $\overline{F}(z)=F(z)$ (i.e. they must agree on $|z|<1$).
+
+Which, this new open connected domain $V$ must contain some part of the unit disk boundary, $\partial\mathbb{D}$ with all $|z|=1$.
+Suppose $V\cap \partial\mathbb{D}=\emptyset$, then let $A_1=\{z\in\mathbb{C}\ |\ |z|>1\}$ (an open subset of $\mathbb{C}$), we have $A_1\cap V$ and $\mathbb{D}$ be two open sets with no intersection,
+while the union becomes $V$ (since $V$ strictly contains $\mathbb{D}$, while contains non of its boundary, then all $z\in V$ satisfies $|z|<1$ or $|z|>1$). Hence, $A_1\cap V$ and $\mathbb{D}$ becomes a separation of $V$, which is a contradiction if $A_1\cap V\neq \emptyset$.
+But, if $A_1\cap V=\emptyset$, then $V=\mathbb{D}$, which violates the assumption that it strictly contains the unit disk $\mathbb{D}$. Therefore, the assumption is false, we need $V\cap \partial D\neq \emptyset$.
+
+Then, since $V\cap \partial D$ is nonempty, while $\mathbb{Q}$ is dense in $\mathbb{R}$, then on $\partial D$, the collection of all $e^{i\theta}$ with $\theta=2\pi p/q$ (for $p/q\in\mathbb{Q}$) is also dense on $S^1$. Hence, for some $p/q\in\mathbb{Q}$, $\theta = 2\pi p/q$ satisfies $e^{i\theta}\in (V\cap \partial D)$,
+which $\overline{F}(e^{i\theta})$ should be defined.
+
+However, since $\overline{F}$ agrees with $F$ on $\mathbb{D}$, while being analtic on $V$, we need the following to be true:
+$$\lim_{r\rightarrow 1^-}F(re^{i\theta})=\overline{F}(e^{i\theta})$$
+Yet, the previous inequality shows that as $r\rightarrow 1$, $|F(re^{i\theta})|\geq c_{p/q}\frac{1}{1-r}\log(1/(1-r))$, showing that its modulus in fact is not bounded, so $\lim_{r\rightarrow 1^-}F(e^{i\theta})$ diverges. However, this contradicts the assumption that $\overline{F}(e^{i\theta})$ is defined, hence the assumption is wrong, $F$ can't be continued analytically past the disk. 
 
 
 \end{document}
