@@ -1,0 +1,154 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math CS 122B HW2}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        The \textbf{Beta function} is defined for $Re(\alpha)>0$ and $\Re(\beta)>0$ by
+        $$B(\alpha,\beta)=\int_{0}^{1}(1-t)^{\alpha-1}t^{\beta-1}dt$$
+        \begin{itemize}
+            \item[(a)] Prove that 
+            $$B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$$
+            \item[(b)] Show that
+            $$B(\alpha,\beta)=\int_{0}^{\infty}\frac{u^{\alpha-1}}{(1+u)^{\alpha+\beta}}du$$
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\begin{itemize}
+    \item[(a)] First, we'll consider $\Gamma(\alpha)\Gamma(\beta)$:
+    $$\Gamma(\alpha)\Gamma(\beta)=\int_{0}^{\infty}t^{\alpha-1}e^{-t}dt\int_{0}^{\infty}s^{\beta-1}e^{-s}ds=\int_{0}^{\infty}\int_{0}^{\infty}t^{\alpha-1}s^{\beta-1}e^{-s-t}dsdt$$
+    If we consider the change of variable $f:(0,1)\times (0,\infty)\rightarrow (0,\infty)\times (0,\infty)$ by $f(r,u)=(ur,u(1-r))=(s,t)$, since this is a differentiable function, and its derivative is given by:
+    $$Df = \begin{pmatrix}
+        \frac{\partial f_1}{\partial r}&\frac{\partial f_1}{\partial u}\\
+        \frac{\partial f_2}{\partial r}&\frac{\partial f_2}{\partial u}
+    \end{pmatrix}=\begin{pmatrix}
+        \frac{\partial}{\partial r}(ur)&\frac{\partial}{\partial u}(ur)\\
+        \frac{\partial}{\partial r}(u(1-r))&\frac{\partial}{\partial u}(u(1-r))
+    \end{pmatrix}=\begin{pmatrix}
+        u&r\\
+        -u&(1-r) 
+    \end{pmatrix}$$
+    $$\frac{\partial (s,t)}{\partial (r,u)}=|\begin{vmatrix}
+        u&r\\-u&(1-r)
+    \end{vmatrix}|=u(1-r)-(-u)r=u$$
+    Then, the above integral can be given as:
+    $$\Gamma(\alpha)\Gamma(\beta)=\int_{0}^{\infty}\int_{0}^{\infty}t^{\alpha-1}s^{\beta-1}e^{-s-t}dsdt = \int_{0}^{\infty}\int_{0}^{1}(u(1-r))^{\alpha-1}(ur)^{\beta-1}e^{-(ur+u(1-r))}\left|\frac{\partial (s,t)}{\partial (r,u)}\right|drdu$$
+    $$=\int_{0}^{\infty}\int_{0}^{1}u^{\alpha+\beta-2}e^{-u}\cdot (1-r)^{\alpha-1}r^{\beta-1}udrdu=\int_{0}^{\infty}u^{\alpha+\beta-1}e^{-u}\cdot (1-r)^{\alpha-1}r^{\beta-1}drdu$$
+    $$=\int_{0}^{\infty}u^{\alpha+\beta-1}e^{-u}du\cdot\int_{0}^{1}(1-r)^{\alpha-1}r^{\beta-1}dr = \Gamma(\alpha+\beta)\cdot B(\alpha,\beta)$$
+    Hence, we can rewrite the above equality to be as follow:
+    $$\Gamma(\alpha)\Gamma(\beta)=\Gamma(\alpha+\beta)\cdot B(\alpha,\beta),\quad B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$$
+    (Recall: $\Gamma(z)\neq 0$ for all $z\in\mathbb{C}\setminus S$, $S=\{0,-1,-2,...\}$).
+    
+    \hfil 
+
+    \item[(b)] Consider the following expression:
+    $$\int_{0}^{\infty}\frac{u^{\alpha-1}}{(1+u)^{\alpha+\beta}}du$$
+    First, if we do the substitution $(1+u)=e^t$, $du=e^tdt$, which $u=0\implies e^t=1,\ t=0$, and $\lim_{t\rightarrow\infty}e^t=\infty$, so $\lim_{t\rightarrow\infty}u=\infty$. Then, the integral can be rewrite as:
+    $$\int_{0}^{\infty}\frac{u^{\alpha-1}}{(1+u)^{\alpha+\beta}}du=\int_{0}^{\infty}\frac{(e^t-1)^{\alpha-1}}{(e^t)^{\alpha+\beta}}e^tdt=\int_{0}^{\infty}((1-e^{-t})e^t)^{\alpha-1}(e^{-t})^{\alpha+\beta}\cdot e^tdt$$
+    $$=\int_{0}^{\infty}(1-e^{-t})^{\alpha-1}\cdot (e^{t})^{\alpha-1}\cdot (e^{t})^{-\alpha}\cdot (e^t)^{-\beta}\cdot e^tdt = \int_{0}^{\infty}(1-e^{-t})^{\alpha-1}(e^{-t})^\beta dt$$
+    Then, for the above expression, if we do the second substitution $r=e^{-t}$, $dr=-e^{-t}dt$, $dt=-e^tdt = -r^{-1}dr$. Which $t=0\implies r=e^0,\ r=1$, and $\lim_{t\rightarrow\infty}e^{-t}=\lim_{t\rightarrow\infty}r=0$. So, the integral can be rewrite as:
+    $$\int_{0}^{\infty}(1-e^{-t})^{\alpha-1}(e^{-t})^\beta dt=\int_{1}^{0}(1-r)^{\alpha-1}r^{\beta}\cdot (-r^{-1})dr = \int_{0}^{1}(1-r)^{\alpha-1}r^{\beta-1}dr = B(\alpha,\beta)$$
+    Hence, we can conclude the following:
+    $$\int_{0}^{\infty}\frac{u^{\alpha-1}}{(1+u)^{\alpha+\beta}}du=\int_{0}^{\infty}(1-e^{-t})^{\alpha-1}(e^{-t})^\beta dt=B(\alpha,\beta)$$
+\end{itemize}
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        The hypergeometric series $F(\alpha,\beta,\gamma; z)$ was defined as 
+        $$F(\alpha,\beta,\gamma;z)=1+\sum_{n=1}^{\infty}\frac{\alpha(\alpha+1)...(\alpha+n-1)\cdot \beta(\beta+1)...(\beta+n-1)}{n!\cdot \gamma(\gamma+1)...(\gamma+n-1)}z^n$$
+        Here $\alpha>0,\beta>0,\gamma>\beta$, and $|z|<1$. Show that
+        $$F(\alpha,\beta,\gamma;z)=\frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\gamma-\beta)}\int_{0}^{1}t^{\beta-1}(1-t)^{\gamma-\beta-1}(1-zt)^{-\alpha}dt$$
+        Show as a result that the hypergeometric function, initially defined by a power series convergent in the unit disc, can be continued analytically to the complex plane slit along the half-line $[1,\infty)$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\textbf{Properties of Gamma function:}
+
+First, we can use induction to verity that given $z\in \mathbb{C}\setminus\{0,-1,-2,...\}$, all $n\in\mathbb{N}$ satisfies $\Gamma(z+n)=(z+n-1)...(z+1)z\Gamma(z)$. 
+
+For base case $n=1$, by the identity of gamma function, $\Gamma(z+1)=z\Gamma(z)$, so the formula is true.
+
+Then, suppose for given $n\in\mathbb{N}$, we have $\Gamma(z+n)=(z+n-1)...(z+1)z\Gamma(z)$, which for $(z+n+1)$, it satisfies:
+$$\Gamma(z+n+1)=(z+n)\Gamma(z+n)=(z+n)(z+n-1)...(z+1)z\Gamma(z)$$
+Hence, this completes the induction.
+
+So, for all $n\in\mathbb{N}$, we also have the following identity:
+$$(z+n-1)...(z+1)z = \frac{\Gamma(z+n)}{\Gamma(z)}$$
+
+By this property, we can rewrite the hypergeometric series as follow:
+$$F(\alpha,\beta,\gamma;z)=1+\sum_{n=1}^{\infty}\frac{\alpha(\alpha+1)...(\alpha+n-1)\cdot \beta(\beta+1)...(\beta+n-1)}{n!\cdot \gamma(\gamma+1)...(\gamma+n-1)}z^n $$
+$$= 1+\sum_{n=1}^{\infty}\frac{(\Gamma(\alpha+n)/\Gamma(\alpha))(\Gamma(\beta+n)/\Gamma(\beta))}{n!\cdot (\Gamma(\gamma+n)/\Gamma(\gamma))}z^n = 1+\frac{\Gamma(\gamma)}{\Gamma(\alpha)\Gamma(\beta)}\sum_{n=1}^{\infty}\frac{\Gamma(\alpha+n)\Gamma(\beta+n)}{n!\cdot \Gamma(\gamma+n)}z^n$$
+
+\hfil
+
+\textbf{Power series of $(1-\zeta)^{-\alpha}$:}
+
+Given the above function, it is analytic within the disk $|\zeta|<1$. Then, consider its derivatives at $\zeta=0$, we get:
+$$\frac{d}{d\zeta}(1-\zeta)^{-\alpha}=\alpha(1-\zeta)^{-\alpha-1}$$
+$$\forall n\in\mathbb{N},\ \frac{d^n}{d\zeta^n}(1-\zeta)^{-\alpha}=(\alpha+n-1)...(\alpha+1)\alpha(1-\zeta)^{-\alpha-n}=\frac{\Gamma(\alpha+n)}{\Gamma(\alpha)}(1-\zeta)^{-\alpha-n}$$
+So, let $f(\zeta)=(1-\zeta)^{-\alpha}$, $f^{(n)}(0)=\frac{\Gamma(\alpha+n)}{\Gamma(\alpha)}$. Which, the power series about $\zeta=0$ is:
+$$f(\zeta)=\sum_{n=0}^{\infty}\frac{f^{(n)}(0)}{}$$
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\end{document}
