@@ -1,0 +1,204 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math 118C HW1}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Rudin Pg. 239 Problem 1:
+
+        If $S$ is a nonempty subset of a vector space $X$. prove that the span of $S$ is a vector space.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+(Remark: The notation $\mathbb{F}$ denotes the base field of the vector space $X$).
+
+Let $S'$ be the span of the set $S$. Then, $S'$ is a collection of all arbitrary linear combinations of vectors in any finite subcollection of $S$.
+
+Hence, for all $x\in S'$, there exists $x_1,...,x_n\in S$, and $a_1,...,a_n\in\mathbb{F }$, where $x=\sum_{k=1}^{n}a_kx_k$.
+
+Which, the zero vector $\bar{0}\in S'$, since $0 = 0 x$ for all $x\in S$.
+
+For all $x,y\in S'$, there exists $x_1,...,x_n, y_1,...,y_m\in S$, and $a_1,...,a_n,b_1,...,b_m\in\mathbb{F}$, where $x=\sum_{k=1}^{n}a_kx_k$, and $y=\sum_{j=1}^{m}b_jy_j$.
+THen, the sum $x+y=\sum_{k=1}^{n}a_kx_k+\sum_{j=1}^{m}b_jy_j\in S'$, since it is a linear combination of $x_1,...,x_n,y_1,...,y_m\in S$.
+
+Finally, for any $\lambda\in\mathbb{F}$, given $x\in S'$ above, $\lambda x\in S'$, since $\lambda x=\lambda \sum_{k=1}^{n}a_kx_k = \sum_{k=1}^{n}(\lambda a_k)x_k$, where each index $k\in \{1,...,n\}$ satisfies $\lambda a_k\in\mathbb{F}$.
+Hence, $\lambda x$ is again a linear combination of $x_1,...,x_n\in S$, showing that $\lambda x\in S'$.
+
+\hfil
+
+Since the zero vector $\bar{0}\in S'$, $S'$ is closed under addition (all $x,y\in S'$ has $x+y\in S'$), and it's closed under scalar multiplication (all $x\in S'$ and $\lambda\in\mathbb{F}$ satisfies $\lambda x\in S'$), hence $S'$ (the span of $S$) is a vector space.
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Rudin Pg. 239 Problem 4:
+
+        Prove that null spaces and ranges of linear transformations are vector spaces.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Let $\mathbb{F}$ be an arbitrary field, and $V, W$ be arbitrary two vector spaces over base field $\mathbb{F}$, and $T\in\mathcal{L}(V,W)$ (an arbitrary linear transformation from $V$ to $W$).
+
+\hfil
+
+\textbf{Null Space is a vector space:}
+
+The null space of $T$, $null(T)\subseteq V$ satisfies the following properties:
+\begin{itemize}
+    \item $\bar{0}_V\in null(T)$: By definition, since $T\bar{0}_V = \bar{0}_W$, then $\bar{0}_V\in null(T)$.
+    \item $null(T)$ is closed under addition: For all $u,v\in null(T)$, since $Tu, Tv = \bar{0}_W$, then $T(u+v)=Tu+Tv = \bar{0}_W+\bar{0}_W=\bar{0}_W$, hence $u+v$ also got mapped to $\bar{0}_W$, showing that $u+v\in null(T)$.
+    \item $null(T)$ is closed under scalar multiplication: For all $v\in null(T)$ and $\lambda\in\mathbb{F}$, since $Tv=\bar{0}_W$, then $T(\lambda v)=\lambda Tv = \lambda\cdot \bar{0}_W = \bar{0}_W$, showing that $\lambda v$ also got mapped to $\bar{0}_W$, hence $\lambda v\in null(T)$.
+\end{itemize}
+With the above three conditions, $null(T)$ the null space of $T$, is a vector space.
+
+\hfil
+
+\textbf{Range is a vector space:}
+
+The range of $T$, $range(T)\subseteq W$ satisfies the following properties:
+\begin{itemize}
+    \item $\bar{0}_W\in range(T)$: By definition, since $T\bar{0}_V=\bar{0}_W$, then $\bar{0}_W\in range(T)$.
+    \item $range(T)$ is closed under addition: For all $u,v\in range(T)$, there exists $x,y\in V$, such that $Tx= u$, and $Ty = v$. Then, $T(x+y)=Tx+Ty = u+v$, showing that $u+v\in range(T)$.
+    \item $range(T)$ is closed under scalar multiplication: For all $v\in range(T)$ and $\lambda\in \mathbb{F}$, since there exists $x\in V$, such that $Tx=v$, then $T(\lambda x)=\lambda (Tx)=\lambda v$, showing that $\lambda v\in range(T)$.
+\end{itemize}
+Again, with the above three conditions, $range(T)$ is a vector space.
+
+\hfil
+
+\hfil
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Rudin Pg. 239 Problem 5:
+
+        Prove that to every $A\in\mathcal{L}(\mathbb{R}^n,\mathbb{R})$ corresponds to a unique $y\in\mathbb{R}^n$, such that $Ax = x\cdot y$.
+        Prove also that $\|A\|=|y|$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\textbf{Existence of $y$:}
+
+If we pick the standard orthonormal basis $e_1,...,e_n\in\mathbb{R}^n$, which for every $A\in\mathcal{L}(\mathbb{R}^n,\mathbb{R})$, let $a_i=A e_i\in\mathbb{R}$ for all index $i\in\{1,...,n\}$.
+
+Now, consider the vector $y=\sum_{i=1}^{n}a_ie_i$:
+
+For any $x\in\mathbb{R}^n$, there exists unique $b_1,...,b_n\in\mathbb{R}$, such that $x=\sum_{i=1}^{n}b_ie_i$. Then, when apply the transformation and the dot product, we get the following:
+$$Ax = A\left(\sum_{i=1}^{n}b_ie_i\right)=\sum_{i=1}^{n}b_i(Ae_i)=\sum_{i=1}^{n}b_ia_i$$
+$$x\cdot y = \left(\sum_{i=1}^{n}b_ie_i\right)\cdot \left(\sum_{j=1}^{n}a_je_j\right)=\sum_{i=1}^{n}b_i\left(e_i\cdot \sum_{j=1}^{n}a_je_j\right) = \sum_{i=1}^{n}b_ia_i$$
+(Note: Since $e_1,...,e_n\in\mathbb{R}^n$ is an orthonormal basis, then $e_i\cdot e_j=1$ if $i=j$, and $e_i\cdot e_j=0$ if $i\neq j$).
+Hence, $Ax = x\cdot y$, showing that there exists such $y\in\mathbb{R}^n$, with $Ax = x\cdot y$.
+
+\hfil
+
+\textbf{Uniqueness of $y$:}
+
+Suppose $y,z\in\mathbb{R}^n$ are two vectors satisfying $Ax = x\cdot y$ and $Ax = x\cdot z$ for all $x\in\mathbb{R}^n$. Then, by the bilinearity of real dot product, we have:
+$$0=Ax-Ax = (x\cdot y)-(x\cdot z)=x\cdot (y-z)$$
+However, notice that the choice of $x$ is arbitrary. In particular, we can choose $x=(y-z)\in\mathbb{R}^n$, and get the following:
+$$0 = (y-z)\cdot (y-z)$$
+By the property of dot product, any $x\in\mathbb{R}^n$ satisfies $x\cdot x\geq 0$, and $x\cdot x=0$ iff $x=\bar{0}$, hence the above equality implies $(y-z)=\bar{0}$, or $y=z$.
+This proves the uniqueness of such corresponding vector $y$ of $A$.
+
+\hfil
+
+\textbf{Norm of $A$:}
+
+First, we need to consider the special case where $A=0$ as a linear functional: For all $x\in\mathbb{R}^n$, since $Ax=0$, and $x\cdot \bar{0}=0$, then the unique vector corresponding to $A=0$ the zero map, is $\bar{0}$.
+In this case, all $x\in\mathbb{R}^n$ with $|x|=1$ satisfies $|Ax|=0=|\bar{0}|$, hence $\|A\|=\sup_{|x|=1}|Ax|=0=|\bar{0}|$.
+
+Now, suppose $A\neq 0$. For all $x\in\mathbb{R}^n$ with $|x|=1$, based on Cauchy-Schwartz Inequality, we can get the following relationship:
+$$|Ax| = |x\cdot y|\leq |x|\cdot |y|=|y|$$
+Hence, $\|A\|=\sup_{|x|=1}|Ax|\leq |y|$.
+
+On the other hand, since $A\neq 0$, then the corresponding vector $y\neq\bar{0}$ (or else all $x\in\mathbb{R}^n$ would satisfy $Ax = x\cdot \bar{0}=0$, which is a contradiction). Then, $|y|>0$, which we can define a unit vector $\hat{y}=\frac{y}{|y|}$ with $|\hat{y}|=1$.
+Because Cauchy-Schwartz Inequality achieves an equality when the two vectors are scalar multiple of each other, then since $\hat{y}$ is a scalar multiple of $y$, we get the following:
+$$|A\hat{ y}|=|\hat{y}\cdot y| = |\hat{y}|\cdot |y|=|y|$$
+Hence, $|A\hat{y}|=|y|\leq \|A\|$.
+
+The above two inequalities show that $\|A\|=|y|$.
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        Rudin Pg 239 Problem 7:
+
+        Suppose that $f$ is a real-valued function defined in an open se $E\subseteq \mathbb{R}^n$, and that the partial derivatives $D_1f, ..., D_nf$ are bounded in $E$.
+        Prove that $f$ is continuous in $E$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{5}
+\begin{myBox}[]{}
+    \begin{question}
+        Rudin Pg. 239 Problem 8:
+
+        Suppose that $f$ is a differentiable real function in an open set $E\subseteq \mathbb{R}^n$, 
+        and that $f$ has a local maximum at a point $x\in E$. Prove that $f'(x)=Df(x)=\bar{0}$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{6}
+\begin{myBox}[]{}
+    \begin{question}
+        Rudin Pg. 239 Problem 11:
+
+        If $f$ and $g$ are differentiable real functions in $\mathbb{R}^n$, prove that 
+        $$D(fg)=f(Dg)+g(Df)$$
+        and that $D(1/f)=-f^{-2}(Df)$ wherever $f\neq 0$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\end{document}
