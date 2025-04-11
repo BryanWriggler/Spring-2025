@@ -165,12 +165,53 @@ The above two inequalities show that $\|A\|=|y|$.
     \begin{question}
         Rudin Pg 239 Problem 7:
 
-        Suppose that $f$ is a real-valued function defined in an open se $E\subseteq \mathbb{R}^n$, and that the partial derivatives $D_1f, ..., D_nf$ are bounded in $E$.
+        Suppose that $f$ is a real-valued function defined in an open set $E\subseteq \mathbb{R}^n$, and that the partial derivatives $D_1f, ..., D_nf$ are bounded in $E$.
         Prove that $f$ is continuous in $E$.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+First, since $D_1f,...,D_nf$ are all bounded in $E$, and there are finitely many such partial derivatives functions, then there exists a universal $M>0$, such that regardless of the index $i\in\{1,...,n\}$,
+all $x\in E$ satisfies $|D_if(x)|\leq M$.
+Second, for all $x\in E$, since $E$ is open, there exists $r>0$, with the neighborhood $B_r(x)\in E$.
+
+Now, notice that if we fix arbitrary $a\in E$ (where $x=(a_1,..,a_n)$), given corresponding $r>0$, for any index $i\in\{1,...,n\}$, fixing all other entries except for the $i^{th}$ entry to the coordinates of $a$,
+we get a single-variable function, with its derivative given by the partial derivative:
+$$f(a_1,...,x_i,...,a_n):(a_i-r,a_i+r)\rightarrow \mathbb{R}$$
+$$\frac{d}{dx_i}f(a_1,...,x_i,...,a_n)=\lim_{h\rightarrow 0}\frac{f(a_1,...,x_i+h,...,a_n)-f(a_1,...,x_i,...,a_n)}{h}=D_if(a_1,...,x_i,...,a_n)$$
+Then, by Mean Value Theorem of differentiable real single-valued function, for any $|h|<r$, since $a_i+h\in (a_i-r,a_i+r)$, then there exists $c_i$ strictly between $a_i$ and $a_i+h$ (which $|a_i-c_i|<|h|<r$), such that:
+$$f(a_1,...,a_i+h,...,a_n)-f(a_1,...,a_i,...,a_n)=D_if(a_1,...,c_i,...,a_n)(a_i+h-a_i)=D_if(a_1,...,c_i,...,a_n)\cdot h$$
+Hence, the following is true:
+$$|f(a_1,...,a_i+h,...,a_n)-f(a)|=|D_if(a_1,...,c_i,...,a_n)|\cdot|h|\leq M\cdot|h|$$
+This shows the Lipschitz Continuity of the function $f$ when only varying one coordinate.
+
+\hfil
+
+\textbf{Continuity of $f$:}
+
+To prove continuity, we'll go through an iterative process, by varying only one coordinate at a time: 
+
+Given any $a\in E$ (where $a=(a_1,...,a_n)$), assume afterward we're working in an open neighborhood of $a$ contained in $E$. For all $\epsilon>0$ (which $\frac{\epsilon}{n}>0$), choose $\delta=\frac{\epsilon}{nM}>0$.
+Then, for all $h\in\mathbb{R}^n$ (where $h=(h_1,...,h_n)$) with $|h|<\delta=\frac{\epsilon}{nM}$,  each entry $|h_i|<\frac{\epsilon}{nM}$. Now, consider the vector $a+h=(a_1+h_1,...,a_n+h_n)$:
+\begin{itemize}
+    \item[1.] First, from the formula before, we know if we vary only the first entry, we get:
+    $$|f(a_1+h_1,...,a_n+h_n)-f(a_1,a_2+h_2,...,a_n+h_n)|\leq M\cdot |h_1| < M\cdot \frac{\epsilon}{nM} = \frac{\epsilon}{n}$$
+    \item[2.] Then, for the second point $(a_1,a_2+h_2,...,a_n+h_n)$, if we vary only the second entry, we get:
+    $$|f(a_1,a_2+h_2,...,a_n+h_n)-f(a_1,a_2,a_3+h_3,...,a_n+h_n)|\leq M\cdot|h_2|<M\cdot\frac{\epsilon}{nM}=\frac{\epsilon}{n}$$
+    \item[i.] At the $i^{th}$ step (where $3\leq i\leq n$), since in the previous steps, we've varied the first $(i-1)^{th}$ entries (starting with $(a_1,...,a_{i-1},a_i+h_i,...,a_n+h_n)$), if only vary the $i^{th}$ entry, we get:
+    $$|f(a_1,...,a_{i-1},a_i+h_i,...,a_n+h_n)-f(a_1,...,a_i,a_{i+1}+h_{i+1},...,a_n+h_n)| \leq M\cdot|h_i|<M\cdot\frac{\epsilon}{nM}=\frac{\epsilon}{n}$$
+\end{itemize}
+Then, from the above process, we get the following inequality;
+$$|f(a+h)-f(a)|=\left|
+\sum_{i=1}^{n}f(a_1,...,a_{i-1},a_i+h_i,...,a_n+h_n)-f(a_1,...,a_i,a_{i+1}+h_{i+1},...,a_n+h_n)
+\right|$$
+$$\leq \sum_{i=1}^{n}|f(a_1,...,a_{i-1},a_i+h_i,...,a_n+h_n)-f(a_1,...,a_i,a_{i+1}+h_{i+1},...,a_n+h_n)|$$
+$$< \sum_{i=1}^{n}\frac{\epsilon}{n}=\epsilon$$
+(Note: For each index $i$, we compare the difference of the function by removing the difference of the $i^{th}$ entry, and each time the function is bounded by $\frac{\epsilon}{n}$, which is proven above).
+
+So, the above process proves that for all $|h|<\delta=\frac{\epsilon}{nM}$, we have $|f(a+h)-f(a)|<\epsilon$, which proves that $f$ is continuous at $a$.
+Then, since this choise of $a\in E$ is arbitrary, $f$ is in fact continuous in $E$.
 
 \break
 
@@ -186,7 +227,7 @@ The above two inequalities show that $\|A\|=|y|$.
 
 \textbf{Pf:}
 
-First, since $f$ has a local maximum at $x$, then there exists a $\delta>0$, such that any $y\in B_\delta(x)$ (a small open neighborhood of $x$),
+First, since $f$ has a local maximum at $x$, then there exists a $r>0$, such that any $y\in B_r(x)$ (a small open neighborhood of $x$),
 satisfies $f(y)\leq f(x)$. 
 
 Then, since $f$ is differentiable implies the existence of all partial derivative and the uniqueness of the differential $Df(x)$, we know it is given as follow:
@@ -197,7 +238,7 @@ So, to prove that $Df(x)=0$, it suffices to prove that each partial derivative i
 
 Let $x=(a_1,...,a_n)\in\mathbb{R}^n$. For each $i\in\{1,...,n\}$, the partial derivative is given as follow:
 $$\frac{\partial f}{\partial x_i}(x)=\lim_{h\rightarrow 0}\frac{f(a_1,...,a_i+h,...,a_n)-f(a_1,...,a_i,...,a_n)}{h}$$
-Now, if we consider any $0<|h|<\delta$, since $|(a_1,...,a_i+h,...,a_n)-(a_1,...,a_i,...,a_n)|=|(0,...,h,...,0)| = |h|<\delta$, then the vector $(a_1,...,a_i+h,...,a_n)\in B_\delta(x)$. 
+Now, if we consider any $0<|h|<r$, since $|(a_1,...,a_i+h,...,a_n)-(a_1,...,a_i,...,a_n)|=|(0,...,h,...,0)| = |h|<r$, then the vector $(a_1,...,a_i+h,...,a_n)\in B_r(x)$. 
 Hence, $f(a_1,...,a_i+h,...,a_n) \leq f(x)=f(a_1,...,a_i,...,a_n)$, so the difference $f(a_1,...,a_i+h,...,a_n)-f(a_1,...,a_i,...,a_n)\leq 0$.
 
 Then, there are two cases to consider:
