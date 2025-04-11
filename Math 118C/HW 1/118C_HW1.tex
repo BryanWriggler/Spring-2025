@@ -180,11 +180,40 @@ The above two inequalities show that $\|A\|=|y|$.
         Rudin Pg. 239 Problem 8:
 
         Suppose that $f$ is a differentiable real function in an open set $E\subseteq \mathbb{R}^n$, 
-        and that $f$ has a local maximum at a point $x\in E$. Prove that $f'(x)=Df(x)=\bar{0}$.
+        and that $f$ has a local maximum at a point $x\in E$. Prove that $f'(x)=Df(x)=0$.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+First, since $f$ has a local maximum at $x$, then there exists a $\delta>0$, such that any $y\in B_\delta(x)$ (a small open neighborhood of $x$),
+satisfies $f(y)\leq f(x)$. 
+
+Then, since $f$ is differentiable implies the existence of all partial derivative and the uniqueness of the differential $Df(x)$, we know it is given as follow:
+$$Df(x)=\left(\frac{\partial f}{\partial x_1}(x),...,\frac{\partial f}{\partial x_n}(x)\right)$$
+So, to prove that $Df(x)=0$, it suffices to prove that each partial derivative is $0$ at $x$.
+
+\hfil
+
+Let $x=(a_1,...,a_n)\in\mathbb{R}^n$. For each $i\in\{1,...,n\}$, the partial derivative is given as follow:
+$$\frac{\partial f}{\partial x_i}(x)=\lim_{h\rightarrow 0}\frac{f(a_1,...,a_i+h,...,a_n)-f(a_1,...,a_i,...,a_n)}{h}$$
+Now, if we consider any $0<|h|<\delta$, since $|(a_1,...,a_i+h,...,a_n)-(a_1,...,a_i,...,a_n)|=|(0,...,h,...,0)| = |h|<\delta$, then the vector $(a_1,...,a_i+h,...,a_n)\in B_\delta(x)$. 
+Hence, $f(a_1,...,a_i+h,...,a_n) \leq f(x)=f(a_1,...,a_i,...,a_n)$, so the difference $f(a_1,...,a_i+h,...,a_n)-f(a_1,...,a_i,...,a_n)\leq 0$.
+
+Then, there are two cases to consider:
+\begin{itemize}
+    \item For all $h>0$, the following is true:
+    $$\frac{f(a_1,...,a_i+h,...,a_n)-f(a_1,...,a_i,...,a_n)}{h}\leq 0\implies \lim_{h\rightarrow 0}\frac{f(a_1,...,a_i+h,...,a_n)-f(a_1,...,a_i,...,a_n)}{h}\leq 0$$
+    \item Else, for all $h<0$, the following is true:
+    $$\frac{f(a_1,...,a_i+h,...,a_n)-f(a_1,...,a_i,...,a_n)}{h}\geq 0\implies \lim_{h\rightarrow 0}\frac{f(a_1,...,a_i+h,...,a_n)-f(a_1,...,a_i,...,a_n)}{h}\geq 0$$
+\end{itemize}
+(Note: the above two inequalities are followed by the properties of limit).
+
+Then, we can conclude the following:
+$$\frac{\partial f}{\partial x_i}(x)=\lim_{h\rightarrow 0}\frac{f(a_1,...,a_i+h,...,a_n)-f(a_1,...,a_i,...,a_n)}{h}=0$$
+So, because each partial derivative is $0$, the differential $Df(x)=0$.
+
+Therefore, $f$ is differentiable over $E$ and $x\in E$ is a local maximum, implies that $Df(x)=0$.
 
 \break
 
