@@ -87,7 +87,9 @@ colback=blue!10
     $$\int_{0}^{\infty}\frac{u^{\alpha-1}}{(1+u)^{\alpha+\beta}}du=\int_{0}^{\infty}(1-e^{-t})^{\alpha-1}(e^{-t})^\beta dt=B(\alpha,\beta)$$
 \end{itemize}
 
-\break
+\hfil
+
+\hfil
 
 \section*{2}
 \begin{myBox}[]{}
@@ -151,9 +153,90 @@ $$=\frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\gamma-\beta)\Gamma(\alpha)}\sum_{n
 $$=1+\frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\alpha)}\sum_{n=1}^{\infty}\frac{\Gamma(\alpha+n)\Gamma(\beta+n)}{n!\Gamma(\gamma+n)}z^n = F(\alpha,\beta,\gamma;z)$$
 The identity proposed in the question is showned above.
 
+\hfil
+
+\textbf{Analytic Continuation:}
+
+For all $z\in\mathbb{C}\setminus[1,\infty)$ and all $t\in (0,1)$, then since $z\notin [1,\infty)$, then $tz\notin [1,\infty)$ (since if $tz\in [1,\infty)$, $z\in [1/t,\infty)\subseteq [1,\infty)$, which is a contradiction), hence $(1-tz)\notin (-\infty,0]$.
+So, if define a $\log(z)$ to have a branch cut on $(-\infty,0]$, then $\log(1-tz)$ is analytic.
+
+Which, on this new domain, the following function is defined, and analytic:
+$$\bar{F}(\alpha,\beta,\gamma;z)=\int_{0}^{1}t^{\beta-1}(1-t)^{\gamma-\beta-1}e^{-\alpha\log(1-zt)}dt$$
+Which, on the unit disk $|z|<1$, the above function agrees with the hypergeometric functions. Hence, it is an analytic continuation of the hypergeometric function on the domain $\mathbb{C}\setminus[1,\infty)$.
+
 \break
 
 \section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Prove that
+        $$\frac{d^2}{ds^2}(\log(\Gamma(s)))=\sum_{n=0}^{\infty}\frac{1}{(s+n)^2}$$
+        whenever $s$ is a positive number. Show that if the left-hand side is interpreted
+        as $(\Gamma'/\Gamma)'$, then the above formula also holds for all complex numbers $s$ with
+        $s\neq 0,-1,-2,...$
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+We'll directly prove the case for viewing it as $\Gamma'/\Gamma$ (which applies to the case for positive real inputs).
+First, recall the following characterization of $\Gamma$:
+$$\forall z\in\mathbb{C},\quad \frac{1}{\Gamma(z)}=G(z)=ze^{\gamma z}H(z),\quad H(z)=\prod_{n=1}^{\infty}\left(1+\frac{z}{n}\right)e^{-z/n}$$
+(Note: $\gamma$ is the Euler-Mascheroni Constant).
+
+Which, the derivative of $1/\Gamma(z)$ given as $-\frac{\Gamma'(z)}{(\Gamma(z))^2}$, while the derivative of $G(z)$ is given as follow:
+$$G'(z)=\left(e^{\gamma z}+\gamma ze^{\gamma z}\right)H(z)+ze^{\gamma z}H'(z) = \frac{1}{z}\cdot ze^{\gamma z}H(z)+\gamma\cdot ze^{\gamma z}H(z)+ze^{\gamma z}H'(z)$$
+$$ = \left(\frac{1}{z}+\gamma\right)G(z)+ze^{\gamma z}H'(z)$$
+Since the derivatives match up, the only thing left is finding a precise formula for $H'(z)$.
+
+\hfil
+
+\textbf{Expression of $H'(z)$:}
+
+For all $z\in\mathbb{C}$, choose $N\in\mathbb{N}$, such that for all $n\in\mathbb{N}$, $n\geq N$ implies $\left|\frac{z}{n}\right|\leq \frac{1}{2}$ (in other words, we're working in the disk $|z|\leq \frac{N}{2}$, which is compact). 
+Then, we can define a single-valued branch for $\log(1+\zeta)$ for $|\zeta|<1$.
+Then, by grouping the components of the product in $H(z)$, we get the following:
+$$H(z)=\prod_{n=1}^{\infty}\left(1+\frac{z}{n}\right)e^{-z/n}=\left(\prod_{n=1}^{N}\left(1+\frac{z}{n}\right)e^{-z/n}\right)\cdot\left(\prod_{n=N+1}^{\infty}\left(1+\frac{z}{n}\right)e^{-z/n}\right)$$
+$$=\left(\prod_{n=1}^{N}\left(1+\frac{z}{n}\right)\right)\cdot \exp\left(\sum_{n=1}^{N}-\frac{z}{n}\right)\cdot\left(\prod_{n=N+1}^{\infty}\exp\left(\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right)\right)$$
+$$=\left(\prod_{n=1}^{N}\left(1+\frac{z}{n}\right)\right)\cdot \exp\left(\sum_{n=1}^{N}-\frac{z}{n}\right)\cdot\exp\left(\sum_{n=N+1}^{\infty}\left(\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right)\right)$$
+$$=\left(\prod_{n=1}^{N}\left(1+\frac{z}{n}\right)\right)\cdot\exp\left(-\sum_{n=1}^{N}\frac{z}{n}+\sum_{n=N+1}^{\infty}\left(\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right)\right)$$
+Before continuing, we need to argue why the infinite series of function in the above exponent converges normally in the disk:
+Since $\left|\frac{z}{n}\right|\leq \frac{1}{2}$ for all $n\geq N$, then the power series of $\log(1+\frac{z}{n})$ is $-\sum_{k=1}^{\infty}\frac{(-1)^k}{k}\left(\frac{z}{n}\right)^k$. Then, each index $n\geq N$ satisfies the following:
+$$\left|\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right|=\left|-\sum_{k=1}^{\infty}\frac{(-1)^k}{k}\left(\frac{z}{n}\right)^k-\frac{z}{n}\right| = \left|\sum_{k=2}^{\infty}\frac{(-1)^k}{k}\left(\frac{z}{n}\right)^k\right| \leq \sum_{k=2}^{\infty}\frac{1}{k}\left|\frac{z}{n}\right|^k$$
+$$\leq \sum_{k=2}^{\infty}\left|\frac{z}{n}\right|^k\leq \left|\frac{z}{n}\right|^2\sum_{k=2}^{\infty}\left|\frac{z}{n}\right|^{k-2} = \left|\frac{z}{n}\right|^2\sum_{k=0}^{\infty}\left|\frac{z}{n}\right|^k\leq \left|\frac{z}{n}\right|^2\sum_{k=0}^{\infty}\left(\frac{1}{2}\right)^k = 2\left|\frac{z}{n}\right|^2$$
+With the assumption that we're working over the disk $|z|\leq \frac{N}{2}$, the above bound can be simplified as:
+$$\left|\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right|\leq 2\left|\frac{z}{n}\right|^2 \leq 2\left(\frac{N}{2}\right)^2\cdot\frac{1}{n^2} = \frac{N^2}{2}\cdot\frac{1}{n^2}$$
+Hence, the series of function converges normally in the disk because of the following inequality:
+$$\sum_{n=N+1}^{\infty}\left|\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right|\leq \sum_{n=N+1}^{\infty}\frac{N^2}{2}\cdot\frac{1}{n^2}<\infty$$
+So, it's valid to talk about the way we organize the infinite product in $H(z)$ (and more conveniently, the above infinite series can be differentiated term by term).
+
+\hfil
+
+Now, define the two functions $A(z),B(z)$ on the disk $|z|\leq \frac{N}{2}$ as follow:
+$$A(z)=\prod_{n=1}^{N}\left(1+\frac{z}{n}\right),\quad B(z)=\exp\left(-\sum_{n=1}^{N}\frac{z}{n}+\sum_{n=N+1}^{\infty}\left(\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right)\right)$$
+Then, the function $H=AB$, hence the derivative is given by $H'=A'B+B'A$.
+
+For $A'(z)$, it is expressed as follow:
+$$A'(z)=\sum_{n=1}^{N}\left(\frac{d}{dz}\left(1+\frac{z}{n}\right)\right)\cdot \left(\prod_{k=1,\ k\neq n}^{N}\left(1+\frac{z}{k}\right)\right)=\sum_{n=1}^{N}\frac{1}{n}\cdot\left(\prod_{k=1,\ k\neq n}^{N}\left(1+\frac{z}{k}\right)\right)$$
+$$=\sum_{n=1}^{N}\frac{1}{n}\cdot\frac{1}{1+\frac{z}{n}}\cdot\left(\prod_{k=1}^{N}\left(1+\frac{z}{k}\right)\right) = \sum_{n=1}^{N}\frac{1}{z+n}\cdot A(z)$$
+For $B'(z)$, it is expressed as follow:
+$$B'(z)=\frac{d}{dz}\exp\left(-\sum_{n=1}^{N}\frac{z}{n}+\sum_{n=N+1}^{\infty}\left(\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right)\right)$$
+$$=\exp\left(-\sum_{n=1}^{N}\frac{z}{n}+\sum_{n=N+1}^{\infty}\left(\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right)\right)\cdot \frac{d}{dz}\left(-\sum_{n=1}^{N}\frac{z}{n}+\sum_{n=N+1}^{\infty}\left(\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right)\right)$$
+$$= B(z)\left(-\sum_{n=1}^{N}\frac{1}{n}+\sum_{n=N+1}^{\infty}\left(\frac{1/n}{1+z/n}-\frac{1}{n}\right)\right) =B(z)\left(-\sum_{n=1}^{N}\frac{1}{n}+\sum_{n=N+1}^{\infty}\left(\frac{1}{z+n}-\frac{1}{n}\right)\right)$$
+Then, $H'(z)$ is then given by:
+$$H'(z)=A'B+B'A = \left(\sum_{n=1}^{N}\frac{1}{z+n}\right)\cdot A(z)\cdot B(z)+B(z)\left(-\sum_{n=1}^{N}\frac{1}{n}+\sum_{n=N+1}^{\infty}\left(\frac{1}{z+n}-\frac{1}{n}\right)\right)\cdot A(z)$$
+$$=A(z)B(z)\cdot\left(\sum_{n=1}^{N}\left(\frac{1}{z+n}-\frac{1}{n}\right)+\sum_{n=N+1}^{\infty}\left(\frac{1}{z+n}-\frac{1}{n}\right)\right)= H(z)\left(\sum_{n=1}^{\infty}\left(\frac{1}{z+n}-\frac{1}{n}\right)\right)$$
+
+\hfil
+
+\textbf{Expression of $\Gamma'/\Gamma$:}
+
+Now, plug back into the original expression, we get the following:
+$$\frac{-\Gamma'(z)}{(\Gamma(z))^2}=\left(\frac{1}{\Gamma(z)}\right)'=G'(z)=\left(\frac{1}{z}+\gamma\right)G(z)+ze^{\gamma z}H'(z)$$
+
+\break
+
+\section*{4}
 \begin{myBox}[]{}
     \begin{question}
         
@@ -164,7 +247,7 @@ The identity proposed in the question is showned above.
 
 \break
 
-\section*{4}
+\section*{5}
 \begin{myBox}[]{}
     \begin{question}
         
