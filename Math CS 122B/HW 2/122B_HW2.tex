@@ -65,16 +65,15 @@ colback=blue!10
         u&r\\
         -u&(1-r) 
     \end{pmatrix}$$
-    $$\frac{\partial (s,t)}{\partial (r,u)}=|\begin{vmatrix}
+    $$\frac{\partial (s,t)}{\partial (r,u)}=\begin{vmatrix}
         u&r\\-u&(1-r)
-    \end{vmatrix}|=u(1-r)-(-u)r=u$$
+    \end{vmatrix}=u(1-r)-(-u)r=u$$
     Then, the above integral can be given as:
     $$\Gamma(\alpha)\Gamma(\beta)=\int_{0}^{\infty}\int_{0}^{\infty}t^{\alpha-1}s^{\beta-1}e^{-s-t}dsdt = \int_{0}^{\infty}\int_{0}^{1}(u(1-r))^{\alpha-1}(ur)^{\beta-1}e^{-(ur+u(1-r))}\left|\frac{\partial (s,t)}{\partial (r,u)}\right|drdu$$
     $$=\int_{0}^{\infty}\int_{0}^{1}u^{\alpha+\beta-2}e^{-u}\cdot (1-r)^{\alpha-1}r^{\beta-1}udrdu=\int_{0}^{\infty}u^{\alpha+\beta-1}e^{-u}\cdot (1-r)^{\alpha-1}r^{\beta-1}drdu$$
     $$=\int_{0}^{\infty}u^{\alpha+\beta-1}e^{-u}du\cdot\int_{0}^{1}(1-r)^{\alpha-1}r^{\beta-1}dr = \Gamma(\alpha+\beta)\cdot B(\alpha,\beta)$$
     Hence, we can rewrite the above equality to be as follow:
     $$\Gamma(\alpha)\Gamma(\beta)=\Gamma(\alpha+\beta)\cdot B(\alpha,\beta),\quad B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$$
-    (Recall: $\Gamma(z)\neq 0$ for all $z\in\mathbb{C}\setminus S$, $S=\{0,-1,-2,...\}$).
     
     \hfil 
 
@@ -83,7 +82,7 @@ colback=blue!10
     First, if we do the substitution $(1+u)=e^t$, $du=e^tdt$, which $u=0\implies e^t=1,\ t=0$, and $\lim_{t\rightarrow\infty}e^t=\infty$, so $\lim_{t\rightarrow\infty}u=\infty$. Then, the integral can be rewrite as:
     $$\int_{0}^{\infty}\frac{u^{\alpha-1}}{(1+u)^{\alpha+\beta}}du=\int_{0}^{\infty}\frac{(e^t-1)^{\alpha-1}}{(e^t)^{\alpha+\beta}}e^tdt=\int_{0}^{\infty}((1-e^{-t})e^t)^{\alpha-1}(e^{-t})^{\alpha+\beta}\cdot e^tdt$$
     $$=\int_{0}^{\infty}(1-e^{-t})^{\alpha-1}\cdot (e^{t})^{\alpha-1}\cdot (e^{t})^{-\alpha}\cdot (e^t)^{-\beta}\cdot e^tdt = \int_{0}^{\infty}(1-e^{-t})^{\alpha-1}(e^{-t})^\beta dt$$
-    Then, for the above expression, if we do the second substitution $r=e^{-t}$, $dr=-e^{-t}dt$, $dt=-e^tdt = -r^{-1}dr$. Which $t=0\implies r=e^0,\ r=1$, and $\lim_{t\rightarrow\infty}e^{-t}=\lim_{t\rightarrow\infty}r=0$. So, the integral can be rewrite as:
+    Then, for the above expression, if we do the second substitution $r=e^{-t}$, $dr=-e^{-t}dt$, $dt=-e^tdr = -r^{-1}dr$. Which $t=0\implies r=e^0=1$, and $\lim_{t\rightarrow\infty}e^{-t}=\lim_{t\rightarrow\infty}r=0$. So, the integral can be rewrite as:
     $$\int_{0}^{\infty}(1-e^{-t})^{\alpha-1}(e^{-t})^\beta dt=\int_{1}^{0}(1-r)^{\alpha-1}r^{\beta}\cdot (-r^{-1})dr = \int_{0}^{1}(1-r)^{\alpha-1}r^{\beta-1}dr = B(\alpha,\beta)$$
     Hence, we can conclude the following:
     $$\int_{0}^{\infty}\frac{u^{\alpha-1}}{(1+u)^{\alpha+\beta}}du=\int_{0}^{\infty}(1-e^{-t})^{\alpha-1}(e^{-t})^\beta dt=B(\alpha,\beta)$$
@@ -129,19 +128,21 @@ $$= 1+\sum_{n=1}^{\infty}\frac{(\Gamma(\alpha+n)/\Gamma(\alpha))(\Gamma(\beta+n)
 
 \textbf{Power series of $(1-\zeta)^{-\alpha}$:}
 
-Given the above function, it is analytic within the disk $|\zeta|<1$. Then, consider its derivatives at $\zeta=0$, we get:
+Given $f(\zeta)=(1-\zeta)^{-\alpha}$, it is analytic within the disk $|\zeta|<1$. Then, consider its derivatives at $\zeta=0$, we get:
 $$\frac{d}{d\zeta}(1-\zeta)^{-\alpha}=\alpha(1-\zeta)^{-\alpha-1}$$
 $$\forall n\in\mathbb{N},\ \frac{d^n}{d\zeta^n}(1-\zeta)^{-\alpha}=(\alpha+n-1)...(\alpha+1)\alpha(1-\zeta)^{-\alpha-n}=\frac{\Gamma(\alpha+n)}{\Gamma(\alpha)}(1-\zeta)^{-\alpha-n}$$
-So, let $f(\zeta)=(1-\zeta)^{-\alpha}$, $f^{(n)}(0)=\frac{\Gamma(\alpha+n)}{\Gamma(\alpha)}$. Which, the power series about $\zeta=0$ is:
+So, $f^{(n)}(0)=\frac{\Gamma(\alpha+n)}{\Gamma(\alpha)}$. Which, the power series about $\zeta=0$ is:
 $$f(\zeta)=\sum_{n=0}^{\infty}\frac{f^{(n)}(0)}{n!}\zeta^n = \sum_{n=0}^{\infty}\frac{\Gamma(\alpha+n)}{n!\cdot\Gamma(\alpha)}\zeta^n$$
+And, this power series agrees with $f$ in the disk $|\zeta|<1$.
 
 \hfil
 
 \textbf{The Integral:}
 
-Then, since the power series converges uniformly for any compact region within the unit disk $|\zeta|<1$, while the integral of the function with $(1-zt)^{-\alpha}$ being defined with $|z|<1$, $t\in (0,1)$, hence the function is integrated over a region that can be covered by a compact set (choose closed disk with radius $|\zeta|\leq R<1$, where $|z|<R$).
-As the power series converges uniformly on this region, integral and summation in fact commutes, hence the integral mentioned in the question can be represented as:
-$$\frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\gamma-\beta)}\int_{0}^{1}t^{\beta-1}(1-t)^{\gamma-\beta-1}(1-zt)^{-\alpha}dt = \frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\gamma-\beta)}\int_{0}^{1}t^{\gamma-\beta-1}(1-t)^{\beta-1}\left(\sum_{n=0}^{\infty}\frac{\Gamma(\alpha+n)}{n!\cdot\Gamma(\alpha)}(zt)^n\right)dt$$
+Since the power series above converges uniformly for any compact region within the unit disk $|\zeta|<1$, while the integral of the function with $(1-zt)^{-\alpha}$ being defined with $|z|<1$, $t\in (0,1)$, hence the function is integrated over a region that can be covered by a compact set (choose closed disk with radius $|\zeta|\leq R<1$, where $|z|<R$, then for all $t\in (0,1)$, $|zt|\leq |z|<R$, which is in the closed disk $|\zeta|\leq R$).
+
+As the power series converges uniformly on this closed disk, integral and summation in fact commutes, hence the integral mentioned in the question can be represented as:
+$$\frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\gamma-\beta)}\int_{0}^{1}t^{\beta-1}(1-t)^{\gamma-\beta-1}(1-zt)^{-\alpha}dt = \frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\gamma-\beta)}\int_{0}^{1}t^{\beta-1}(1-t)^{\gamma-\beta-1}\left(\sum_{n=0}^{\infty}\frac{\Gamma(\alpha+n)}{n!\cdot\Gamma(\alpha)}(zt)^n\right)dt$$
 $$=\frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\gamma-\beta)\Gamma(\alpha)}\sum_{n=0}^{\infty}\frac{\Gamma(\alpha+n)}{n!}z^n\int_{0}^{1}t^{\beta+n-1}(1-t)^{\gamma-\beta-1}dt$$
 With the identity verified in \textbf{Question 1}, we know the following:
 $$\forall \alpha,\beta\in\mathbb{C},\ Re(\alpha),Re(\beta)>0,\quad B(\alpha,\beta)=\int_{0}^{1}(1-t)^{\alpha-1}t^{\beta-1}dt=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$$
@@ -162,11 +163,11 @@ The identity proposed in the question is showned above.
 \textbf{Analytic Continuation:}
 
 For all $z\in\mathbb{C}\setminus[1,\infty)$ and all $t\in (0,1)$, then since $z\notin [1,\infty)$, then $tz\notin [1,\infty)$ (since if $tz\in [1,\infty)$, $z\in [1/t,\infty)\subseteq [1,\infty)$, which is a contradiction), hence $(1-tz)\notin (-\infty,0]$.
-So, if define a $\log(z)$ to have a branch cut on $(-\infty,0]$, then $\log(1-tz)$ is analytic.
+So, if define a $\log(z)$ to have a branch cut on $(-\infty,0]$, then $\log(1-tz)$ is well-defined and analytic.
 
 Which, on this new domain, the following function is defined, and analytic:
 $$\bar{F}(\alpha,\beta,\gamma;z)=\int_{0}^{1}t^{\beta-1}(1-t)^{\gamma-\beta-1}e^{-\alpha\log(1-zt)}dt$$
-Which, on the unit disk $|z|<1$, the above function agrees with the hypergeometric functions. Hence, it is an analytic continuation of the hypergeometric function on the domain $\mathbb{C}\setminus[1,\infty)$.
+Which, on the unit disk $|z|<1$, the above function agrees with the hypergeometric functions (since for $t\in (0,1)$ and $|z|<1$, $e^{-\alpha\log(1-zt)}=(1-zt)^{-\alpha}$). Hence, $\bar{F}$ is an analytic continuation of the hypergeometric series on the domain $\mathbb{C}\setminus[1,\infty)$.
 
 \break
 
@@ -193,7 +194,7 @@ $$\forall z\in\mathbb{C},\quad \frac{1}{\Gamma(z)}=G(z)=ze^{\gamma z}H(z),\quad 
 Which, the derivative of $1/\Gamma(z)$ given as $-\frac{\Gamma'(z)}{(\Gamma(z))^2}$, while the derivative of $G(z)$ is given as follow:
 $$G'(z)=\left(e^{\gamma z}+\gamma ze^{\gamma z}\right)H(z)+ze^{\gamma z}H'(z) = \frac{1}{z}\cdot ze^{\gamma z}H(z)+\gamma\cdot ze^{\gamma z}H(z)+ze^{\gamma z}H'(z)$$
 $$ = \left(\frac{1}{z}+\gamma\right)G(z)+ze^{\gamma z}H'(z)$$
-Since the derivatives match up, the only thing left is finding a precise formula for $H'(z)$.
+So, to find the derivative of $1/\Gamma$, the only thing left is finding a precise formula for $H'(z)$.
 
 \hfil
 
@@ -201,9 +202,9 @@ Since the derivatives match up, the only thing left is finding a precise formula
 
 For all $z\in\mathbb{C}$, choose $N\in\mathbb{N}$, such that for all $n\in\mathbb{N}$, $n\geq N$ implies $\left|\frac{z}{n}\right|\leq \frac{1}{2}$ (in other words, we're working in the disk $|z|\leq \frac{N}{2}$, which is compact). 
 Then, we can define a single-valued branch for $\log(1+\zeta)$ for $|\zeta|<1$.
-Then, by grouping the components of the product in $H(z)$, we get the following:
+Which, by grouping the components of the product in $H(z)$, we get the following:
 $$H(z)=\prod_{n=1}^{\infty}\left(1+\frac{z}{n}\right)e^{-z/n}=\left(\prod_{n=1}^{N}\left(1+\frac{z}{n}\right)e^{-z/n}\right)\cdot\left(\prod_{n=N+1}^{\infty}\left(1+\frac{z}{n}\right)e^{-z/n}\right)$$
-$$=\left(\prod_{n=1}^{N}\left(1+\frac{z}{n}\right)\right)\cdot \exp\left(\sum_{n=1}^{N}-\frac{z}{n}\right)\cdot\left(\prod_{n=N+1}^{\infty}\exp\left(\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right)\right)$$
+$$=\left(\prod_{n=1}^{N}\left(1+\frac{z}{n}\right)\right)\cdot \left(\prod_{n=1}^{N}e^{-z/n}\right)\cdot\left(\prod_{n=N+1}^{\infty}\exp\left(\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right)\right)$$
 $$=\left(\prod_{n=1}^{N}\left(1+\frac{z}{n}\right)\right)\cdot \exp\left(\sum_{n=1}^{N}-\frac{z}{n}\right)\cdot\exp\left(\sum_{n=N+1}^{\infty}\left(\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right)\right)$$
 $$=\left(\prod_{n=1}^{N}\left(1+\frac{z}{n}\right)\right)\cdot\exp\left(-\sum_{n=1}^{N}\frac{z}{n}+\sum_{n=N+1}^{\infty}\left(\log\left(1+\frac{z}{n}\right)-\frac{z}{n}\right)\right)$$
 Before continuing, we need to argue why the infinite series of function in the above exponent converges normally in the disk:
@@ -284,8 +285,11 @@ Which, this finishes the special case for all $s>0$.
     \item[(a)] Given the first derivative in the question part (a), since for $x>0$, $\Gamma(x)=\int_{0}^{\infty}t^{x-1}e^{-t}dt>0$, then $\log\Gamma(x)$ is defined and continuous on $\mathbb{R}>0$. Then, by Fundamental Theorem of Calculus, we get:
     $$\frac{d}{dx}\int_{x}^{x+1}\log\Gamma(t)dt = \log\Gamma(x+1)-\log\Gamma(x) = \log(x\Gamma(x))-\log\Gamma(x)$$
     $$= \log(x)+\log\Gamma(x)-\log\Gamma(x)=\log(x)$$
-    Hence, since the antiderivative of $log(x)$ is $x\log(x)-x+c$ for arbitrary $c\in\mathbb{R}$, then we get:
+    Hence, since the antiderivative of $\log(x)$ is $x\log(x)-x+c$ for arbitrary $c\in\mathbb{R}$, then we get:
     $$\int_{x}^{x+1}\log\Gamma(t)dt = x\log(x)-x+c$$
+
+    \hfil
+
     \item[(b)] For all $x>0$ that's sufficiently large, $\Gamma(x)$ is monotonically increasing, hence for $t\in[x,x+1]$, $\log\Gamma(x+1)\geq\log\Gamma(t)\geq \log\Gamma(x)$. Then, for all $n\in\mathbb{N}$ that's sufficiently large (in particular, $n>>1$), we have:
     $$n\log(n)-n+c=\int_{n}^{n+1}\log\Gamma(t)dt\geq \int_{n}^{n+1}\log\Gamma(n)dt = \log\Gamma(n)$$
     $$(n-1)\log(n-1)-(n-1)+c=\int_{n-1}^{(n-1)+1}\log\Gamma(t)dt \leq \int_{n-1}^{n}\log\Gamma(n)dt=\log\Gamma(n)$$
@@ -300,7 +304,9 @@ Which, this finishes the special case for all $s>0$.
     $$\log\Gamma(n)\approx n\log(n)+O(n)$$
 \end{itemize}
 
-\break
+\hfil
+
+\hfil
 
 \section*{5}
 \begin{myBox}[]{}
@@ -336,7 +342,7 @@ Which, this finishes the special case for all $s>0$.
     Hence, $f_i(k)=0$.
 
     Since all functions $f\in\textbf{a} = A_1f_1+...+A_nf_n$ for some $A_1,...,A_n\in\mathcal{O}(\mathbb{C})$, and every $k\in m\mathbb{Z}$ satisfies $f_i(k)=0$, regardless of the index $i$,
-    then $f(k)=0$, hence all $f$ should vanish on the collection $m\mathbb{Z}$.
+     $f(k)=0$, hence all $f$ should vanish on the collection $m\mathbb{Z}$.
 
     Yet, here is a counterexample: Consider the function $\sin(\pi z/(2m))\in\mathcal{O}(\mathbb{C})$: For all $k\in 2m\mathbb{Z}$, since $k=2ml$ for some $l\in\mathbb{Z}$,
     then $\sin(\pi k/2m)=\sin(\pi\cdot 2ml/(2m))=\sin(\pi l)=0$, so $\sin(\pi z/(2m))\in \textbf{a}$.
@@ -356,19 +362,20 @@ Which, this finishes the special case for all $s>0$.
     then $f(z)=(z-a)(z-b)f_2(z)$ for some $f_2\in\mathcal{O}(\mathbb{C})$. Hence, since both $(z-a)$ and $(z-b)f_2(z)$ have zeros in $\mathbb{C}$, which are not invertible, $f$ is a product of two non-invertible elements, hence it's not irreducible.
     So, for $f$ to be irreducible, it must have a unique zero with multiplicity $1$.
 
-    Lastly, if $f$ has only one zero and with multiplicity $1$, it must be irreducible: Suppose it's not irreducible, there eixsts noninvertible $g,h\in\mathcal{O}(\mathbb{C})$, with $f=gh$. But, since $g,h$ are not invertible, there exists $a,b\in\mathbb{C}$,
+    Lastly, if $f$ has only one zero and with multiplicity $1$, it must be irreducible: Suppose it's not irreducible, there exists noninvertible $g,h\in\mathcal{O}(\mathbb{C})$, with $f=gh$. But, since $g,h$ are not invertible, there exists $a,b\in\mathbb{C}$,
     with $g(a)=0$, and $h(b)=0$, hence $g(z)=(z-a)g_1(z)$, $h(z)=(z-b)h_1(z)$ for some $g_1,h_1\in\mathcal{O}(\mathbb{C})$, or $f(z)=(z-a)g_1(z)(z-b)h_1(z)$.
     However, this implies $f$ have multiple zeros (counting the case with multiplicity $>1$), which is a contradiction.
     Therefore, $f$ must be irreducible.
 
     With the above statements, we can conclude that $f$ is irreducible iff it has precisely one zero, and with multiplicity $1$. So, all irreducible elements are in the form $(z-a)h(z)$, where $h(z)\in\mathcal{O}(\mathbb{C})$ is invertible, which vanishess nowhere on $\mathbb{C}$.
-    (More precisely, all irreducible element is some associates of $(z-a)$ for som $a\in\mathbb{C}$).
+    (More precisely, all irreducible element is some associates of $(z-a)$ for some $a\in\mathbb{C}$).
 
     \hfil
 
     \textbf{Prime elements:}
 
-    Since all prime elements are irreducible, they must be a subset of the irreducible elements; but in this case, we can prove that all irreducible elements are in fact prime.
+    Since all prime elements are irreducible, they must be a subset of the irreducible elements; in this case, we can prove that all irreducible elements are in fact prime.
+    
     For all irreducible element in $\mathcal{O}(\mathbb{C})$, it is some associates of $(z-a)$ for some $a\in\mathbb{C}$.
     Now, suppose $f,g\in\mathcal{O}(\mathbb{C})$ satisfies $(z-a)\mid f(z)g(z)$, then $f(z)g(z)=(z-a)h(z)$ for some $h\in\mathcal{O}(\mathbb{C})$.
 
@@ -381,23 +388,21 @@ Which, this finishes the special case for all $s>0$.
 
     \item[(c)] We'll prove that $f\in\mathcal{O}(\mathbb{C})$ is invertible, iff it doesn't vanish at all points in $\mathbb{C}$.
     \begin{itemize}
-        \item[$\implies$:] Suppose $f$ is invertible, then there existts $h\in\mathcal{O}(\mathbb{C})$, where $f(z)h(z)\equiv 1$. Hence, for all $a\in\mathbb{C}$, since $f(a)g(a)=1$, then $f(a)\neq 0$, showing that $f$ doesn't vanish for all $a\in\mathbb{C}$.
+        \item[$\implies$:] Suppose $f$ is invertible, then there exists $h\in\mathcal{O}(\mathbb{C})$, where $f(z)h(z)\equiv 1$. Hence, for all $a\in\mathbb{C}$, since $f(a)g(a)=1$, then $f(a)\neq 0$, showing that $f$ doesn't vanish for all $a\in\mathbb{C}$.
         \item[$\impliedby$:] Suppose $f$ doesn't vanish for all $a\in\mathbb{C}$, then $\frac{1}{f(z)}$ is well-defined and analytic on the whole $\mathbb{C}$, and for all $a\in\mathbb{C}$, $f(a)\cdot\frac{1}{f(a)}=1$, hence $f(z)\cdot\frac{1}{f(z)}\equiv 1$, showing that $f$ is invertible.
     \end{itemize}
 
     \hfil
 
-    \item[(d)] Consider the following function: 
-    $$\frac{\sin(\pi z)}{\pi}=z\prod_{n=1}^{\infty}\left(1-\frac{z^2}{n^2}\right)$$
-    We'll prove by contradiction that the above function can't be factored into finitely many prime numbers.
+    \item[(d)] Consider the following function $\sin(\pi z)\in\mathcal{O}(\mathbb{C})$, we'll prove by contradiction that the above function can't be factored into finitely many prime numbers.
     
-    Suppose it can, there exists $f_1,...,f_n\in\mathcal{O}(\mathbb{C})$, all prime elements, such that $\frac{\sin(\pi z)}{\pi}=\prod_{i=1}^{n}f_i(z)$.
+    Suppose it can, there exists prime elements $f_1,...,f_n\in\mathcal{O}(\mathbb{C})$, such that $\sin(\pi z)=\prod_{i=1}^{n}f_i(z)$.
     Since in \textbf{Part (b)}, we've proven that each prime element (which is irreducible) has precisely one zero with multiplicity $1$, then for each index $i\in\{1,...,n\}$,
-    there exists $a_i\in\mathbb{C}$, with $f_i(a_i)=0$, which $f_i(z)=(z-a_i)\bar{f}_i(z)$, where $\bar{f}_i\in\mathbb{O}(\mathbb{C})$ has no zeroes, which is invertible.
+    there exists unique $a_i\in\mathbb{C}$, with $f_i(a_i)=0$, which $f_i(z)=(z-a_i)\bar{f}_i(z)$, where $\bar{f}_i\in\mathbb{O}(\mathbb{C})$ has no zeroes, hence it is invertible.
 
-    Hence, $\frac{\sin(\pi z)}{\pi}$ can be expressed as:
-    $$\frac{\sin(\pi z)}{\pi}=\prod_{i=1}^{n}f_i(z) = \left(\prod_{i=1}^{n}(z-a_i)\right)\left(\prod_{i=1}^{n}\bar{f}_i(z)\right)$$
-    Where, the second product is formed by invertible elements, hence it is also invertible (which has no zeros). Then, it implies that $\frac{\sin(\pi z)}{\pi}$ has only $n$ zeros (counting multiplicity), which contradicts the fact that $\frac{\sin(\pi z)}{\pi}$ vanishes at all points in $\mathbb{Z}$.
+    So, $\sin(\pi z)$ can be expressed as:
+    $$\sin(\pi z)=\prod_{i=1}^{n}f_i(z) = \left(\prod_{i=1}^{n}(z-a_i)\right)\left(\prod_{i=1}^{n}\bar{f}_i(z)\right)$$
+    Where, the second product is formed by invertible elements, hence it is also invertible (which has no zeros). Then, it implies that $\sin(\pi z)$ has zeros $a_1,...,a_n$, only $n$ zeros (counting multiplicity), which contradicts the fact that $\sin(\pi z)$ vanishes at all points in $\mathbb{Z}$.
 
     So, the above function is an example that can't be factored into finitely many prime elements, showing that $\mathcal{O}(\mathbb{C})$ is not a UFD.
 
@@ -409,26 +414,26 @@ Which, this finishes the special case for all $s>0$.
         \textbf{Two nonero functions with no common zeros generate a unit ideal.}
     \end{proposition}
 
-    Suppose nonzero $f,g\in\mathcal{O}(\mathbb{C})$ have no common zeros. We can first assume both $f,g$ has zeros (if one of them has no zeros, WLOG, say $f$ has no zeros, then $\frac{1}{f}\cdot f+0\cdot g \equiv 1\in (f,g)$, which $(f,g)$ is a unit ideal).
+    Suppose nonzero $f,g\in\mathcal{O}(\mathbb{C})$ have no common zeros. We can first assume both $f,g$ has zeros (if one of them has no zeros, WLOG, say $f$ has no zeros, then $\frac{1}{f}\cdot f+0\cdot g \equiv 1\in (f,g)$, so $(f,g)$ is a unit ideal).
     Which, the collection of zeros for $f$ and $g$ must be discrete, since nonconstant analytic function must have isolated zeros.
 
-    Let the discrete subsets $S_f=\{f_i\ |\ i\in I\}, S_g=\{g_j\ |\ j\in J\}$ be the collections of zeros of $f$ and $g$ respectively (which by assumption, $S_f\cap S_g=\emptyset$). Now, for each $i\in I, j\in J$, let $n_i,m_j\in\mathbb{N}$ be the corresponding multiplicity of $f_i,g_j$ respectively.
+    Let the discrete subsets $S_f=\{f_i\ |\ i\in I\},\ S_g=\{g_j\ |\ j\in J\}$ be the collections of zeros of $f$ and $g$ respectively (which by assumption, $S_f\cap S_g=\emptyset$). Now, for each $i\in I, j\in J$, let $n_i,m_j\in\mathbb{N}$ be the corresponding multiplicity of $f_i,g_j$ respectively.
     Our goal is to construct two functions $A,B\in\mathcal{O}(\mathbb{C})$, with $Af+Bg\equiv 1$.
 
     \hfil
 
     Since both $S_f,S_g$ are discrete, $S_f\sqcup S_g$ is also discrete (since for all $z\in\mathbb{C}$, there exists radius $r_1,r_2>0$, with $B_{r_1}(z)\setminus\{z\}\cap S_f=B_{r_2}(z)\setminus\{z\}\cap S_g=\emptyset$, then choose $r=\min\{r_1,r_2\}>0$, $B_r(z)\setminus\{z\}\cap S_f=B_r(z)\setminus\{z\}\cap S_g=\emptyset$, showing that $S_f\sqcup S_g$ has no limit points).
-    Then, by the given property, take a function $h_0:S_f\sqcup S_g\rightarrow\mathbb{C}$ by $h_0(f_i)=0$ and $h_0(g_j)-1=0$ for all $i\in I,j\in J$ (which is well-defined, since $S_f,S_g$ are disjoint), we know there exists an entire analytic function $h\in\mathcal{O}(\mathbb{C})$, such that $h|_{S_f\sqcup S_g}=h_0$, and each $f_i\in S_f$ has multiplicity $n_i$ for function $h(z)$, while each $g_j\in S_g$ has multiplicity $m_j$ for function $h(z)-1$.
+    Then, by the property given in the question part (e), take a function $h_0:S_f\sqcup S_g\rightarrow\mathbb{C}$ by $h_0(f_i)=0$ and $h_0(g_j)-1=0$ for all $i\in I,j\in J$ (which $h_0$ is well-defined, since $S_f,S_g$ are disjoint), we know there exists an entire analytic function $h\in\mathcal{O}(\mathbb{C})$, such that $h|_{S_f\sqcup S_g}=h_0$, and each $f_i\in S_f$ has multiplicity $n_i$ for function $h(z)$, while each $g_j\in S_g$ has multiplicity $m_j$ for function $h(z)-1$.
 
     \hfil
 
     Now, consider $B(z)=\frac{1-h(z)}{g(z)}$, and $A(z)=\frac{h(z)}{f(z)}$: 
 
-    Since $B$ is only not well-defined at the zeros of $g$, which just needs to resolve the singularity at all points of $S_g$. However, for all $g_j\in S_g$, it's a zero with multiplicity $m_j$ for $g$, and by the above construction, it's a zero with multiplicity $m_j$ also for function $h(z)-1$.
+    Since $B$ is only not well-defined at the zeros of $g$, which just needs to resolve the singularity at all points of $S_g$. However, for all $g_j\in S_g$, it's a zero with multiplicity $m_j$ for $g$, and by the above construction, it's a zero with multiplicity $m_j$ also for the function $h(z)-1$.
     Hence, $h(z)-1=(z-g_j)^{m_j}\bar{h}(z)$, and $g(z)=(z-g_j)^{m_j}\bar{g}(z)$, for $\bar{h},\bar{g}\in\mathcal{O}(\mathbb{C})$ that are not vanishing at $g_j$. Then, consider the following limit:
     $$\lim_{z\rightarrow g_j}(z-g_j)B(z)=\lim_{z\rightarrow g_j}(z-g_j)\cdot\frac{1-h(z)}{g(z)}=\lim_{z\rightarrow g_j}(z-g_j)\cdot\frac{-(z-g_j)^{m_j}\bar{h}(z)}{(z-g_j)^{m_j}\bar{g}(z)}$$
     $$=\lim_{z\rightarrow g_j}-(z-g_j)\cdot\frac{\bar{h}(z)}{\bar{g}(z)}=0$$
-    Hence, the above limit provides $0$, implies that $B(z)$ has a removable singularity at $g_j$. Hence, $B(z)$ can be extended analytically onto the whole $\mathbb{C}$.
+    Hence, the above limit provides $0$, implies that $B(z)$ has a removable singularity at $g_j$. So, $B(z)$ can be extended analytically onto the whole $\mathbb{C}$.
 
     On the other hand, $A(z)$ is only not well-defined at the zeros of $f$, which just needs to resolve the singularity at all points of $S_f$. Again, for all $f_i\in S_f$, it's a zero with multiplicity $n_i$ for $f$, and again by the construction of $h$, it's a zero with multiplicity $n_i$ also for function $h$.
     Then, $h(z)=(z-f_i)^{n_i}\tilde{h}(z)$, and $f(z)=(z-f_i)^{n_i}\tilde{f}(z)$ for $\tilde{h},\tilde{f}\in\mathcal{O}(\mathbb{C})$ that are not vanishing at $f_i$. Hence, the following limit provides:
@@ -448,36 +453,38 @@ Which, this finishes the special case for all $s>0$.
 
     Given arbitrary nonzero $f,g\in\mathcal{O}(\mathbb{C})$, which we can assume they share some common zeros (since we've shown above, that two nonzero functions with no common zero generate a unit ideal).
 
-    Let discrete subset $S_h=\{h_i\ |\ i\in I\}$ denotes the common zeros of $f,g$. For each $i\in I$, let $n_i,m_i\in\mathbb{N}$ be the multiplicity of $h_i$ as a zero of $f$ and $g$ respectively, then $f(z)=(z-h_i)^{n_i}f_i(z)$, $g(z)=(z-h_i)^{m_i}g_i(z)$ for $f_i,g_i\in\mathcal{O}(\mathbb{C})$ that are not vanishing at $h_i$. Which, define $g_i=\min\{n_i,m_i\}$ for each index $i\in I$,
+    Let discrete subset $S_h=\{h_i\ |\ i\in I\}$ denotes the common zeros of $f,g$. For each $i\in I$, let $n_i,m_i\in\mathbb{N}$ be the multiplicity of $h_i$ as a zero of $f$ and $g$ respectively, then $f(z)=(z-h_i)^{n_i}f_i(z),\ g(z)=(z-h_i)^{m_i}g_i(z)$ for $f_i,g_i\in\mathcal{O}(\mathbb{C})$ that are not vanishing at $h_i$. Which, define $g_i=\min\{n_i,m_i\}$ for each index $i\in I$,
     and construct a Weierstrass Product function $h(z)\in\mathcal{O}(\mathbb{C})$, such that $h(h_i)=0$, and $h_i$ has multiplicity $g_i$ for all $i\in I$ (so, $h$ only has zeros on $S_h$).
 
     Now, consider the function $\frac{f}{h},\ \frac{g}{h}$: They're only not defined on the zeros of $h$ (namely the set $S_h$). Which, for all $i\in I$, we know $f(z)=(z-h_i)^{n_i}f_i(z)$, and $g(z)=(z-h_i)^{m_i}g_i(z)$;
-    also, since $h_i$ is a zero with multipliity $g_i=\min\{m_i,n_i\}$ for $h$, then $h(z)=(z-h_i)^{g_i}\bar{h_i}(z)$ for $\bar{h_i}\in \mathcal{O}(\mathbb{C})$ that's not vanishing at $h_i$.
+    also, since $h_i$ is a zero with multiplity $g_i=\min\{m_i,n_i\}$ for $h$, then $h(z)=(z-h_i)^{g_i}\bar{h_i}(z)$ for $\bar{h_i}\in \mathcal{O}(\mathbb{C})$ that's not vanishing at $h_i$.
     Then, evaluate the following two limits, we get:
     $$\lim_{z\rightarrow h_i}(z-h_i)\frac{f(z)}{h(z)}=\lim_{z\rightarrow h_i}(z-h_i)\frac{(z-h_i)^{n_i}f_i(z)}{(z-h_i)^{g_i}\bar{h_i}(z)} = \lim_{z\rightarrow h_i}(z-h_i)^{n_i-g_i+1}\frac{f_i(z)}{\bar{h_i}(z)}=0$$
     $$\lim_{z\rightarrow h_i}(z-h_i)\frac{g(z)}{h(z)}=\lim_{z\rightarrow h_i}(z-h_i)\frac{(z-h_i)^{m_i}g_i(z)}{(z-h_i)^{g_i}\bar{h_i}(z)} = \lim_{z\rightarrow h_i}(z-h_i)^{m_i-g_i+1}\frac{g_i(z)}{\bar{h_i}(z)}=0$$
-    (Note: since $n_i,m_i\geq g_i$, then $(n_i-g_i+1),(m_i-g_i+1)>0$).
+    (Note: since $n_i,m_i\geq g_i$, then $(n_i-g_i+1),(m_i-g_i+1)\geq 1$).
+
     Hence, both $\frac{f}{h},\frac{g}{h}$ have removable singularity at $h_i$, showing that both functions can be extended analytically onto $\mathbb{C}$.
 
     On the other hand, since $g_i=\min\{n_i,m_i\}$, then $g_i=n_i$ or $g_i=m_i$ (WLOG, say $g_i=n_i$), then $\frac{f}{h}$ is given as:
     $$\frac{f(z)}{h(z)}=\frac{(z-h_i)^{n_i}f_i(z)}{(z-h_i)^{g_i}\bar{h_i}(z)} = \frac{f_i(z)}{\bar{h_i}(z)}$$
-    Which, both $f_i,\bar{h_i}$ are not vanishing at $h_i\in S_h$. Hence, $\frac{f}{h}$ doesn't vanish at $h_i$. (Same statement applies to $\frac{g}{h}$ if $g_i=m_i$).
+    Notice that both $f_i,\bar{h_i}$ are not vanishing at $h_i\in S_h$. Hence, $\frac{f}{h}$ doesn't vanish at $h_i$. (Same statement applies to $\frac{g}{h}$ if $g_i=m_i$).
 
     So, for all $i\in I$, $h_i$ is not vanishing for at least one function in $\frac{f}{h}$ and $\frac{g}{h}$, showing that $\frac{f}{h},\frac{g}{h}$ sharing no common zeros (since the only possible common zeros are the zeros for both $f$ and $g$, and we verified that each common zero for $f,g$ is nonvanishing for one of the functions $\frac{f}{h},\frac{g}{h}$).
     
-    Hence, by \textbf{Proposition 1}, there $\frac{f}{h},\frac{g}{h}$ generates unit ideal, there exists $A,B\in\mathcal{O}(\mathbb{C})$ with $A\frac{f}{h}+A\frac{g}{h}=1$, or $h=Af+Bg$.
+    Hence, by \textbf{Proposition 1}, $\frac{f}{h},\frac{g}{h}$ generates a unit ideal, there exists $A,B\in\mathcal{O}(\mathbb{C})$ with $A\frac{f}{h}+A\frac{g}{h}=1$, or $h=Af+Bg$.
     Therefore, the ideal $(h)\subseteq(f,g)$, while $f=\frac{f}{h}\cdot h$ and $g=\frac{g}{h}\cdot h$, showing that $f,g\in (h)$, or $(f,g)\subseteq (h)$.
     Hence, $(f,g)=(h)$, showing that $f,g$ generates a principal ideal.
 
     \hfil
 
-    Finally, with the above tools, we can use induction to prove that \textbf{All finitely generated ideal in $\mathcal{O}(\mathbb{C})$ is principal}.
+    Finally, with the above statements, we can use induction to prove that \textbf{All finitely generated ideal in $\mathcal{O}(\mathbb{C})$ is principal}.
 
-    For the case $n=2$, we've proven that in \textbf{Proposition 2}.
+    For the ideals generated by $n=2$ functions, we've proven that in \textbf{Proposition 2}.
 
     Now, suppose for given $n\in\mathbb{N}$, any $f_1,...,f_n\in\mathcal{O}(\mathbb{C})$ generates a principal ideal (i.e. there exists $h\in\mathcal{O}(\mathbb{C})$, with $(h)=(f_1,...,f_n)$),
-    then for the case $(n+1)$, any $f_1,...,f_n,f_{n+1}\in\mathcal{O}(\mathbb{C})$, since $(f_1,...,f_n)=(h)$ for some $h\in\mathcal{O}(\mathbb{C})$, then $(f_1,...,f_n,f_{n+1})=(h,f_{n+1})$,
-    which again by \textbf{Proposition 2}, there exists $\bar{h}\in\mathcal{O}(\mathbb{C})$, with $(h,f_{n+1})=(\bar{h})$, hence this proves that $(f_1,...,f_n,f_{n+1})=(\bar{h})$, which the ideal is principal.
+    then for the case $(n+1)$, any $f_1,...,f_n,f_{n+1}\in\mathcal{O}(\mathbb{C})$, since $(f_1,...,f_n)=(h)$ for some $h\in\mathcal{O}(\mathbb{C})$, then $(f_1,...,f_n,f_{n+1})=(h,f_{n+1})$.
+    
+    Which again by \textbf{Proposition 2}, there exists $\bar{h}\in\mathcal{O}(\mathbb{C})$, with $(h,f_{n+1})=(\bar{h})$, hence this proves that $(f_1,...,f_n,f_{n+1})=(\bar{h})$, the ideal is principal.
     
     This completes the induction, shows that all finitely generated ideal is in fact principal.
 \end{itemize}
