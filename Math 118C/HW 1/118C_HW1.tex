@@ -213,7 +213,9 @@ $$< \sum_{i=1}^{n}\frac{\epsilon}{n}=\epsilon$$
 So, the above process proves that for all $|h|<\delta=\frac{\epsilon}{nM}$, we have $|f(a+h)-f(a)|<\epsilon$, which proves that $f$ is continuous at $a$.
 Then, since this choise of $a\in E$ is arbitrary, $f$ is in fact continuous in $E$.
 
-\break
+\hfil
+
+\hfil
 
 \section*{5}
 \begin{myBox}[]{}
@@ -256,7 +258,9 @@ So, because each partial derivative is $0$, the differential $Df(x)=0$.
 
 Therefore, $f$ is differentiable over $E$ and $x\in E$ is a local maximum, implies that $Df(x)=0$.
 
-\break
+\hfil
+
+\hfil
 
 \section*{6}
 \begin{myBox}[]{}
@@ -270,5 +274,40 @@ Therefore, $f$ is differentiable over $E$ and $x\in E$ is a local maximum, impli
 \end{myBox}
 
 \textbf{Pf:}
+
+\textbf{Product Rule:}
+
+Given $f,g$ differentiable real functions in $\mathbb{R}^n$, hence the differential $Df$, $Dg$ are defined, such that for all $x\in\mathbb{R}^n$,
+there exists $\delta>0$, with $|h|<\delta$ implies the following:
+$$f(x+h)-f(x)=Df(x)(h)+o_f(h),\quad g(x+h)-g(x)=Dg(x)(h)+o_g(h)$$
+$$\lim_{h\rightarrow 0}\frac{|o_f(h)|}{|h|}=0,\quad \lim_{h\rightarrow 0}\frac{|o_g(h)|}{|h|}=0$$
+Then, if we consider the following for $0<|h|<\delta$, we get:
+$$|f(x+h)g(x+h)-f(x)g(x)-(f(x)(Dg(x))+g(x)(Df(x)))h|$$
+$$=|f(x+h)g(x+h)-f(x+h)g(x)+f(x+h)g(x)-f(x)g(x)-(f(x)(Dg(x))+g(x)(Df(x)))h|$$
+$$\leq |f(x+h)(g(x+h)-g(x))-f(x)(Dg(x))(h)|+|g(x)(f(x+h)-f(x))-g(x)(Df(x))(h)|$$
+$$= |f(x+h)((Dg(x))(h)+o_g(h))-f(x)(Dg(x))(h)|+|g(x)((Df(x))(h)+o_f(h))-g(x)(Df(x))(h)|$$
+$$\leq |f(x+h)-f(x)|\cdot |Dg(x)(h)|+|f(x+h)|\cdot|o_g(h)|+|g(x)|\cdot|o_f(h)|$$
+Now, since $Dg(x)$ is a linear transformation, then for all $h\in\mathbb{R}^n$, we have $|Dg(x)(h)|\leq \|Dg(x)\|\cdot|h|$. Which, we further get the following:
+$$0\leq \frac{|f(x+h)g(x+h)-f(x)g(x)-(f(x)(Dg(x))+g(x)(Df(x)))h|}{|h|}$$
+$$\leq\frac{|f(x+h)-f(x)|\cdot |Dg(x)(h)|}{|h|}+\frac{|f(x+h)|\cdot|o_g(h)|}{|h|}+\frac{|g(x)|\cdot|o_f(h)|}{|h|}$$
+$$\leq |f(x+h)-f(x)|\cdot\frac{\|Dg(x)\|\cdot|h|}{|h|}+|f(x+h)|\cdot\frac{|o_g(h)|}{|h|}+|g(x)|\cdot\frac{|o_f(h)|}{|h|}$$
+$$=|f(x+h)-f(x)|+|f(x+h)|\cdot\frac{|o_g(h)|}{|h|}+|g(x)|\cdot\frac{|o_f(h)|}{|h|}$$
+Then, since $f$ is differentiable, which implies $f$ is continuous, hence $\lim_{h\rightarrow 0}f(x+h)=f(x)$. Then, taking the limit, we get:
+$$0\leq \lim_{h\rightarrow 0}\frac{|f(x+h)g(x+h)-f(x)g(x)-(f(x)(Dg(x))+g(x)(Df(x)))h|}{|h|}$$ 
+$$\leq \lim_{h\rightarrow 0}|f(x+h)-f(x)|+|f(x+h)|\cdot\frac{|o_g(h)|}{|h|}+|g(x)|\cdot\frac{|o_f(h)|}{|h|} = 0$$
+(Note: we have $lim_{h\rightarrow 0}|f(x+h)-f(x)|=0$, $\lim_{h\rightarrow 0}|f(x+h)|\cdot\frac{|o_g(h)|}{|h|}=|f(x)|\cdot 0 = 0$ based on the definition of $o_g(h)$, and $\lim_{h\rightarrow 0}|g(x)|\cdot\frac{|o_f(h)|}{|h|}=0$ again by the definition of $o_f(h)$).
+
+Hence, since $A=f(x)Dg(x)+g(x)Df(x)$ is a linear transformation satisfying the following limit:
+$$\lim_{h\rightarrow 0}\frac{|f(x+h)g(x+h)-f(x)g(x)-Ah|}{|h|}=0$$
+Then, $fg$ is in fact differentiable at $x\in\mathbb{R}^n$. And, by the uniqueness of derivative, $A=f(x)Dg(x)+g(x)Df(x)$ is the derivative of $fg$ at $x$.
+Therefore, the general formula of derivative is given by:
+$$D(fg)=f(Dg)+g(Df)$$
+
+\hfil
+
+\textbf{Derivative of $1/f$:}
+
+Given $f$ is differentiable, and $f(x)\neq 0$ for given $x\in\mathbb{R}^n$, then since $\frac{1}{f(x)}$ is defined, $1=\frac{1}{f(x)}\cdot f(x)$, then $0=D(1)=1/f(Df)+f(D(1/f))$. Hence, the derivative $D(1/f)$ is given by:
+$$f(D(1/f))=-\frac{1}{f}(Df),\quad D(1/f)=-\frac{1}{f^2}(Df)$$
 
 \end{document}
