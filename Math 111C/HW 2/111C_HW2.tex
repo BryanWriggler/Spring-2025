@@ -42,7 +42,7 @@ colback=blue!10
 
 \textbf{Pf:}
 
-Given that $\alpha\in L$ is algebraic over $F$, there exists minimal polynomial $f_{\alpha,F}(x)\in F[x]\subseteq L[x]$, such that $f_{\alpha, F}(\alpha)=0$.
+Given that $\alpha\in L$ is algebraic over $F$, there exists minimal polynomial $f_{\alpha,F}(x)\in F[x]$, such that $f_{\alpha, F}(\alpha)=0$.
 On the other hand, since $F[x]\subseteq K[x]$, then $f_{\alpha, F}(x)$ as a polynomial over $K$ has $\alpha$ being a root, implies that $\alpha$ is also algebraic over $K$,
 hence its minimal polynomial $p_{\alpha, K}(x)\in K[x]$ exists, with $p_{\alpha,K}(\alpha)=0$.
 
@@ -51,7 +51,7 @@ hence $\deg(p_{\alpha,K})\leq \deg(f_{\alpha,F})$.
 
 Lastly, since $\alpha$ is algebraic over both $F$ and $K$, then $F(\alpha)\cong F[x]/(f_{\alpha,F}(x))$ (which the extension has degree being $\deg(f_{\alpha,F})$) and $K(\alpha)\cong K[x]/(p_{\alpha,K}(x))$ (which the extension has degree being $\deg(p_{\alpha,K})$),
 then:
-$$[K(\alpha):K]=[K[x]/(p_{\alpha,K}(x)):K]=\deg(p_{\alpha,K})\leq\deg(f_{\alpha,F})=[F[x]/(f_{\alpha,K}(x)):F]=[(\alpha):F]$$
+$$[K(\alpha):K]=[K[x]/(p_{\alpha,K}(x)):K]=\deg(p_{\alpha,K})\leq\deg(f_{\alpha,F})=[F[x]/(f_{\alpha,K}(x)):F]=[F(\alpha):F]$$
 Hence, $[K(\alpha):K]\leq [F(\alpha):F]$.
 
 
@@ -70,26 +70,26 @@ We'll prove this statement by induction on the number of elements $n$.
 
 \hfil
 
-First, for $n=1$, if $\alpha_1\in K$ is algebraic over $F$, if we consider its minimal polynomial $m_{\alpha,F}(x)\in F[x]$, since it is irreducible while $F[x]$ is a PID,
-then $K'=F[x]/(m_{\alpha,F}(x))$ is a field. 
+First, given arbitrary field $F$, for $n=1$, if $\alpha_1\in K/F$ is algebraic over $F$, if we consider its minimal polynomial $m_{\alpha,F}(x)\in F[x]$, since it is irreducible while $F[x]$ is a PID,
+then $F[x]/(m_{\alpha,F}(x))$ is a field. 
 
-Now, consider the following ring homomorphism $\phi:K'\rightarrow F[\alpha_1]$ by $\phi(\bar{x})=\alpha_1$. Then, since it is a nonzero map, while $K'$ is a field, then $\phi$ is injective;
-also, for all $a_k\alpha^k+...+a_0\in F[\alpha]$, let $f(x)=a_kx^k+...+a_0\in F[x]$, then $\overline{f(x)}=a_k\bar{x}^k+...+a_0\in K'$, it satisfies: 
+Now, consider the following ring homomorphism $\phi:F[x]/(m_{\alpha,F}(x))\rightarrow F[\alpha_1]$ by $\phi(\bar{x})=\alpha_1$. Then, since it is a nonzero map, while $F[x]/(m_{\alpha,F}(x))$ is a field, then $\phi$ is injective;
+also, for all $a_k\alpha^k+...+a_0\in F[\alpha]$, let $f(x)=a_kx^k+...+a_0\in F[x]$, then $\overline{f(x)}=a_k\bar{x}^k+...+a_0\in F[x]/(m_{\alpha,F}(x))$, it satisfies: 
 $$\phi(\overline{f(x)})=\phi(a_k\bar{x}^k+...+a_0)=a_k\phi(\bar{x})^k+...+a_0=a_k\alpha_1^k+...+a_0$$
 This shows that $\phi$ is also surjective.
 
-Then, because $\phi$ is bijctive, $K'\cong F[\alpha_1]$, hence $F[\alpha_1]$ is a field.
+Then, because $\phi$ is bijctive, $F[x]/(m_{\alpha,F}(x))\cong F[\alpha_1]$, hence $F[\alpha_1]$ is a field.
 
-Given that $F(\alpha_1)$ is a field containing all operations of $F$ and $\alpha_1$< we know $F[\alpha_1]\subseteq F(\alpha_1)$; on the other hand, since $F(\alpha_1)$ is defined to be the smallest field containing both $\alpha_1$ and $F$,
-and since $F[\alpha_1]$ also satisfies this property, then $F(\alpha_1)\subseteq F[\alpha_1]$. This shows that $F(\alpha_1)=F[\alpha_1]$.
+Given that $F(\alpha_1)$ is a field containing all operations of $F$ and $\alpha_1$, we know $F[\alpha_1]\subseteq F(\alpha_1)$; on the other hand, since $F(\alpha_1)$ is defined to be the smallest field containing both $\alpha_1$ and $F$,
+because $F[\alpha_1]$ also satisfies this property, then $F(\alpha_1)\subseteq F[\alpha_1]$. This shows that $F(\alpha_1)=F[\alpha_1]$.
 
 \hfil
 
-Now, suppose for given $n\in\mathbb{N}$, any $\alpha_1,...,\alpha_n\in K$ that are algebraic over $F$ satisfy $F(\alpha_1,...,\alpha_n)=F[\alpha_1,...,\alpha_n]$.
+Now, suppose for given $n\in\mathbb{N}$, given arbitrary field $F$, any $\alpha_1,...,\alpha_n\in K/F$ that are algebraic over $F$ satisfy $F(\alpha_1,...,\alpha_n)=F[\alpha_1,...,\alpha_n]$.
 Then, for the case $(n+1)$, given arbitrary $\alpha_1,...,\alpha_n,\alpha_{n+1}\in K$ that are algebraic over $F$, we know $F(\alpha_1,...,\alpha_n,\alpha_{n+1})=F(\alpha_1,...,\alpha_n)(\alpha_{n+1})$,
 which by induction hypothesis, $F(\alpha_1,...,\alpha_n)=F[\alpha_1,...,\alpha_n]=K''$. Then, since $F\subseteq K''$, while $\alpha_{n+1}$ is algebraic over $F$, then $\alpha_{n+1}$ is also algebraic over $K''$, so its minimal polynomial $m(x)\in K''[x]$ exists (with respect to field $K''$).
 
-Then, using the same logic for the case $n=1$, we know $K''[x]/(m(x))\cong K''[\alpha_{n+1}]=K''(\alpha_{n+1})$.
+Then, using the same logic for the case $n=1$ (since initially we're using arbitrary field, then let $F=K''$ for the case $n=1$), we know $K''[x]/(m(x))\cong K''[\alpha_{n+1}]=K''(\alpha_{n+1})$.
 
 Hence, we have the following:
 $$F(\alpha_1,...,\alpha_n,\alpha_{n+1})=F(\alpha_1,...,\alpha_n)(\alpha_{n+1})=K''(\alpha_{n+1})=K''[\alpha_{n+1}] = F(\alpha_1,...,\alpha_n)[\alpha_{n+1}]$$
@@ -98,7 +98,7 @@ This proves that $F(\alpha_1,...,\alpha_n,\alpha_{n+1})=F[\alpha_1,...,\alpha_n,
 
 \hfil
 
-Finally, by the principle of mathematical induction, given any $\alpha_1,...,\alpha_n\in K$ that are algebraic over $F$, we have $F(\alpha_1,...,\alpha_n)=F[\alpha_1,...,\alpha_n]$.
+Finally, by the principle of mathematical induction, given arbitrary field $F$ and field extension $K/F$, given any $\alpha_1,...,\alpha_n\in K$ that are algebraic over $F$, we have $F(\alpha_1,...,\alpha_n)=F[\alpha_1,...,\alpha_n]$.
 
 \break
 
@@ -208,7 +208,9 @@ Therefore or initial assumption must be false, $x^p-a\in F[x]$ must be irreducib
 
 \end{itemize}
 
-\break
+\hfil
+
+\hfil
 
 \section*{5}
 \begin{myBox}[]{}
