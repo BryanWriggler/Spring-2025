@@ -102,7 +102,7 @@ Finally, by the principle of mathematical induction, given arbitrary field $F$ a
 
 \break
 
-\section*{3}
+\section*{3}x
 \begin{myBox}[]{}
     \begin{question}
         Let $F$ be a field of caracteristic $p$, where $p$ is a prime number. Suppose that $x^p-a$ where $a\in F$, does not have a root in $F$. 
@@ -118,13 +118,13 @@ We'll prove by contradiction, that if $x^p-a$ has no roots in $F$, then $x^p-a\i
 \hfil
 
 First, given $x^p-a\in F[x]$, we know there exists a field extension $K/F$, such that $x^p-a$ splits completely over $K$. In particular, there exists $b\in K$, such that $(x-b)$ is a linear factor of $x^p-a$.
-This implies that $b^p-a=0$, or $b^p=a$ (since $(x-b)$ is a factor of the polynomial iff $b$ is a root of the polynomial, in a polynomial ring $R[x]$ over a commutative ring $R$).
+This implies that $b^p-a=0$, or $b^p=a$ (since $(x-b)$ is a factor of the polynomial iff $b$ is a root of the polynomial).
 
 Now, since $F\subseteq K$, while $K$ is an integral domain, then they share the same unity element $1$; also, because $char(K)$ is dependent on the order of $1$ under addition, while $char(F)=p$ is the order of $1$,
 then $char(K)=char(F)=p$. Similar argument applies to $K[x]$, where $char(K[x])=char(K)=p$. Hence, we can apply fresher's dream to the element $(x-b)\in K[x]$,
 and get that $(x-b)^p=x^p-b^p=x^p-a$.
 
-Hence, $(x-b)^p$ is a factorization of $x^p-a$, while $x^p-a=q(x)r(x)$. Then, since $q(x),r(x)$ divides $x^p-a$ while $x^p-a$ splits completely over $K$, then $q(x),r(x)$ must also split completely over $K$; 
+This demonstrates that $(x-b)^p$ is a factorization of $x^p-a$, while $x^p-a=q(x)r(x)$. Then, since $q(x),r(x)$ divides $x^p-a$ while $x^p-a$ splits completely over $K$, then $q(x),r(x)$ must also split completely over $K$; 
 also, for the factorization to be unique, we must have $q(x)=(x-b)^k$ and $r(x)=(x-b)^l$, where $\deg(q)=k$ and $\deg(r)=l$.
 
 \hfil
@@ -134,11 +134,11 @@ Now, if we focus on $q(x)=(x-b)^l\in K[x]$, since $q(x)\in F[x]$, all of its coe
 Since $b^p=a\in F$, there exists a minimum positive integer $n\leq p$, where $b^n\in F$, but if $n<p$, since $p$ is a prime, then $n\nmid p$, hence $p=qn+r$, for $q,r\in \mathbb{N}$, and $0<r<n$.
 Which, we get the following:
 $$b^p=b^{nq+r}=(b^n)^q\cdot b^r \in F$$
-Also, since $b^p=a$, while the equation $x^p-a$ has no roots in $F$, then $a\neq 0$, hence $b\neq a$. THis implies that $b^n \neq 0$, which is invertible in $F$. Hence:
-$$((b^n)^{-1})^\cdot(b^n)^q\cdot b^r=b^r\in F$$
-However, since $b^r\in F$ and $r<n$, while $n$ is assumed to be the smallest positive integer satisfying $b^n\in F$, we reach a contradiction.
+Also, since $b^p=a$, while the equation $x^p-a$ has no roots in $F$, then $a\neq 0$, hence $b\neq 0$. This implies that $b^n \neq 0$, which is invertible in $F$. Hence:
+$$((b^n)^{-1})^q\cdot(b^n)^q\cdot b^r=b^r\in F$$
+However, since $b^r\in F$ and $0<r<n$, while $n$ is assumed to be the smallest positive integer satisfying $b^n\in F$, we reach a contradiction.
 
-Therefore or initial assumption must be false, $x^p-a\in F[x]$ must be irreducible.
+Therefore, our initial assumption must be false, $x^p-a\in F[x]$ must be irreducible.
 
 
 
@@ -165,7 +165,7 @@ Therefore or initial assumption must be false, $x^p-a\in F[x]$ must be irreducib
     Now, suppose $\Psi\neq 0$, then because $\Psi(\mathbb{Q}[x])\subset \mathbb{C}$ is a nontrivial subring, while $\mathbb{C}$ is an integral domain, then all its nontrivial subring must have the same identity.
     Hence, $\Psi(1)=1\in\mathbb{C}$. 
 
-    Notice that this also implies that for all $q\in\mathbb{Q}$, $\Psi(q)=q$: Since $\Psi(1)=1$, then for all $a\in \mathbb{Z}$, $\Psi(a)=a$;
+    This also implies that for all $q\in\mathbb{Q}$, $\Psi(q)=q$: Since $\Psi(1)=1$, then for all $a\in \mathbb{Z}$, $\Psi(a)=a$;
     now, if represent $q=\frac{a}{b}$ for $a,b\in\mathbb{Z},\ b\neq 0$, then we get:
     $$\Psi(q)=\Psi(a\cdot b^{-1})=\Psi(a)\cdot\Psi(b)^{-1}=a\cdot b^{-1}=q$$
     Hence, all the rationals are fixed by the homomorphism.
@@ -201,7 +201,7 @@ Therefore or initial assumption must be false, $x^p-a\in F[x]$ must be irreducib
 
     Now, suppose $\Psi_2\neq 0$, again because $\mathbb{Q}[x]/(x^3-2)$ is a field, $\Psi_2$ must be injective, and $\Psi_2(1)=1\in\mathbb{R}$ (based on the same reason as described in $\Psi_1$).
 
-    Again, since $\bar{x}\in\mathbb{Q}[x]/(x^3-2)$ satisfies $\bar{x}^3-2=0$, hence $0=\Psi_2(\bar{x}^3-2)=\Psi_2(\bar{x})^3-\Psi_2(2)=\Psi(\bar{x})^3-2$.
+    Then, since $\bar{x}\in\mathbb{Q}[x]/(x^3-2)$ satisfies $\bar{x}^3-2=0$, hence $0=\Psi_2(\bar{x}^3-2)=\Psi_2(\bar{x})^3-\Psi_2(2)=\Psi(\bar{x})^3-2$.
     So, $\beta=\Psi_2(\bar{x})\in\mathbb{R}$ satisfies $\beta^3-2=0$, which is a root of $x^3-2\in\mathbb{R}[x]$. Then, the only possibility of $\beta\in\mathbb{R}$ is $\beta=\sqrt[3]{2}$.
 
     Therefore, if $\Psi_2\neq 0$, then it must satisfy $\Psi_2(1)=1$, and $\Psi_2(\bar{x})=\sqrt[3]{2}$.
@@ -227,8 +227,8 @@ Therefore or initial assumption must be false, $x^p-a\in F[x]$ must be irreducib
 
 \textbf{Pf:}
 
-Since $F$ is a finite field wit order $|F|=q$, then $F^\times$ is a group under multiplication with $|F^\times|=q-1$ (without $0$).
-Hence, for all $\alpha\in F^\times$, $\alpha^{q-1}=1$ (since $1$ is the identity of $F^\times$, and all element's order of a finite group divides the order of the group itself).
+Since $F$ is a finite field with order $|F|=q$, then $F^\times$ is a group under multiplication with $|F^\times|=q-1$ (without $0$).
+Hence, for all $\alpha\in F^\times$, $\alpha^{q-1}=1$ (since $1$ is the identity of $F^\times$, and all element's order in a finite group divides the order of the group itself).
 
 So, given $x^{q-1}-1\in F[x]$, since $F$ is a field, and the polynomial has degree $q-1$, it has at most $q-1$ roots counting multiplicity; on the other hand,
 all $\alpha\in F^\times$ satisfies $\alpha^{q-1}-1=1-1=0$, hence $\alpha$ is a root of $x^{q-1}-1$. And, since there are $q-1$ distinct elements in $F^\times$,
@@ -236,19 +236,19 @@ then $F^\times$ in fact contains (and only contains) all the roots of $x^{q-1}-1
 
 Now, because each $\alpha\in F^\times$ is a root of $x^{q-1}-1$, then $(x-\alpha)\mid (x^{q-1}-1)$, $x^{q-1}-1=(x-\alpha)q_1(x)$. Then, for a distinct $\beta\in F^\times$,
 since $0=\beta^{q-1}-1=(\beta-\alpha)q_1(\beta)$, while $\beta\neq \alpha$, then $q_1(\beta)=0$, showing that $(x-\beta)\mid q_1(x)$.
-So, inductively, we can factor out all $(x-\alpha)$ (with $\alpha\in F^\times$) as a linear term of $x^{q-1}-1$, showing the following:
-$$x^{q-1}-1=q(x)\prod_{\alpha\in F^\times}(x-a),\quad q(x)\in F[x],\quad q(x)\neq 0$$
-On the other hand, the left hand side above has degree $q-1$, while the right hand side has degree $\deg(q)+\deg(\prod_{\alpha\in F^\times}(x-a))\geq \deg(\prod_{\alpha\in F^\times}(x-a))=q-1$ 
+So, inductively, we can factor out all $(x-\alpha)$ (with $\alpha\in F^\times$) as a linear factor of $x^{q-1}-1$, showing the following:
+$$x^{q-1}-1=f(x)\prod_{\alpha\in F^\times}(x-a),\quad f(x)\in F[x],\quad f(x)\neq 0$$
+On the other hand, the left hand side above has degree $q-1$, while the right hand side has degree $\deg(f)+\deg(\prod_{\alpha\in F^\times}(x-a))\geq \deg(\prod_{\alpha\in F^\times}(x-a))=q-1$ 
 (Note: since there are $q-1$ elements in $F^\times$, then $\prod_{\alpha\in F^\times}(x-a)$ is a product of $q-1$ linear factors, hence has degree $q-1$).
-So, this enforces $\deg(q)=0$, which $q(x)\in F$ must be an invertible element.
+So, this enforces $\deg(f)=0$, which the nonzero $f(x)\in F$ must be an invertible element.
 
-Lastly, if we consider the leading coefficient, the left hand side has coefficient $1$, while the right side has coefficient $q(x)$, hence $q(x)=1$, showing the following:
+Lastly, if we consider the leading coefficient, the left hand side has coefficient $1$, while the right side has coefficient $f(x)$, hence $f(x)=1$, showing the following:
 $$x^{q-1}-1=\prod_{\alpha\in F^\times}(x-a)$$
 \begin{itemize}
-    \item[(a)] Given the above statement, if we consider the coefficient of degree $q-2$, we get $0$ for $x^{q-1}-1$; on the right side, since $x^{q-2}$ can only be obtained by choosing $1$ factor to be constant, 
-    while the other factors are $x$, then the $x^{q-2}$ has the coefficient $\sum_{\alpha\in F^\times}\alpha$. Hence, $\sum_{\alpha\in F^\times}\alpha=0$.
+    \item[(a)] Given the above statement, if we consider the coefficient of degree $q-2$, we get $0$ for $x^{q-1}-1$; on the right side, since $x^{q-2}$ can only be obtained by choosing $1$ linear factor to multiply with its constant, 
+    while the other factors are $x$, then the $x^{q-2}$ has the coefficient $\sum_{\alpha\in F^\times}-\alpha$. Hence, $\sum_{\alpha\in F^\times}\alpha=0$.
 
-    \item[(b)] Again, if we consider the constant term, we get $-1$ for $x^{q-1}-1$; on the right side, since constant term can only be obtained by the product of all constant terms, then it has constant term $\prod_{\alpha\in F^\times}\alpha$.
+    \item[(b)] Again, if we consider the constant term, we get $-1$ for $x^{q-1}-1$; on the right side, since constant term can only be obtained by the product of all linear factor's constant term, then it has constant term $\prod_{\alpha\in F^\times}\alpha$.
     Hence, $\prod_{\alpha\in F^\times}\alpha=-1$.
 \end{itemize}
 
