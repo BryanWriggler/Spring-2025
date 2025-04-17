@@ -117,17 +117,28 @@ We'll prove by contradiction, that if $x^p-a$ has no roots in $F$, then $x^p-a\i
 
 \hfil
 
-First, given $x^p-a\in F[x]$, we know there exists a field extension $K/F$, such that $K$ is a splitting field of the polynomial $x^p-a$. 
-Then, since $char(F)=p$ (which is the order of unity element $1$ under addition), and $F$ is a subfield of $K$ (which is an integral domain), 
-then in fact $F$ and $K$ both have the same unity element, hence $char(K)=p$.
+First, given $x^p-a\in F[x]$, we know there exists a field extension $K/F$, such that $x^p-a$ splits completely over $K$. In particular, there exists $b\in K$, such that $(x-b)$ is a linear factor of $x^p-a$.
+This implies that $b^p-a=0$, or $b^p=a$ (since $(x-b)$ is a factor of the polynomial iff $b$ is a root of the polynomial, in a polynomial ring $R[x]$ over a commutative ring $R$).
 
-Now, since $x^p-a$ splits completely over $K$, in particular, there exists $b\in K\setminus F$, such that $(x-b)$ is a linear factor of $K$. Hence, $b^p-a=0$, or $b^p=a$ (since $(x-b)$ is a linear factor iff $b$ is a root).
-Then, because $char(K)=p$ (which $char(K[x])=p$ also, since they have the same identity), apply fresher's dream, we get $(x-b)^p=x^p-b^p=x^p-a$, hence $(x-b)^p$ is a factorization of $x^p-a$.
-Also, because $K[x]$ is a UFD, then such factorization is unique, showing that $x^p-a=q(x)r(x)=(x-b)^p \in K[x]$.
+Now, since $F\subseteq K$, while $K$ is an integral domain, then they share the same unity element $1$; also, because $char(K)$ is dependent on the order of $1$ under addition, while $char(F)=p$ is the order of $1$,
+then $char(K)=char(F)=p$. Similar argument applies to $K[x]$, where $char(K[x])=char(K)=p$. Hence, we can apply fresher's dream to the element $(x-b)\in K[x]$,
+and get that $(x-b)^p=x^p-b^p=x^p-a$.
+
+Hence, $(x-b)^p$ is a factorization of $x^p-a$, while $x^p-a=q(x)r(x)$. Then, since $q(x),r(x)$ divides $x^p-a$ while $x^p-a$ splits completely over $K$, then $q(x),r(x)$ must also split completely over $K$; 
+also, for the factorization to be unique, we must have $q(x)=(x-b)^k$ and $r(x)=(x-b)^l$, where $\deg(q)=k$ and $\deg(r)=l$.
 
 \hfil
 
-By the property of UFD, because $q(x)r(x)=(x-b)^p$, then $q(x)$ specifically must be factored into some form of $q(x)=(x-b)^k$, where $k=\deg(q)<p$.
+Now, if we focus on $q(x)=(x-b)^l\in K[x]$, since $q(x)\in F[x]$, all of its coefficients should be in $F$, then the constant term of $q(x)$ (represented as $(-b)^l\in K$) should also be in $F$. But, here is a contradiction:
+
+Since $b^p=a\in F$, there exists a minimum positive integer $n\leq p$, where $b^n\in F$, but if $n<p$, since $p$ is a prime, then $n\nmid p$, hence $p=qn+r$, for $q,r\in \mathbb{N}$, and $0<r<n$.
+Which, we get the following:
+$$b^p=b^{nq+r}=(b^n)^q\cdot b^r \in F$$
+Also, since $b^p=a$, while the equation $x^p-a$ has no roots in $F$, then $a\neq 0$, hence $b\neq a$. THis implies that $b^n \neq 0$, which is invertible in $F$. Hence:
+$$((b^n)^{-1})^\cdot(b^n)^q\cdot b^r=b^r\in F$$
+However, since $b^r\in F$ and $r<n$, while $n$ is assumed to be the smallest positive integer satisfying $b^n\in F$, we reach a contradiction.
+
+Therefore or initial assumption must be false, $x^p-a\in F[x]$ must be irreducible.
 
 
 
