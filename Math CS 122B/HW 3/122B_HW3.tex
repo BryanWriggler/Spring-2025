@@ -33,7 +33,7 @@ colback=blue!10
 \begin{document}
 \maketitle
 
-\section*{1 (not done)}
+\section*{1}
 \begin{myBox}[]{}
     \begin{question}
         Freitag Chap. IV.3 Exercise 3:
@@ -63,10 +63,20 @@ $$=\sum_{n=0}^{N-1}(-1)^n\left(\frac{2}{(2n+1)-2z}-\frac{2}{-(2n+1)-2z}\right)+\
 $$=\sum_{n=0}^{N-1}2\cdot(-1)^n\cdot\frac{(-(2n+1)-2z)-((2n+1)-2z)}{4z^2-(2n+1)^2}+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
 $$=2\sum_{n=0}^{N-1}(-1)^n\cdot\frac{-2(2n+1)}{4z^2-(2n+1)^2}+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
 $$=4\sum_{n=0}^{N-1}(-1)^n\cdot\frac{(2n+1)}{(2n+1)^2-4z^2}+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
-So, if the above partial sum converges, we get:
+So, we get:
 $$\lim_{N\rightarrow\infty}s_N=\lim_{N\rightarrow\infty}4\sum_{n=0}^{N-1}(-1)^n\cdot\frac{(2n+1)}{(2n+1)^2-4z^2}+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
 $$=4\sum_{n=0}^{\infty}\frac{(-1)^n(2n+1)}{(2n+1)^2-4z^2}$$
-Which is the desired result. Now, the only thing remain is to argue the convergence of the series.
+(Note: The above series converges, because before modifying the series, the partial sum already converges, and our modification provides the same sum for each $N\in\mathbb{N}$).
+
+Hence, we can conclude the following:
+$$\frac{\pi}{\cos(\pi z)}=4\sum_{n=0}^{\infty}\frac{(-1)^n(2n+1)}{(2n+1)^2-4z^2}$$
+
+\hfil
+
+Now, based on this formula, plugging in $z=0$, we get the following:
+$$\pi =\frac{\pi}{\cos(\pi \cdot 0)}=4\sum_{n=0}^{\infty}\frac{(-1)^n(2n+1)}{(2n+1)^2-4\cdot 0^2} = 4\sum_{n=0}^{\infty}\frac{(-1)^n(2n+1)}{(2n+1)^2}=4\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)}$$
+Hence, we get the following expression of $\frac{\pi}{4}$:
+$$\frac{\pi}{4}=\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)}$$
 
 \break
 
@@ -118,7 +128,7 @@ Hence, the above series is one of the meromorphic functions satisfying the desir
 
 \break
 
-\section*{3 (Not done)}
+\section*{3}
 \begin{myBox}[]{}
     \begin{question}
         Freitag Chap. IV.3 Exercise 5:
@@ -128,10 +138,59 @@ Hence, the above series is one of the meromorphic functions satisfying the desir
             Let $S\subset \mathbb{C}$ be a discrete subset. Then one can construct an analytic function $f:\mathbb{C}\setminus S\rightarrow \mathbb{C}$
             which has at any $s\in S$, not only given principal parts but also finitely many Laurent coefficients for nonnegative indices.
         \end{theorem}
+
+        i.e. For each point, finitely many lauent coefficients with nonnegative indices are predetermined.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+For every $s\in S$, if we want to construct a function with the given principal parts and finitely many laurent coefficients for nonnegative indices being predetermined,
+then the goal is to create $h$ (a partial fraction series) and $g$ (a Weierstrass product), such that their product $f=hg$ provides a laurent series at $s$,
+with the determined coefficients being $a_N, a_{N+1},...,a_M$, where $N$ is ther order of the pole of $f$ at $s$ (so every coefficient $a_n$ with $n<N$ is $0$), and $N<M$ are dependent on $s$.
+
+\hfil
+
+\textbf{The Weierstrass Product $g$:}
+
+For each $s\in S$, the largest index of the predetermined coefficient is $M$ (dependent on $s$). 
+
+If $M<0$, we simply don't include this point as a zero for $g$ (so the Taylor Series at this point has nonzero constant term).
+
+Else if $M\geq 0$, include $s$ as a zero of $g$, with order being $(M+1)$ (provide higher degrees for the product $hg$ to construct all the $a_n$ with $n\geq 0$).
+
+\hfil
+
+\textbf{Construction of Principal Parts for $h$:}
+
+For fixed $s\in S$, $g$ has a Taylor Series about $s$ being $\sum_{k=m}^{\infty}b_k(z-s)^k$, where $b_m$ (with $m\geq 0$) is the first nonzero coefficient
+(so from the previous part, if $M<0$ for given $s$, then $m=0$; else if $M\geq 0$, then $m=M+1$. Which, $m>M$ for each $s\in S$).
+
+Now, we can construct the principal part of $h$ at $s$, described by $\sum_{n=N-m}^{-1}\frac{c_n}{(z-s)^n}$ (where $\{c_n\}_{n=N-m}^{-1}$ are yet to be determined).
+
+Our goal is to let the product $(\sum_{n=N-m}^{-1}\frac{c_n}{(z-s)^n})(\sum_{k=m}^{\infty}b_k(z-s)^k)$ (which has all coefficients $n\geq N$) to produce $a_N,a_{N+1},...,a_M$ as the first several coefficients.
+Which, for $N\leq n\leq M$, it suffices to solve the following equation (with all $c_u$ being unknown variables):
+$$\sum_{u+v=n}c_ub_v = a_n,\quad m\leq v\leq n-u,\quad N-m\leq u\leq n-m$$
+For $n=N$, the only choice is $u=(N-m)$ and $v=m$ (since all other $u> (N-m)$ and $v> m$, hence $u+v> N$), so $c_{N-m}b_m = a_N$, or $c_{N-m}=a_N/b_m$.
+
+Then, for $N<n\leq M$, we can recursively solve the expression for each $c_{n-m}$ (since each equation about $a_n$ only has finitely many $b_v$ involved, while dependent on $c_{N-m},...,c_{n-m}$, while the coefficients before $c_{n-m}$ are solved by previous steps).
+
+\hfil
+
+The remaining argument to make is why this determines $a_N,...,a_M$ as the first several Laurent coefficients of $f=hg$ when expanding about $s$.
+
+For each $s\in S$, the principal part for $s$ is $\sum_{n=N-m}^{-1}\frac{c_n}{(z-s)^n}$ provided above, hence $h(z)-\sum_{n=N-m}^{-1}\frac{c_n}{(z-s)^n}$ can be extended analytically to $s$, which has Taylor Series (within some radius of convergence) as follow:
+$$h(z)-\sum_{n=N-m}^{-1}\frac{c_n}{(z-s)^n}=\sum_{v=0}^{\infty}c_v(z-s)^v$$
+$$\implies h(z)=\left(\sum_{n=N-m}^{-1}\frac{c_n}{(z-s)^n}\right)+\left(\sum_{v=0}^{\infty}c_v(z-s)^v\right)$$
+Then, with $g(z)=\sum_{k=m}^{\infty}b_k(z-s)^k$, the Laurent Series of $f=hg$ is given as:
+$$f(z)=\left[\left(\sum_{n=N-m}^{-1}\frac{c_n}{(z-s)^n}\right)+\left(\sum_{v=0}^{\infty}c_v(z-s)^v\right)\right]\left(\sum_{k=m}^{\infty}b_k(z-s)^k\right)$$
+$$=\left(\sum_{n=N-m}^{-1}\frac{c_n}{(z-s)^n}\right)\left(\sum_{k=m}^{\infty}b_k(z-s)^k\right)+\left(\sum_{v=0}^{\infty}c_v(z-s)^v\right)\left(\sum_{k=m}^{\infty}b_k(z-s)^k\right)$$
+Which, the product on the left provides the first several coefficients to be $a_N,...,a_M$ based on our construction,
+while the product on the right provides coefficients for degree $v+k$ with $v\geq 0$ and $k\geq m$ (so $v+k\geq m>M$).
+
+So, the product on the right only affects coefficients with index $n>M$, hence the coefficients with index $n\leq M$ are all determined by the product on the left, showing that the first severall coefficients are indeed given by $a_N,...,a_M$.
+
+Hence, it's possible to construct such function $f:\mathbb{C}\setminus S\rightarrow \mathbb{C}$, such that at each $s\in S$, finitely many laurent coefficients are determined.
 
 \break
 
@@ -202,14 +261,12 @@ Hence, the above series is one of the meromorphic functions satisfying the desir
     $$r=|z_0|<|f(z_0)|=|w_0|\leq r_{f(K)}$$
     Hence, all $0<r<r_K$ satisfies $r<r_{f(K)}$, which implies that $r_K\leq r_{f(K)}$.
 
-    \hfil
-
     \textbf{Expansion satisfies $|f'(0)|>1$:}
 
     Since $f:K\rightarrow\mathbb{D}$ is an expansion, implies that $f(0)=0$, then $f(z)=zg(z)$ for some analytic $g:K\rightarrow\mathbb{C}$.
 
     Now, if consider the fact that all $z\in K\setminus\{0\}$ satisfies $|f(z)|>|z|$, we get the following inequality:
-    $$|g(z)|=\frac{|zg(z)|}{|z|}=\frac{|f(z)|}{|z|} > \frac{|z|}{|z|}=1$$
+    $$|f(z)|=\frac{|zg(z)|}{|z|}=\frac{|f(z)|}{|z|} > \frac{|z|}{|z|}=1$$
     Hence, if consider $f'(0)$ using limit definition, we get:
     $$|f'(0)|=\left|\lim_{z\rightarrow 0}\frac{f(z)-f(0)}{z-0}\right|=\left|\lim_{z\rightarrow 0}\frac{zg(z)}{z}\right|=|\lim_{z\rightarrow 0}g(z)| \geq 1$$
     Now, we'll prove that $|f'(0)|=|g(0)|\neq 1$: Suppose the contrary that $|g(0)|=1$, since the above statement implies that all $z\in K$ (including $z=0$) satisfies $|g(z)|\geq 1$, then $g(z)\neq 0$ in $K$, hence $1/g:K\rightarrow\mathbb{C}$ is a well-defined analytic function, satisfying $|1/g(z)|\leq 1$.
@@ -221,11 +278,7 @@ Hence, the above series is one of the meromorphic functions satisfying the desir
 
     \hfil
 
-    \hfil
-
     \item[(b)] Given Koebe domain $K_0$, and a sequence of expansion $\{f_0,f_1,...\}$ satisfying $K_{n+1}=f_n(K_n)\subseteq \mathbb{D}$, define $F_n:K_0\rightarrow\mathbb{D}$ by $F_n=f_n\circ...\circ f_0$.
-    
-    \hfil
 
     \textbf{$F_n$ is an expansion:}
 
@@ -239,8 +292,6 @@ Hence, the above series is one of the meromorphic functions satisfying the desir
     $$|F_{n+1}(z)|=|f_{n+1}(F_n(z))|>|F_n(z)|>|z|$$
     Also, $F_{n+1}(0)=f_{n+1}(F_n(0))=f_{n+1}(0)=0$. Hence, $F_{n+1}$ is an expansion, and this completes the induction.
 
-    \hfil
-
     \textbf{Formula for $F_n'(0)$:}
 
     Again, we can show by induction, that $F_n'(0)=\prod_{k=0}^{n}f_k'(0)$.
@@ -250,8 +301,6 @@ Hence, the above series is one of the meromorphic functions satisfying the desir
     Now, suppose for given $n\in\mathbb{N}$, $F_n'(0)=\prod_{k=0}^{n}f_k'(0)$, then for $F_{n+1}=f_{n+1}\circ F_n$ satisfies:
     $$F_{n+1}'(0)=f_{n+1}'(F_n(0))\cdot F_n'(0) = f_{n+1}'(0)\cdot \prod_{k=0}^{n}f_k'(0) = \prod_{k=0}^{n+1}f_k'(0)$$
     Which, this proves the case for $(n+1)$, which completes the induction.
-
-    \hfil
 
     \textbf{Limit of $|f_n'(0)|$:}
 
@@ -271,8 +320,6 @@ Hence, the above series is one of the meromorphic functions satisfying the desir
 
     \hfil
 
-    \hfil
-
     \item[(c)] Given the family of expansions $\{F_n:K_0\rightarrow\mathbb{D}\ |\ n\in\mathbb{N}\}$ with $\lim_{n\rightarrow\infty}r_{K_n}=1$, unfortunately we cannot conclude that the sequence of functions converges (if $F_n$ converges to $F$, since one can add a constant rotation of radians $\pi/2$ in between $f_n$ and $f_{n+1}$ for each $n\in\mathbb{N}$,
     which for all $z\in K_0\setminus\{0\}$, since $F_n(z)$ now becomes a sequence that's constantly rotating, while the modulus $|F_n(z)|$ is still increasing, then the modified sequence no longer converges).
 
@@ -286,8 +333,6 @@ Hence, the above series is one of the meromorphic functions satisfying the desir
     Moreover, since the collection $\{F_{n_k}\}_{k\in\mathbb{N}}$ are a sequence of expansions (analytic injective fnctions) that converges locally uniformly, then by \textbf{Hurwitz's Theorem}, the limit is either constant or injective; however, since it is surjective onto $\mathbb{D}$, the map $F$ is not constant, hence it must be injective.
 
     Because $F$ is both injective and surjective while being analytic, it is a conformal map. 
-
-    \hfil
 
     \hfil
 
@@ -314,8 +359,6 @@ Hence, the above series is one of the meromorphic functions satisfying the desir
     $$\lim_{n\rightarrow\infty}\psi_{\alpha}(c_n)=\psi_\alpha(\alpha)=0,\quad \lim_{n\rightarrow\infty}|S(\psi_\alpha(c_n))^2|=\lim_{n\rightarrow\infty}|\psi_\alpha(c_n)|=0$$
     Hence, $\lim_{n\rightarrow\infty}\sqrt{|S(\psi_\alpha(c_n))^2|}=\lim_{n\rightarrow\infty}|S(\psi_\alpha(c_n))|=0$, showing that $\lim_{n\rightarrow\infty}S(\psi_\alpha(c_n))=0$.
     So, without considering if the extension is analytic or not, we can define $S(0)=0$. Which, the desired square root is defined.
-
-    \hfil
 
     \textbf{The expansion based on $\alpha$ and $\beta$:}
 
@@ -344,8 +387,6 @@ Hence, the above series is one of the meromorphic functions satisfying the desir
 
     Becuse the function satisfies $f(0)=0$ and $|z|< |f(z)|$ for all $z\in K\setminus\{0\}$, then $f$ is an expansion.
 
-    \hfil
-
     \textbf{Formula of $|f'(0)|$:}
 
     First, the derivative of $\psi_\alpha$ is given as follow:
@@ -360,8 +401,6 @@ Hence, the above series is one of the meromorphic functions satisfying the desir
     $$ = \frac{(1-|\alpha|^2)}{2\beta(1-|\alpha|)}=\frac{1+|\alpha|}{2\beta}$$
     Which, it has modulus given by:
     $$|f'(0)| = \frac{|1+|\alpha||}{|2\beta|} = \frac{1+|\alpha|}{2\sqrt{|\beta^2|}} = \frac{1+r_K}{2\sqrt{|\alpha|}}=\frac{1+r_K}{2\sqrt{r_K}}$$
-
-    \hfil
 
     \hfil
 
