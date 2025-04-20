@@ -55,7 +55,7 @@ $$\frac{\pi}{\cos(\pi z)}=\frac{\pi}{\sin(\pi/2-\pi z)}=\frac{\pi}{\sin(\pi(1/2-
 $$=\frac{2}{1-2z}+\sum_{n=1}^{\infty}(-1)^n\left(\frac{2}{(1-2z)-2n}+\frac{2}{(1-2z)+2n}\right)$$
 $$=\frac{2}{1-2z}+\sum_{n=1}^{\infty}(-1)^n\left(\frac{2}{-(2n-1)-2z}+\frac{2}{(2n+1)-2z}\right)$$
 Which, for all $z\notin \frac{1}{2}+\mathbb{Z}$, if we view the partial sum of the above series, we get:
-$$\forall N\in\mathbb{N},\ N\geq 3,\quad S_N=\frac{2}{1-2z}+\sum_{n=1}^{N}(-1)^n\left(\frac{2}{-(2n-1)-2z}+\frac{2}{(2n+1)-2z}\right)$$
+$$\forall N\in\mathbb{N},\ N\geq 2,\quad S_N=\frac{2}{1-2z}+\sum_{n=1}^{N}(-1)^n\left(\frac{2}{-(2n-1)-2z}+\frac{2}{(2n+1)-2z}\right)$$
 $$=\frac{2}{1-2z}+\frac{(-1)^1\cdot 2}{-(2\cdot 1-1)-2z}+\sum_{n=2}^{N}\frac{(-1)^n\cdot 2}{-(2n-1)-2z}+\sum_{n=1}^{N-1}\frac{(-1)^n\cdot 2}{(2n+1)-2z}+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
 $$=\frac{2}{1-2z}-\frac{2}{-1-2z}+\sum_{n=1}^{N-1}\frac{(-1)^{n+1}\cdot 2}{-(2(n+1)-1)-2z}+\sum_{n=1}^{N-1}\frac{(-1)^n\cdot 2}{(2n+1)-2z}+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
 $$=\left(\frac{2}{1-2z}-\frac{2}{-1-2z}\right)+\sum_{n=1}^{N-1}(-1)^n\left(\frac{2}{(2n+1)-2z}-\frac{2}{-(2n+1)-2z}\right)+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
@@ -94,14 +94,14 @@ $$\frac{\pi}{4}=\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)}$$
 \textbf{Pf:}
 
 With the given condition, one could guess that for each $n\in\mathbb{N}$, at $z=\sqrt{n}$, the principal part is described using $\frac{\sqrt{n}}{z-\sqrt{n}}$ (which is a simple pole, and has residue $\lim_{z\rightarrow\sqrt{n}}(z-\sqrt{n})\frac{\sqrt{n}}{(z-\sqrt{n})}=\sqrt{n}$). 
-However, the series of such function diverges, hence we need to do some modification.
+However, the series of such function potentially diverges, hence we need to do some modification.
 
 \hfil
 
-For all $z\in\mathbb{C}$, there exists $N\in\mathbb{N}$, such that $n\geq N$ implies $\frac{|z|}{|\sqrt{n}|}\leq\frac{1}{2}$ (which, we're working within the compact disk $|z|\leq \frac{\sqrt{N}}{2}$). Then, for $n\geq N$, since $\frac{z}{\sqrt{n}}$ is within the radius of convergence of the geometric series, we get:
+For all $z\in\mathbb{C}\setminus\{\sqrt{n}\ |\ n\in\mathbb{N}\}$, there exists $N\in\mathbb{N}$, such that $n\geq N$ implies $\frac{|z|}{|\sqrt{n}|}\leq\frac{1}{2}$ (which, we're working within the compact disk $|z|\leq \frac{\sqrt{N}}{2}$). Then, for $n\geq N$, since $\frac{z}{\sqrt{n}}$ is within the radius of convergence of the geometric series (since $\left|\frac{z}{\sqrt{n}}\right|<1$), we get:
 $$\frac{\sqrt{n}}{z-\sqrt{n}}=\frac{-1}{1-z/\sqrt{n}}=-\sum_{k=0}^{\infty}\left(\frac{z}{\sqrt{n}}\right)^k$$
 Then, if we subtract out the terms up to degree 3, we get the following:
-$$\frac{\sqrt{n}}{z-\sqrt{n}}+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{n}}\right)^k=-\sum_{k=0}^{\infty}\left(\frac{z}{\sqrt{n}}\right)^k+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{n}}\right)^k=\sum_{k=4}^{\infty}\left(\frac{z}{\sqrt{n}}\right)^k = \left(\frac{z}{\sqrt{n}}\right)^4\sum_{k=0}^{\infty}\left(\frac{z}{\sqrt{n}}\right)^k$$
+$$\frac{\sqrt{n}}{z-\sqrt{n}}+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{n}}\right)^k=-\sum_{k=0}^{\infty}\left(\frac{z}{\sqrt{n}}\right)^k+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{n}}\right)^k=-\sum_{k=4}^{\infty}\left(\frac{z}{\sqrt{n}}\right)^k = -\left(\frac{z}{\sqrt{n}}\right)^4\sum_{k=0}^{\infty}\left(\frac{z}{\sqrt{n}}\right)^k$$
 Which, compare the modulus, we get the following inequality:
 $$\left|\frac{\sqrt{n}}{z-\sqrt{n}}+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{n}}\right)^k\right|= \left|\left(\frac{z}{\sqrt{n}}\right)^4\sum_{k=0}^{\infty}\left(\frac{z}{\sqrt{n}}\right)^k\right|\leq\frac{|z|^4}{n^2}\sum_{k=0}^{\infty}\left|\frac{z}{\sqrt{n}}\right|^k$$
 $$\leq \frac{(\sqrt{N}/2)^4}{n^2}\sum_{k=0}^{\infty}\left(\frac{1}{2}\right)^k = \frac{N^2/(16)}{n^2}\cdot 2 = \frac{N^2}{8n^2}$$
@@ -111,7 +111,7 @@ So, we can conclude that $\sum_{n=1}^{\infty}\left(\frac{\sqrt{n}}{z-\sqrt{n}}+\
 
 \hfil
 
-Since each $\sqrt{n},\ n\in\mathbb{N}$ has the principal part given by $\frac{\sqrt{n}}{z-\sqrt{n}}$, while this principal part satisfies the desired properties, then this partial fraction series (which is a meromorphic function in this case) is a solution of the principal part distribution.
+Since each $\sqrt{n},\ n\in\mathbb{N}$ has the principal part given by $\frac{\sqrt{n}}{z-\sqrt{n}}$, while this principal part satisfies the desired properties, then this partial fraction series (which is a meromorphic function in this case) is a solution of the principal part distribution (simple poles at each $\sqrt{n}$, while having residue $\sqrt{n}$).
 
 \begin{comment}
 \hfil
@@ -147,7 +147,7 @@ Hence, the above series is one of the meromorphic functions satisfying the desir
 
 For every $s\in S$, if we want to construct a function with the given principal parts and finitely many laurent coefficients for nonnegative indices being predetermined,
 then the goal is to create $h$ (a partial fraction series) and $g$ (a Weierstrass product), such that their product $f=hg$ provides a laurent series at $s$,
-with the determined coefficients being $a_N, a_{N+1},...,a_M$, where $N$ is ther order of the pole of $f$ at $s$ (so every coefficient $a_n$ with $n<N$ is $0$), and $N<M$ are dependent on $s$.
+with the first several determined coefficients being $a_N, a_{N+1},...,a_M$, where $N$ is ther order of the pole of $f$ at $s$ (so every coefficient $a_n$ with $n<N$ is $0$), and $N,M$ are  dependent on $s$.
 
 \hfil
 
@@ -155,9 +155,9 @@ with the determined coefficients being $a_N, a_{N+1},...,a_M$, where $N$ is ther
 
 For each $s\in S$, the largest index of the predetermined coefficient is $M$ (dependent on $s$). 
 
-If $M<0$, we simply don't include this point as a zero for $g$ (so the Taylor Series at this point has nonzero constant term).
+If $M<0$, we simply don't include this point as a zero for $g$ (so the Taylor Series of $g$ about $s$ has nonzero constant term).
 
-Else if $M\geq 0$, include $s$ as a zero of $g$, with order being $(M+1)$ (provide higher degrees for the product $hg$ to construct all the $a_n$ with $n\geq 0$).
+Else if $M\geq 0$, include $s$ as a zero of $g$, with order being $(M+1)$ (provide higher degrees for the product $hg$ to construct all the predetermined $a_n$ with $n\geq 0$).
 
 \hfil
 
@@ -182,13 +182,13 @@ The remaining argument to make is why this determines $a_N,...,a_M$ as the first
 For each $s\in S$, the principal part for $s$ is $\sum_{n=N-m}^{-1}\frac{c_n}{(z-s)^n}$ provided above, hence $h(z)-\sum_{n=N-m}^{-1}\frac{c_n}{(z-s)^n}$ can be extended analytically to $s$, which has Taylor Series (within some radius of convergence) as follow:
 $$h(z)-\sum_{n=N-m}^{-1}\frac{c_n}{(z-s)^n}=\sum_{v=0}^{\infty}c_v(z-s)^v$$
 $$\implies h(z)=\left(\sum_{n=N-m}^{-1}\frac{c_n}{(z-s)^n}\right)+\left(\sum_{v=0}^{\infty}c_v(z-s)^v\right)$$
-Then, with $g(z)=\sum_{k=m}^{\infty}b_k(z-s)^k$, the Laurent Series of $f=hg$ is given as:
+Then, with $g(z)=\sum_{k=m}^{\infty}b_k(z-s)^k$, the Laurent Series of $f=hg$ about $s$ is given as:
 $$f(z)=\left[\left(\sum_{n=N-m}^{-1}\frac{c_n}{(z-s)^n}\right)+\left(\sum_{v=0}^{\infty}c_v(z-s)^v\right)\right]\left(\sum_{k=m}^{\infty}b_k(z-s)^k\right)$$
 $$=\left(\sum_{n=N-m}^{-1}\frac{c_n}{(z-s)^n}\right)\left(\sum_{k=m}^{\infty}b_k(z-s)^k\right)+\left(\sum_{v=0}^{\infty}c_v(z-s)^v\right)\left(\sum_{k=m}^{\infty}b_k(z-s)^k\right)$$
 Which, the product on the left provides the first several coefficients to be $a_N,...,a_M$ based on our construction,
-while the product on the right provides coefficients for degree $v+k$ with $v\geq 0$ and $k\geq m$ (so $v+k\geq m>M$).
+while the product on the right provides coefficients for degree $v+k$, with $v\geq 0$ and $k\geq m$ (so $v+k\geq m>M$).
 
-So, the product on the right only affects coefficients with index $n>M$, hence the coefficients with index $n\leq M$ are all determined by the product on the left, showing that the first severall coefficients are indeed given by $a_N,...,a_M$.
+So, the product on the right only affects coefficients with index $n>M$, hence the coefficients with index $n\leq M$ are all determined by the product on the left, showing that the first several coefficients are indeed $a_N,...,a_M$.
 
 Hence, it's possible to construct such function $f:\mathbb{C}\setminus S\rightarrow \mathbb{C}$, such that at each $s\in S$, finitely many laurent coefficients are determined.
 
@@ -244,35 +244,35 @@ Hence, it's possible to construct such function $f:\mathbb{C}\setminus S\rightar
 \begin{itemize}
     \item[(a)] \textbf{Expansion satisfies $r_{f(K)}\geq r_K$:}
     
-    For all radius $0<r<r_K$, the circle $c_r$ (with radius $r$) is fully contained in $K$ (since $\mathbb{D}(0,r_K)\subseteq K$).
+    For all radius $0<r<r_K$, the circle $c_r$ (with radius $r$) is fully contained in $K$ (since $c_r\subset \mathbb{D}(0,r_K)\subseteq K$).
     Since $f$ is an expansion, then for all $z\neq 0$, $f(z)\neq 0$ (since it is injective, and $f(0)=0$). Hence, by argument principle,
     the following integral shows he number of zeros enclosed by curve $c_r$:
     $$\frac{1}{2\pi i}\int_{c_r}\frac{f'(z)}{f(z)}dz = \frac{1}{2\pi i}\int_{f(c_r)}\frac{1}{w}dw$$
     Since $c_r$ encloses only one zero (enclosing the origin, the only point that gets mapped to $0$ by $f$), then the above integral yields value $1$.
-    This also implies that $f(c_r)$ is a closed curve satisfying $n(f(c_r),0)=1$ (a simple closed curve enclosing region with $0$).
+    This also implies that $f(c_r)$ is a closed curve satisfying $n(f(c_r),0)=1$ (same argument applies to all points enclosed by $c_r$, hence $f(c_r)$ is a simple closed curve enclosing region with $0$).
 
     On the other hand, $f(c_r)$ is fully contained in the range $f(K)$, while $f(K)$ is also simply connected, hence the curve $f(c_r)$ is homologous to $0$,
     the open region enclosed by $f(c_r)$ (denoted as $D$) is also fully contained in $f(K)$.
 
-    Then, since $f(c_r)$ is closed, there exists $w_0\in f(c_r)$ that yields a minimum modulus; which, if consider $|w_0|$ as a radius, since $\mathbb{D}(0,|w_0|)$ again contains no points in $f(c_r)$ (since $z\in \mathbb{D}(0,|w_0|)$ satisfies $|z|<|w_0|$, while all $w\in f(c_r)$ satisfies $|w_0|\leq |w|$),
-    then $\mathbb{D}(0,|z_0|)\subseteq D \subseteq f(K)$, hence $|w_0|\leq r_{f(K)}$.
+    Then, since $f(c_r)$ is compact, there exists $w_0\in f(c_r)$ that yields a minimum modulus; which, if consider $|w_0|$ as a radius, since $\mathbb{D}(0,|w_0|)$ again contains no points in $f(c_r)$ (since $z\in \mathbb{D}(0,|w_0|)$ satisfies $|z|<|w_0|$, while all $w\in f(c_r)$ satisfies $|w_0|\leq |w|$),
+    then $\mathbb{D}(0,|w_0|)\subseteq D \subseteq f(K)$, hence $|w_0|\leq r_{f(K)}$.
 
-    However, if consider the point $z_0\in K$ that satisfies $f(z_0)=w_0$ (which, $z_0\in c_r$, so $|z_0|=r$), then we have the following inequality:
+    However, if consider the point $z_0\in c_r$ that satisfies $f(z_0)=w_0$ (which, $|z_0|=r$), then we have the following inequality:
     $$r=|z_0|<|f(z_0)|=|w_0|\leq r_{f(K)}$$
-    Hence, all $0<r<r_K$ satisfies $r<r_{f(K)}$, which implies that $r_K\leq r_{f(K)}$.
+    Hence, all $0<r<r_K$ satisfies $r<r_{f(K)}$, which implies that $r_K\leq r_{f(K)}$ (since $r_K$ is the supremum of $(0,r_K)$).
 
     \textbf{Expansion satisfies $|f'(0)|>1$:}
 
     Since $f:K\rightarrow\mathbb{D}$ is an expansion, implies that $f(0)=0$, then $f(z)=zg(z)$ for some analytic $g:K\rightarrow\mathbb{C}$.
 
     Now, if consider the fact that all $z\in K\setminus\{0\}$ satisfies $|f(z)|>|z|$, we get the following inequality:
-    $$|f(z)|=\frac{|zg(z)|}{|z|}=\frac{|f(z)|}{|z|} > \frac{|z|}{|z|}=1$$
+    $$|g(z)|=\frac{|zg(z)|}{|z|}=\frac{|f(z)|}{|z|} > \frac{|z|}{|z|}=1$$
     Hence, if consider $f'(0)$ using limit definition, we get:
     $$|f'(0)|=\left|\lim_{z\rightarrow 0}\frac{f(z)-f(0)}{z-0}\right|=\left|\lim_{z\rightarrow 0}\frac{zg(z)}{z}\right|=|\lim_{z\rightarrow 0}g(z)| \geq 1$$
     Now, we'll prove that $|f'(0)|=|g(0)|\neq 1$: Suppose the contrary that $|g(0)|=1$, since the above statement implies that all $z\in K$ (including $z=0$) satisfies $|g(z)|\geq 1$, then $g(z)\neq 0$ in $K$, hence $1/g:K\rightarrow\mathbb{C}$ is a well-defined analytic function, satisfying $|1/g(z)|\leq 1$.
 
     However, since $K$ is an open set, while $g$ is nonconstant (if $g$ is constant, and $|g(0)|=1$, then $f(z)=zg(z)=g(0)z$, which $|f(z)|=|g(0)z|=|z|$, contradicting the fact that $f$ is an expansion), then $|1/g(z)|$ shouldn't obtain a maximum on any point $z\in K$.
-    Yet, since we assume $g(0)=1$, while $|1/g(z)|\leq 1$, hence $|1/g(z)|\leq |1/g(0)|$ for all $z\in K$, showing that $0\in K$ is in fact a maximum, which violates the maximum principle.
+    Yet, since we assume $g(0)=1$, while $|1/g(z)|\leq 1$, hence $|1/g(z)|\leq |1/g(0)|$ for all $z\in K$, showing that $0\in K$ is in fact a maximum of $1/g$ on $K$, which violates the maximum principle.
 
     Hence, our assumption must be false, $|g(0)|\neq 1$, showing that $|g(0)|=|f'(0)|>1$.
 
@@ -290,7 +290,7 @@ Hence, it's possible to construct such function $f:\mathbb{C}\setminus S\rightar
 
     Now, for given $n\in\mathbb{N}$, suppose $F_n$ is an expansion. Then, $F_{n+1}=f_{n+1}\circ (f_n\circ...\circ f_0)=f_{n+1}\circ F_n$. Again, since both $f_{n+1}, F_n$ are expansions, all $z\in K_0\setminus\{0\}$ satisfies:
     $$|F_{n+1}(z)|=|f_{n+1}(F_n(z))|>|F_n(z)|>|z|$$
-    Also, $F_{n+1}(0)=f_{n+1}(F_n(0))=f_{n+1}(0)=0$. Hence, $F_{n+1}$ is an expansion, and this completes the induction.
+    Also, $F_{n+1}(0)=f_{n+1}(F_n(0))=f_{n+1}(0)=0$. Hence, $F_{n+1}$ is an expansion, and this completes the induction. (Note: since each $f_n$ is injective, their finite composition is also injective, which completes the injectivity of all $F_n$).
 
     \textbf{Formula for $F_n'(0)$:}
 
@@ -300,11 +300,11 @@ Hence, it's possible to construct such function $f:\mathbb{C}\setminus S\rightar
 
     Now, suppose for given $n\in\mathbb{N}$, $F_n'(0)=\prod_{k=0}^{n}f_k'(0)$, then for $F_{n+1}=f_{n+1}\circ F_n$ satisfies:
     $$F_{n+1}'(0)=f_{n+1}'(F_n(0))\cdot F_n'(0) = f_{n+1}'(0)\cdot \prod_{k=0}^{n}f_k'(0) = \prod_{k=0}^{n+1}f_k'(0)$$
-    Which, this proves the case for $(n+1)$, which completes the induction.
+    Which, this proves the case for $(n+1)$, and it completes the induction.
 
     \textbf{Limit of $|f_n'(0)|$:}
 
-    First, based on the above formula of $F_n'(0)$, since for all $n\in\mathbb{N}$, $f_{n+1}$ is an expansion, then $|f_{n+1}'(0)|>0$ (based on \textbf{part (a)}), hence, the following is true:
+    First, based on the above formula of $F_n'(0)$, since for all $n\in\mathbb{N}$, $f_{n+1}$ is an expansion, then $|f_{n+1}'(0)|>1$ (based on \textbf{part (a)}). Hence, the following is true:
     $$|F_{n+1}'(0)|=\left|\prod_{k=0}^{n+1}f_k'(0)\right| = |f_{n+1}'(0)|\cdot\prod_{k=0}^{n}|f_k'(0)| > \prod_{k=0}^{n}|f_k'(0)| = \left|\prod_{k=0}^{n}f_k'(0)\right|=|F_n'(0)|$$
     This proves that $\{|F_{n}'(0)|\}_{n\in\mathbb{N}}$ is a strictly increasing sequence.
 
@@ -341,7 +341,7 @@ Hence, it's possible to construct such function $f:\mathbb{C}\setminus S\rightar
     If $|\alpha|=1$, this implies that $r_K=1$, or $\mathbb{D}\subseteq K$, which $K=\mathbb{D}$, so there's no need for constructing a conformal map.
     Hence, can assume $|\alpha|<1$ (consequently, since $\beta^2=\alpha$, then $|\beta|<1$ also).
 
-    Then, the following transformation is a bijection from $\mathbb{D}\rightarrow\mathbb{D}$ (in fact, a conformal map):
+    Then, the following transformation is a conformal map from $\mathbb{D}\rightarrow\mathbb{D}$:
     $$\psi_\alpha:\mathbb{D}\rightarrow\mathbb{D},\quad \psi_\alpha(z)=\frac{\alpha-z}{1-\bar{\alpha}z}$$
     If we restrict the domain to be $K$, since $K$ is open, then $K=K^\circ$. Which $K^\circ \cap \partial K=\emptyset$, showing that $\alpha\notin K$.
 
@@ -355,7 +355,7 @@ Hence, it's possible to construct such function $f:\mathbb{C}\setminus S\rightar
     (Note 2: Because all $w\in \psi_\alpha(K)\subseteq \mathbb{D}$, then $|w|<1$; hence, $|S(w)|^2 = |w| <1$ implies $|S(w)|<1$, showing that $S(\psi_\alpha(K))\subseteq \mathbb{D}$).
     
     Also, since $\alpha\in \partial K$ is a limit point of $K$ (since $|\alpha|=r_K$, all $0<r<1$ satisfies $|r\alpha|<|\alpha|=r_K$, which $r\alpha \in K$; hence for all $\epsilon>0$, choose $r>0$ such that $1-\epsilon<r<1$, then $|\alpha-r\alpha|=|\alpha|\cdot|1-r| <r_K\epsilon<\epsilon$, showing that $r\alpha\in B_\epsilon(\alpha)$, hence $\alpha$ is a limit point),
-    then we can find a sequence $(c_n)_{n\in\mathbb{N}}\subset K$ converging to $\alpha$. By continuity of $\psi_\alpha$, we get:
+    then we can find a sequence $(c_n)_{n\in\mathbb{N}}\subset K$ converging to $\alpha$. By continuity of $\psi_\alpha$ on $\mathbb{D}$, we get:
     $$\lim_{n\rightarrow\infty}\psi_{\alpha}(c_n)=\psi_\alpha(\alpha)=0,\quad \lim_{n\rightarrow\infty}|S(\psi_\alpha(c_n))^2|=\lim_{n\rightarrow\infty}|\psi_\alpha(c_n)|=0$$
     Hence, $\lim_{n\rightarrow\infty}\sqrt{|S(\psi_\alpha(c_n))^2|}=\lim_{n\rightarrow\infty}|S(\psi_\alpha(c_n))|=0$, showing that $\lim_{n\rightarrow\infty}S(\psi_\alpha(c_n))=0$.
     So, without considering if the extension is analytic or not, we can define $S(0)=0$. Which, the desired square root is defined.
@@ -370,22 +370,22 @@ Hence, it's possible to construct such function $f:\mathbb{C}\setminus S\rightar
     
     Then, we'll consider its inverse: 
     For $\psi_\alpha$ as an automorphism on $\mathbb{D}$, its inverse is itself (the property of mobius transformation given that $|\alpha|<1$), and the same logic applies to $\psi_\beta$.
-    Now, if we restrict the codomain of $f$ to $f(K)$, then it becomes a bijective function (since $\psi_\alpha, S,\psi_\beta$ are all injective), then if we consider $g(z)=z^2$,
-    the composition $h=\psi_\alpha\circ g\circ\psi_\beta:f(K)\rightarrow \mathbb{C}$ becomes a left inverse of $f$:
+    Now, if we consider $g(z)=z^2$, the composition $h=\psi_\alpha\circ g\circ\psi_\beta:f(K)\rightarrow \mathbb{C}$ becomes a left inverse of $f$:
     $$\forall z\in K,\quad h(f(z))=\psi_\alpha\circ g\circ\psi_\beta\circ\psi_\beta\circ S\circ \psi_\alpha(z) = \psi_\alpha\circ g\circ S(\psi_\alpha(z)) = \psi_\alpha((S(\psi_\alpha(z)))^2)$$
     $$ = \psi_\alpha(\psi_\alpha(z))=z$$
     Also, since $h=\psi_\alpha\circ g\circ \psi_\beta$ is in fact a map from $\mathbb{D}\rightarrow\mathbb{D}$ (since $\psi_\alpha,\psi_\beta$ are automorphisms of $\mathbb{D}$, while $g(z)=z^2$ has all $z\in\mathbb{D}$ with $|g(z)|=|z|^2<|z|<1$, hence $g(z)\in\mathbb{D}$),
-    and it satisfies $h(0)=0$ (since $\psi_\alpha\circ g\circ \psi_\beta(0)=\psi_\alpha\circ g(\beta)=\psi_\alpha(\alpha)=0$),
+    and it satisfies $h(0)=0$ (since $\psi_\alpha\circ g\circ \psi_\beta(0)=\psi_\alpha\circ g(\beta)=\psi_\alpha(\beta^2)=\psi_\alpha(\alpha)=0$),
     then apply Schwarz Lemma, we know all $w\in f(K)\subseteq\mathbb{D}$ satisfies $|h(w)|\leq |w|$. 
 
-    To prove that it is a strict inequality above, recall that Schwarz Lemma also states that if any nonzero $w\in\mathbb{D}$ satisfies $|h(w)|=|w|$, then $h$ must be a rotation (i.e. all $w\in\mathbb{D}$ satisfies $|h(w)|=|w|$. However, this is not the case for $\beta\in\mathbb{D}$:
+    To prove that it is a strict inequality above, recall that Schwarz Lemma also states that if any nonzero $w\in\mathbb{D}$ satisfies $|h(w)|=|w|$, then $h$ must be a rotation (i.e. all $w\in\mathbb{D}$ satisfies $|h(w)|=|w|$). However, this is not the case for $\beta\in\mathbb{D}$:
     $$h(\beta)=\psi_\alpha\circ g\circ\psi_{\beta}(\beta) = \psi_\alpha\circ g(0)=\psi_\alpha(0)=\alpha,\quad |h(\beta)|=|\alpha|=|\beta|^2 < |\beta|$$
     Since $\beta\in\mathbb{D}$ satisfies a strict inequality $|h(\beta)|<|\beta|$, then $h$ cannot be a rotation, hence all nonzero $w\in\mathbb{D}$ cannot satisfy $|h(w)|=|w|$, which enforces $|h(w)|<|w|$.
 
     Hence, for all nonzero $z\in K$, we have:
     $$|z|=|h(f(z))|< |f(z)|$$
+    Lastly, because both $\psi_\alpha,\psi_\beta$ are injective (automorphisms of $\mathbb{D}$), and $S$ as a square root on $\psi_\alpha(K)$ is also injective (if $z,w\in\psi_\alpha(K)$ satisfies $S(z)=S(w)$, then $z=S(z)^2=S(w)^2=w$), then $f$ as a composition of them is also injective.
 
-    Becuse the function satisfies $f(0)=0$ and $|z|< |f(z)|$ for all $z\in K\setminus\{0\}$, then $f$ is an expansion.
+    Becuse the function $f$ satisfies $f(0)=0$, $|z|< |f(z)|$ for all $z\in K\setminus\{0\}$, and is injective, then $f$ is an expansion.
 
     \textbf{Formula of $|f'(0)|$:}
 
@@ -406,16 +406,16 @@ Hence, it's possible to construct such function $f:\mathbb{C}\setminus S\rightar
 
     \item[(e)] To construct the expansion, we'll do this in an iterative manner (and we'll assume initially given Koebe Domain $K_0$, $r_{K_0}<1$, since the case $r_{K_0}\geq 1$ implies $K_0=\mathbb{D}$). 
     \begin{itemize}
-        \item[0.] First, find an $\alpha_0\in \partial K$ and its corresponding $\beta_0\in \mathbb{D}$ satisfying $|\alpha_0|=r_{K_0}$ and $\beta_0^2=\alpha_0$, then $f_0=\psi_{\beta_0}\circ S_{\alpha_0}\circ \psi_{\alpha_0}:K_0\rightarrow\mathbb{D}$ is an expansion.
+        \item[0.] First, find an $\alpha_0\in \partial K_0$ and its corresponding $\beta_0\in \mathbb{D}$ satisfying $|\alpha_0|=r_{K_0}$ and $\beta_0^2=\alpha_0$, then $f_0=\psi_{\beta_0}\circ S_{\alpha_0}\circ \psi_{\alpha_0}:K_0\rightarrow\mathbb{D}$ is an expansion.
         Let $K_1=f_0(K_0)\subseteq \mathbb{D}$. (Note: $S_{\alpha_0}$ is the described square root in \textbf{part (d)}).
 
         \item[n.] With integer $n\geq 1$, in the previous step, we have new Koebe Domain $K_{n}$. Repeat the same process, choose $\alpha_n\in\partial K$ with $|\alpha_n|=r_{K_{n-1}}$ and $\beta_n\in\mathbb{D}$ with $\beta_n^2=\alpha_n$.
         Then, $f_n=\psi_{\beta_n}\circ S_{\alpha_n}\circ\psi_{\alpha_n}:K_n\rightarrow\mathbb{D}$ is again an expansion. Let $K_{n+1}=f_n(K_n)\subseteq\mathbb{D}$.
     \end{itemize}
 
-    The above constructs a sequence of expansion described in the problem. Then, for all $n\in\mathbb{N}$, let $F_n=f_n\circ...\circ f_0$ be an expansion, and it satisfies $\lim_{n\rightarrow\infty}|f_n'(0)|=1$ (both proven in \textbf{part (b)}).
+    The above constructs a sequence of expansion described in the problem. Then, for all $n\in\mathbb{N}$, $F_n=f_n\circ...\circ f_0$ is an expansion, and it satisfies $\lim_{n\rightarrow\infty}|f_n'(0)|=1$ (both proven in \textbf{part (b)}).
 
-    By the statement proven in \textbf{part (c)}, the sequence $\{F_n\}_{n\in\mathbb{N}}$ has a subsequence converges locally uniformly onto some injective analytic function $F$; also, since the sequence $r_{K_n}$ is strictly increasing (proven in \textbf{part (a)}) while bounded above by $1$,
+    By the statement proven in \textbf{part (c)}, the sequence $\{F_n\}_{n\in\mathbb{N}}$ has a subsequence converges locally uniformly onto some injective analytic function $F:K\rightarrow\mathbb{D}$; also, since the sequence $r_{K_n}$ is strictly increasing (proven in \textbf{part (a)}) while bounded above by $1$,
     then $\lim_{n\rightarrow\infty}r_{K_n}=d\leq 1$. Which, based on the formula of $|f_n'(0)|$ give in \textbf{part (d)}, we have the following:
     $$1=\lim_{n\rightarrow\infty}|f_n'(0)|=\lim_{n\rightarrow\infty}\frac{1+r_{K_n}}{2\sqrt{r_{K_n}}} = \frac{1+d}{2\sqrt{d}}$$
     Hence, $2\sqrt{d}=1+d$, $4d=(1+d)^2=1+2d+d^2$, $(1-2d+d^2)=(1-d)^2=0$, so $(1-d)=0$, or $d=1$.
