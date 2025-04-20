@@ -1,0 +1,388 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math CS 122B HW3}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1 (not done)}
+\begin{myBox}[]{}
+    \begin{question}
+        Freitag Chap. IV.3 Exercise 3:
+
+        Show:
+        $$\frac{\pi}{\cos(\pi z)}=4\sum_{n=0}^{\infty}\frac{(-1)^n(2n+1)}{(2n+1)^2-4z^2}$$
+        and derive from this
+        $$\frac{\pi}{4}=\sum_{n=0}^{\infty}\frac{(-1)^n}{2n+1}=1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}+...$$
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+We'll complete this by the following trigonometric identity, and the expression of $\frac{\pi}{\sin(\pi \zeta)}$ under partial fraction series:
+$$\cos(\zeta)=\sin\left(\frac{\pi}{2}-\zeta\right)$$
+$$\frac{\pi}{\sin(\pi \zeta)}=\frac{1}{z}+\sum_{n=1}^{\infty}(-1)^n\left(\frac{1}{\zeta-n}+\frac{1}{\zeta+n}\right)$$
+Then, $\frac{\pi}{\cos(\pi z)}$ can be expressed as:
+$$\frac{\pi}{\cos(\pi z)}=\frac{\pi}{\sin(\pi/2-\pi z)}=\frac{\pi}{\sin(\pi(1/2-z))}=\frac{1}{1/2-z}+\sum_{n=1}^{\infty}(-1)^n\left(\frac{1}{(1/2-z)-n}+\frac{1}{(1/2-z)+n}\right)$$
+$$=\frac{2}{1-2z}+\sum_{n=1}^{\infty}(-1)^n\left(\frac{2}{(1-2z)-2n}+\frac{2}{(1-2z)+2n}\right)$$
+$$=\frac{2}{1-2z}+\sum_{n=1}^{\infty}(-1)^n\left(\frac{2}{-(2n-1)-2z}+\frac{2}{(2n+1)-2z}\right)$$
+Which, for all $z\notin \frac{1}{2}+\mathbb{Z}$, if we view the partial sum of the above series, we get:
+$$\forall N\in\mathbb{N},\ N\geq 3,\quad S_N=\frac{2}{1-2z}+\sum_{n=1}^{N}(-1)^n\left(\frac{2}{-(2n-1)-2z}+\frac{2}{(2n+1)-2z}\right)$$
+$$=\frac{2}{1-2z}+\frac{(-1)^1\cdot 2}{-(2\cdot 1-1)-2z}+\sum_{n=2}^{N}\frac{(-1)^n\cdot 2}{-(2n-1)-2z}+\sum_{n=1}^{N-1}\frac{(-1)^n\cdot 2}{(2n+1)-2z}+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
+$$=\frac{2}{1-2z}-\frac{2}{-1-2z}+\sum_{n=1}^{N-1}\frac{(-1)^{n+1}\cdot 2}{-(2(n+1)-1)-2z}+\sum_{n=1}^{N-1}\frac{(-1)^n\cdot 2}{(2n+1)-2z}+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
+$$=\left(\frac{2}{1-2z}-\frac{2}{-1-2z}\right)+\sum_{n=1}^{N-1}(-1)^n\left(\frac{2}{(2n+1)-2z}-\frac{2}{-(2n+1)-2z}\right)+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
+$$=\sum_{n=0}^{N-1}(-1)^n\left(\frac{2}{(2n+1)-2z}-\frac{2}{-(2n+1)-2z}\right)+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
+$$=\sum_{n=0}^{N-1}2\cdot(-1)^n\cdot\frac{(-(2n+1)-2z)-((2n+1)-2z)}{4z^2-(2n+1)^2}+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
+$$=2\sum_{n=0}^{N-1}(-1)^n\cdot\frac{-2(2n+1)}{4z^2-(2n+1)^2}+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
+$$=4\sum_{n=0}^{N-1}(-1)^n\cdot\frac{(2n+1)}{(2n+1)^2-4z^2}+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
+So, if the above partial sum converges, we get:
+$$\lim_{N\rightarrow\infty}s_N=\lim_{N\rightarrow\infty}4\sum_{n=0}^{N-1}(-1)^n\cdot\frac{(2n+1)}{(2n+1)^2-4z^2}+\frac{(-1)^N\cdot 2}{(2N+1)-2z}$$
+$$=4\sum_{n=0}^{\infty}\frac{(-1)^n(2n+1)}{(2n+1)^2-4z^2}$$
+Which is the desired result. Now, the only thing remain is to argue the convergence of the series.
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Freitag Chap. IV.3 Exercise 4:
+
+        Find a meromorphic function $f$ in $\mathbb{C}$ which has simple poles in 
+        $$S=\{\sqrt{n}\ |\ n\in\mathbb{N}\}$$
+        with corresponding residues $Res(f;\sqrt{n})=\sqrt{n}$, and is analytic in $\mathbb{C}\setminus S$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+With the given condition, one could guess that for each $n\in\mathbb{N}$, at $z=\sqrt{n}$, the principal part is described using $\frac{\sqrt{n}}{z-\sqrt{n}}$ (which is a simple pole, and has residue $\lim_{z\rightarrow\sqrt{n}}(z-\sqrt{n})\frac{\sqrt{n}}{(z-\sqrt{n})}=\sqrt{n}$). 
+However, the series of such function diverges, hence we need to do some modification.
+
+\hfil
+
+For all $z\in\mathbb{C}$, there exists $N\in\mathbb{N}$, such that $n\geq N$ implies $\frac{|z|}{|\sqrt{n}|}\leq\frac{1}{2}$ (which, we're working within the compact disk $|z|\leq \frac{\sqrt{N}}{2}$). Then, for $n\geq N$, since $\frac{z}{\sqrt{n}}$ is within the radius of convergence of the geometric series, we get:
+$$\frac{\sqrt{n}}{z-\sqrt{n}}=\frac{-1}{1-z/\sqrt{n}}=-\sum_{k=0}^{\infty}\left(\frac{z}{\sqrt{n}}\right)^k$$
+Then, if we subtract out the terms up to degree 3, we get the following:
+$$\frac{\sqrt{n}}{z-\sqrt{n}}+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{n}}\right)^k=-\sum_{k=0}^{\infty}\left(\frac{z}{\sqrt{n}}\right)^k+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{n}}\right)^k=\sum_{k=4}^{\infty}\left(\frac{z}{\sqrt{n}}\right)^k = \left(\frac{z}{\sqrt{n}}\right)^4\sum_{k=0}^{\infty}\left(\frac{z}{\sqrt{n}}\right)^k$$
+Which, compare the modulus, we get the following inequality:
+$$\left|\frac{\sqrt{n}}{z-\sqrt{n}}+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{n}}\right)^k\right|= \left|\left(\frac{z}{\sqrt{n}}\right)^4\sum_{k=0}^{\infty}\left(\frac{z}{\sqrt{n}}\right)^k\right|\leq\frac{|z|^4}{n^2}\sum_{k=0}^{\infty}\left|\frac{z}{\sqrt{n}}\right|^k$$
+$$\leq \frac{(\sqrt{N}/2)^4}{n^2}\sum_{k=0}^{\infty}\left(\frac{1}{2}\right)^k = \frac{N^2/(16)}{n^2}\cdot 2 = \frac{N^2}{8n^2}$$
+Hence, the following series of functions converges uniformly within the compact disk $|z|\leq \frac{\sqrt{N}}{2}$:
+$$\left|\sum_{n=N}^{\infty}\left(\frac{\sqrt{n}}{z-\sqrt{n}}+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{n}}\right)^k\right)\right|\leq \sum_{n=N}^{\infty}\left|\frac{\sqrt{n}}{z-\sqrt{n}}+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{n}}\right)^k\right| \leq \sum_{n=N}^{\infty}\frac{N^2}{8n^2}<\infty$$
+So, we can conclude that $\sum_{n=1}^{\infty}\left(\frac{\sqrt{n}}{z-\sqrt{n}}+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{n}}\right)^k\right)$ converges normally on $\mathbb{C}\setminus\{\sqrt{n}\}_{n\in\mathbb{N}}$. 
+
+\hfil
+
+Since each $\sqrt{n},\ n\in\mathbb{N}$ has the principal part given by $\frac{\sqrt{n}}{z-\sqrt{n}}$, while this principal part satisfies the desired properties, then this partial fraction series (which is a meromorphic function in this case) is a solution of the principal part distribution.
+
+\begin{comment}
+\hfil
+
+Lastly, given the above partial fraction series, it only has simple poles at all $\sqrt{n}$ (where $n\in\mathbb{N}$); also, if we analyze the residue at each point, we get:
+$$\forall v\in \mathbb{N},\quad f(z)=\sum_{n=1}^{\infty}\left(\frac{\sqrt{n}}{z-\sqrt{n}}+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{n}}\right)^k\right) = \frac{\sqrt{v}}{z-\sqrt{v}}+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{v}}\right)^k+\sum_{n=1,n\neq v}^{\infty}\left(\frac{\sqrt{n}}{z-\sqrt{n}}+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{n}}\right)^k\right)$$
+
+$$Res(f(z);\sqrt{v})=\lim_{z\rightarrow\sqrt{v}}(z-\sqrt{v})f(z)$$
+$$=\lim_{z\rightarrow\sqrt{v}}(z-\sqrt{v})\frac{\sqrt{v}}{z-\sqrt{v}}+(z-\sqrt{v})\left[\sum_{k=0}^{3}\left(\frac{z}{\sqrt{v}}\right)^k+\sum_{n=1,n\neq v}^{\infty}\left(\frac{\sqrt{n}}{z-\sqrt{n}}+\sum_{k=0}^{3}\left(\frac{z}{\sqrt{n}}\right)^k\right)\right] = \sqrt{v}$$
+(Since the second sum is defined at $z=\sqrt{v}$ due to the normal convergence of the series, then the second term converges to $0$, while the first term converges to $\sqrt{v}$).
+
+Hence, the above series is one of the meromorphic functions satisfying the desired property.
+\end{comment}
+
+\break
+
+\section*{3 (Not done)}
+\begin{myBox}[]{}
+    \begin{question}
+        Freitag Chap. IV.3 Exercise 5:
+
+        Prove the following refinement of the Mittag-Leffler Theorem:
+        \begin{theorem}{Mittag-Leffler}
+            Let $S\subset \mathbb{C}$ be a discrete subset. Then one can construct an analytic function $f:\mathbb{C}\setminus S\rightarrow \mathbb{C}$
+            which has at any $s\in S$, not only given principal parts but also finitely many Laurent coefficients for nonnegative indices.
+        \end{theorem}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        Stein and Shakarchi Chap. 8 Problem 7: (Too long I don't want to copy it)
+        
+        \begin{comment}
+        Applying ideas of Carath'eodory, Koebe gave a proof of the Riemann mapping
+        theorem by constructing (more explicitly) a sequence of functions that converges
+        to the desired conformal map.
+
+        Starting with a Koebe domain, that is, a simply connected domain $K_0\subset\mathbb{D}$ that
+        is not all of $\mathbb{D}$, and which contains the origin, the strategy is to find an injective
+        function $f_0$ such that $f_0(K_0)=K_1$ is a Koebe domain “larger” than $K_0$. Then, one
+        iterates this process, finally obtaining functions $F_n=f_n\circ...\circ f_0 : K_0 \rightarrow\mathbb{D}$ such
+        that $F_n(K_0) = K_{n+1}$ and $\lim F_n = F$ is a conformal map from $K_0$ to $\mathbb{D}$.
+
+        The \textbf{inner radius }of a region $K\subset \mathbb{D}$ that contains the origin is defined by
+        $r_K = \sup\{\rho \geq 0 : \mathbb{D}(0, \rho) \subseteq K\}$. Also, a holomorphic injection $f : K \rightarrow\mathbb{D}$ is said to
+        be an \textbf{expansion} if $f(0) = 0$ and $|f(z)| > |z|$ for all $z \in K\setminus\{0\}$.
+
+        \begin{itemize}
+            \item[(a)] Prove that if $f$ is an expansion, then $r_{f(K)}\geq r_K$ and $|f'(0)|>1$.
+        \end{itemize}
+
+        Suppose we begin with a Koebe domain $K_0$ and a sequence of expansions $\{f_0,f_1,...,f_n,...\}$ so that $K_{n+1}=f_n(K_n)$ are also Koebe domains.
+        We then define holomorphic maps $F_n:K_0\rightarrow\mathbb{D}$ by $F_n=f_n\circ...\circ f_0$.
+
+        \begin{itemize}
+            \item[(b)] Prove that for each $n$, the function $F_n$ is an expansion. Moreover, $F_n'(0)=\prod_{k=0}^{n}f_k'(0)$, and conclude that $\lim_{n\rightarrow\infty}|f_n'(0)|=1$.
+            \item[(c)] Show that if the sequence is osculating, that is, $r_{K_n}\rightarrow 1$ as $n\rightarrow\infty$,
+            then $\{F_n\}$ converges uniformly on compact subsets of $K_0$ to a conformal map $F:K_0\rightarrow\mathbb{D}$.
+        \end{itemize}
+
+        To construct the desired osculating sequence we shall use the automorphisms $\psi_\alpha=(\alpha-z)/(1-\overline{\alpha}z)$.
+        \begin{itemize}
+            \item[(d)] Given a Koebe domain $K$, choose a point $\alpha\in \mathbb{D}$ on the boundary of $K$ such that $|\alpha|=r_K$, and also choose $\beta\in\mathbb{D}$ such that $\beta^2=\alpha$.
+            Let $S$ denote the square root of $\psi_\alpha$ on $K$ such that $S(0)=0$. Why is such a function well defined?
+            Prove that the function $f:K\rightarrow\mathbb{D}$ defined by $f(z)=\psi_\beta\circ S\circ\psi_\alpha$ is an expansion.
+            Moreover, show that $|f'(0)|=(1+r_K)/(2\sqrt{r_K})$.
+            \item[(e)] Use part (d) to construct the desired sequence.
+        \end{itemize}
+        \end{comment}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\begin{itemize}
+    \item[(a)] \textbf{Expansion satisfies $r_{f(K)}\geq r_K$:}
+    
+    For all radius $0<r<r_K$, the circle $c_r$ (with radius $r$) is fully contained in $K$ (since $\mathbb{D}(0,r_K)\subseteq K$).
+    Since $f$ is an expansion, then for all $z\neq 0$, $f(z)\neq 0$ (since it is injective, and $f(0)=0$). Hence, by argument principle,
+    the following integral shows he number of zeros enclosed by curve $c_r$:
+    $$\frac{1}{2\pi i}\int_{c_r}\frac{f'(z)}{f(z)}dz = \frac{1}{2\pi i}\int_{f(c_r)}\frac{1}{w}dw$$
+    Since $c_r$ encloses only one zero (enclosing the origin, the only point that gets mapped to $0$ by $f$), then the above integral yields value $1$.
+    This also implies that $f(c_r)$ is a closed curve satisfying $n(f(c_r),0)=1$ (a simple closed curve enclosing region with $0$).
+
+    On the other hand, $f(c_r)$ is fully contained in the range $f(K)$, while $f(K)$ is also simply connected, hence the curve $f(c_r)$ is homologous to $0$,
+    the open region enclosed by $f(c_r)$ (denoted as $D$) is also fully contained in $f(K)$.
+
+    Then, since $f(c_r)$ is closed, there exists $w_0\in f(c_r)$ that yields a minimum modulus; which, if consider $|w_0|$ as a radius, since $\mathbb{D}(0,|w_0|)$ again contains no points in $f(c_r)$ (since $z\in \mathbb{D}(0,|w_0|)$ satisfies $|z|<|w_0|$, while all $w\in f(c_r)$ satisfies $|w_0|\leq |w|$),
+    then $\mathbb{D}(0,|z_0|)\subseteq D \subseteq f(K)$, hence $|w_0|\leq r_{f(K)}$.
+
+    However, if consider the point $z_0\in K$ that satisfies $f(z_0)=w_0$ (which, $z_0\in c_r$, so $|z_0|=r$), then we have the following inequality:
+    $$r=|z_0|<|f(z_0)|=|w_0|\leq r_{f(K)}$$
+    Hence, all $0<r<r_K$ satisfies $r<r_{f(K)}$, which implies that $r_K\leq r_{f(K)}$.
+
+    \hfil
+
+    \textbf{Expansion satisfies $|f'(0)|>1$:}
+
+    Since $f:K\rightarrow\mathbb{D}$ is an expansion, implies that $f(0)=0$, then $f(z)=zg(z)$ for some analytic $g:K\rightarrow\mathbb{C}$.
+
+    Now, if consider the fact that all $z\in K\setminus\{0\}$ satisfies $|f(z)|>|z|$, we get the following inequality:
+    $$|g(z)|=\frac{|zg(z)|}{|z|}=\frac{|f(z)|}{|z|} > \frac{|z|}{|z|}=1$$
+    Hence, if consider $f'(0)$ using limit definition, we get:
+    $$|f'(0)|=\left|\lim_{z\rightarrow 0}\frac{f(z)-f(0)}{z-0}\right|=\left|\lim_{z\rightarrow 0}\frac{zg(z)}{z}\right|=|\lim_{z\rightarrow 0}g(z)| \geq 1$$
+    Now, we'll prove that $|f'(0)|=|g(0)|\neq 1$: Suppose the contrary that $|g(0)|=1$, since the above statement implies that all $z\in K$ (including $z=0$) satisfies $|g(z)|\geq 1$, then $g(z)\neq 0$ in $K$, hence $1/g:K\rightarrow\mathbb{C}$ is a well-defined analytic function, satisfying $|1/g(z)|\leq 1$.
+
+    However, since $K$ is an open set, while $g$ is nonconstant (if $g$ is constant, and $|g(0)|=1$, then $f(z)=zg(z)=g(0)z$, which $|f(z)|=|g(0)z|=|z|$, contradicting the fact that $f$ is an expansion), then $|1/g(z)|$ shouldn't obtain a maximum on any point $z\in K$.
+    Yet, since we assume $g(0)=1$, while $|1/g(z)|\leq 1$, hence $|1/g(z)|\leq |1/g(0)|$ for all $z\in K$, showing that $0\in K$ is in fact a maximum, which violates the maximum principle.
+
+    Hence, our assumption must be false, $|g(0)|\neq 1$, showing that $|g(0)|=|f'(0)|>1$.
+
+    \hfil
+
+    \hfil
+
+    \item[(b)] Given Koebe domain $K_0$, and a sequence of expansion $\{f_0,f_1,...\}$ satisfying $K_{n+1}=f_n(K_n)\subseteq \mathbb{D}$, define $F_n:K_0\rightarrow\mathbb{D}$ by $F_n=f_n\circ...\circ f_0$.
+    
+    \hfil
+
+    \textbf{$F_n$ is an expansion:}
+
+    We'll show this by induction (Note: expansion $f$ satisfies $f(0)=0$). 
+
+    First, for $n=1$, $F_1=f_1\circ f_0$, which for all $z\in K_0\setminus\{0\}$, based on the fact that $f_0,f_1$ are expansions, it satisfies:
+    $$|F_1(z)| = |f_1(f_0(z))|>|f_0(z)|>|z|$$
+    Also, $F_1(0)=f_1(f_0(0))=f_1(0)=0$. Which, $F_1$ is an expansion.
+
+    Now, for given $n\in\mathbb{N}$, suppose $F_n$ is an expansion. Then, $F_{n+1}=f_{n+1}\circ (f_n\circ...\circ f_0)=f_{n+1}\circ F_n$. Again, since both $f_{n+1}, F_n$ are expansions, all $z\in K_0\setminus\{0\}$ satisfies:
+    $$|F_{n+1}(z)|=|f_{n+1}(F_n(z))|>|F_n(z)|>|z|$$
+    Also, $F_{n+1}(0)=f_{n+1}(F_n(0))=f_{n+1}(0)=0$. Hence, $F_{n+1}$ is an expansion, and this completes the induction.
+
+    \hfil
+
+    \textbf{Formula for $F_n'(0)$:}
+
+    Again, we can show by induction, that $F_n'(0)=\prod_{k=0}^{n}f_k'(0)$.
+
+    First, for $n=1$, $F_1=f_1\circ f_0$, then by chain rule, $F_1'(0)=f_1'(f_0(0))\cdot f_0'(0) = f_1'(0)\cdot f_0'(0)$.
+
+    Now, suppose for given $n\in\mathbb{N}$, $F_n'(0)=\prod_{k=0}^{n}f_k'(0)$, then for $F_{n+1}=f_{n+1}\circ F_n$ satisfies:
+    $$F_{n+1}'(0)=f_{n+1}'(F_n(0))\cdot F_n'(0) = f_{n+1}'(0)\cdot \prod_{k=0}^{n}f_k'(0) = \prod_{k=0}^{n+1}f_k'(0)$$
+    Which, this proves the case for $(n+1)$, which completes the induction.
+
+    \hfil
+
+    \textbf{Limit of $|f_n'(0)|$:}
+
+    First, based on the above formula of $F_n'(0)$, since for all $n\in\mathbb{N}$, $f_{n+1}$ is an expansion, then $|f_{n+1}'(0)|>0$ (based on \textbf{part (a)}), hence, the following is true:
+    $$|F_{n+1}'(0)|=\left|\prod_{k=0}^{n+1}f_k'(0)\right| = |f_{n+1}'(0)|\cdot\prod_{k=0}^{n}|f_k'(0)| > \prod_{k=0}^{n}|f_k'(0)| = \left|\prod_{k=0}^{n}f_k'(0)\right|=|F_n'(0)|$$
+    This proves that $\{|F_{n}'(0)|\}_{n\in\mathbb{N}}$ is a strictly increasing sequence.
+
+    Also, recall that since $\mathbb{D}(0,r_{K_0})\subseteq K_0$, for each $n$, define $\bar{F}_n:\mathbb{D}\rightarrow\mathbb{D}$ by $\bar{F}_n(z)=F_n(r_{K_0}z)$ (Note: each $z\in \mathbb{D}$, since $|z|<1$, then $|r_{K_0}z|<r_{K_0}$, hence $r_{K_0}z\in \mathbb{D}(0,r_{K_0})\subseteq K_0$).
+    Since $\bar{F}_n$ is an analytic map from $\mathbb{D}$ to $\mathbb{D}$, and it satisfies $\bar{F}_n(0)=F_n(r_{K_0}\cdot 0)=0$, then by Schwarz Lemma, $|\bar{F}_n'(0)|\leq 1$. So, we get the following:
+    $$\bar{F}_n'(z)=r_{K_0}F_n'(r_{K_0}z),\quad |\bar{F}_n'(0)|=r_{K_0}|F_n'(0)| \leq 1,\quad |F_n'(0)|\leq \frac{1}{r_{K_0}}$$
+    This proves that $\{|F_{n}'(0)|\}_{n\in\mathbb{N}}$ is bounded above by $\frac{1}{r_{K_0}}>0$ (Note: since $K_0$ is open, $r_{K_0}>0$).
+
+    Hence, since the sequence is srictly increasing while bounded from abouve, $\lim_{n\rightarrow \infty}|F_n'(0)|=L\in\mathbb{R}$.
+
+    Then, since the limit exists, while $|F_n'(0)|$ is based on products of $|f_k'(0)|$, then:
+    $$\lim_{n\rightarrow\infty}|F_n'(0)|=\lim_{n\rightarrow\infty}\prod_{k=0}^{n}|f_k'(0)|=L\in\mathbb{R} \implies \lim_{n\rightarrow\infty}|f_n'(0)|=1$$
+
+    \hfil
+
+    \hfil
+
+    \item[(c)] Given the family of expansions $\{F_n:K_0\rightarrow\mathbb{D}\ |\ n\in\mathbb{N}\}$ with $\lim_{n\rightarrow\infty}r_{K_n}=1$, unfortunately we cannot conclude that the sequence of functions converges (if $F_n$ converges to $F$, since one can add a constant rotation of radians $\pi/2$ in between $f_n$ and $f_{n+1}$ for each $n\in\mathbb{N}$,
+    which for all $z\in K_0\setminus\{0\}$, since $F_n(z)$ now becomes a sequence that's constantly rotating, while the modulus $|F_n(z)|$ is still increasing, then the modified sequence no longer converges).
+
+    However, based on \textbf{Montel's Theorem}, since the family of expansions are uniformly bounded (for all $z\in K_0$, all $n\in\mathbb{N}$ satisfies $|F_n(z)|<1$, because $F_n(z)\in\mathbb{D}$), then there exists a subsequence $\{F_{n_k}\}_{k\in\mathbb{N}}$ that converges locally uniformly to some function $F:K_0\rightarrow\mathbb{D}$ (i.e. on any compact subsets of $K_0$, the sequence of functions converges uniformly).
+    
+    Now, since $\lim_{k\rightarrow\infty}r_{K_{n_k}}=1$ (subsequential limit agrees with the sequential limit if the original sequence converges), then $r_{f(K_0)}\geq 1$: For all $0<r<1$, because of the limit, there exists $K\in\mathbb{N}$, such that $k\geq K$ implies $r<r_{K_{n_k}}\leq 1$. Then, based on the result in \textbf{part (a)}, we know $r_{K_{n_k}}\leq r_{f_{n_k}(K_{n_k})}$, which $\mathbb{D}(0,r)\subseteq \mathbb{D}(0,r_{f_{n_k}(K_{n_k})})=\mathbb{D}(0,r_{F_{n_k}(K_0)})\subseteq F_{n_k}(K_0)$ (Note: recall that $f_{n_k}$ has the image being the same as $F_{n_k}$).
+    Hence, as $F_{n_k}$ converges to $F$, this implies that $\mathbb{D}(0,r)\subseteq F(K_0)$, showing that $r\leq r_{F(K_0)}$.
+    Since for all $0<r<1$, $r\leq r_{F(K_0)}$, then $1\leq r_{F(K_0)}$.
+    So, this implies that $\mathbb{D}\subseteq \mathbb{D}(0,r_{F(K_0)})\subseteq F(K_0)$, showing that $F$ is surjective.
+
+    Moreover, since the collection $\{F_{n_k}\}_{k\in\mathbb{N}}$ are a sequence of expansions (analytic injective fnctions) that converges locally uniformly, then by \textbf{Hurwitz's Theorem}, the limit is either constant or injective; however, since it is surjective onto $\mathbb{D}$, the map $F$ is not constant, hence it must be injective.
+
+    Because $F$ is both injective and surjective while being analytic, it is a conformal map. 
+
+    \hfil
+
+    \hfil
+
+    \item[(d)] Given Koebe domain $K$, with $\alpha\in \partial K$ such that $|\alpha|=r_K>0$, and $\beta\in\mathbb{D}$ such that $\beta^2=\alpha$.
+    
+    If $|\alpha|=1$, this implies that $r_K=1$, or $\mathbb{D}\subseteq K$, which $K=\mathbb{D}$, so there's no need for constructing a conformal map.
+    Hence, can assume $|\alpha|<1$ (consequently, since $\beta^2=\alpha$, then $|\beta|<1$ also).
+
+    Then, the following transformation is a bijection from $\mathbb{D}\rightarrow\mathbb{D}$ (in fact, a conformal map):
+    $$\psi_\alpha:\mathbb{D}\rightarrow\mathbb{D},\quad \psi_\alpha(z)=\frac{\alpha-z}{1-\bar{\alpha}z}$$
+    If we restrict the domain to be $K$, since $K$ is open, then $K=K^\circ$. Which $K^\circ \cap \partial K=\emptyset$, showing that $\alpha\notin K$.
+
+    Then, if consider $\psi_\alpha(K)$, since for $\psi_\alpha(z)=0$, we need $\alpha-z=0$, or $z=\alpha$, then since $\alpha\notin K$, then $0\notin \psi_\alpha(K)$.
+
+    Hence, because $\psi_\alpha$ is a conformal map, $K$ is open and simply connected, implies that $\psi_\alpha(K)$ is also open and simply connected.
+    Therefore, it's possible to define a single-valued branch of square root on $\psi_\alpha(K)$, or $S:\psi_\alpha(K)\rightarrow\mathbb{D}$ that satisfies:
+    $$\forall w\in\psi_\alpha(K),\quad (S(w))^2=w,\quad S(\alpha)=\beta$$
+    (Note: Since $\psi_\alpha(0)=\alpha$, then $\alpha\in \psi_\alpha(K)$, hence we can define the branch such that $S(\alpha)=\beta$).
+
+    (Note 2: Because all $w\in \psi_\alpha(K)\subseteq \mathbb{D}$, then $|w|<1$; hence, $|S(w)|^2 = |w| <1$ implies $|S(w)|<1$, showing that $S(\psi_\alpha(K))\subseteq \mathbb{D}$).
+    
+    Also, since $\alpha\in \partial K$ is a limit point of $K$ (since $|\alpha|=r_K$, all $0<r<1$ satisfies $|r\alpha|<|\alpha|=r_K$, which $r\alpha \in K$; hence for all $\epsilon>0$, choose $r>0$ such that $1-\epsilon<r<1$, then $|\alpha-r\alpha|=|\alpha|\cdot|1-r| <r_K\epsilon<\epsilon$, showing that $r\alpha\in B_\epsilon(\alpha)$, hence $\alpha$ is a limit point),
+    then we can find a sequence $(c_n)_{n\in\mathbb{N}}\subset K$ converging to $\alpha$. By continuity of $\psi_\alpha$, we get:
+    $$\lim_{n\rightarrow\infty}\psi_{\alpha}(c_n)=\psi_\alpha(\alpha)=0,\quad \lim_{n\rightarrow\infty}|S(\psi_\alpha(c_n))^2|=\lim_{n\rightarrow\infty}|\psi_\alpha(c_n)|=0$$
+    Hence, $\lim_{n\rightarrow\infty}\sqrt{|S(\psi_\alpha(c_n))^2|}=\lim_{n\rightarrow\infty}|S(\psi_\alpha(c_n))|=0$, showing that $\lim_{n\rightarrow\infty}S(\psi_\alpha(c_n))=0$.
+    So, without considering if the extension is analytic or not, we can define $S(0)=0$. Which, the desired square root is defined.
+
+    \hfil
+
+    \textbf{The expansion based on $\alpha$ and $\beta$:}
+
+    Consider $f=\psi_\beta\circ S\circ \psi_\alpha:K\rightarrow\mathbb{D}$. 
+    
+    To prove that it is an expansion, we'll first prove that $f(0)=0$:
+    $$f(0)=\psi_\beta\circ S\circ \psi_\alpha(0)=\psi_\beta\circ S(\alpha)=\psi_\beta(\beta)=0$$
+    (Note: the mobius transformation $\psi_\alpha$ swaps $\alpha$ and $0$, while we define $S(\alpha)=\beta$).
+    
+    Then, we'll consider its inverse: 
+    For $\psi_\alpha$ as an automorphism on $\mathbb{D}$, its inverse is itself (the property of mobius transformation given that $|\alpha|<1$), and the same logic applies to $\psi_\beta$.
+    Now, if we restrict the codomain of $f$ to $f(K)$, then it becomes a bijective function (since $\psi_\alpha, S,\psi_\beta$ are all injective), then if we consider $g(z)=z^2$,
+    the composition $h=\psi_\alpha\circ g\circ\psi_\beta:f(K)\rightarrow \mathbb{C}$ becomes a left inverse of $f$:
+    $$\forall z\in K,\quad h(f(z))=\psi_\alpha\circ g\circ\psi_\beta\circ\psi_\beta\circ S\circ \psi_\alpha(z) = \psi_\alpha\circ g\circ S(\psi_\alpha(z)) = \psi_\alpha((S(\psi_\alpha(z)))^2)$$
+    $$ = \psi_\alpha(\psi_\alpha(z))=z$$
+    Also, since $h=\psi_\alpha\circ g\circ \psi_\beta$ is in fact a map from $\mathbb{D}\rightarrow\mathbb{D}$ (since $\psi_\alpha,\psi_\beta$ are automorphisms of $\mathbb{D}$, while $g(z)=z^2$ has all $z\in\mathbb{D}$ with $|g(z)|=|z|^2<|z|<1$, hence $g(z)\in\mathbb{D}$),
+    and it satisfies $h(0)=0$ (since $\psi_\alpha\circ g\circ \psi_\beta(0)=\psi_\alpha\circ g(\beta)=\psi_\alpha(\alpha)=0$),
+    then apply Schwarz Lemma, we know all $w\in f(K)\subseteq\mathbb{D}$ satisfies $|h(w)|\leq |w|$. 
+
+    To prove that it is a strict inequality above, recall that Schwarz Lemma also states that if any nonzero $w\in\mathbb{D}$ satisfies $|h(w)|=|w|$, then $h$ must be a rotation (i.e. all $w\in\mathbb{D}$ satisfies $|h(w)|=|w|$. However, this is not the case for $\beta\in\mathbb{D}$:
+    $$h(\beta)=\psi_\alpha\circ g\circ\psi_{\beta}(\beta) = \psi_\alpha\circ g(0)=\psi_\alpha(0)=\alpha,\quad |h(\beta)|=|\alpha|=|\beta|^2 < |\beta|$$
+    Since $\beta\in\mathbb{D}$ satisfies a strict inequality $|h(\beta)|<|\beta|$, then $h$ cannot be a rotation, hence all nonzero $w\in\mathbb{D}$ cannot satisfy $|h(w)|=|w|$, which enforces $|h(w)|<|w|$.
+
+    Hence, for all nonzero $z\in K$, we have:
+    $$|z|=|h(f(z))|< |f(z)|$$
+
+    Becuse the function satisfies $f(0)=0$ and $|z|< |f(z)|$ for all $z\in K\setminus\{0\}$, then $f$ is an expansion.
+
+    \hfil
+
+    \textbf{Formula of $|f'(0)|$:}
+
+    First, the derivative of $\psi_\alpha$ is given as follow:
+    $$\psi_\alpha'(z)=\frac{-(1-\bar{\alpha}z)-(\alpha-z)(-\bar{\alpha})}{(1-\bar{\alpha}z)^2},\quad \psi_\alpha'(0)=\frac{-1-\alpha(-\bar{\alpha})}{1^2}=|\alpha|^2-1$$
+    Similarly, derivative of $\psi_\beta$ is given as follow:
+    $$\psi_\beta'(z)=\frac{-(1-\bar{\beta}z)-(\beta-z)(-\bar{\beta})}{(1-\bar{\beta}z)^2},\quad \psi_\beta'(\beta)=\frac{-(1-|\beta|^2)-0}{(1-|\beta|^2)^2} = \frac{-1}{(1-|\beta|^2)}=\frac{-1}{1-|\alpha|}$$
+    Then, derivative of $S$ is given as follow:
+    $$\forall w\in \psi_\alpha(K),\quad (S(w))^2 = w,\quad 2S(w)\cdot S'(w)=1,\quad S'(w)=\frac{1}{2S(w)},\quad S'(\alpha)=\frac{1}{2S(\alpha)}=\frac{1}{2\beta}$$
+    Then, the derivative of $f$ at $0$ is given as:
+    $$f'(0)=(\psi_\beta\circ S\circ \psi_\alpha)'(0) = \psi_\beta'(S\circ \psi_\alpha(0))\cdot S'(\psi_\alpha(0))\cdot \psi_\alpha'(0)$$
+    $$ = \psi_\beta'(S(\alpha))\cdot S'(\alpha)\cdot (|\alpha|^2-1) = \psi_\beta'(\beta)\cdot \frac{1}{2\beta}\cdot (|\alpha|^2-1) = \frac{-1}{1-|\alpha|}\cdot \frac{1}{2\beta}\cdot (|\alpha|^2-1)$$
+    $$ = \frac{(1-|\alpha|^2)}{2\beta(1-|\alpha|)}=\frac{1+|\alpha|}{2\beta}$$
+    Which, it has modulus given by:
+    $$|f'(0)| = \frac{|1+|\alpha||}{|2\beta|} = \frac{1+|\alpha|}{2\sqrt{|\beta^2|}} = \frac{1+r_K}{2\sqrt{|\alpha|}}=\frac{1+r_K}{2\sqrt{r_K}}$$
+
+    \hfil
+
+    \hfil
+
+    \item[(e)] To construct the expansion, we'll do this in an iterative manner (and we'll assume initially given Koebe Domain $K_0$, $r_{K_0}<1$, since the case $r_{K_0}\geq 1$ implies $K_0=\mathbb{D}$). 
+    \begin{itemize}
+        \item[0.] First, find an $\alpha_0\in \partial K$ and its corresponding $\beta_0\in \mathbb{D}$ satisfying $|\alpha_0|=r_{K_0}$ and $\beta_0^2=\alpha_0$, then $f_0=\psi_{\beta_0}\circ S_{\alpha_0}\circ \psi_{\alpha_0}:K_0\rightarrow\mathbb{D}$ is an expansion.
+        Let $K_1=f_0(K_0)\subseteq \mathbb{D}$. (Note: $S_{\alpha_0}$ is the described square root in \textbf{part (d)}).
+
+        \item[n.] With integer $n\geq 1$, in the previous step, we have new Koebe Domain $K_{n}$. Repeat the same process, choose $\alpha_n\in\partial K$ with $|\alpha_n|=r_{K_{n-1}}$ and $\beta_n\in\mathbb{D}$ with $\beta_n^2=\alpha_n$.
+        Then, $f_n=\psi_{\beta_n}\circ S_{\alpha_n}\circ\psi_{\alpha_n}:K_n\rightarrow\mathbb{D}$ is again an expansion. Let $K_{n+1}=f_n(K_n)\subseteq\mathbb{D}$.
+    \end{itemize}
+
+    The above constructs a sequence of expansion described in the problem. Then, for all $n\in\mathbb{N}$, let $F_n=f_n\circ...\circ f_0$ be an expansion, and it satisfies $\lim_{n\rightarrow\infty}|f_n'(0)|=1$ (both proven in \textbf{part (b)}).
+
+    By the statement proven in \textbf{part (c)}, the sequence $\{F_n\}_{n\in\mathbb{N}}$ has a subsequence converges locally uniformly onto some injective analytic function $F$; also, since the sequence $r_{K_n}$ is strictly increasing (proven in \textbf{part (a)}) while bounded above by $1$,
+    then $\lim_{n\rightarrow\infty}r_{K_n}=d\leq 1$. Which, based on the formula of $|f_n'(0)|$ give in \textbf{part (d)}, we have the following:
+    $$1=\lim_{n\rightarrow\infty}|f_n'(0)|=\lim_{n\rightarrow\infty}\frac{1+r_{K_n}}{2\sqrt{r_{K_n}}} = \frac{1+d}{2\sqrt{d}}$$
+    Hence, $2\sqrt{d}=1+d$, $4d=(1+d)^2=1+2d+d^2$, $(1-2d+d^2)=(1-d)^2=0$, so $(1-d)=0$, or $d=1$.
+
+    Because $\lim_{n\rightarrow\infty}r_{K_n}=1$, then based on the statement in \textbf{part (c)}, the function $F$ that the subsequence converges to, is in fact conformal.
+    Which, this is the result we want to show.
+\end{itemize}
+
+\end{document}
