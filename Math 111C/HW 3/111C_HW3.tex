@@ -36,18 +36,127 @@ colback=blue!10
 \section*{1}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Let $H/F$ be a field extension and $f(x), g(x) \in F[x]$. Suppose $K_1,\ K_2$ are splitting
+        fields of $f(x)$ and $g(x)$ respectively, contained in $H$. Prove that $K_1K_2:=K_1(K_2)$ is a
+        splitting field of the polynomial $f(x)g(x)$.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+Since $K_1$ is a splitting field of $f(x)$ and $K_2$ is a splitting field of $g(x)$, then the following two statements are true:
+$$\exists a\in F,\ a_1,...,a_n\in K_1,\quad f(x)=a(x-a_1)...(x-a_n)$$
+$$\exists b\in F,\ b_1,...,b_m\in K_2,\quad g(x)=b(x-b_1)...(x-b_m)$$
+In particular, $K_1=F(a_1,...,a_n)$ and $K_2=F(b_1,...,b_m)$ based on what we've proven in class.
+
+Then, since $K_1\subseteq K_1(K_2)$, $a_1,...,a_n\in K_1(K_2)$; similarly, for all $q\in K_2$, since $1\cdot q=q\in K_1(K_2)$, then $K_2\subseteq K_1(K_2)$, hence $b_1,...,b_m\in K_1(K_2)$.
+
+Because $K_1(K_2)$ contains all roots of $f(x)$ in $K_1$, and all roots of $g(x)$ in $K_2$, hence $f(x)g(x)$ also splits completely over $K_1(K_2)$ (since $f(x),g(x)$ both split completely due to the existence of all roots).
+In particular, the factorization is given as follow, up to unit associates:
+$$f(x)g(x)=ab(x-a_1)...(x-a_n)\cdot (x-b_1)...(x-b_m)$$
+
+\hfil
+
+Now, to consider the splitting field of $f(x)g(x)$, say $E/F\subseteq K_1(K_2)/F$. From the statements proven in class, given the roots of $f(x)g(x)$ above, we know $E=F(a_1,...,a_n,b_1,...,b_m) = \left(F(a_1,...,a_n)\right)(b_1,...,b_m)=K_1(b_1,...,b_m)$.
+
+Which, $K_1(b_1,...,b_m)$ by definition, is the smallest field within $K_1(K_2)$ that's containing both $K_1$ and the set $\{b_1,...,b_m\}$; however, since $F\subseteq K_1(b_1,...,b_m)$, while $K_2=F(b_1,...,b_m)$ is defined to be the smallest field containing both $F$ and $\{b_1,...,b_m\}$,
+then sicne $K_1(b_1,...,b_2)$ contains both, we must have $K_2=F(b_1,...,b_m)\subseteq K_1(b_1,...,b_2)$.
+
+Lastly, since $K_1,\ K_2\subseteq K_1(b_1,...,b_2)$, while $K_1(K_2)$ is the smallest field in $K_1(K_2)$ containing both $K_1$ and $K_2$, then $K_1(b_1,...,b_m)$ containing both $K_1,K_2$ implies $K_1(K_2)\subseteq K_1(b_1,...,b_m)$,
+showing that $K_1(K_2)=K_1(b_1,...,b_m)=E$.
+
+Hence, $K_1(K_2)$ is in fact a splitting field of $f(x)g(x)\in F[x]$.
 
 \break
 
 \section*{2}
 \begin{myBox}[]{}
     \begin{question}
-        
+        Define the set of algebraic numbers $\mathbb{A}$ to be the set of all complex numbers which are
+        algebraic over $\mathbb{Q}$. Show that $\mathbb{A}/\mathbb{Q}$ is an infinite algebraic extension.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+We'll prove this via contradiction. Suppose $\mathbb{A}/\mathbb{Q}$ is a finite extension, say $[\mathbb{A}:\mathbb{Q}]=n<\infty$.
+Then, for any $\alpha\in\mathbb{A}$, since the list $1,\alpha,\alpha^2,...,\alpha^n\in\mathbb{A}/\mathbb{Q}$ has length $(n+1)$, while $\mathbb{A}$ as a $\mathbb{Q}$-vector space
+has dimension $n$, then the above list is linearly dependent, showing that there exists $a_0,a_1,...,a_n\in\mathbb{Q}$, such that the following is true:
+$$f(x)=a_0+a_1x+....+a_nx^n\in\mathbb{Q}[x],\quad f(\alpha)=\sum_{k=0}^{n}a_k\alpha^k=0$$
+Now, take the minimal polynomial of $\alpha$ over $\mathbb{Q}$ (denoted as $m_{\alpha,\mathbb{Q}}(x)\in\mathbb{Q}[x]$), since $\alpha$ is a root of $f(x)$ defined above,
+then $m_{\alpha,\mathbb{Q}}(x)\mid f(x)$, showing that $\deg(m_{\alpha,\mathbb{Q}})\leq \deg(f)\leq n$. So, all $\alpha\in\mathbb{A}/\mathbb{Q}$ should have minimal polynomial with degree at most $n$.
+
+\hfil
+
+However, here is a counterexample: Consider a prime number $p>n$, and the polynomial $x^p-p\in\mathbb{Q}[x]$:
+Since over $\mathbb{Z}$, it satisfies the Eisenstein Criterion (the leading coefficient is $1$, not divisible by $p$; the rest of the coefficients are $0$ and $p$, which are divisible by $p$; and $p$ is not divisible by $p^2$),
+hence $x^p-p$ is irreducible over $\mathbb{Q}$ (and it is also monic).
+
+Now, consider the element $p^{1/p}\in\mathbb{A}$: Since it satisfies $(p^{1/p})^p-p = p-p=0$, then it is a root of $x^p-p$.
+Then, because $x^p-p$ is monnic and irreducible over $\mathbb{Q}$, it is in fact the minimal polynomial of $p^{1/p}\in\mathbb{A}$.
+
+Yet, the proposed polynomial has degree $p>n$, while it is a minimal polynomial of some elements in $\mathbb{A}$, which supposedly should have degree at most $n$,
+then this forms a contradiction.
+
+Hence, the assumption is false, $\mathbb{A}/\mathbb{Q}$ must be an infinite extension.
+
+\break
+
+\section*{3 (not done)}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $n\in\mathbb{N}$ and $\mu_n$ be the (multiplicative) group of $n^{th}$ roots of unity in $\mathbb{C}$.
+        A generator of $\mu_n$ is called a primitive $n^{th}$ root of unity. Let $F_n\subseteq\mathbb{C}$ be the splitting field  of $x^n-1$ over $\mathbb{Q}$.
+        \begin{itemize}
+            \item[(a)] If $\zeta_n$ is any primitive $n^{th}$ root of unity, prove that $F_n=\mathbb{Q}(\zeta_n)$.
+            \item[(b)] Prove that any complex root of $m_{\zeta_n,\mathbb{Q}}(x)$ is also a primitive $n^{th}$ root of unity.
+            \item[(c)] Prove that $[F_n:\mathbb{Q}]\leq \phi(n)$ where $|phi$ is the famous Euler's totient function.
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+\begin{itemize}
+    \item[(a)] Given that $\zeta_n$ is a primitive $n^{th}$ root of unity, then $\left<\zeta_n\right>=\mu_n$ (since it generates the whole $\mu_n$).
+    So, for any $\alpha\in \mu_n$, $\alpha=\zeta_n^k$ for some $k\in\mathbb{Z}$, proving that $\alpha\in\mathbb{Q}(\zeta_n)$. Hence, since $\mathbb{Q}(\zeta_n)$ contains all $n^{th}$ roots of unity (all roots of $x^n-1$ over $\mathbb{C}$),
+    then $x^n-1$ can be splitted completely over $\mathbb{Q}(\zeta_n)$, which the splitting field of $x^n-1$, $F_n\subseteq \mathbb{Q}(\zeta_n)$.
+
+    On the other hand, since $\mathbb{Q}\subseteq F_n$, while $F_n\subseteq\mathbb{C}$ is the splitting field of $x^n-1$, in particular, it must contain all roots of $x^n-1$, which $\zeta_n\in F_n$.
+
+    Then, since $\mathbb{Q}(\zeta_n)$ is the smallest field in $\mathbb{C}$, containing both $\mathbb{Q}$ and $\zeta_n$, then because $F_n$ contains both collections, $\mathbb{Q}(\zeta_n)\subseteq F_n$.
+
+    This proves that $F_n=\mathbb{Q}(\zeta_n)$.
+
+    \hfil
+
+    \item[(b)]\textbf{Not done}
+    
+    \hfil
+
+    \item[(c)] Recall that in group theory, given a finite cyclic group $\left<a\right>$ with order $|\left<a\right>|=n$, then any $a^k\in \left<a\right>$ is a generator of $\left<a\right>$ iff $\gcd(k,n)=1$.
+    Then, since $|\mu_n|=|\left<\zeta_n\right>|=n$, all the primitive $n^{th}$ roots of unity in $\mu_n$ (the generators) must be in the form $\zeta_n^k$, where $k\in\mathbb{Z}_n$ satisfies $\gcd(k,n)=1$.
+
+    This implies that the number of primitive roots of unity for $\mu_n$ is precisely given by $\phi(n)$ (or, the number of elements in $\mathbb{Z}_n$ that is coprime to $n$).
+
+    Now, from \textbf{part (b)}, since we've proven that $m_{\zeta_n,\mathbb{Q}}(x)$ must have all of its roots being primitive $n^{th}$ roots of unity,
+    then it can have at most $\phi(n)$ roots, showing that $\deg(m_{\zeta_n,\mathbb{Q}})\leq \phi(n)$.
+
+    Finally, since $F_n=\mathbb{Q}(\zeta_n)$, while $\mathbb{Q}(\zeta_n)\cong \mathbb{Q}[x]/(m_{\zeta_n,\mathbb{Q}}(x))$, then since $[\mathbb{Q}[x]/(m_{\zeta_n,\mathbb{Q}}(x)):\mathbb{Q}]=\deg(m_{\zeta_n,\mathbb{Q}})\leq \phi(n)$,
+    then $[F_n:\mathbb{Q}]=[\mathbb{Q}(\zeta_n):\mathbb{Q}]\leq \phi(n)$.
+    
+\end{itemize}
+
+\break
+
+\section*{4 (not done)}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $f(x)=x^n-2\in\mathbb{Q}[x]$ with $n\in\mathbb{N}$. Let $\alpha\in\mathbb{C}$ be any $n^{th}$ root of $2$ and $\zeta_n=e^{2\pi i/n}$.
+        Let $E\subseteq\mathbb{C}$ be the splitting field of $f(x)$ over $\mathbb{Q}$.
+        \begin{itemize}
+            \item[(a)] Show that $E=\mathbb{Q}(\alpha,\zeta_n)$.
+            \item[(b)] Let $n\geq 3$. Prove that $E\neq\mathbb{Q}(\alpha)$ and $E\neq\mathbb{Q}(\zeta_n)$. 
+        \end{itemize}
     \end{question}
 \end{myBox}
 
@@ -55,35 +164,39 @@ colback=blue!10
 
 \break
 
-\section*{3}
+\section*{5 (not done)}
 \begin{myBox}[]{}
     \begin{question}
-        
+
+        \hfil
+
+        \begin{itemize}
+            \item[(a)] Find $[\mathbb{Q}(\sqrt[10]{2}):\mathbb{Q}(\sqrt{2})]$.
+            \item[(b)] Prove that $x^5-2$ is irreducible over $\mathbb{Q}(\sqrt{2})[x]$. 
+        \end{itemize}
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
 
-\break
+\begin{itemize}
+    \item[(a)] First, consider the extension $\mathbb{Q}(\sqrt[10]{2})/\mathbb{Q}$: Given $x^{10}-2\in\mathbb{Z}[x]\subseteq\mathbb{Q}[x]$, since with prime $p=2$, $x^{10}-2$ satisfies the Eisenstein Criterion,
+    then it is in fact irreducible over $\mathbb{Q}[x]$.
 
-\section*{4}
-\begin{myBox}[]{}
-    \begin{question}
-        
-    \end{question}
-\end{myBox}
+    Now, since $\sqrt[10]{2}$ satisfies $(\sqrt[10]{2})^{10}-2=2-2=0$, it is a root of $x^{10}-2$.
+    Then, because $x^{10}-2$ is monic and irreudicible, it must be the minimal polynomial of $\sqrt[10]{2}$ over $\mathbb{Q}$.
+    So, this implies that $\mathbb{Q}(\sqrt[10]{2})\cong \mathbb{Q}[x]/(x^{10}-2)$, which $[\mathbb{Q}(\sqrt[10]{2}):\mathbb{Q}(\sqrt{2})]=[\mathbb{Q}[x]/(x^{10}-2):\mathbb{Q}]=10$ (the degree of $x^{10}-2$).
 
-\textbf{Pf:}
+    Then, because $\mathbb{Q}\subseteq \mathbb{Q}(\sqrt{2})\subseteq \mathbb{Q}(\sqrt[10]{2})$ (since $(\sqrt[10]{2})^5 = \sqrt{2}$, proving that both $\mathbb{Q},\{\sqrt{2}\}\subseteq \mathbb{Q}(\sqrt[10]{2})$;
+    then $\mathbb{Q}(\sqrt{2})\subseteq \mathbb{Q}(\sqrt[10]{2})$), then by the theorem proven in class, we know:
+    $$10=[\mathbb{Q}(\sqrt[10]{2}):\mathbb{Q}(\sqrt{2})]=[\mathbb{Q}(\sqrt[10]{2}):\mathbb{Q}(\sqrt{2})]\cdot [\mathbb{Q}(\sqrt{2}):\mathbb{Q}]$$
+    Now, because of the same arument about Eisenstein Criterion, $x^2-2\in\mathbb{Q}[x]$ is irreducible, and since $\sqrt{2}$ is a root of it, while $x^2-2$ is being both irreducible and monic,
+    then it is in fact the minimal polynomial of $\sqrt{2}$ over $\mathbb{Q}$. Then, $\mathbb{Q}(\sqrt{2})\cong\mathbb{Q}[x]/(x^2-2)$, showing that $[\mathbb{Q}(\sqrt{2}):\mathbb{Q}]=[\mathbb{Q}[x]/(x^2-2):\mathbb{Q}]=2$.
 
-\break
-
-\section*{5}
-\begin{myBox}[]{}
-    \begin{question}
-        
-    \end{question}
-\end{myBox}
-
-\textbf{Pf:}
+    Hence, we get the following:
+    $$10=[\mathbb{Q}(\sqrt[10]{2}):\mathbb{Q}(\sqrt{2})]\cdot [\mathbb{Q}(\sqrt{2}):\mathbb{Q}]=[\mathbb{Q}(\sqrt[10]{2}):\mathbb{Q}(\sqrt{2})]\cdot 2$$
+    $$\implies [\mathbb{Q}(\sqrt[10]{2}):\mathbb{Q}(\sqrt{2})]=5$$
+    \item[(b)] 
+\end{itemize}
 
 \end{document}
