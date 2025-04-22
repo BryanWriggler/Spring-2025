@@ -1,0 +1,107 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Latex Template}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $H/F$ be a field extension and $f(x), g(x) \in F[x]$. Suppose $K_1,\ K_2$ are splitting
+        fields of $f(x)$ and $g(x)$ respectively, contained in $H$. Prove that $K_1K_2 \coloneqq K_1(K_2)$ is a
+        splitting field of the polynomial $f(x)g(x)$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Define the set of algebraic numbers $\mathbb{A}$ to be the set of all complex numbers which are
+        algebraic over $\mathbb{Q}$. Show that $\mathbb{A}/\mathbb{Q}$ is an infinite algebraic extension.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $n\in\mathbb{N}$ and $\mu_n$ be the (multiplicative) group of $n^{th}$ roots of unity in $\mathbb{C}$. A
+        generator of $\mu_n$ is called a primitive $n^{th}$ root of unity. Let $F_n\subseteq\mathbb{C}$ be the splitting
+        field of $x^n-1$ over $\mathbb{Q}$.
+        \begin{itemize}
+            \item[(a)]If $\zeta_n$ is any primitive $n^{th}$ root of unity, prove that $F_n=\mathbb{Q}(\zetan)$
+            \item[(b)]Prove that any complex root of $m_{\zeta_n,\mathbb{Q}}(x)$ is also a primitive $n^{th}$ root of unity.
+            \item[(c)]Prove that $[F_n:\mathbb{Q}]\leq\phi(n)$ where $\phi$ is the famous Euler's totient function.
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $f(x)=x^n-2\in\mathbb{Q}[x]$ with $n\in\mathbb{N}$. Let $\alpha\in\mathbb{C}$ be any $n^{th}$ root of $2$ and $\zeta_n=e^{2\pi i/n}$.
+        Let $E\subseteq \mathbb{C}$ be the splitting field of $f(x)$ over $\mathbb{Q}$.
+        \begin{itemize}
+            \item[(a)] Show that $E=\mathbb{Q}(\alpha,\zeta_n)$
+            \item[(b)] Let $n\geq 3$. Prove that $E\neq\mathbb{Q}(\alpha)$ and $E\neq\mathbb{Q}(\zeta_n)$. 
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{5}
+\begin{myBox}[]{}
+    \begin{question}
+        \begin{itemize}
+            \item[(a)] Fine $[\mathbb{Q}(\sqrt[10]{2}):\mathbb{Q}(\sqrt{2})]$
+            \item[(b)] Prove that $x^5-2$ is irreducible over $\mathbb{Q}(\sqrt{2})[x]$ 
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\end{document}
