@@ -1,0 +1,235 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math 118C HW2}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Rudin Pg. 239 Problem 9:
+
+        If $f$ is a differentiable mapping of a \emph{connected} open set $E\subset \mathbb{R}^n$ into $\mathbb{R}^m$, and if $f'(x)=0$ for every $x\in E$, prove that $f$ is constant in $E$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+To prove that $f(x)=(f_1(x),...,f_m(x))$ for $f_1,...,f_m:E\rightarrow\mathbb{R}$ is constant, is suffices to show that each individual $f_i$ is constant in $E$.
+
+Since $f$ is differentiable, each $f_i$ is also differentiable, hence $Df_i$ exists for all $x\in E$; also, since $f'(x)=0$, this implies that each $Df_i(x)=0$ for all $x\in E$.
+
+Now, for all index $i\in\{1,...,m\}$, the function $f_i:E\rightarrow \mathbb{R}$ satisfies:
+
+\hfil
+
+\textbf{1. $f_i$ is constant within a Neighborhood:}
+
+Consider any $x\in E$, since $E$ is open, then there exists $r>0$, such that the open ball $B_r(x)\subseteq E$.
+Since all $x\in E$ satisfies $Df_i(x)=0$, then $\|Df_i(x)\|\leq 0$ for all $x\in E$, in particular, it also applies to $B_r(x)$.
+
+Now, since $B_r(x)$ is convex, while the differential $Df_i$ is uniformly bounded by $0$ in $B_r(x)$, then for all $y\in B_r(x)$, the following inequality is true:
+$$0\leq |f_i(y)-f_i(x)| \leq 0\cdot |y-x| = 0$$
+THis enforces $f_i(y)=f_i(x)$, hence $f_i(x)$ is a constant function when restricting to $B_r(x)$.
+
+\hfil
+
+\textbf{2. $f_i$ is constant in $E$:}
+
+Now, fix any $x\in E$, and define $U_x, V_x\subseteq E$ as follow:
+$$U_x=\{y\in E\ |\ f_i(y)=f_i(x)\},\quad V_x=\{z\in E\ |\ f_i(z)\neq f_i(x)\}$$
+Since for all point $y\in E$, either $f_i(y)=f_i(x)$ or $f_i(y)\neq f_i(x)$, then $y\in U_x\cup V_x$, so $E\subseteq U_x\cup V_x$, or $E=U_x\cup V_x$. Also, by definition, $U_x\cap V_x = \emptyset$, the two sets are disjoint.
+
+Also, both $U_x$ and $U_y$ must be open: 
+
+For any $y\in U_x\subseteq E$, since there exists $r'>0$, such that the open ball $B_{r'}(y)\subseteq E$. Since in the first part, we've proven that $f_i$ is a constant when restricting to any open ball in $E$,
+then all $y'\in B_{r'}(y)$ satisfies $f_i(y')=f_i(y)$, while by definition, $y\in U_x$ implies $f_i(y)=f_i(x)$, so $f_i(y')=f_i(x)$, or $y'\in U_x$.
+Hence, $B_{r'(y)}\subseteq U_x$, proven that $U_x$ is open.
+
+Similarly, for any $z\in V_x\subseteq E$, since there exists $r''>0$, such that the open ball $B_{r''}(z)\subseteq E$, then because $f_i$ restricting to any open ball in $E$ is a constant,
+then all $z'\in B_{r''}(z)$ satisfies $f_i(z')=f_i(z)$, while by definition, $z\in V_x$ implies $f_i(z)\neq f_i(x)$, so $f_i(z')\neq f_i(x)$, showing that $z'\in V_x$.
+Hence, $B_{r''}(z)\subseteq V_x$, proven that $V_x$ is also open.
+
+Then, since $U_x,V_x$ are two open sets satisfying $U_x\cap V_x = \emptyset$, while $U_x\cap V_x=E$, then they form a separation of $E$. If both $U_x$ and $V_x$ are not empty, then it contradicts the assumption that $E$ is connected,
+hence we must have one of the sets being empty.
+
+Which, because there exists $r>0$, with $B_r(x)\subseteq E$, then from the above proof, we know $B_r(x)\subseteq U_x$, proving that $U_x$ is not empty. Hence, $V_x=\emptyset$, showing that $U_x=E$.
+So, all $y\in E$ must have $f_i(y)=f_i(x)$, showing that $f_i$ is constant in $E$.
+
+\hfil
+
+Since all $f_i$ (with $i\in \{1,...,m\}$) must be constant, then the original function $f:E\rightarrow\mathbb{R}^m$ must also be constant.
+
+\break
+
+\section*{2 (not done)}
+\begin{myBox}[]{}
+    \begin{question}
+        Rudin Pg. 239-240 Problem 12:
+
+        Fix two real numbers $a$ and $b$, $0<a<b$. Define a mapping $f=(f_1,f_2,f_3)$ of $\mathbb{R}^2$ into $\mathbb{R}^3$ by 
+        $$f_1(s,t)=(b+a\cos(s))\cos(t),\quad f_2(s,t)=(b+a\cos(s))\sin(t),\quad f_3(s,t)=a\sin(s)$$
+        Describe the range $K$ of $f$. (It is a certain compact subset of $\mathbb{R}^3$).
+
+        \begin{itemize}
+            \item[(a)] SHow that there are exactly $4$ points $p\in K$ such that 
+            $$(\nabla f_1)(f^{-1}(p))=0$$
+            Find these points.
+            \item[(b)] Determine the set of all $q\in K$ such that 
+            $$(\nabla f_3)(f^{-1}(q))=0$$
+            \item[(c)] Show that one of the points $p$ found in part (a) corresponds to a local maximum of $f_1$, one corresponds to a local minimum, and that the other two are neither (they are so-called "saddle points").
+            
+            Whic of the points $q$ found in part (b) correspond to maxima or minima?
+            \item[(d)] Let $\lambda$ be an irrational real number, and define $g(t)=f(t,\lambda t)$. Prove that $g$ is a $1-1$ mapping of $\mathbb{R}$ onto a dense subset of $K$. Prove that
+            $$|g'(t)|^2 = a^2+\lambda^2(b+a\cos(t))^2$$
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Rudin Pg. 240 Problem 13:
+
+        Suppose $f$ is differentiable mapping of $\mathbb{R}$ into $\mathbb{R}^3$ such that $|f(t)|=1$ for every $5$.
+        Prove that $f'(t)\cdot f(t)=0$. Interpret this result geometrically.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Since $|f(t)|=1$, then the function $g:\mathbb{R}\rightarrow\mathbb{R}$ given by $g(t)=f(t)\cdot f(t)=|f(t)|^2 = 1$, hence $g'(t)=0$.
+
+On the other hand, since $g'(t) = \frac{d}{dt}(f(t)\cdot f(t))$, while the derivative given by product rule for real dot product is given by:
+$$\frac{d}{dt}(f(t)\cdot f(t)) = f'(t)\cdot f(t) + f(t)\cdot f'(t) = 2f'(t)\cdot f(t)$$
+Hence, $2f'(t)\cdot f(t)=0$, or $f'(t)\cdot f(t)=0$.
+
+Geometrically, since $|f(t)|=1$, then $f$ is in fact a curve on the 2-dimensional sphere $S^2$; since $f'(t)$ is the tangent vector (the traveling direction) of the curve at any given point,
+then $f'(t)\cdot f(t)=0$ implies the tangent vector and the position of the curve is always orthogonal to each other, showing that to travel on a sphere, the tangent vector is necessarily orthogonal to the surface.
+
+\hfil
+
+\hfil
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        Show that the continuity of $f'$ at the point $a$ is needed in the inverse function theorem, even in the case $n=1$: if
+        $$f(t)=t+2t^2\sin\left(\frac{1}{t}\right)$$
+        for $t\neq 0$, and $f(0)=0$, then $f'(0)=1$, $f'$ is bounded in $(-1,1)$, but $f$ is not $1-1$ in any neighborhood of $0$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\textbf{Derivative at $0$:}
+
+The derivative of the function at $0$ is given as follow:
+$$f'(0)=\lim_{h\rightarrow 0}\frac{f(h)-f(0)}{h}=\lim_{h\rightarrow 0}\frac{h+2h^2\sin(1/h)}{h}=\lim_{h\rightarrow 0}(1+2h\sin(1/h))=1$$
+(Note: since $|h\sin(1/h)|\leq |h|$ for all $0<h$, then $0\leq \lim_{h\rightarrow 0}|h\sin(1/h)|\leq \lim_{h\rightarrow 0}|h|=0$, so the limit is $0$).
+
+\hfil
+
+\textbf{Derivative is bounded in $(-1,1)$, but not continuous at $0$:}
+
+For any nonzero $t\in (-1,1)$, based on differentiation rules, we get the following:
+$$f'(t)=1+4t\sin\left(\frac{1}{t}\right) + 2t^2\cos\left(\frac{1}{t}\right)\cdot\frac{-1}{t^2} = 1+4t\sin\left(\frac{1}{t}\right)-2\cos\left(\frac{1}{t}\right)$$
+Which, its bound is given as follow:
+$$|f'(t)| \leq 1+\left|4t\sin\left(\frac{1}{t}\right)\right| + \left|2\cos\left(\frac{1}{t}\right)\right| \leq 1+4+2 = 7$$
+(Note: $\sin,\cos$ are both bounded by $1$, while $t\in (-1,1)$ implies $|t|<1$).
+
+So, conbine with the previous part that $f'(0)=1$, all $t\in (-1,1)$ satisfies $|f'(t)|\leq 7$, hence $f'$ is bounded in $(-1,1)$.
+
+Yet, since $\lim_{t\rightarrow 0}f'(t)$ does not exist, then $f'(t)$ is not continuous at $0$.
+
+\hfil
+
+\textbf{Inverse Function Theorem doesn't apply:}
+
+For any open neighborhood $U\subseteq \mathbb{R}$ of $0$, there exists $\epsilon>0$, such that $(-\epsilon,\epsilon)\subseteq U$. Now, by Archimedean's Property,
+choose $n\in\mathbb{N}$ such that $0<\frac{1}{2n\pi}<\epsilon$ (which, since $2n\pi < 2n\pi +\pi/2 < 2n\pi +\pi$, then $0<\frac{1}{2n\pi +\pi}<\frac{1}{2n\pi +\pi/2}<\frac{1}{2n\pi}<\epsilon$, 
+so all of these points are within $(-\epsilon,\epsilon)$).
+
+Let $t_1=\frac{1}{2n\pi +\pi},\ t_2=,\frac{1}{2n\pi +\pi/2}\ t_3=\frac{1}{2n\pi}$. If we evaluate $f$ at these points, we get:
+$$f_1=f\left(\frac{1}{2n\pi}\right)=\frac{1}{2n\pi}+2\left(\frac{1}{2n\pi}\right)^2\sin\left(\frac{1}{1/(2n\pi)}\right)=\frac{1}{2n\pi}+2\left(\frac{1}{2n\pi}\right)^2\sin(2n\pi) = \frac{1}{2n\pi}$$
+
+$$f_2 = f\left(\frac{1}{2n\pi +\pi/2}\right)=\frac{1}{2n\pi +\pi/2}+2\left(\frac{1}{2n\pi +\pi/2}\right)^2\sin\left(\frac{1}{1/(2n\pi +\pi/2)}\right)$$
+$$= \frac{1}{2n\pi +\pi/2}+2\left(\frac{1}{2n\pi +\pi/2}\right)^2\sin\left(2n\pi +\frac{\pi}{2}\right)=\frac{1}{2n\pi +\pi/2}+2\left(\frac{1}{2n\pi +\pi/2}\right)^2$$
+
+$$f_3 = f\left(\frac{1}{2n\pi +\pi}\right)=\frac{1}{2n\pi +\pi}+2\left(\frac{1}{2n\pi +\pi}\right)^2\sin\left(\frac{1}{1/(2n\pi +\pi)}\right)$$
+$$=\frac{1}{2n\pi +\pi}+2\left(\frac{1}{2n\pi +\pi}\right)^2\sin(2n\pi+\pi)=\frac{1}{2n\pi +\pi}$$
+If we compare $f_2$ and $f_3$, we get:
+$$f_2=\frac{1}{2n\pi +\pi/2}+2\left(\frac{1}{2n\pi +\pi/2}\right)^2>\frac{1}{2n\pi +\pi/2}>\frac{1}{2n\pi +\pi}=f_3$$
+On the other hand, if we choose $n>\frac{\pi}{16-4\pi}>0$, we get the following inequality:
+$$16n-4n\pi > \pi\implies 16n -4n\pi -\pi>0\implies \frac{16n -(4n\pi +\pi)}{4n(4n\pi +\pi)}>0 \implies \frac{4}{4n\pi +\pi}-\frac{1}{4n}>0 $$
+$$\implies \frac{2}{2n\pi + \pi/2}-\frac{\pi/2}{2n\pi}>0 \implies 2\left(\frac{1}{2n\pi+\pi/2}\right)^2-\frac{\pi/2}{2n\pi(2n\pi+\pi/2)}>0$$
+$$\implies 2\left(\frac{1}{2n\pi+\pi/2}\right)^2+\left(\frac{1}{2n\pi+\pi/2}-\frac{1}{2n\pi}\right)>0$$
+$$\implies \frac{1}{2n\pi+\pi/2}+2\left(\frac{1}{2n\pi+\pi/2}\right)^2>\frac{1}{2n\pi}$$
+Which, this inequality implies the following:
+$$f_2 = \frac{1}{2n\pi+\pi/2}+2\left(\frac{1}{2n\pi+\pi/2}\right)^2 >\frac{1}{2n\pi}=f_1$$
+So, $f_2>f_3$ and $f_2>f_1$
+
+Now, choose any $y$ satisfying $f_3<y<f_2$ and $f_1<y<f_2$. Since by the notation, we have $t_1<t_2<t_3$, and $f_1=f(t_1)$, $f_2=f(t_2)$, and $f_3=f(t_3)$,
+then because $f$ is a continuous function, by Intermediate Value Theorem, there exists $c\in (t_1,t_2)$ and $c'\in (t_2,t_3)$, such that $f(c)=f(c')=y$.
+
+Which, because $c\neq c'$, then $f$ is not injective; also, since $0<t_1<c<t_2<c'<t_3<\epsilon$, then $c,c'\in (-\epsilon,\epsilon)\subseteq U$.
+This shows that $f$ restricting to $U$ is not injective. Then, because $f|U$ for any open neighborhood $U$ of $0$ is not injective, then Inverse Function Theorem fails.
+
+Beca
+
+\break
+
+\section*{5}
+\begin{myBox}[]{}
+    \begin{question}
+        Lef $f=(f_1,f_2)$ be the mapping of $\mathbb{R}^2$ into $\mathbb{R}^2$ given by 
+        $$f_1(x,y)=e^x\cos(y),\quad f_2(x,y)=e^x\sin(y)$$
+        \begin{itemize}
+            \item[(a)] What is the range of $f$?
+            \item[(b)] Show that the Jacobian of $f$ is not zero at any point of $\mathbb{R}^2$. Thus every point of $\mathbb{R}^2$
+            has a neighborhood in which $f$ is $1-1$. Nevertheless, $f$ is not $1-1$ on $\mathbb{R}^2$.
+            \item[(c)] Put $a=(0,\pi/3)$, $b=f(a)$, let $g$ be the continuous inverse of $f$, defined in a neighborhood of $b$, such that $g(b)=a$.
+            Find an explicit formula of $g$, compute $f'(a)$ and $g'(b)$, and verify the formula (52).
+
+            (Note: Formula (52) states if $g$ is an inverse of $f$, then for any $y$ in the given domain of $f$, $g'(y)=(f'(g(y)))^{-1}$).
+            \item[(d)] What are the images under $f$ of lines parallel to the coordinate axes?
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\end{document}
