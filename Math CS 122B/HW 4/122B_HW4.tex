@@ -89,7 +89,7 @@ Which, the above series converges normally in $\mathbb{C}\setminus L$, hence the
 For any integer $n\geq 3$, $n-2\geq 1$, then the $(n-2)^{th}$ derivative is given as:
 $$\frac{d^{(n-2)}}{dz^{(n-2)}}\wp(z)=\frac{d^{(n-2)}}{dz^{(n-2)}}\frac{1}{z^2}+\sum_{\substack{w\in L \\ w\neq 0}}\frac{d^{(n-2)}}{dz^{(n-2)}}\frac{d^{(n-2)}}{dz^{(n-2)}}\left(\frac{1}{(z-w)^2}-\frac{1}{w^2}\right)$$
 $$ = \frac{(-1)^n\cdot (n-1)!}{z^n}+\sum_{\substack{w\in L \\ w\neq 0}}\frac{(-1)^n\cdot(n-1)!}{(z-w)^n} = (-1)^n\cdot(n-1)!\sum_{w\in L}\frac{1}{(z-w)^n}$$
-Hence, they're in fact some multiple of the derivative of Weierstrass $\wp$-function.
+Hence, for $n\geq 3$, the series $\sum_{\substack{w\in L}}\frac{1}{(z-w)^n}$ is in fact some multiple of the $(n-2)^{th}$ derivative of Weierstrass $\wp$-function.
 
 \break
 
@@ -117,9 +117,11 @@ For all $b\in\overline{\mathbb{C}}$, if $b=\infty$, we know $\wp$ satisfies $\wp
 
 On the other hand, if $b\in\mathbb{C}$, consider the function $\wp(z)-b$, which is again an elliptic function with poles at all points of $L$.
 Then, since its derivative is again given by $\wp'(z)$, consider the elliptic function $\frac{\wp'(z)}{\wp(z)-b}$, with a suitable fundamental region $P$ such that $\partial P$
-contains no singularities. Then, we get:
+contains no singularities. Integrate along the boundary $\partial P$, we get:
 $$\frac{1}{2\pi i}\int_{\partial P}\frac{\wp'(z)}{\wp(z)-b}dz = 0$$
-And, by argument principle, the above integral provides $(\textmd{Number of zeros of }(\wp-b)\textmd{ in }P)-(\textmd{Number of poles of }(\wp-b)\textmd{ in }P)$. 
+And, by argument principle, the above integral provides $(\textmd{Number of zeros of }(\wp-b)\textmd{ in }P)-(\textmd{Number of poles of }(\wp-b)\textmd{ in }P)$. Which, the integral is $0$
+implies that the number of zeros and the number of poles in $P$ for $\wp-b$ must be the same.
+ 
 Since in given fundamental region $P$, there exists precisely one double pole (the point $w\in L$ that's also contained in $P$),
 hence this forces $\wp-b$ to have two zeros (including multiplicity) within the region $P$.
 So, there exists $z\in P$, with  $\wp(z)-b=0$, or $\wp(z)=b$. This proves surjectivity of $\wp(z)$.
