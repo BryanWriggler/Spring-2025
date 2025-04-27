@@ -93,7 +93,7 @@ Since all $f_i$ (with $i\in \{1,...,m\}$) must be constant, then the original fu
 
 \hfil
 
-\section*{2 (part (d) not done)}
+\section*{2}
 \begin{myBox}[]{}
     \begin{question}
         Rudin Pg. 239-240 Problem 12:
@@ -256,14 +256,25 @@ Also, since $z=a\sin(s)$, then $-a\leq z\leq a$.
 
     \textbf{$g$ has a dense image:}
 
-    Since for all $y\in K$, there exists $(s,t)\in [0,2\pi]\times [0,2\pi]$, such that $f(s,t)=y$, then to show $g(\mathbb{R})$ is dense in $K$, it suffices to show that the set $U=\{(s,t)\in [0,2\pi]\times [0,2\pi]\ |\ f(s,t)\in g(\mathbb{R})\}$ is dense in $[0,2\pi]\times [0,2\pi]$.
+    Since for all $y\in K$, there exists $(s,t)\in [0,2\pi]\times [0,2\pi]$, such that $f(s,t)=y$, then to show $g(\mathbb{R})$ is dense in $K$, it suffices to show that the set $U=\{(s,t)\in [0,2\pi]\times [0,2\pi]\ |\ f(s,t)\in g(\mathbb{R})\}$ is dense in $[0,2\pi]\times [0,2\pi]$:
     
     If $U$ is dense in $[0,2\pi]\times [0,2\pi]$, any $(s,t)$ in this region has a sequence $(\bar{x}_n)_{n\in\mathbb{N}}\subset U$ converging to $(s,t)$, then if consider the image, because of continuity of $f$, $\lim_{n\rightarrow\infty}f(\bar{x}_n) = f(s,t)=y$, showing that $(f(\bar{x}_n))_{n\in\mathbb{N}}$
     is a sequence in $g(\mathbb{R})$ that converges to $y$ (note: since $\bar{x}_n\in U$ for all $n\in\mathbb{N}$, then $f(\bar{x}_n)\in g(\mathbb{R})$ by definition). Which, since this is true for arbitrary $y\in K$, then $y$ is a limit point of $g(\mathbb{R})$, showing that $g(\mathbb{R})$ is dense in $K$.
 
     \hfil
 
-    To prove that $U$ is dense in $[0,2\pi]\times [0,2\pi]$, for any $(s,t)\in [0,2\pi]\times [0,2\pi]$, for all $n\in\mathbb{N}$, let $\bar{x}_n\in [0,2\pi]\times [0,2\pi]$ to satisfy $
+    To prove that $U$ is dense in $[0,2\pi]\times [0,2\pi]$, for any $(s,t)\in [0,2\pi]\times [0,2\pi]$, for all $n\in\mathbb{N}$, let $t_n\in [0,2\pi]$ to satisfy $t_n \equiv (\lambda s+2n\pi \lambda)\mod\ 2\pi$. Then, the collection $(t_n)_{n\in\mathbb{N}}\subset [0,2\pi]$ is infinite 
+    (Since for any distinct $n,k\in\mathbb{N}$, $t_n - t_k = 2(n-k)\pi\lambda \mod 2\pi$, then since $2(n-k)\pi\lambda$ is not an integer multiple of $2\pi$ due to the fact that $(n-k)\lambda$ is irrational, then $2(n-k)\pi\lambda\mod\ 2\pi\neq 0$, so $t_n\neq t_k$).
+
+    Which, by Bolzano-Weierstrass Theorem, since $(t_n)_{n\in\mathbb{N}}$ is an infinite sequence with in $[0,2\pi]$ a bounded set, there exists a convergent subsequence $(t_{n_k})_{k\in\mathbb{N}}$ (which this subsequence is cauchy).
+    Hence, for all $\epsilon>0$, there exists $K$, such that $k\geq K$ implies $|t_{n_{k+1}}-t_{n_k}|<\epsilon$.
+
+    Then, because $(t_{n_{k+1}}-t_{n_k}) = 2(n_{k+1}-n_k)\pi\lambda \mod\ 2\pi$, it implies that for given $\epsilon>0$, there exists $m,n\in\mathbb{N}$ (in this case, $n_{k}$ and $n_{k+1}$) such that $d = |2(m-n)\pi\lambda\mod\ 2\pi| < \epsilon$, which implies we can find a subsequence of $(t_n)_{n\in\mathbb{N}}$,
+    such that each consequent term has difference of $\epsilon$ when not surpassing $2\pi$. Hence, $(t_n)_{n\in\mathbb{N}}$ is dense (since for every interval with length $\epsilon$, we can find two points with difference $d<\epsilon$, and use this difference to generate a subcollection such that the consecutive terms have difference $d$, then this subcollection has at least a point lie in each $\epsilon$ interval).
+
+    Lastly, since $(t_n)_{n\in\mathbb{N}}$ is dense in $[0,2\pi]$, then $t\in [0,2\pi]$ is a limit point. Hence, there exists a subsequence $(t_{n_k})_{k\in\mathbb{N}}$ that converges to $t$.
+    On the other hand, if consider the sequence of points $((s,t_{n_k}))_{n\in\mathbb{N}}\subset [0,2\pi]\times [0,2\pi]$, since $t_{n_k}\equiv \lambda(s+2n_k\pi)\mod\ 2\pi$, while $s\equiv (s+2n_k\pi)\mod\ 2\pi$ for each $k\in\mathbb{N}$, then $(s,t_{n_k})$ is a representative of $(s+2n_k\pi, \lambda(s+2n_k\pi))$ (or, $f(s,t_{n_k})=f(s+2n_k\pi, \lambda(s+2n_k\pi))\in g(\mathbb{R})$),
+    then since $\lim_{k\rightarrow\infty} (s,t_{n_k}) = (s,t)$ while the collection $((s,t_{n_k}))_{k\in\mathbb{N}}\subset U$ (since the image is in $g(\mathbb{R})$), this shows that $(s,t)\in [0,2\pi]\times [0,2\pi]$ is a limit point of $U$. Hence, $U$ is dense in $[0,2\pi]\times [0,2\pi]$, which implies $g(\mathbb{R})$ is dense in $K$.
 
     \hfil
 
@@ -304,7 +315,9 @@ Also, since $z=a\sin(s)$, then $-a\leq z\leq a$.
 
 \end{itemize}
 
-\break
+\hfil
+
+\hfil
 
 \section*{3}
 \begin{myBox}[]{}
@@ -327,9 +340,7 @@ Hence, $2f'(t)\cdot f(t)=0$, or $f'(t)\cdot f(t)=0$.
 Geometrically, since $|f(t)|=1$, then $f$ is in fact a curve on the 2-dimensional sphere $S^2$; since $f'(t)$ is the tangent vector (the traveling direction) of the curve at any given point,
 then $f'(t)\cdot f(t)=0$ implies the tangent vector and the position of the curve is always orthogonal to each other, showing that to travel on a sphere, the tangent vector is necessarily orthogonal to the surface.
 
-\hfil
-
-\hfil
+\break
 
 \section*{4}
 \begin{myBox}[]{}
@@ -399,7 +410,7 @@ This shows that $f$ restricting to $U$ is not injective. Then, because $f|U$ for
 
 \break
 
-\section*{5 (part (c) not done)}
+\section*{5}
 \begin{myBox}[]{}
     \begin{question}
         Rudin Pg. 241 Problem 17:
@@ -464,8 +475,76 @@ This shows that $f$ restricting to $U$ is not injective. Then, because $f|U$ for
 
     \hfil
 
-    \item[(c)] 
+    \item[(c)] Given $a=(0,\pi/3)$, then $b=f(a)=(e^0\cos(\pi/3),e^0\sin(\pi/3)) = (\cos(\pi/3),\sin(\pi/3))$. After applying inverse function theorem, since there exists open subsets $U,V\subseteq \mathbb{R}^2$ where $a\in U$, $b\in V$,
+    such that $f:U\rightarrow V$ is a bijection, and its inverse $f^{-1}:V\rightarrow U$ is also continuously differentiable, then $f$ must also be an open mapping (since $f^{-1}$ is differentiable, it is continuous in $V$, which having the inverse being continuous enforces $f$ to be an open mapping).
+    Which, we can in fact restrict or domain $U$ and codomain $V$ to be even smaller, in particular, can restrict $U$ to be a subset of $(-1,1)\times (\pi/4,\pi/2)$ (which contains $a=(0,\pi/3)$).
 
+    Now, define $g:\mathbb{R}^2\setminus\{(0,v)\ |\ v\in\mathbb{R}\}\rightarrow \mathbb{R}^2$ by $g(u,v)=(\ln(\sqrt{u^2+v^2}),\arctan(v/u))$. Then, for all $(x,y)\in U\subseteq (-1,1)\times (\pi/4,\pi/2)$, we get:
+    $$f(x,y) = (e^x\cos(y),e^x\sin(y))$$
+    $$g(f(x,y)) = \left(\ln\left(\sqrt{(e^x\cos(y))^2+(e^x\sin(y))^2}\right), \arctan\left(\frac{e^x\sin(y)}{e^x\cos(y)}\right)\right)$$
+    $$ = (\ln(\sqrt{e^{2x}}), \arctan(\tan(y))) = (\ln(e^x), y) = (x,y)$$
+    (Note: $\arctan(tan(y))=y$ is because $y\in (\pi/4,\pi/2)\subset (-\pi/2,\pi/2)$).
+
+    On the other hand, for all $(u,v)\in f(U) = V$, we have the following:
+    $$g(u,v)=(\ln(\sqrt{u^2+v^2}),\arctan(v/u))$$
+    $$f(g(u,v)) = \left(e^{\ln(\sqrt{u^2+v^2})}\cos(\arctan(v/u)),e^{\ln(\sqrt{u^2+v^2})}\sin(\arctan(v/u))\right)$$
+    $$ = \left(\sqrt{u^2+v^2}\cdot\frac{u}{\sqrt{u^2+v^2}},\sqrt{u^2+v^2}\cdot \frac{v}{\sqrt{u^2+v^2}}\right) = (u,v)$$
+    (Note: since for all $(x,y)\in U$, $y\in (\pi/4,\pi/2)$, hence its image $(e^x\cos(y),e^x\sin(y))$ have both $e^x\cos(y),e^x\sin(y)>0$, showing that all points $(u,v)\in f(U)$ satisfies $u,v>0$. Hence, the above formula for $(\cos\circ \arctan)$ and $(\sin\circ \arctan)$ apply).
+
+    Since the proposed $g$ when restricting to $V$ is indeed an inverse of $f$ on $U$, it is the desired explicit form of the inverse of $f$ around the point $a$.
+
+    \hfil
+
+    Now, to calculate the differential, at point $a$ the differential of $f$ is given by:
+    $$Df(a) = Df(0,\pi/3) = \begin{pmatrix}
+        e^0\cos(\pi/3) & -e^0\sin(\pi/3)\\
+        e^0\sin(\pi/3) & e^0\cos(\pi/3)
+    \end{pmatrix} = \begin{pmatrix}
+        \cos(\pi/3)&-\sin(\pi/3)\\
+        \sin(\pi/3)&\cos(\pi/3)
+    \end{pmatrix}$$
+    Now, consider the differential of $g(u,v) = (\ln(\sqrt{u^2+v^2}),\arctan(v/u))$, let $g_1(u,v)=\ln(\sqrt{u^2+v^2})$ and $g_2(u,v)=\arctan(v/u)$, we get:
+    $$Dg(u,v) = \begin{pmatrix}
+        \frac{\partial g_1}{\partial u} & \frac{\partial g_1}{\partial v}\\
+        \frac{\partial g_2}{\partial u} & \frac{\partial g_2}{\partial v}
+    \end{pmatrix} = \begin{pmatrix}
+        \frac{1}{\sqrt{u^2+v^2}}\cdot \frac{2u}{2\sqrt{u^2+v^2}} & \frac{1}{\sqrt{u^2+v^2}}\cdot \frac{2v}{2\sqrt{u^2+v^2}}\\
+        \frac{-v/u^2}{(v/u)^2+1} & \frac{1/u}{(v/u)^2+1}
+    \end{pmatrix}$$
+    $$ = \begin{pmatrix}
+        \frac{u}{u^2+v^2} & \frac{v}{u^2+v^2}\\
+        \frac{-v}{v^2+u^2} & \frac{u}{v^2+u^2}
+    \end{pmatrix} = \frac{1}{u^2+v^2}\begin{pmatrix}
+        u&v\\ -v & u
+    \end{pmatrix}$$
+    Then, with $b = f(a) = (\cos(\pi/3),\sin(\pi/3))$, we have $Dg(f(a)) = Dg(b)$ given by:
+    $$Dg(\cos(\pi/3),\sin(\pi/3)) = \frac{1}{\cos^2(\pi/3)+\sin^2(\pi/3)}\begin{pmatrix}
+        \cos(\pi/3) & \sin(\pi/3)\\
+        -\sin(\pi/3) & \cos(\pi/3)
+    \end{pmatrix} = \begin{pmatrix}
+        \cos(\pi/3) & \sin(\pi/3)\\
+        -\sin(\pi/3) & \cos(\pi/3)
+    \end{pmatrix}$$
+
+    Recall that a given $2\times 2$ invertible matrix has its inverse given as follow:
+    $$\begin{pmatrix}
+        a&b\\c&d
+    \end{pmatrix}^{-1} = \frac{1}{ad-bc}\begin{pmatrix}
+        d&-b\\-c&a
+    \end{pmatrix}$$
+    Then, when verify the inverse of $Df(a)$, we get:
+    $$(Df(a))^{-1} = \begin{pmatrix}
+        \cos(\pi/3)&-\sin(\pi/3)\\
+        \sin(\pi/3)&\cos(\pi/3)
+    \end{pmatrix}^{-1} = \frac{1}{\cos^2(\pi/3) - (-\sin^2(\pi/3))}\begin{pmatrix}
+        \cos(\pi/3)&\sin(\pi/3)\\
+        -\sin(\pi/3)&\cos(\pi/3)
+    \end{pmatrix}$$
+    $$ = \begin{pmatrix}
+        \cos(\pi/3)&\sin(\pi/3)\\
+        -\sin(\pi/3)&\cos(\pi/3)
+    \end{pmatrix} = Dg(f(a))$$
+    Hence, the formula for the differential of the inverse of $f$ is verified (where $Dg(f(a)) = (Df(a))^{-1}$).
 
     \hfil
 
