@@ -59,7 +59,7 @@ Since all $x\in E$ satisfies $Df_i(x)=0$, then $\|Df_i(x)\|\leq 0$ for all $x\in
 
 Now, since $B_r(x)$ is convex, while the differential $Df_i$ is uniformly bounded by $0$ in $B_r(x)$, then for all $y\in B_r(x)$, the following inequality is true:
 $$0\leq |f_i(y)-f_i(x)| \leq 0\cdot |y-x| = 0$$
-THis enforces $f_i(y)=f_i(x)$, hence $f_i(x)$ is a constant function when restricting to $B_r(x)$.
+This enforces $f_i(y)=f_i(x)$, hence $f_i(x)$ is a constant function when restricting to $B_r(x)$.
 
 \hfil
 
@@ -69,21 +69,21 @@ Now, fix any $x\in E$, and define $U_x, V_x\subseteq E$ as follow:
 $$U_x=\{y\in E\ |\ f_i(y)=f_i(x)\},\quad V_x=\{z\in E\ |\ f_i(z)\neq f_i(x)\}$$
 Since for all point $y\in E$, either $f_i(y)=f_i(x)$ or $f_i(y)\neq f_i(x)$, then $y\in U_x\cup V_x$, so $E\subseteq U_x\cup V_x$, or $E=U_x\cup V_x$. Also, by definition, $U_x\cap V_x = \emptyset$, the two sets are disjoint.
 
-Also, both $U_x$ and $U_y$ must be open: 
+Now, we'll verify that both $U_x$ and $U_y$ must be open: 
 
-For any $y\in U_x\subseteq E$, since there exists $r'>0$, such that the open ball $B_{r'}(y)\subseteq E$. Since in the first part, we've proven that $f_i$ is a constant when restricting to any open ball in $E$,
+For any $y\in U_x\subseteq E$, since there exists $r'>0$, such that the open ball $B_{r'}(y)\subseteq E$. In the first part, we've proven that $f_i$ is constant when restricting to any open ball in $E$,
 then all $y'\in B_{r'}(y)$ satisfies $f_i(y')=f_i(y)$, while by definition, $y\in U_x$ implies $f_i(y)=f_i(x)$, so $f_i(y')=f_i(x)$, or $y'\in U_x$.
-Hence, $B_{r'(y)}\subseteq U_x$, proven that $U_x$ is open.
+Hence, $B_{r'(y)}\subseteq U_x$, proving that $U_x$ is open.
 
 Similarly, for any $z\in V_x\subseteq E$, since there exists $r''>0$, such that the open ball $B_{r''}(z)\subseteq E$, then because $f_i$ restricting to any open ball in $E$ is a constant,
 then all $z'\in B_{r''}(z)$ satisfies $f_i(z')=f_i(z)$, while by definition, $z\in V_x$ implies $f_i(z)\neq f_i(x)$, so $f_i(z')\neq f_i(x)$, showing that $z'\in V_x$.
-Hence, $B_{r''}(z)\subseteq V_x$, proven that $V_x$ is also open.
+Hence, $B_{r''}(z)\subseteq V_x$, proving that $V_x$ is also open.
 
-Then, since $U_x,V_x$ are two open sets satisfying $U_x\cap V_x = \emptyset$, while $U_x\cap V_x=E$, then they form a separation of $E$. If both $U_x$ and $V_x$ are not empty, then it contradicts the assumption that $E$ is connected,
+Then, since $U_x,V_x$ are two open sets satisfying $U_x\cap V_x = \emptyset$, while $U_x\cup V_x=E$, then they form a separation of $E$. If both $U_x$ and $V_x$ are not empty, then it contradicts the assumption that $E$ is connected,
 hence we must have one of the sets being empty.
 
-Which, because there exists $r>0$, with $B_r(x)\subseteq E$, then from the above proof, we know $B_r(x)\subseteq U_x$, proving that $U_x$ is not empty. Hence, $V_x=\emptyset$, showing that $U_x=E$.
-So, all $y\in E$ must have $f_i(y)=f_i(x)$, showing that $f_i$ is constant in $E$.
+Lastly, because there exists $r>0$, with $B_r(x)\subseteq E$, then from the above proof, we know $B_r(x)\subseteq U_x$, proving that $U_x$ is not empty. Hence, $V_x=\emptyset$, showing that $U_x=E$.
+So, all $y\in E$ must have $f_i(y)=f_i(x)$, or $f_i$ is constant in $E$.
 
 \hfil
 
@@ -126,9 +126,9 @@ Else, if $f(s_1,t_1)=f(s_2,t_2)$, then the following equations are true:
 $$(b+a\cos(s_1))\cos(t_1)=(b+a\cos(s_2))\cos(t_2)$$
 $$(b+a\cos(s_1))\sin(t_1)=(b+a\cos(s_2))\sin(t_2)$$
 $$a\sin(s_1)=a\sin(s_2)$$
-Since $a\neq 0$, the third equation satisfies $\sin(s_1)=\sin(s_2)$, which happens iff $s_1\equiv s_2\mod\ 2\pi$, so also $\cos(s_1)=\cos(s_2)$.
+Since $a\neq 0$, the third equation satisfies $\sin(s_1)=\sin(s_2)$, which happens iff $s_1\equiv s_2\mod\ 2\pi$, which also implies $\cos(s_1)=\cos(s_2)$.
 And, since $b>a>0$, then for all $s\in\mathbb{R}$, $0<(b-a)\leq(b+a\cos(s))\leq (b+a)$. So, $(b+a\cos(s_1))=(b+a\cos(s_2))>0$,
-which the first two equations imply that $\cos(t_1)=\cos(t_2)$ and $\sin(t_1)=\sin(t_2)$, which this occurs iff $t_1 \equiv t_2\mod\ 2\pi$.
+which the first two equations imply that $\cos(t_1)=\cos(t_2)$ and $\sin(t_1)=\sin(t_2)$, and this occurs iff $t_1 \equiv t_2\mod\ 2\pi$.
 
 Therefore, we can conclude that $f(s_1,t_1)=f(s_2,t_2)$ iff $s_1\equiv s_2\mod\ 2\pi$ and $t_1\equiv t_2\mod\ 2\pi$, which for all $(s',t')\in \mathbb{R}^2$,
 there exists $(s,t)\in [0,2\pi]\times [0,2\pi]$ such that $f(s,t)=f(s',t')$, hence for all point in the image of $f$, one can find such $(s,t)\in [0,2\pi]\times [0,2\pi]$, such that $f(s,t)$ is the chosen point in the image.
@@ -152,7 +152,7 @@ Also, since $z=a\sin(s)$, then $-a\leq z\leq a$.
     Now, suppose $(s,t)\in \mathbb{R}^2$ satisfies $(\nabla f_1)(s,t)=0$, we need $-(b+a\cos(s))\sin(t)=0$. Since $(b+a\cos(s))>0$ is proven beforehand, then $\sin(t)=0$,
     so $t\equiv 0\mod\ 2\pi$, or $t\equiv \pi\mod\ 2\pi$.
 
-    Then, at these possible choice of $t$, since $\cos(t)\neq 0$ and $a\neq 0$, then for $-a\sin(s)\cos(t)=0$ (the first coordinate), we need $\sin(s)=0$, so $s\equiv 0\mod\ 2\pi$, or $s\equiv \pi\mod\ 2\pi$.
+    Then, at these possible points of $t$, since $\cos(t)\neq 0$ and $a\neq 0$, then for $-a\sin(s)\cos(t)=0$, we need $\sin(s)=0$, so $s\equiv 0\mod\ 2\pi$, or $s\equiv \pi\mod\ 2\pi$.
 
     Concluding from above, there are the four following choices:
     $$(s,t)\equiv (0\mod\ 2\pi, 0\mod\ 2\pi),\quad (s,t)\equiv (0\mod\ 2\pi, \pi\mod\ 2\pi)$$
@@ -185,31 +185,31 @@ Also, since $z=a\sin(s)$, then $-a\leq z\leq a$.
         $$f_1(s,t)=(b+a\cos(s))\cos(t) \leq b+a\cos(s) \leq b+a$$
         (Note: $(b+a\cos(s))>0$).
 
-        Hence, $p_1$ with first entry being $b+a$ (or $f_1(f^{-1}(p_1))=b+a$) is in fact a local maximum of $f_1$.
+        Hence, $p_1$ with first entry being $b+a$, is a local maximum of $f_1$.
 
         \hfil
 
         \item For $p_2=(-b-a,0,0)$, similarly, since all $(s,t)\in\mathbb{R}^2$ satisfies:
         $$f_1(s,t)=(b+a\cos(s))\cos(t) \geq -(b+a\cos(s)) = -b-a\cos(s) \geq -b-a$$
-        Hence, $p_2$ with first entry being $-b-a$ (or $f_1(f^{-1}(p_2)) = -b-a$), is a local minimum of $f_1$.
+        Hence, $p_2$ with first entry being $-b-a$, is a local minimum of $f_1$.
 
         \hfil
 
-        \item For $p_3 = (b-a,0,0)$, the points of its preimage is given as $(\pi\mod\ 2\pi, 0\mod\ 2\pi)$, 
+        \item For $p_3 = (b-a,0,0)$, the points of its preimage is congruent to $(\pi\mod\ 2\pi, 0\mod\ 2\pi)$, 
         which any point in its preimage is given as $((2k+1)\pi, 2l\pi)$ for some $k,l\in\mathbb{Z}$.
 
         Then, for all radius $r>0$, choose $d=\min\{\pi/4, r/2\}>0$, since $0<d\leq r/2<r$, then both points $((2k+1)\pi+d, 2l\pi),\ ((2k+1)\pi, 2l\pi+d)\in B_r((2k+1)\pi, 2l\pi)$.
         Evaluate these points, we get:
         $$f_1((2k+1)\pi+d, 2l\pi) =(b+a\cos((2k+1)\pi+d))\cos(2l\pi) = (b-a\cos(d)) > b-a$$
         $$f_1((2k+1)\pi, 2l\pi+d)=(b+a\cos((2k+1)\pi))\cos(2l\pi +d) = (b-a)\cos(d) < b-a$$
-        (Note: since $0<d<\frac{\pi}{4}$, then $ 0<\cos(d)<1$; and, $b-a>0$).
+        (Note: since $0<d\leq \frac{\pi}{4}$, then $ 0<\cos(d)<1$; and, $b-a>0$).
 
-        Since for arbitrary preimage of $p_3$, and arbitrary open neighborhood of it, one can find some points within the neighborhood, such that the output of $f_1$ is greater than or less than $b-a$ (the value of $f_1$ for $p_3$),
+        Since for arbitrary point in the preimage of $p_3$, and arbitrary open neighborhood of it, one can find some points within the neighborhood, such that the output of $f_1$ is greater than or less than $b-a$ (the value of $f_1$ for $p_3$),
         then $p_3$ is neither a local maximum nor a local minimum.
 
         \hfil
 
-        \item For $p_4=(a-b,0,0)$, the points of its preimage is given as $(\pi\mod\ 2\pi, \pi\mod\ 2\pi)$, 
+        \item For $p_4=(a-b,0,0)$, the points of its preimage is congruent to $(\pi\mod\ 2\pi, \pi\mod\ 2\pi)$, 
         which any point in its preimage is given as $((2k+1)\pi, (2l+1)\pi)$ for some $k,l\in\mathbb{Z}$.
 
         Again, for all radius $r>0$, choose $d=\min\{\pi/4,r/2\}>0$, both $((2k+1)\pi+d, (2l+1)\pi),((2k+1)\pi, (2l+1)\pi+d)\in B_r((2k+1)\pi, (2l+1)\pi)$, and their evaluation with $f_1$ are:
@@ -242,7 +242,7 @@ Also, since $z=a\sin(s)$, then $-a\leq z\leq a$.
     $$(b+a\cos(t_1))\cos(\lambda t_1)=(b+a\cos(t_2))\cos(\lambda t_2)$$
     $$(b+a\cos(t_1))\sin(\lambda t_1)=(b+a\cos(t_2))\sin(\lambda t_2)$$
     $$a\sin(t_1)=a\sin(t_2)$$
-    The third equation implies that $t_1\equiv t_2\mod\ 2\pi$, which also implies that $\cos(t_1)=\cos(t_2)$. Then, since $(b+a\cos(t_1))=(b+a\cos(t_2))>0$, then the first two equations satisfy $\cos(\lambda t_1)=\cos(\lambda t_2)$ and $\sin(\lambda t_1)=\sin(\lambda t_2)$,
+    The third equation implies that $t_1\equiv t_2\mod\ 2\pi$, which also implies that $\cos(t_1)=\cos(t_2)$. Then, since $(b+a\cos(t_1))=(b+a\cos(t_2))>0$, the first two equations satisfy $\cos(\lambda t_1)=\cos(\lambda t_2)$ and $\sin(\lambda t_1)=\sin(\lambda t_2)$,
     then $\lambda t_1 \equiv \lambda t_2\mod\ 2\pi$.
 
     Which, $t_1 = 2k\pi + t_2$ for some $k\in\mathbb{Z}$ based on the first relation, so $\lambda t_1 = 2k\lambda \pi + \lambda t_2$, or $\lambda t_1-\lambda t_2 = 2k\lambda \pi$;
@@ -258,8 +258,9 @@ Also, since $z=a\sin(s)$, then $-a\leq z\leq a$.
 
     Since for all $y\in K$, there exists $(s,t)\in [0,2\pi]\times [0,2\pi]$, such that $f(s,t)=y$, then to show $g(\mathbb{R})$ is dense in $K$, it suffices to show that the set $U=\{(s,t)\in [0,2\pi]\times [0,2\pi]\ |\ f(s,t)\in g(\mathbb{R})\}$ is dense in $[0,2\pi]\times [0,2\pi]$:
     
-    If $U$ is dense in $[0,2\pi]\times [0,2\pi]$, any $(s,t)$ in this region has a sequence $(\bar{x}_n)_{n\in\mathbb{N}}\subset U$ converging to $(s,t)$, then if consider the image, because of continuity of $f$, $\lim_{n\rightarrow\infty}f(\bar{x}_n) = f(s,t)=y$, showing that $(f(\bar{x}_n))_{n\in\mathbb{N}}$
-    is a sequence in $g(\mathbb{R})$ that converges to $y$ (note: since $\bar{x}_n\in U$ for all $n\in\mathbb{N}$, then $f(\bar{x}_n)\in g(\mathbb{R})$ by definition). Which, since this is true for arbitrary $y\in K$, then $y$ is a limit point of $g(\mathbb{R})$, showing that $g(\mathbb{R})$ is dense in $K$.
+    If $U$ is dense in $[0,2\pi]\times [0,2\pi]$, any $(s,t)$ in this region (but not in $U$) has a sequence $(\bar{x}_n)_{n\in\mathbb{N}}\subset U$ that converges to $(s,t)$, then if consider the image, because of continuity of $f$, $\lim_{n\rightarrow\infty}f(\bar{x}_n) = f(s,t)=y$, showing that $(f(\bar{x}_n))_{n\in\mathbb{N}}$
+    is a sequence in $g(\mathbb{R})$ that converges to $f(s,t)=y$, and $y\notin g(\mathbb{R})$ since $(s,t)\notin U$ (note: since $\bar{x}_n\in U$ for all $n\in\mathbb{N}$, then $f(\bar{x}_n)\in g(\mathbb{R})$ by definition).
+    Which, since this is true for arbitrary $y\in K$ that's not in $g(\mathbb{R})$, then $y$ is a limit point of $g(\mathbb{R})$, showing that $g(\mathbb{R})$ is dense in $K$.
 
     \hfil
 
@@ -280,7 +281,7 @@ Also, since $z=a\sin(s)$, then $-a\leq z\leq a$.
 
     \textbf{Derivative of $g$:}
 
-    Since $g(t)=f(t,\lambda t)$, with the linear map $h\in\mathcal{L}(\mathbb{R},\mathbb{R}^2)$ by $h(t) = (t,\lambda t)$, $g = f\circ h$, the derivative is given by chain rule:
+    Since $g(t)=f(t,\lambda t)$, with the linear map $h\in\mathcal{L}(\mathbb{R},\mathbb{R}^2)$ by $h(t) = (t,\lambda t)$, $g = f\circ h$, and the derivative is given by chain rule:
     $$g'(t) = Df(h(t)) Dh(t)$$
     Which, $Dh(t) = \begin{pmatrix}1\\\lambda\end{pmatrix}$ (matrix representation of $h$, since $h$ is a linear map). Now, with $f_1(x,y)=(b+a\cos(x))\cos(y)$, $f_2(x,y)=(b+a\cos(x))\sin(y)$, $f_3(x,y)=a\sin(x)$, the derivative of $f(x,y)$ is given by:
     $$Df(x,y) = \begin{pmatrix}
@@ -303,7 +304,7 @@ Also, since $z=a\sin(s)$, then $-a\leq z\leq a$.
         -a\sin(t)\sin(\lambda t) + \lambda(b+a\cos(t))\cos(\lambda t)\\
         a\cos(t)
     \end{pmatrix}$$
-    Whic, $|g'(t)|^2$ is given as:
+    Which, $|g'(t)|^2$ is given as:
     $$|g'(t)|^2 = (-a\sin(t)\cos(\lambda t) - \lambda(b+a\cos(t))\sin(\lambda t))^2 + (-a\sin(t)\sin(\lambda t) + \lambda(b+a\cos(t))\cos(\lambda t))^2 + (a\cos(t))^2$$
     
     $$ = (a^2\sin^2(t)\cos^2(\lambda t) + \lambda^2(b+a\cos(t))^2\sin^2(\lambda t) + 2a\lambda (b+a\cos(t))\sin(t)\sin(\lambda t)\cos(\lambda t))$$
@@ -383,13 +384,13 @@ For any open neighborhood $U\subseteq \mathbb{R}$ of $0$, there exists $\epsilon
 choose $n\in\mathbb{N}$ such that $0<\frac{1}{2n\pi}<\epsilon$ (which, since $2n\pi < 2n\pi +\pi/2 < 2n\pi +\pi$, then $0<\frac{1}{2n\pi +\pi}<\frac{1}{2n\pi +\pi/2}<\frac{1}{2n\pi}<\epsilon$, 
 so all of these points are within $(-\epsilon,\epsilon)$).
 
-Let $t_1=\frac{1}{2n\pi +\pi},\ t_2=,\frac{1}{2n\pi +\pi/2}\ t_3=\frac{1}{2n\pi}$. If we evaluate $f$ at these points, we get:
-$$f_1=f\left(\frac{1}{2n\pi}\right)=\frac{1}{2n\pi}+2\left(\frac{1}{2n\pi}\right)^2\sin\left(\frac{1}{1/(2n\pi)}\right)=\frac{1}{2n\pi}+2\left(\frac{1}{2n\pi}\right)^2\sin(2n\pi) = \frac{1}{2n\pi}$$
+Let $t_1=\frac{1}{2n\pi},\ t_2=,\frac{1}{2n\pi +\pi/2}\ t_3=\frac{1}{2n\pi+\pi}$. If we evaluate $f$ at these points, we get:
+$$f_1=f(t_1)=f\left(\frac{1}{2n\pi}\right)=\frac{1}{2n\pi}+2\left(\frac{1}{2n\pi}\right)^2\sin\left(\frac{1}{1/(2n\pi)}\right)=\frac{1}{2n\pi}+2\left(\frac{1}{2n\pi}\right)^2\sin(2n\pi) = \frac{1}{2n\pi}$$
 
-$$f_2 = f\left(\frac{1}{2n\pi +\pi/2}\right)=\frac{1}{2n\pi +\pi/2}+2\left(\frac{1}{2n\pi +\pi/2}\right)^2\sin\left(\frac{1}{1/(2n\pi +\pi/2)}\right)$$
+$$f_2=f(t_2) = f\left(\frac{1}{2n\pi +\pi/2}\right)=\frac{1}{2n\pi +\pi/2}+2\left(\frac{1}{2n\pi +\pi/2}\right)^2\sin\left(\frac{1}{1/(2n\pi +\pi/2)}\right)$$
 $$= \frac{1}{2n\pi +\pi/2}+2\left(\frac{1}{2n\pi +\pi/2}\right)^2\sin\left(2n\pi +\frac{\pi}{2}\right)=\frac{1}{2n\pi +\pi/2}+2\left(\frac{1}{2n\pi +\pi/2}\right)^2$$
 
-$$f_3 = f\left(\frac{1}{2n\pi +\pi}\right)=\frac{1}{2n\pi +\pi}+2\left(\frac{1}{2n\pi +\pi}\right)^2\sin\left(\frac{1}{1/(2n\pi +\pi)}\right)$$
+$$f_3=f(t_3) = f\left(\frac{1}{2n\pi +\pi}\right)=\frac{1}{2n\pi +\pi}+2\left(\frac{1}{2n\pi +\pi}\right)^2\sin\left(\frac{1}{1/(2n\pi +\pi)}\right)$$
 $$=\frac{1}{2n\pi +\pi}+2\left(\frac{1}{2n\pi +\pi}\right)^2\sin(2n\pi+\pi)=\frac{1}{2n\pi +\pi}$$
 If we compare $f_2$ and $f_3$, we get:
 $$f_2=\frac{1}{2n\pi +\pi/2}+2\left(\frac{1}{2n\pi +\pi/2}\right)^2>\frac{1}{2n\pi +\pi/2}>\frac{1}{2n\pi +\pi}=f_3$$
@@ -402,11 +403,11 @@ Which, this inequality implies the following:
 $$f_2 = \frac{1}{2n\pi+\pi/2}+2\left(\frac{1}{2n\pi+\pi/2}\right)^2 >\frac{1}{2n\pi}=f_1$$
 So, $f_2>f_3$ and $f_2>f_1$
 
-Now, choose any $y$ satisfying $f_3<y<f_2$ and $f_1<y<f_2$. Since by the notation, we have $t_1<t_2<t_3$, and $f_1=f(t_1)$, $f_2=f(t_2)$, and $f_3=f(t_3)$,
-then because $f$ is a continuous function, by Intermediate Value Theorem, there exists $c\in (t_1,t_2)$ and $c'\in (t_2,t_3)$, such that $f(c)=f(c')=y$.
+Now, choose any $y$ satisfying $f_3<y<f_2$ and $f_1<y<f_2$. Since by the notation, we have$f_1=f(t_1)$, $f_2=f(t_2)$, and $f_3=f(t_3)$, while $t_3<t_2<t_1$,
+then because $f$ is a continuous function, by Intermediate Value Theorem, there exists $c\in (t_3,t_2)$ and $c'\in (t_2,t_1)$, such that $f(c)=f(c')=y$.
 
-Which, because $c\neq c'$, then $f$ is not injective; also, since $0<t_1<c<t_2<c'<t_3<\epsilon$, then $c,c'\in (-\epsilon,\epsilon)\subseteq U$.
-This shows that $f$ restricting to $U$ is not injective. Then, because $f|U$ for any open neighborhood $U$ of $0$ is not injective, then Inverse Function Theorem fails.
+Which, because $c\neq c'$, then $f$ is not injective; also, since $0<t_3<c<t_2<c'<t_1<\epsilon$, then $c,c'\in (-\epsilon,\epsilon)\subseteq U$.
+This shows that $f$ restricting to $U$ is not injective. Then, because $f|_U$ for any open neighborhood $U$ of $0$ is not injective, then Inverse Function Theorem fails.
 
 \break
 
@@ -441,8 +442,8 @@ This shows that $f$ restricting to $U$ is not injective. Then, because $f|U$ for
 
     Then, to prove that $\bar{0}\in \mathbb{R}^2$ is not in the range, suppose the contrary that there exists $(x,y)\in\mathbb{R}^2$ such that $f(x,y)=\bar{0}$.
     Then, we need $f_1(x,y)=e^x\cos(y)=0$ and $f_2(x,y)=e^x\sin(y)=0$.
-    Since $^x\neq 0$ for all $x\in\mathbb{R}$, for both previous equality to hold, we need $\cos(y)=\sin(y)=0$. Yet, this is a contradiction, since this enforces $\cos^2(y)+\sin^2(y)=0$,
-    violates the trigonometric identity. So, $\bar{0}$ is not in the range.
+    Since $e^x\neq 0$ for all $x\in\mathbb{R}$, for both previous equality to hold, we need $\cos(y)=\sin(y)=0$. Yet, this is a contradiction, since this enforces $\cos^2(y)+\sin^2(y)=0$,
+    which violates the trigonometric identity. So, $\bar{0}$ is not in the range.
 
     This proves that range of $f$ is $\mathbb{R}^2\setminus\{\bar{0}\}$.
 
@@ -471,21 +472,21 @@ This shows that $f$ restricting to $U$ is not injective. Then, because $f|U$ for
     But, $f$ is not $1-1$ on $\mathbb{R}^2$, since for arbitrary $x\in \mathbb{R}$, the points $(x,2\pi),\ (x,4\pi)\in\mathbb{R}^2$ satisfies:
     $$f(x,2\pi) = (f_1(x,2\pi),f_2(x,2\pi))=(e^x\cos(2\pi),e^x\sin(2\pi)) = (e^x,0)$$
     $$f(x,4\pi) = (f_1(x,4\pi),f_2(x,4\pi))=(e^x\cos(4\pi),e^x\sin(4\pi)) = (e^x,0)$$
-    Though $(x,2\pi)\neq (x,4\pi)$, we still have $f(x,2\pi)=f(x,4\pi)$, showing that $f$ is not $1-1$.
+    Though $(x,2\pi)\neq (x,4\pi)$, we still have $f(x,2\pi)=f(x,4\pi)$, which shows that $f$ is not $1-1$.
 
     \hfil
 
     \item[(c)] Given $a=(0,\pi/3)$, then $b=f(a)=(e^0\cos(\pi/3),e^0\sin(\pi/3)) = (\cos(\pi/3),\sin(\pi/3))$. After applying inverse function theorem, since there exists open subsets $U,V\subseteq \mathbb{R}^2$ where $a\in U$, $b\in V$,
-    such that $f:U\rightarrow V$ is a bijection, and its inverse $f^{-1}:V\rightarrow U$ is also continuously differentiable, then $f$ must also be an open mapping (since $f^{-1}$ is differentiable, it is continuous in $V$, which having the inverse being continuous enforces $f$ to be an open mapping).
-    Which, we can in fact restrict or domain $U$ and codomain $V$ to be even smaller, in particular, can restrict $U$ to be a subset of $(-1,1)\times (\pi/4,\pi/2)$ (which contains $a=(0,\pi/3)$).
+    such that $f:U\rightarrow V$ is a bijection, and its inverse $f^{-1}:V\rightarrow U$ is also continuously differentiable, then $f$ must also be an open mapping on $U$ (since $f^{-1}$ is differentiable, it is continuous in $V$, which having the inverse being continuous enforces $f$ to be an open mapping).
+    Which, we can in fact restrict the domain $U$ and codomain $V$ to be even smaller, in particular, can restrict $U$ to be a subset of $(-1,1)\times (\pi/4,\pi/2)$ (which contains $a=(0,\pi/3)$).
 
     Now, define $g:\mathbb{R}^2\setminus\{(0,v)\ |\ v\in\mathbb{R}\}\rightarrow \mathbb{R}^2$ by $g(u,v)=(\ln(\sqrt{u^2+v^2}),\arctan(v/u))$. Then, for all $(x,y)\in U\subseteq (-1,1)\times (\pi/4,\pi/2)$, we get:
-    $$f(x,y) = (e^x\cos(y),e^x\sin(y))$$
+    $$f(x,y) = (e^x\cos(y),e^x\sin(y)),\quad y\in (\pi/4,\pi/2)\implies \cos(y)\neq 0\implies e^x\cos(y)\neq 0$$
     $$g(f(x,y)) = \left(\ln\left(\sqrt{(e^x\cos(y))^2+(e^x\sin(y))^2}\right), \arctan\left(\frac{e^x\sin(y)}{e^x\cos(y)}\right)\right)$$
     $$ = (\ln(\sqrt{e^{2x}}), \arctan(\tan(y))) = (\ln(e^x), y) = (x,y)$$
-    (Note: $\arctan(tan(y))=y$ is because $y\in (\pi/4,\pi/2)\subset (-\pi/2,\pi/2)$).
+    (Note: $\arctan(\tan(y))=y$ is because $y\in (\pi/4,\pi/2)\subset (-\pi/2,\pi/2)$).
 
-    On the other hand, for all $(u,v)\in f(U) = V$, we have the following:
+    On the other hand, for all $(u,v)\in f(U) = V$ (which is in $\mathbb{R}^2\setminus\{(0,v)\}_{v\in\mathbb{R}}$, since above we've verified that all $(x,y)\in U$ satisfies $f_1(x,y)\neq 0$, so $f(x,y)$ is in the domain of $g$), we have the following:
     $$g(u,v)=(\ln(\sqrt{u^2+v^2}),\arctan(v/u))$$
     $$f(g(u,v)) = \left(e^{\ln(\sqrt{u^2+v^2})}\cos(\arctan(v/u)),e^{\ln(\sqrt{u^2+v^2})}\sin(\arctan(v/u))\right)$$
     $$ = \left(\sqrt{u^2+v^2}\cdot\frac{u}{\sqrt{u^2+v^2}},\sqrt{u^2+v^2}\cdot \frac{v}{\sqrt{u^2+v^2}}\right) = (u,v)$$
