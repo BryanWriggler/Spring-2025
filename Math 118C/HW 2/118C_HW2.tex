@@ -93,7 +93,7 @@ Since all $f_i$ (with $i\in \{1,...,m\}$) must be constant, then the original fu
 
 \hfil
 
-\section*{2 (not done)}
+\section*{2 (part (d) not done)}
 \begin{myBox}[]{}
     \begin{question}
         Rudin Pg. 239-240 Problem 12:
@@ -256,6 +256,15 @@ Also, since $z=a\sin(s)$, then $-a\leq z\leq a$.
 
     \textbf{$g$ has a dense image:}
 
+    Since for all $y\in K$, there exists $(s,t)\in [0,2\pi]\times [0,2\pi]$, such that $f(s,t)=y$, then to show $g(\mathbb{R})$ is dense in $K$, it suffices to show that the set $U=\{(s,t)\in [0,2\pi]\times [0,2\pi]\ |\ f(s,t)\in g(\mathbb{R})\}$ is dense in $[0,2\pi]\times [0,2\pi]$.
+    
+    If $U$ is dense in $[0,2\pi]\times [0,2\pi]$, any $(s,t)$ in this region has a sequence $(\bar{x}_n)_{n\in\mathbb{N}}\subset U$ converging to $(s,t)$, then if consider the image, because of continuity of $f$, $\lim_{n\rightarrow\infty}f(\bar{x}_n) = f(s,t)=y$, showing that $(f(\bar{x}_n))_{n\in\mathbb{N}}$
+    is a sequence in $g(\mathbb{R})$ that converges to $y$ (note: since $\bar{x}_n\in U$ for all $n\in\mathbb{N}$, then $f(\bar{x}_n)\in g(\mathbb{R})$ by definition). Which, since this is true for arbitrary $y\in K$, then $y$ is a limit point of $g(\mathbb{R})$, showing that $g(\mathbb{R})$ is dense in $K$.
+
+    \hfil
+
+    To prove that $U$ is dense in $[0,2\pi]\times [0,2\pi]$, for any $(s,t)\in [0,2\pi]\times [0,2\pi]$, for all $n\in\mathbb{N}$, let $\bar{x}_n\in [0,2\pi]\times [0,2\pi]$ to satisfy $
+
     \hfil
 
     \textbf{Derivative of $g$:}
@@ -387,8 +396,6 @@ then because $f$ is a continuous function, by Intermediate Value Theorem, there 
 
 Which, because $c\neq c'$, then $f$ is not injective; also, since $0<t_1<c<t_2<c'<t_3<\epsilon$, then $c,c'\in (-\epsilon,\epsilon)\subseteq U$.
 This shows that $f$ restricting to $U$ is not injective. Then, because $f|U$ for any open neighborhood $U$ of $0$ is not injective, then Inverse Function Theorem fails.
-
-Beca
 
 \break
 
