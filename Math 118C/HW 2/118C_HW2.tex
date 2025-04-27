@@ -89,7 +89,9 @@ So, all $y\in E$ must have $f_i(y)=f_i(x)$, showing that $f_i$ is constant in $E
 
 Since all $f_i$ (with $i\in \{1,...,m\}$) must be constant, then the original function $f:E\rightarrow\mathbb{R}^m$ must also be constant.
 
-\break
+\hfil
+
+\hfil
 
 \section*{2 (not done)}
 \begin{myBox}[]{}
@@ -101,14 +103,14 @@ Since all $f_i$ (with $i\in \{1,...,m\}$) must be constant, then the original fu
         Describe the range $K$ of $f$. (It is a certain compact subset of $\mathbb{R}^3$).
 
         \begin{itemize}
-            \item[(a)] SHow that there are exactly $4$ points $p\in K$ such that 
+            \item[(a)] Show that there are exactly $4$ points $p\in K$ such that 
             $$(\nabla f_1)(f^{-1}(p))=0$$
             Find these points.
             \item[(b)] Determine the set of all $q\in K$ such that 
             $$(\nabla f_3)(f^{-1}(q))=0$$
             \item[(c)] Show that one of the points $p$ found in part (a) corresponds to a local maximum of $f_1$, one corresponds to a local minimum, and that the other two are neither (they are so-called "saddle points").
             
-            Whic of the points $q$ found in part (b) correspond to maxima or minima?
+            Which of the points $q$ found in part (b) correspond to maxima or minima?
             \item[(d)] Let $\lambda$ be an irrational real number, and define $g(t)=f(t,\lambda t)$. Prove that $g$ is a $1-1$ mapping of $\mathbb{R}$ onto a dense subset of $K$. Prove that
             $$|g'(t)|^2 = a^2+\lambda^2(b+a\cos(t))^2$$
         \end{itemize}
@@ -116,6 +118,182 @@ Since all $f_i$ (with $i\in \{1,...,m\}$) must be constant, then the original fu
 \end{myBox}
 
 \textbf{Pf:}
+
+First, for any $(s_1,t_1), (s_2,t_2)\in\mathbb{R}^2$, if $s_1\equiv s_2\mod\ 2\pi$, and $t_1\equiv t_2\mod\ 2\pi$, then $\sin(s_1)=\sin(s_2)$, $\cos(s_1)=\cos(s_2)$, $\sin(t_1)=\sin(t_2)$, and $\cos(t_1)=\cos(t_2)$,
+which suggests that $f(s_1,t_1)=f(s_2,t_2)$ based on the given formula.
+
+Else, if $f(s_1,t_1)=f(s_2,t_2)$, then the following equations are true:
+$$(b+a\cos(s_1))\cos(t_1)=(b+a\cos(s_2))\cos(t_2)$$
+$$(b+a\cos(s_1))\sin(t_1)=(b+a\cos(s_2))\sin(t_2)$$
+$$a\sin(s_1)=a\sin(s_2)$$
+Since $a\neq 0$, the third equation satisfies $\sin(s_1)=\sin(s_2)$, which happens iff $s_1\equiv s_2\mod\ 2\pi$, so also $\cos(s_1)=\cos(s_2)$.
+And, since $b>a>0$, then for all $s\in\mathbb{R}$, $0<(b-a)\leq(b+a\cos(s))\leq (b+a)$. So, $(b+a\cos(s_1))=(b+a\cos(s_2))>0$,
+which the first two equations imply that $\cos(t_1)=\cos(t_2)$ and $\sin(t_1)=\sin(t_2)$, which this occurs iff $t_1 \equiv t_2\mod\ 2\pi$.
+
+Therefore, we can conclude that $f(s_1,t_1)=f(s_2,t_2)$ iff $s_1\equiv s_2\mod\ 2\pi$ and $t_1\equiv t_2\mod\ 2\pi$, which for all $(s',t')\in \mathbb{R}^2$,
+there exists $(s,t)\in [0,2\pi]\times [0,2\pi]$ such that $f(s,t)=f(s',t')$, hence for all point in the image of $f$, one can find such $(s,t)\in [0,2\pi]\times [0,2\pi]$, such that $f(s,t)$ is the chosen point in the image.
+
+So, $f([0,2\pi]\times [0,2\pi]) = f(\mathbb{R}^2)=K$, and since $f$ is continuous while $[0,2\pi]\times [0,2\pi]$ is compact, $K$ is in fact compact.
+
+\hfil
+
+Now, given $f(s,t)=(x,y,z)$, since $x=(a+b\cos(s))\cos(t)$ and $y=(a+b\cos(s))\sin(t)$, we have $\sqrt{x^2+y^2}=(a+b\cos(s))$.
+Hence, when project down to the $xy$-plane, all points in the image satisfies $(b-a)\leq \sqrt{x^2+y^2}\leq (b+a)$.
+
+Also, since $z=a\sin(s)$, then $-a\leq z\leq a$.
+
+(Note: In fact, the first part suggests that the image can be described using $\mathbb{R}^2 / 2\pi\mathbb{Z}\times 2\pi\mathbb{Z}$, which is a torus).
+
+\hfil
+
+\begin{itemize}
+    \item[(a)] Given the formula of $f_1$, its gradient is given by:
+    $$\nabla f_1 = \left(\frac{\partial f_1}{\partial s},\frac{\partial f_1}{\partial t}\right)=(-a\sin(s)\cos(t), -(b+a\cos(s))\sin(t))$$
+    Now, suppose $(s,t)\in \mathbb{R}^2$ satisfies $(\nabla f_1)(s,t)=0$, we need $-(b+a\cos(s))\sin(t)=0$. Since $(b+a\cos(s))>0$ is proven beforehand, then $\sin(t)=0$,
+    so $t\equiv 0\mod\ 2\pi$, or $t\equiv \pi\mod\ 2\pi$.
+
+    Then, at these possible choice of $t$, since $\cos(t)\neq 0$ and $a\neq 0$, then for $-a\sin(s)\cos(t)=0$ (the first coordinate), we need $\sin(s)=0$, so $s\equiv 0\mod\ 2\pi$, or $s\equiv \pi\mod\ 2\pi$.
+
+    Concluding from above, there are the four following choices:
+    $$(s,t)\equiv (0\mod\ 2\pi, 0\mod\ 2\pi),\quad (s,t)\equiv (0\mod\ 2\pi, \pi\mod\ 2\pi)$$
+    $$(s,t)\equiv (\pi\mod\ 2\pi, 0\mod\ 2\pi),\quad (s,t)\equiv (\pi\mod\ 2\pi, \pi\mod\ 2\pi)$$
+    For simplicity, we'll use $(0,0),(0,\pi),(\pi,0),(\pi,\pi)$ as representatives for each case. If label the image of the four cases as $p_1,p_2,p_3,p_4$ respectively, we get:
+    $$p_1=f(0,0) = ((b+a\cos(0))\cos(0),(b+a\cos(0))\sin(0),a\sin(0)) = (b+a,0,0)$$
+    $$p_2=f(0,\pi) = ((b+a\cos(0))\cos(\pi),(b+a\cos(0))\sin(\pi),a\sin(0)) = (-(b+a),0,0) = (-b-a,0,0)$$
+    $$p_3=f(\pi,0) = ((b+a\cos(\pi))\cos(0),(b+a\cos(\pi))\sin(0),a\sin(\pi)) = (b-a,0,0)$$
+    $$p_4=f(\pi,\pi) = ((b+a\cos(\pi))\cos(\pi),(b+a\cos(\pi))\sin(\pi),a\sin(\pi)) = (-(b-a),0,0)=(a-b,0,0)$$
+    So, $p_1,p_2,p_3,p_4\in K$ above are the four points with $(\nabla f_1)(f^{-1}(p_i)) = 0$.
+
+    \hfil
+
+    \item[(b)] Given the formula of $f_3$, its gradient is given by:
+    $$\nabla f_3 = \left(\frac{\partial f_3}{\partial s},\frac{\partial f_3}{\partial t}\right) = (a\cos(s),0)$$
+    Hence, if $(s,t)\in\mathbb{R}^2$ satisfies $(\nabla f_3)(s,t)=0$, then we need $a\cos(s)=0$, or $\cos(s)=0$. Hence, $s\equiv \frac{\pi}{2}\mod\ 2\pi$, or $s\equiv \frac{3\pi}{2}\mod\ 2\pi$.
+
+    For simplicity, use $s=\frac{\pi}{2}$ and $s=\frac{3\pi}{2}$ as representatives. 
+    In the above two cases, we get:
+    $$q_1 = f(\pi/2,t) = ((b+a\cos(\pi/2))\cos(t),(b+a\cos(\pi/2))\sin(t),a\sin(\pi/2)) = (b\cos(t),b\sin(t),a)$$
+    $$q_1 = f(3\pi/2,t) = ((b+a\cos(3\pi/2))\cos(t),(b+a\cos(3\pi/2))\sin(t),a\sin(3\pi/2)) = (b\cos(t),b\sin(t),-a)$$
+    Hence, if $q\in K$ satisfies $(\nabla f_3)(f^{-1}(q))=0$, it belongs to the following set:
+    $$\{(b\cos(t),b\sin(t),a)\in\mathbb{R}^3\ |\ t\in\mathbb{R}\}\cup \{(b\cos(t),b\sin(t),-a)\in\mathbb{R}^3\ |\ t\in\mathbb{R}\}$$
+
+    \hfil
+
+    \item[(c)] \textbf{Points obtained in part (a):}
+    \begin{itemize}
+        \item For $p_1=(b+a,0,0)$, since all $(s,t)\in\mathbb{R}^2$ satisfies the following:
+        $$f_1(s,t)=(b+a\cos(s))\cos(t) \leq b+a\cos(s) \leq b+a$$
+        (Note: $(b+a\cos(s))>0$).
+
+        Hence, $p_1$ with first entry being $b+a$ (or $f_1(f^{-1}(p_1))=b+a$) is in fact a local maximum of $f_1$.
+
+        \hfil
+
+        \item For $p_2=(-b-a,0,0)$, similarly, since all $(s,t)\in\mathbb{R}^2$ satisfies:
+        $$f_1(s,t)=(b+a\cos(s))\cos(t) \geq -(b+a\cos(s)) = -b-a\cos(s) \geq -b-a$$
+        Hence, $p_2$ with first entry being $-b-a$ (or $f_1(f^{-1}(p_2)) = -b-a$), is a local minimum of $f_1$.
+
+        \hfil
+
+        \item For $p_3 = (b-a,0,0)$, the points of its preimage is given as $(\pi\mod\ 2\pi, 0\mod\ 2\pi)$, 
+        which any point in its preimage is given as $((2k+1)\pi, 2l\pi)$ for some $k,l\in\mathbb{Z}$.
+
+        Then, for all radius $r>0$, choose $d=\min\{\pi/4, r/2\}>0$, since $0<d\leq r/2<r$, then both points $((2k+1)\pi+d, 2l\pi),\ ((2k+1)\pi, 2l\pi+d)\in B_r((2k+1)\pi, 2l\pi)$.
+        Evaluate these points, we get:
+        $$f_1((2k+1)\pi+d, 2l\pi) =(b+a\cos((2k+1)\pi+d))\cos(2l\pi) = (b-a\cos(d)) > b-a$$
+        $$f_1((2k+1)\pi, 2l\pi+d)=(b+a\cos((2k+1)\pi))\cos(2l\pi +d) = (b-a)\cos(d) < b-a$$
+        (Note: since $0<d<\frac{\pi}{4}$, then $ 0<\cos(d)<1$; and, $b-a>0$).
+
+        Since for arbitrary preimage of $p_3$, and arbitrary open neighborhood of it, one can find some points within the neighborhood, such that the output of $f_1$ is greater than or less than $b-a$ (the value of $f_1$ for $p_3$),
+        then $p_3$ is neither a local maximum nor a local minimum.
+
+        \hfil
+
+        \item For $p_4=(a-b,0,0)$, the points of its preimage is given as $(\pi\mod\ 2\pi, \pi\mod\ 2\pi)$, 
+        which any point in its preimage is given as $((2k+1)\pi, (2l+1)\pi)$ for some $k,l\in\mathbb{Z}$.
+
+        Again, for all radius $r>0$, choose $d=\min\{\pi/4,r/2\}>0$, both $((2k+1)\pi+d, (2l+1)\pi),((2k+1)\pi, (2l+1)\pi+d)\in B_r((2k+1)\pi, (2l+1)\pi)$, and their evaluation with $f_1$ are:
+        $$f_1((2k+1)\pi+d, (2l+1)\pi)=(b+a\cos((2k+1)\pi+d))\cos((2l+1)\pi) = -(b-a\cos(d))<a-b$$
+        $$f_1((2k+1)\pi, (2l+1)\pi+d)=(b+a\cos((2k+1)\pi))\cos((2l+1)\pi+d) = -(b-a)\cos(d)>a-b$$
+        Hence, for arbitrary preimage of $p_4$, and arbitrary open neighborhood of it, there exists some points within the neighborhood, such that $f_1$ yields output either greater than or less than $a-b$ (the value of $f_1$ for $p_4$),
+        then $p_4$ is neither a local maximum nor a local minimum.
+    \end{itemize}
+
+    \hfil
+
+    \textbf{Points obtained in part (b):}
+
+    Given that $q$ obtained in \textbf{part (b)} is collected into the set:
+    $$\{(b\cos(t),b\sin(t),a)\in\mathbb{R}^3\ |\ t\in\mathbb{R}\}\cup \{(b\cos(t),b\sin(t),-a)\in\mathbb{R}^3\ |\ t\in\mathbb{R}\}$$
+    For all $(s,t)\in\mathbb{R}^2$, since $f_3(s,t)=a\sin(s)$, then $-a\leq f_3(s,t)\leq a$.
+
+    For points $q_1\in\{(b\cos(t),b\sin(t),a)\in\mathbb{R}^3\ |\ t\in\mathbb{R}\}$, since their third entry is $a$ (value of $f_3$ at these points), hence they're the local maxima of $f_3$;
+    else, for points $q_2\in \{(b\cos(t),b\sin(t),-a)\in\mathbb{R}^3\ |\ t\in\mathbb{R}\}$, since their third entry is $-a$ (value of $f_3$ at these points), hence they're the local minima of $f_3$.
+
+    \hfil
+
+    \item[(d)] Given $g(t)=f(t,\lambda t)$ with $\lambda$ being irrational, there are some properties to prove:
+    
+    \hfil
+
+    \textbf{$g$ is injective:}
+
+    Suppose $t_1,t_2\in\mathbb{R}$ satisfies $g(t_1)=g(t_2)$, then, $f(t_1,\lambda t_1)=f(t_2,\lambda t_2)$, which implies the following equations:
+    $$(b+a\cos(t_1))\cos(\lambda t_1)=(b+a\cos(t_2))\cos(\lambda t_2)$$
+    $$(b+a\cos(t_1))\sin(\lambda t_1)=(b+a\cos(t_2))\sin(\lambda t_2)$$
+    $$a\sin(t_1)=a\sin(t_2)$$
+    The third equation implies that $t_1\equiv t_2\mod\ 2\pi$, which also implies that $\cos(t_1)=\cos(t_2)$. Then, since $(b+a\cos(t_1))=(b+a\cos(t_2))>0$, then the first two equations satisfy $\cos(\lambda t_1)=\cos(\lambda t_2)$ and $\sin(\lambda t_1)=\sin(\lambda t_2)$,
+    then $\lambda t_1 \equiv \lambda t_2\mod\ 2\pi$.
+
+    Which, $t_1 = 2k\pi + t_2$ for some $k\in\mathbb{Z}$ based on the first relation, so $\lambda t_1 = 2k\lambda \pi + \lambda t_2$, or $\lambda t_1-\lambda t_2 = 2k\lambda \pi$;
+    and, based on the second relation, we know $\lambda t_1 - \lambda t_2 = 2l\pi$ for some $l\in\mathbb{Z}$, hence $2l\pi = 2k\lambda \pi$, showing that $2\pi (\lambda k-l)=0$, or $\lambda k=l$.
+
+    Yet, if $k\neq 0$, we have $\lambda = \frac{l}{k}$ while $l,k\in\mathbb{Z}$, this violates the assumption that $\lambda$ is irrational. Hence, we must have $k=0$, showing that $t_1 = 2k\pi + t_2 = t_2$.
+
+    This proves that $g$ is injective.
+
+    \hfil
+
+    \textbf{$g$ has a dense image:}
+
+    \hfil
+
+    \textbf{Derivative of $g$:}
+
+    Since $g(t)=f(t,\lambda t)$, with the linear map $h\in\mathcal{L}(\mathbb{R},\mathbb{R}^2)$ by $h(t) = (t,\lambda t)$, $g = f\circ h$, the derivative is given by chain rule:
+    $$g'(t) = Df(h(t)) Dh(t)$$
+    Which, $Dh(t) = \begin{pmatrix}1\\\lambda\end{pmatrix}$ (matrix representation of $h$, since $h$ is a linear map). Now, with $f_1(x,y)=(b+a\cos(x))\cos(y)$, $f_2(x,y)=(b+a\cos(x))\sin(y)$, $f_3(x,y)=a\sin(x)$, the derivative of $f(x,y)$ is given by:
+    $$Df(x,y) = \begin{pmatrix}
+        \frac{\partial f_1}{\partial x} & \frac{\partial f_1}{\partial y}\\
+        \frac{\partial f_2}{\partial x} & \frac{\partial f_2}{\partial y}\\
+        \frac{\partial f_3}{\partial x} & \frac{\partial f_3}{\partial y}
+    \end{pmatrix} = \begin{pmatrix}
+        -a\sin(x)\cos(y) & -(b+a\cos(x))\sin(y)\\
+        -a\sin(x)\sin(y) & (b+a\cos(x))\cos(y)\\
+        a\cos(x) & 0
+    \end{pmatrix}$$
+    Hence, $g'(t)$ is given as:
+    $$g'(t) = Df(t,\lambda t) Dh(t) = \begin{pmatrix}
+        -a\sin(t)\cos(\lambda t) & -(b+a\cos(t))\sin(\lambda t)\\
+        -a\sin(t)\sin(\lambda t) & (b+a\cos(t))\cos(\lambda t)\\
+        a\cos(t) & 0
+    \end{pmatrix}\begin{pmatrix}1\\\lambda\end{pmatrix}$$
+    $$=\begin{pmatrix}
+        -a\sin(t)\cos(\lambda t) - \lambda(b+a\cos(t))\sin(\lambda t)\\
+        -a\sin(t)\sin(\lambda t) + \lambda(b+a\cos(t))\cos(\lambda t)\\
+        a\cos(t)
+    \end{pmatrix}$$
+    Whic, $|g'(t)|^2$ is given as:
+    $$|g'(t)|^2 = (-a\sin(t)\cos(\lambda t) - \lambda(b+a\cos(t))\sin(\lambda t))^2 + (-a\sin(t)\sin(\lambda t) + \lambda(b+a\cos(t))\cos(\lambda t))^2 + (a\cos(t))^2$$
+    
+    $$ = (a^2\sin^2(t)\cos^2(\lambda t) + \lambda^2(b+a\cos(t))^2\sin^2(\lambda t) + 2a\lambda (b+a\cos(t))\sin(t)\sin(\lambda t)\cos(\lambda t))$$
+    $$+ (a^2\sin^2(t)\sin^2(\lambda t) + \lambda^2(b+a\cos(t))^2\cos^2(\lambda t) - 2a\lambda (b+a\cos(t))\sin(t)\sin(\lambda t)\cos(\lambda t))$$
+    $$ + a^2\cos^2(t)$$
+    
+    $$= a^2\sin^2(t) + \lambda^2(b+a\cos(t))^2 + a^2\cos^2(t)$$
+    $$= a^2+\lambda^2(b+a\cos(t))^2$$
+
+\end{itemize}
 
 \break
 
@@ -147,6 +325,8 @@ then $f'(t)\cdot f(t)=0$ implies the tangent vector and the position of the curv
 \section*{4}
 \begin{myBox}[]{}
     \begin{question}
+        Rudin Pg. 240 Problem 16:
+
         Show that the continuity of $f'$ at the point $a$ is needed in the inverse function theorem, even in the case $n=1$: if
         $$f(t)=t+2t^2\sin\left(\frac{1}{t}\right)$$
         for $t\neq 0$, and $f(0)=0$, then $f'(0)=1$, $f'$ is bounded in $(-1,1)$, but $f$ is not $1-1$ in any neighborhood of $0$.
@@ -212,9 +392,11 @@ Beca
 
 \break
 
-\section*{5}
+\section*{5 (part (c) not done)}
 \begin{myBox}[]{}
     \begin{question}
+        Rudin Pg. 241 Problem 17:
+
         Lef $f=(f_1,f_2)$ be the mapping of $\mathbb{R}^2$ into $\mathbb{R}^2$ given by 
         $$f_1(x,y)=e^x\cos(y),\quad f_2(x,y)=e^x\sin(y)$$
         \begin{itemize}
@@ -231,5 +413,69 @@ Beca
 \end{myBox}
 
 \textbf{Pf:}
+\begin{itemize}
+    \item[(a)] We'll prove that the range of $f$ is given as $\mathbb{R}^2\setminus\{\bar{0}\}$.
+    
+    First, for all $v\in\mathbb{R}^2$ that's not a zero vector, one can fined $r>0$ and $\theta\in\mathbb{R}$ to represent $v$ under polar coordinates.
+    Hence, $v = (r\cos(\theta),r\sin(\theta))$. Then, consider $f(\ln(r),\theta)$, we get:
+    $$f(\ln(r),\theta)=\left(f_1(\ln(r),\theta),f_2(\ln(r),\theta)\right) = (e^{\ln(r)}\cos(\theta),e^{\ln(r)}\sin(\theta)) = (r\cos(\theta),r\sin(\theta))=v$$
+    Hence, $v$ is in the range of $f$.
+
+    Then, to prove that $\bar{0}\in \mathbb{R}^2$ is not in the range, suppose the contrary that there exists $(x,y)\in\mathbb{R}^2$ such that $f(x,y)=\bar{0}$.
+    Then, we need $f_1(x,y)=e^x\cos(y)=0$ and $f_2(x,y)=e^x\sin(y)=0$.
+    Since $^x\neq 0$ for all $x\in\mathbb{R}$, for both previous equality to hold, we need $\cos(y)=\sin(y)=0$. Yet, this is a contradiction, since this enforces $\cos^2(y)+\sin^2(y)=0$,
+    violates the trigonometric identity. So, $\bar{0}$ is not in the range.
+
+    This proves that range of $f$ is $\mathbb{R}^2\setminus\{\bar{0}\}$.
+
+    \hfil
+
+    \item[(b)] First, the partial derivatives of $f_1,\ f_2$ are given as follow:
+    $$\frac{\partial f_1}{\partial x} = e^x\cos(y),\quad \frac{\partial f_1}{\partial y}=-e^x\sin(y),\quad \frac{\partial f_2}{\partial x}=e^x\sin(y),\quad \frac{\partial f_2}{\partial y}=e^x\cos(y)$$
+    
+    If we consider the differential of $f$ at any $(x,y)\in\mathbb{R}^2$, we get:
+    $$Df(x,y) = \begin{pmatrix}
+        \frac{\partial f_1}{\partial x} & \frac{\partial f_1}{\partial y}\\
+        \frac{\partial f_2}{\partial x} & \frac{\partial f_2}{\partial y}
+    \end{pmatrix} = \begin{pmatrix}
+        e^x\cos(y) & -e^x\sin(y)\\
+        e^x\sin(y) & e^x\cos(y)
+    \end{pmatrix}$$
+    Then, the Jacobian is given by:
+    $$|Df(x,y)| = \begin{vmatrix}
+        e^x\cos(y) & -e^x\sin(y)\\
+        e^x\sin(y) & e^x\cos(y)
+    \end{vmatrix} = e^{2x}\cos^2(y) - (-e^{2x}\sin^2(y)) = e^{2x}$$
+    So, the Jacobian $|Df(x,y)|=e^{2x}\neq 0$ for all $(x,y)\in\mathbb{R}^2$. Also, since the above differential has all the entries being continuous functions,
+    then the differential is in fact continuous, hence the Jacobian is nonvanishing at any point (or invertible at all point) while the differential is continuous,
+    so the Inverse Function Theorem applies, all point $(x,y)\in\mathbb{R}^2$ has a small open neighborhood such that $f$ is invertible, which $f$ is $1-1$ in that neighborhood.
+
+    But, $f$ is not $1-1$ on $\mathbb{R}^2$, since for arbitrary $x\in \mathbb{R}$, the points $(x,2\pi),\ (x,4\pi)\in\mathbb{R}^2$ satisfies:
+    $$f(x,2\pi) = (f_1(x,2\pi),f_2(x,2\pi))=(e^x\cos(2\pi),e^x\sin(2\pi)) = (e^x,0)$$
+    $$f(x,4\pi) = (f_1(x,4\pi),f_2(x,4\pi))=(e^x\cos(4\pi),e^x\sin(4\pi)) = (e^x,0)$$
+    Though $(x,2\pi)\neq (x,4\pi)$, we still have $f(x,2\pi)=f(x,4\pi)$, showing that $f$ is not $1-1$.
+
+    \hfil
+
+    \item[(c)] 
+
+
+    \hfil
+
+    \item[(d)] First, for lines parallel to the $x$-axis (i.e. all collections of $H_y = \{(x,y)\in\mathbb{R}^2\ |\ x\in\mathbb{R}\}$ for arbitrary $y\in\mathbb{R}$), all point $(x,y)\in H_y$ satisfies:
+    $$f(x,y) = (e^x\cos(y),e^x\sin(y)) = e^x(\cos(y),\sin(y))$$
+    Let the $R_y = \{r(\cos(y),\sin(y))\ |\ r>0\}$ (a straight ray from origin with angle $y$, but not including the origin), since $e^x>0$, we have $f(x,y)\in R_y$, hence $f(H_y)\subseteq R_y$;
+    on the other hand, for all $r>0$, since $\ln(r)$ satisfies $e^{\ln(r)}=r$, then:
+    $$(\ln(r),y)\in H_y,\quad f(\ln(r),y) = (e^{\ln(r)}\cos(y),e^{\ln(r)}\sin(y)) = (r\cos(y),r\sin(y))=r(\cos(y),\sin(y))$$
+    Hence, for all $r(\cos(y),\sin(y))\in R_y$ satisfies $f(\ln(r),y)=r(\cos(y),\sin(y))$, showing that $r(\cos(y),\sin(y))\in f(H_y)$, or $R_y\subseteq f(H_y)$.
+    Therefore, $f(H_y)=R_y$, its image is a straight ray from the origin with angle $y$ (not including the origin).
+
+    Then, for lines parallel to the $y$-axis (i.e. all collections of $V_x = \{(x,y)\in\mathbb{R}^2\ |\ y\in\mathbb{R}\}$ for arbitrary $x\in \mathbb{R}$), all point $(x,y)\in H_y$ satisfies:
+    $$f(x,y)=e^x(\cos(y),\sin(y)),\quad |f(x,y)| = e^x\sqrt{\cos^2(y)+\sin^2(y)}=e^x$$
+    Since $S^1 = \{v\in\mathbb{R}^2\ |\ |v|=1\}$, define $rS^1 = \{v\in\mathbb{R}^2\ |\ |v|=r\}$ for all $r\geq 0$, then since $|f(x,y)| = e^x$, we have $f(x,y)\in e^x S^1$, so $f(V_x)\subseteq e^xS^1$.
+    Also, for all $v\in e^xS^1$, there exists angle $\theta$, such that $v = e^x(\cos(\theta),\sin(\theta))$ (so $(e^x,\theta)$ is a representation of $v$ under polar coordinates), then:
+    $$(x,\theta)\in V_x,\quad f(x,\theta)=(e^x\cos(\theta),e^x\sin(\theta)) = e^x(\cos(\theta),\sin(\theta)) = v$$
+    Hence, $v\in f(V_x)$, showing that $e^xS^1\subseteq f(V_x)$. Therefore, $f(V_x)=e^xS^1$, its image is a circle centered at the origin, with radius $e^x$.
+\end{itemize}
 
 \end{document}
