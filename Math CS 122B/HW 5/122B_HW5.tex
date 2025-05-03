@@ -1,0 +1,187 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math CS 122B HW5}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Freitag Chap. V.3 Exercise 5:
+
+        The algebraic differential equation of the $\wp$-function can berewritten as:
+        $$(\wp')^2 = 4(\wp-e_1)(\wp-e_2)(\wp-e_3)$$
+        Here, $e_j,\ 1\leq j\leq 3$, are the three half lattice values of the $\wp$-function.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Given the algebraic differential equation of the $\wp$-function as follow:
+$$(\wp'(z))^2=4(\wp(z))^3-g_2\wp(z)-g_3$$
+Within the fundamental region $P$, there are $3$ points with the value of $\wp'$ to be zero, which is given by $\frac{w_1}{2},\ \frac{w_2}{2},\ \frac{w_1+w_2}{2}$ (and points congruent to these points $\mod\ L$)
+when the lattice $L=w_1\mathbb{Z}+w_2\mathbb{Z}$.
+
+Then, by definition, the given points have the evaluation to be the following:
+$$e_1=\wp\left(\frac{w_1}{2}\right),\quad e_2=\wp\left(\frac{w_2}{2}\right),\quad e_3=\wp\left(\frac{w_1+w_2}{2}\right)$$
+Which, let $w=\wp(z)$, then the polynomial $4w^3-g_2w-g_3=0$ iff $\wp'(z)=0$, which within the fundamental region, only the three distinct points mentioned above are the solution,
+so the values of $\wp$ of these points are the zeros of the polynomial $4w^3-g_2w-g_3$.
+
+Then, since $e_1,e_2,e_3$ are all distinct, while $4w^3-g_2w-g_3$ has at most $3$ distinct zeroes, then they must be all the zeros of the polynomial.
+Hence, $4w^3-g_2w-g_3 = 4(w-e_1)(w-e_2)(w-e_3)$, which we get the following:
+$$(\wp'(z))^3=4(\wp(z))^3-g_2\wp(z)-g_3 = 4(\wp(z)-e_1)(\wp(z)-e_2)(\wp(z)-e_3)$$
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Freitag Chap. V.3 Exercise 6:
+
+        Show the following recursion formulas for the Eisenstein series $G_{2m}$ for $m\geq 4$:
+        $$(2m+1)(m-3)(2m-1)G_{2m}=3\sum_{j=2}^{m-2}(2j-1)(2m-2j-1)G_{2j}G_{2m-2j}$$
+        for instance $G_{10}=\frac{5}{11}G_4G_6$. Any Eisenstein series $G_{2m}$, $m\geq 4$, 
+        is thus representable as a polynomial in $G_4$ and $G_6$ with nonnegative coefficients.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+First, the $\wp$-function is given as follow:
+$$\wp(z)=\frac{1}{z^2}+\sum_{m=1}^{\infty}(2m+1)G_{2(m+1)}z^{2m}$$
+With the formula of $\wp$-function as series of functions, since it converges normally within $\mathbb{C}\setminus L$ (with $L$ being the lattice),
+then differentiation can be performed termwise. Hence, its second derivative is given by:
+$$\wp''(z)=\frac{d^2}{dz^2}\left(\frac{1}{z^2}\right)+\sum_{m=1}^{\infty}\frac{d^2}{dz^2}\left((2m+1)G_{2(m+1)}z^{2m}\right) = \frac{6}{z^4}+\sum_{m=1}^{\infty}(2m+1)(2m)(2m-1)G_{2(m+1)}z^{2m-2}$$
+$$= \frac{6}{z^4}+\sum_{m=2}^{\infty}(2m-1)(2m-2)(2m-3)G_{2m}z^{2m-4}$$
+
+Recall the following second order differential equation of $\wp$-function:
+$$2\wp''(z)=12(\wp(z))^2-g_2,\quad \wp''(z)=6(\wp(z))^2-\frac{g_2}{2}$$
+The goal is to get a recursive relation of the coefficient of each power of $\wp''(z)$.
+
+\hfil
+
+With the expression of $\wp''$ in power series from above, to get an expression of $G_{2m}$ for $m\geq 4$, it suffices to find the coefficient of $z^{2m-4}$ within $6(\wp(z))^2-\frac{g_2}{2}$.
+There are two casees to consider:
+\begin{itemize}
+    \item[1.] $z^{2m-4}$ can be expressed as $\frac{1}{z^2}\cdot z^{2m-2}$, within $\wp(z)$, the coefficient of $\frac{1}{z^2}$ is $1$, while the coefficient of $z^{2m-2}=z^{2(m-1)}$ is $(2(m-1)+1)G_{2((m-1)+1)} = (2m-1)G_{2m}$.
+    Hence, since $(\wp(z))^2$ has two copies of the above expression, then the coefficient of $\frac{1}{z^2}\cdot z^{2m-2}$ is:
+    $$2\cdot 1\cdot (2m-1)G_{2m} = 2(2m-1)G_{2m}$$
+    \item[2.] Since $\wp(z)$ also has all power $z^{2m}$ for $m\geq 1$, then $z^{2m-4}=z^{2(m-2)}$ can also be expressed as $z^{2k}\cdot z^{2(m-k-2)}$, for integers $k\geq 1$ and $(m-k-2)\geq 1 $
+    (or $k\leq (m-3)$). Hence, for the convolution of power series of $(\wp(z))^2$ (excluding the negative powers mentioned above), $z^{2m-4}$ term has the following coefficient:
+    $$\sum_{k=1}^{m-3}(2k+1)G_{2(k+1)}\cdot (2(m-k-2)+1)G_{2((m-k-2)+1)} = \sum_{k=1}^{m-3}(2(k+1)-1)(2m-2(k+1)-1)G_{2(k+1)}G_{2(m-(k+1))}$$
+    $$ = \sum_{k=2}^{m-2}(2k-1)(2m-2k-1)G_{2k}G_{2(m-k)}$$
+    (Note: recall that $z^{2k}$ term has coefficient $(2k+1)G_{2(k+1)}$, while $z^{2(m-k-2)}$ term has coefficient given as $(2(m-k-2)+1)G_{2((m-k-2)+1)}$).
+\end{itemize}
+So, the coefficient of $z^{2m-4}$ in $(\wp(z))^2$ is recorded as:
+$$2(2m-1)G_{2m}+\sum_{k=2}^{m-2}(2k-1)(2m-2k-1)G_{2k}G_{2m-2k}$$
+Hence, based on the equation $\wp''(z)=6(\wp(z))^2-\frac{g_2}{2}$, for all $m\geq 4$, the coefficient of $z^{2m-4}$ is given as the following two forms:
+$$\textmd{Coefficient of } z^{2m-4} \textmd{ in } \wp''(z):\quad (2m-1)(2m-2)(2m-3)G_{2m}$$
+$$\textmd{Coefficient of } z^{2m-4} \textmd{ in } 6(\wp(z))^2-\frac{g_2}{2}:\quad 6\left(2(2m-1)G_{2m}+\sum_{k=2}^{m-2}(2k-1)(2m-2k-1)G_{2k}G_{2m-2k}\right)$$
+Which, for the two to be equal, we get the following equality:
+$$(2m-1)(2m-2)(2m-3)G_{2m}=12(2m-1)G_{2m}+6\sum_{k=2}^{m-2}(2k-1)(2m-2k-1)G_{2k}G_{2m-2k}$$
+$$(2m-1)(4m^2-10m+6)G_{2m}-12(2m-1)G_{2m}=6\sum_{k=2}^{m-2}(2k-1)(2m-2k-1)G_{2k}G_{2m-2k}$$
+$$(2m-1)(4m^2-10m-6)G_{2m}=6\sum_{k=2}^{m-2}(2k-1)(2m-2k-1)G_{2k}G_{2m-2k}$$
+$$(2m-1)(2m-6)(2m+1)G_{2m}=6\sum_{k=2}^{m-2}(2k-1)(2m-2k-1)G_{2k}G_{2m-2k}$$
+$$\implies (2m+1)(m-3)(2m-1)G_{2m}=3\sum_{k=2}^{m-2}(2k-1)(2m-2k-1)G_{2k}G_{2m-2k}$$
+Which, this equation is the desired recursive form.
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Freitag Chap. V.4 Exercise 3:
+
+        Let $L\subset \mathbb{C}$ be a lattice with the property $g_2(L)=8$ and $g_3(L)=0$. The point $(2,4)$ lies on the affine elliptic curve $y^2=4x^3-8x$.
+        Let $+$ be the addition (for points on the corresponding projective curve). SHow that $2\cdot (2,4):= (2,4)+(2,4)$ is the point $(\frac{9}{4},\frac{21}{4})$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+Consider the tangent of $(2,4)$ on the given elliptic curve $y^2=4x^3-8x$: By implicit differentiation, we get the following relationship:
+$$2y\frac{dy}{dx}=12x^2-8$$
+which, for $(x,y)=(2,4)$, $\frac{dy}{dx}\bigm|_{(2,4)}=\frac{12x^2-8}{2y}\bigm|_{(2,4)} = \frac{12\cdot 2^2-8}{2\cdot 4} = 5$. Hence, the tangent is expressed as the following equation:
+$$(y-4)=5(x-2),\quad y=5x-6$$
+
+\hfil
+
+Now, to solve for the third point, it must satisfy the following equations:
+$$\begin{cases}
+    y=5x-6\\
+    y^2=4x^3-8x
+\end{cases}$$
+Hence, $(5x-6)^2 = 4x^3-8x$, which $25x^2-60x+36 = 4x^3-8x$, so $4x^3-25x^2+52x-36 = 0$. Which, consider the fact that $(x,y)=(2,4)$ appears on the tangent twice (with multiplicity 2),
+then $(x-2)^2$ is presumably a factor of the above equation. The above polynomial in fact has the following factorization:
+$$4x^3-25x^2+52x-36 = (x-2)^2(4x-9)$$
+This indicates that the third zero happesn when $x=\frac{9}{4}$. Which, the only point lying on the defined tangent above is given as:
+$$y=5\cdot\frac{9}{4}-6 = \frac{21}{4}$$
+So, the third point lying on the tangent is $(\frac{9}{4},\frac{21}{4})$.
+
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        Stein and Shakarchi Pg. 281 Problem 3:
+
+        Suppose $\Omega$ is a simply connected domain that excludes the three roots of the polynomial $4z^3-g_2z-g_3$.
+        For $w_0\in\Omega$ fixed, define the function $I$ on $\Omega$ by 
+        $$I(w)=\int_{w_0}^{w}\frac{dz}{\sqrt{4cz^3-g_2z-g_3}},\quad w\in\Omega$$
+        Then the function $I$ has an inverse given by $\wp(z+\alpha)$ for some constant $\alpha$; that is:
+        $$I(\wp(z+\alpha))=z$$
+        for appropriate $\alpha$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{5}
+\begin{myBox}[]{}
+    \begin{question}
+        Stein and Shakarchi Pg. 282 Problem 4:
+
+        Suppose $\mathcal{T}$ is purely imaginary, say $\mathcal{T}=it$ with $t>0$. 
+        Consider the division of the complex plane into congruent rectangles obtained by considering the lines $x=n/2$, $y=tm/2$ as $n$ and $m$ range over the integers.
+        \begin{itemize}
+            \item[(a)] Show that $\wp$ is real-valued on all these lines, adn hence on the boundaries of all these rectangles.
+            \item[(b)] Prove that $\wp$ maps the interior of each rectangle conformally to the uppoer (or lower) half-plane. 
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\end{document}
