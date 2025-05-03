@@ -157,7 +157,7 @@ So, the third point lying on the tangent is $(\frac{9}{4},\frac{21}{4})$.
 
         Suppose $\Omega$ is a simply connected domain that excludes the three roots of the polynomial $4z^3-g_2z-g_3$.
         For $w_0\in\Omega$ fixed, define the function $I$ on $\Omega$ by 
-        $$I(w)=\int_{w_0}^{w}\frac{dz}{\sqrt{4cz^3-g_2z-g_3}},\quad w\in\Omega$$
+        $$I(w)=\int_{w_0}^{w}\frac{dz}{\sqrt{4z^3-g_2z-g_3}},\quad w\in\Omega$$
         Then the function $I$ has an inverse given by $\wp(z+\alpha)$ for some constant $\alpha$; that is:
         $$I(\wp(z+\alpha))=z$$
         for appropriate $\alpha$.
@@ -165,6 +165,31 @@ So, the third point lying on the tangent is $(\frac{9}{4},\frac{21}{4})$.
 \end{myBox}
 
 \textbf{Pf:}
+
+Given that $\Omega$ is a simply connected domain that excludes the roots $e_1,e_2,e_3$ of $4z^3-g_2z-g_3$,
+then since this simply connected open region doesn't include the zeros for the polynomial, hence there exists a well-defined square root for the function
+(can be denoted by $\sqrt{4z^3-g_2z-g_3}$).
+
+Then, given the definition of $I(w)$ above (as an antiderivative of $\frac{1}{\sqrt{4z^3-g_2z-g_3}}$), its derivative $I'(w)=\frac{1}{\sqrt{4z^3-g_2z-g_3}}$.
+
+\hfil
+
+Now, since $\wp:\mathbb{C}\setminus L\rightarrow\mathbb{C}$ is a surjective function, then threre exists $\alpha_1,\alpha_2\in \mathbb{C}\setminus L$, such that $\wp(\alpha_1)=\wp(\alpha_2)=w_0$,
+while $\wp'(\alpha_1) = -\wp'(\alpha_2)$ (which they satisfy the relation of $\alpha_1\equiv \alpha_2\mod\ L$).
+
+Then, given the algebraic differential equation $(\wp'(z))^2=4(\wp(z))^3-g_2\wp(z)-g_3$, then for the defined square root, we have $(\wp'(\alpha_1))^2=(\wp'(\alpha_2))^2 = 4w_0^3-g_2w_0-g_3$. 
+Which, for the defined square root, there are two cases: either $\sqrt{4w_0^3-g_2w_0-g_3} = \wp'(\alpha_1)$, or $\sqrt{4w_0^3-g_2w_0-g_3} = -\wp'(\alpha_1) = \wp'(\alpha_2)$.
+In either case, we can choose $\alpha\in \{\alpha_1,\alpha_2\}$, such that $\sqrt{4w_0^3-g_2w_0-g_3} = \sqrt{(\wp'(\alpha))^2} = \wp'(\alpha)$ (and it still satisfies $\wp(\alpha)=w_0$).
+
+Hence, given the function $I(\wp(z+\alpha))$ with the domain being the preimage of $\Omega$ (which is containing $0$, since $\wp(0+\alpha)=\wp(\alpha)=w_0\in\Omega$), we have the following:
+$$I(\wp(0+\alpha)) = I(w_0)=\int_{w_0}^{w_0}\frac{dz}{\sqrt{4z^3-g_2z-g_3}} = 0$$
+Also, if differentiate this composition of function, we get:
+$$(I(\wp(z+\alpha)))' = I'(\wp(z+\alpha))\wp'(z+\alpha) = \frac{\wp'(z+\alpha)}{\sqrt{4(\wp(z+\alpha))^3-g_2(\wp(z+\alpha))-g_3}} = \frac{\wp'(z+\alpha)}{\sqrt{(\wp'(z+\alpha))^2}} = \pm 1$$
+Notice that since both $I$ and $\wp$ are analytic function within the given domain, hence the composition and its derivative are both analytic;
+on the other hand, since $(I(\wp(z+\alpha)))'$ has the value at $z=0$ being the following:
+$$(I(\wp(z+\alpha)))'\bigm|_{z=0} = \frac{\wp'(0+\alpha)}{\sqrt{(\wp'(0+\alpha))^2}} = \frac{\wp'(\alpha)}{\sqrt{(\wp'(\alpha))^2}} = \frac{\wp'(\alpha)}{\wp'(\alpha)}=1$$
+then in case for $(I(\wp(z+\alpha)))'$ to be continuous (in particular, continuous), we need $(I(\wp(z+\alpha)))' = 1$, which implies that $I(\wp(z+\alpha))=z$.
+So, $\alpha$ is the desired constant, such that $\wp(z+\alpha)$ is the inverse of $I$.
 
 \break
 
