@@ -174,12 +174,12 @@ Then, given the definition of $I(w)$ above (as an antiderivative of $\frac{1}{\s
 
 \hfil
 
-Now, since $\wp:\mathbb{C}\setminus L\rightarrow\mathbb{C}$ is a surjective function, then threre exists $\alpha_1,\alpha_2\in \mathbb{C}\setminus L$, such that $\wp(\alpha_1)=\wp(\alpha_2)=w_0$,
-while $\wp'(\alpha_1) = -\wp'(\alpha_2)$ (which they satisfy the relation of $\alpha_1\equiv \alpha_2\mod\ L$).
+Now, since $\wp:\mathbb{C}\setminus L\rightarrow\mathbb{C}$ is an order 2 even elliptic function, then threre exists $\alpha_1\in \mathbb{C}\setminus L$, such that $\wp(\alpha_1)=\wp(-\alpha_1)=w_0$,
+while $\wp'(\alpha_1) = -\wp'(-\alpha_1)$.
 
-Then, given the algebraic differential equation $(\wp'(z))^2=4(\wp(z))^3-g_2\wp(z)-g_3$, then for the defined square root, we have $(\wp'(\alpha_1))^2=(\wp'(\alpha_2))^2 = 4w_0^3-g_2w_0-g_3$. 
-Which, for the defined square root, there are two cases: either $\sqrt{4w_0^3-g_2w_0-g_3} = \wp'(\alpha_1)$, or $\sqrt{4w_0^3-g_2w_0-g_3} = -\wp'(\alpha_1) = \wp'(\alpha_2)$.
-In either case, we can choose $\alpha\in \{\alpha_1,\alpha_2\}$, such that $\sqrt{4w_0^3-g_2w_0-g_3} = \sqrt{(\wp'(\alpha))^2} = \wp'(\alpha)$ (and it still satisfies $\wp(\alpha)=w_0$).
+Then, given the algebraic differential equation $(\wp'(z))^2=4(\wp(z))^3-g_2\wp(z)-g_3$, then for the defined square root, we have $(\wp'(\alpha_1))^2=(\wp'(-\alpha_1))^2 = 4w_0^3-g_2w_0-g_3$. 
+Which, for the defined square root, there are two cases: either $\sqrt{4w_0^3-g_2w_0-g_3} = \wp'(\alpha_1)$, or $\sqrt{4w_0^3-g_2w_0-g_3} = -\wp'(\alpha_1) = \wp'(-\alpha_1)$.
+In either case, we can choose $\alpha\in \{\alpha_1,-\alpha_1\}$, such that $\sqrt{4w_0^3-g_2w_0-g_3} = \sqrt{(\wp'(\alpha))^2} = \wp'(\alpha)$ (and it still satisfies $\wp(\alpha)=w_0$).
 
 Hence, given the function $I(\wp(z+\alpha))$ with the domain being the preimage of $\Omega$ (which is containing $0$, since $\wp(0+\alpha)=\wp(\alpha)=w_0\in\Omega$), we have the following:
 $$I(\wp(0+\alpha)) = I(w_0)=\int_{w_0}^{w_0}\frac{dz}{\sqrt{4z^3-g_2z-g_3}} = 0$$
@@ -201,12 +201,87 @@ So, $\alpha$ is the desired constant, such that $\wp(z+\alpha)$ is the inverse o
         Suppose $\mathcal{T}$ is purely imaginary, say $\mathcal{T}=it$ with $t>0$. 
         Consider the division of the complex plane into congruent rectangles obtained by considering the lines $x=n/2$, $y=tm/2$ as $n$ and $m$ range over the integers.
         \begin{itemize}
-            \item[(a)] Show that $\wp$ is real-valued on all these lines, adn hence on the boundaries of all these rectangles.
+            \item[(a)] Show that $\wp$ is real-valued on all these lines, and hence on the boundaries of all these rectangles.
             \item[(b)] Prove that $\wp$ maps the interior of each rectangle conformally to the uppoer (or lower) half-plane. 
         \end{itemize}
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+Assume the lattice is given by $L=\mathbb{Z}+\mathbb{Z}it$ for the $\wp$-function. Which, for all $w=n+i\cdot tm\in L$, its conjugate $\overline{w}=n-i\cdot tm\in L$. On the other hand, $-w = -n-i\cdot tm\in L$.
+\begin{itemize}
+    \item[(a)] \textbf{Horizontal Line:}
+    
+    For all point (that's not a lattice point) on the horizontal line (the line $y=\frac{tm}{2}$ for some $m\in\mathbb{Z}$), $z=x+i\cdot\frac{tm}{2}$ for some $x\in\mathbb{R}$. 
+    Which, since $itm\in L$, then $\wp(x-i\cdot\frac{tm}{2})=\wp((x+i\cdot\frac{tm}{2})-itm) = \wp(x+i\cdot\frac{tm}{2})$. Then, consider the expression $2\wp(x+i\cdot\frac{tm}{2})$, we get:
+    $$2\wp\left(x+i\cdot\frac{tm}{2}\right) = \wp\left(x+i\cdot\frac{tm}{2}\right)+\wp\left(x-i\cdot\frac{tm}{2}\right)$$
+    $$=\left[\frac{1}{(x+itm/2)^2}+\sum_{\substack{w\in L\\w\neq 0}}\left(\frac{1}{((x+itm/2)-w)^2}-\frac{1}{w^2}\right)\right]+\left[\frac{1}{(x-itm/2)^2}+\sum_{\substack{w\in L\\w\neq 0}}\left(\frac{1}{((x-itm/2)-\overline{w})^2}-\frac{1}{\overline{w}^2}\right)\right]$$
+    $$=\left(\frac{1}{(x+itm/2)^2}+\frac{1}{(x+\overline{itm/2})^2}\right)+\sum_{\substack{w\in L\\w\neq 0}}\left[\left(\frac{1}{(x+itm/2-w)^2}-\frac{1}{w^2}\right)+\left(\frac{1}{(x+\overline{itm/2}-\overline{w})^2}-\frac{1}{\overline{w}^2}\right)\right]$$
+    $$=\left(\frac{1}{(x+itm/2)^2}+\frac{1}{\overline{(x+itm/2)}^2}\right)+\sum_{\substack{w\in L\\w\neq 0}}\left[\left(\frac{1}{(x+itm/2-w)^2}-\frac{1}{w^2}\right)+\left(\frac{1}{\overline{(x+itm/2-w)}^2}-\frac{1}{\overline{w}^2}\right)\right]$$
+    $$= 2\textmd{Re}\left(\frac{1}{(x+itm/2)^2}\right)+\sum_{\substack{w\in L\\w\neq 0}}2\textmd{Re}\left(\frac{1}{(x+itm/2-w)^2}-\frac{1}{w^2}\right)$$
+    $$2\textmd{Re}\left(\frac{1}{(x+itm/2)^2}\right)+2\sum_{\substack{w\in L\\w\neq 0}}\textmd{Re}\left(\frac{1}{(x+itm/2-w)^2}-\frac{1}{w^2}\right)$$
+    (Note: the above term converges, because for each component $z$ of the series, $|Re(z)|\leq |z|$, hence if the original series converges absolutely, the above series also converges; and, the original series $\wp(x+i\cdot\frac{tm}{2})$ is absolutely convergent).
+    
+    Then, since $2\wp(x+i\cdot\frac{tm}{2})$ is real, so does $\wp(x+i\cdot\frac{tm}{2})$. This proves that $\wp$ is purely real on the line $y=\frac{tm}{2},\ m\in\mathbb{Z}$ with the given lattice.
+
+    \hfil
+
+    \textbf{Vertical Line:}
+
+    For all non-lattice point on the vertical line (the line $x=\frac{n}{2}$ for some $n\in\mathbb{Z}$), $z=\frac{n}{2}+iy$ for some $y\in\mathbb{R}$. Which, since $n\in L$, then $\wp(-\frac{n}{2}+iy)=\wp((\frac{n}{2}+iy)-n)=\wp(\frac{n}{2}+iy)$. Then, if we consider the term $\wp(\frac{n}{2}+iy)-\overline{\wp(\frac{n}{2}+iy)}=2\textmd{Im}(\wp(\frac{n}{2}+iy))$, we get:
+    $$\wp\left(\frac{n}{2}+iy\right)-\overline{\wp\left(\frac{n}{2}+iy\right)}=\wp\left(\frac{n}{2}+iy\right)-\overline{\wp\left(-\frac{n}{2}+iy\right)}$$
+    $$ = \left[\frac{1}{(n/2+iy)^2}+\sum_{\substack{w\in L\\w\neq 0}}\left(\frac{1}{(n/2+iy-w)^2}-\frac{1}{w^2}\right)\right]-\overline{\left[\frac{1}{(-n/2+iy)^2}+\sum_{\substack{w\in L\\w\neq 0}}\left(\frac{1}{(-n/2+iy-(-\overline{w}))^2}-\frac{1}{(-\overline{w}) ^2}\right)\right]}$$
+    $$=\left(\frac{1}{(n/2+iy)^2}-\frac{1}{\overline{(-n/2+iy)}^2}\right)+\sum_{\substack{w\in L\\w\neq 0}}\left[\left(\frac{1}{(n/2+iy-w)^2}-\frac{1}{w^2}\right)-\overline{\left(\frac{1}{(-n/2+iy+\overline{w})^2}-\frac{1}{\overline{w}^2}\right)}\right]$$
+    $$=\left(\frac{1}{(n/2+iy)^2}-\frac{1}{(-n/2-iy)^2}\right)+\sum_{\substack{w\in L\\w\neq 0}}\left[\left(\frac{1}{(n/2+iy-w)^2}-\frac{1}{w^2}\right)-\left(\frac{1}{\overline{(-n/2+iy+\overline{w})}^2}-\frac{1}{\overline{(\overline{w})}^2}\right)\right]$$
+    $$=\left(\frac{1}{(n/2+iy)^2}-\frac{1}{(n/2+iy)^2}\right)+\sum_{\substack{w\in L\\w\neq 0}}\left[\left(\frac{1}{(n/2+iy-w)^2}-\frac{1}{w^2}\right)-\left(\frac{1}{(-n/2-iy+w)^2}-\frac{1}{w^2}\right)\right]$$
+    $$=0+\sum_{\substack{w\in L\\w\neq 0}}\left[\left(\frac{1}{(n/2+iy-w)^2}-\frac{1}{w^2}\right)-\left(\frac{1}{(n/2+iy-w)^2}-\frac{1}{w^2}\right)\right]=0$$
+    This shows that $2\cdot \textmd{Im}(\wp(\frac{n}{2}+iy)) = 0$, hence $\textmd{Im}(\wp(\frac{n}{2}+iy)) = 0$, which shows that $\wp(\frac{n}{2}+iy)$ is purely real. 
+    
+    Then, this proves that $\wp$ is purely real on the line $x=\frac{n}{2},\ n\in\mathbb{Z}$ with the given lattice.
+    
+    \hfil
+
+    \hfil
+
+    \item[(b)] To prove the problem, we'll consider only the fundamental region given in the graph (which is made up of $4$ rectangles).
+
+    \textbf{1. The Boundary of the rectangle is injective:}
+    
+    \begin{figure}[h!]
+        \begin{center}
+            \includegraphics*[width=55mm]{image 1.jpg}
+            \caption{Illustration of the rectangles in the fundamental region}
+        \end{center}
+    \end{figure}
+
+    Based on the above graph, within the fundamental region (with vertices $0,\ 1,\ (1+it),$ and $it$), the region $B_1,\ B_2$ are the two rectangles with distinct characterization (which, based on the relation of $\wp$, the two points $z,w$ in the fundamental region have the same image iff $z\equiv w$ or $z\equiv -w$ uner modulo $L$). Also, because $\wp$ has order $2$, at most $2$ distinct points in the fundamental region can be evaluated to be the same. Hence, for all points $z\in B_1$, the other point $w$ in the fundamental region with $\wp(z)=\wp(z)$ must occur in $(1+it)-B_1$ (the same case applies for $B_2$ and $(1+it)-B_2$).
+
+    Then, since the boundary of $B_1$ and $(1+it)-B_1$ only intersects at the midpoint of the fundamental region (which by the property of $\wp$, it has order $2$, so no other points evaluated to be the same as the midpoint), then for the other point on the boundary of $B_1$, since the corresponding point with the same value lies in the boundary of $(1+it)-B_1$ (so they are not in the same boundary), then restricting to $\partial B_1$, the function $\wp$ is in fact injective (and same logic applies to $\partial B_2$).
+
+    \hfil
+
+    \textbf{2. Boundary surjects onto $\mathbb{R}$ by $\wp$:}
+
+    \begin{figure}[h!]
+        \begin{center}
+            \includegraphics*[width=55mm]{image 2.jpg}
+        \end{center}
+    \end{figure}
+
+    Given a rectangle with boundary, WLOG, up to certain rotation and reflection, can assume under this orientation, the bottom left corner is a point in the lattice (so $\wp(w)=\infty$), $p_1,p_2,p_3\notin L$ are the midpoints, with $2p_i\in L$ for each index $i$ (which corresponds to the values $\wp(p_1)=e_1,\ \wp(p_2)=e_2,$ and $\wp(p_3)=e_3$ respectively, and $\wp'$ evaluated to be $0$ at these points), and $e_1<e_3$.
+
+    Which, for each $c_i$, since it is a closed straight line, can generate continuous path $f_i:[0,1]\rightarrow c_i$ that satisfies the given orientation in the graph, and $f_i'$ being a nonzero constant in $(0,1)$ (i.e. can view each $c_i$ as a unit interval). And, since $c_i$ is contained in the boundary of the rectangle, then $\wp(c_i)\subseteq \mathbb{R}\cup\{\infty\}$. Hence, if exclude the point $w$, when restricting the domain to each $c_i$, can view $\wp$ as a real valued function from interval $[0,1]$ to $\mathbb{R}$ (so we're treating each $c_i$ as an interval in $\mathbb{R}$). Then, there are some properties we can derive:
+    \begin{itemize}
+        \item $e_2\in (e_1,e_3)$: Suppose the contrary that this is false, then either $e_2<e_1,e_3$ or $e_2>e_1,e_3$ (for definiteness, consider the first case). Yet, if we choose $y\in\mathbb{R}$ such that $y\in (e_2,e_1)$ and $y\in (e_2,e_3)$, since $p_1,p_2,p_3$ maps to $e_1,e_2,e_3$ respectively, while they're the endpoints of $c_2$ and $c_3$, then by Intermediate Value Theorem, there exists $z_2\in c_2$ and $z_3\in c_3$ (which are not the endpoints $p_1,p_2,p_3$), such that $\wp(z_2)=\wp(z_3)=y$ (since each $c_i$ can be mapped to by the unit interval $[0,1]$ in a linear manner, can treat $c_i$ as an interval in $\mathbb{R}$). But, since $z_2\neq z_3$ (because they're not the endpoints, while $c_2,c_3$ only intersect at the endpoint), this violates the injectivity of $\wp$ on the boundary of the rectangle.
+        Hence, $e_2\in (e_1,e_3)$ is enforced.
+
+        \item $\wp$ is monotonic on each $c_i$: Since $\wp'$ only evaluates to be $0$ at the midpoints (the points with $a\notin L$, but $2a\in L$), then on the boundary, the only part with $\wp'=0$ is $p_1,p_2,p_3$. Which, if viewing each $c_i$ as an interval in $\mathbb{R}$, since $\wp'\neq 0$ on these intervals except at the endpoints, then the derivative (in form of $\wp' \cdot f_i'$) is either $>0$ or $<0$ for all points in the interior of $c_i$. Hence, the function must be monotonic.
+        
+        Also, based on the fact that $\wp(p_1)=e_1<e_2=\wp(p_2)$ and $\wp(p_2)=e_2<e_3=\wp(p_3)$ derived above, on $c_2$ and $c_3$ with the specified orientation, $\wp$ is monotonically increasing.
+
+        \item $\wp$ is also increasing on $c_1$ and $c_4$:
+    \end{itemize}
+\end{itemize}
 
 \end{document}
