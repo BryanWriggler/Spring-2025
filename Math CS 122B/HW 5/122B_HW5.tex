@@ -122,7 +122,7 @@ Which, this equation is the desired recursive form.
         Freitag Chap. V.4 Exercise 3:
 
         Let $L\subset \mathbb{C}$ be a lattice with the property $g_2(L)=8$ and $g_3(L)=0$. The point $(2,4)$ lies on the affine elliptic curve $y^2=4x^3-8x$.
-        Let $+$ be the addition (for points on the corresponding projective curve). SHow that $2\cdot (2,4):= (2,4)+(2,4)$ is the point $(\frac{9}{4},\frac{21}{4})$.
+        Let $+$ be the addition (for points on the corresponding projective curve). SHow that $2\cdot (2,4):= (2,4)+(2,4)$ is the point $(\frac{9}{4},-\frac{21}{4})$.
     \end{question}
 \end{myBox}
 
@@ -146,6 +146,10 @@ $$4x^3-25x^2+52x-36 = (x-2)^2(4x-9)$$
 This indicates that the third zero exists at $x=\frac{9}{4}$. Which, the only point lying on the defined tangent above with $x=\frac{9}{4}$ is given as:
 $$y=5\cdot\frac{9}{4}-6 = \frac{21}{4}$$
 So, the third point lying on the tangent is $(\frac{9}{4},\frac{21}{4})$.
+
+Finally, by Addition Theorem, since three points are on the same projective line iff the three points adds up to be $0$ on the elliptic curve,
+so since $(2,4),(2,4),(\frac{9}{4},\frac{21}{4})$ are on the same line, under the addition the three points become $0$.
+Hence, $2\cdot(2,4)+(\frac{9}{4},\frac{21}{4})\equiv 0$, showing that $2\cdot (2,4)\equiv (\frac{9}{4},-\frac{21}{4})$ based on the addition on the elliptic curve.
 
 
 \break
@@ -279,8 +283,6 @@ So, $\alpha$ is the desired constant, such that $\wp(z+\alpha)$ is the inverse o
         Also, based on the fact that $\wp(p_1)=e_1<e_2=\wp(p_2)$ and $\wp(p_2)=e_2<e_3=\wp(p_3)$ derived above, on $c_2$ and $c_3$ with the specified orientation, $\wp$ is monotonically increasing.
 
         Then, this also enforces $\wp$ to be increasing on $c_1$ and $c_4$, since if they're decreasing instead, there exists $z_1\in c_1$, $z_4\in c_4$, such that $\wp(z_1)>\wp(p_1)=e_1$, while $\wp(z_4)<\wp(p_3)=e_3$, then again by Intermediate Value Theorem, some points on the segmant $\overline{z_1p_1}$ and some other points on the segmant $\overline{z_4p_3}$ will be mapped into the interval $(e_1,e_3)$, which contradicts the injectivity of $\wp$ on the boundary.
-
-        \textbf{Insert Image 3}
     \end{itemize}
 
     Now, to prove that the boundary rectangle surjects onto $\mathbb{R}$ by $\wp$, consider the following:
@@ -294,7 +296,11 @@ So, $\alpha$ is the desired constant, such that $\wp(z+\alpha)$ is the inverse o
 
     The above three cases cover all $x\in\mathbb{R}$, which for all such $x$, there exists $z$ on the boundary of the rectangle, such that $\wp(z)=x$, showing that the boundary surjects onto $\mathbb{R}$ with $\wp$.
 
-    \textbf{Insert some image here to illustrate what happened}
+    \begin{figure}[h!]
+        \begin{center}
+            \includegraphics*[width=80mm]{image 3.jpg}
+        \end{center}
+    \end{figure}
 
     \hfil
 
@@ -308,7 +314,12 @@ So, $\alpha$ is the desired constant, such that $\wp(z+\alpha)$ is the inverse o
 
     \textbf{4. The interior has its image cover the whole half plane:}
 
-    \textbf{Insert an Image Showing C/L hat}
+    \begin{figure}[h!]
+        \begin{center}
+            \includegraphics*[width=80mm]{image 4.jpg}
+            \caption{The Fundamental Region with $\mathbb{C}/\widehat{L}$}
+        \end{center}
+    \end{figure}
 
     Recall that in \textbf{HW 4 Problem 3}, under the quotient $\mathbb{C}/\widehat{L}$ (where $z\sim z'$ iff $z\equiv \pm z'\mod\ L$), $\wp:\mathbb{C}/\widehat{L}\rightarrow\overline{\mathbb{C}}$ forms a bijection, hence consider just the region shown in the above figure (removing the point $w\in L$), $\wp$ is in fact bijective onto $\mathbb{C}$.
 
