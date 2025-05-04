@@ -90,7 +90,7 @@ The goal is to get a recursive relation of the coefficient of each power of $\wp
 \hfil
 
 With the expression of $\wp''$ in power series from above, to get an expression of $G_{2m}$ for $m\geq 4$, it suffices to find the coefficient of $z^{2m-4}$ within $6(\wp(z))^2-\frac{g_2}{2}$.
-There are two casees to consider:
+There are two cases to consider:
 \begin{itemize}
     \item[1.] $z^{2m-4}$ can be expressed as $\frac{1}{z^2}\cdot z^{2m-2}$, within $\wp(z)$, the coefficient of $\frac{1}{z^2}$ is $1$, while the coefficient of $z^{2m-2}=z^{2(m-1)}$ is $(2(m-1)+1)G_{2((m-1)+1)} = (2m-1)G_{2m}$.
     Hence, since $(\wp(z))^2$ has two copies of the above expression, then the coefficient of $\frac{1}{z^2}\cdot z^{2m-2}$ is:
@@ -143,7 +143,7 @@ $$\begin{cases}
 Hence, $(5x-6)^2 = 4x^3-8x$, which $25x^2-60x+36 = 4x^3-8x$, so $4x^3-25x^2+52x-36 = 0$. Which, consider the fact that $(x,y)=(2,4)$ appears on the tangent twice (with multiplicity 2),
 then $(x-2)^2$ is presumably a factor of the above equation. The above polynomial in fact has the following factorization:
 $$4x^3-25x^2+52x-36 = (x-2)^2(4x-9)$$
-This indicates that the third zero happesn when $x=\frac{9}{4}$. Which, the only point lying on the defined tangent above is given as:
+This indicates that the third zero exists at $x=\frac{9}{4}$. Which, the only point lying on the defined tangent above with $x=\frac{9}{4}$ is given as:
 $$y=5\cdot\frac{9}{4}-6 = \frac{21}{4}$$
 So, the third point lying on the tangent is $(\frac{9}{4},\frac{21}{4})$.
 
@@ -177,18 +177,18 @@ Then, given the definition of $I(w)$ above (as an antiderivative of $\frac{1}{\s
 Now, since $\wp:\mathbb{C}\setminus L\rightarrow\mathbb{C}$ is an order 2 even elliptic function, then threre exists $\alpha_1\in \mathbb{C}\setminus L$, such that $\wp(\alpha_1)=\wp(-\alpha_1)=w_0$,
 while $\wp'(\alpha_1) = -\wp'(-\alpha_1)$.
 
-Then, given the algebraic differential equation $(\wp'(z))^2=4(\wp(z))^3-g_2\wp(z)-g_3$, then for the defined square root, we have $(\wp'(\alpha_1))^2=(\wp'(-\alpha_1))^2 = 4w_0^3-g_2w_0-g_3$. 
+Then, given the algebraic differential equation $(\wp'(z))^2=4(\wp(z))^3-g_2\wp(z)-g_3$, we have $(\wp'(\alpha_1))^2=(\wp'(-\alpha_1))^2 = 4w_0^3-g_2w_0-g_3$. 
 Which, for the defined square root, there are two cases: either $\sqrt{4w_0^3-g_2w_0-g_3} = \wp'(\alpha_1)$, or $\sqrt{4w_0^3-g_2w_0-g_3} = -\wp'(\alpha_1) = \wp'(-\alpha_1)$.
 In either case, we can choose $\alpha\in \{\alpha_1,-\alpha_1\}$, such that $\sqrt{4w_0^3-g_2w_0-g_3} = \sqrt{(\wp'(\alpha))^2} = \wp'(\alpha)$ (and it still satisfies $\wp(\alpha)=w_0$).
 
-Hence, given the function $I(\wp(z+\alpha))$ with the domain being the preimage of $\Omega$ (which is containing $0$, since $\wp(0+\alpha)=\wp(\alpha)=w_0\in\Omega$), we have the following:
+Hence, given the function $I(\wp(z+\alpha))$ with the domain containing the preimage of $\Omega$ (which defines it to contain $0$, since $\wp(0+\alpha)=\wp(\alpha)=w_0\in\Omega$), we have the following:
 $$I(\wp(0+\alpha)) = I(w_0)=\int_{w_0}^{w_0}\frac{dz}{\sqrt{4z^3-g_2z-g_3}} = 0$$
 Also, if differentiate this composition of function, we get:
 $$(I(\wp(z+\alpha)))' = I'(\wp(z+\alpha))\wp'(z+\alpha) = \frac{\wp'(z+\alpha)}{\sqrt{4(\wp(z+\alpha))^3-g_2(\wp(z+\alpha))-g_3}} = \frac{\wp'(z+\alpha)}{\sqrt{(\wp'(z+\alpha))^2}} = \pm 1$$
 Notice that since both $I$ and $\wp$ are analytic function within the given domain, hence the composition and its derivative are both analytic;
 on the other hand, since $(I(\wp(z+\alpha)))'$ has the value at $z=0$ being the following:
 $$(I(\wp(z+\alpha)))'\bigm|_{z=0} = \frac{\wp'(0+\alpha)}{\sqrt{(\wp'(0+\alpha))^2}} = \frac{\wp'(\alpha)}{\sqrt{(\wp'(\alpha))^2}} = \frac{\wp'(\alpha)}{\wp'(\alpha)}=1$$
-then in case for $(I(\wp(z+\alpha)))'$ to be continuous (in particular, continuous), we need $(I(\wp(z+\alpha)))' = 1$, which implies that $I(\wp(z+\alpha))=z$.
+then in case for $(I(\wp(z+\alpha)))'$ to be analytic, we need $(I(\wp(z+\alpha)))' = 1$, which implies that $I(\wp(z+\alpha))=z$.
 So, $\alpha$ is the desired constant, such that $\wp(z+\alpha)$ is the inverse of $I$.
 
 \break
@@ -208,10 +208,10 @@ So, $\alpha$ is the desired constant, such that $\wp(z+\alpha)$ is the inverse o
 \end{myBox}
 
 \textbf{Pf:}
-
-Assume the lattice is given by $L=\mathbb{Z}+\mathbb{Z}it$ for the $\wp$-function. Which, for all $w=n+i\cdot tm\in L$, its conjugate $\overline{w}=n-i\cdot tm\in L$. On the other hand, $-w = -n-i\cdot tm\in L$.
 \begin{itemize}
-    \item[(a)] \textbf{Horizontal Line:}
+    \item[(a)] Assume the lattice is given by $L=\mathbb{Z}+\mathbb{Z}it$ for the $\wp$-function. Which, for all $w=n+i\cdot tm\in L$, its conjugate $\overline{w}=n-i\cdot tm\in L$. On the other hand, $-w = -n-i\cdot tm\in L$. Since the $\wp$-function converges normally on $\mathbb{C}\setminus L$, it converges absolutely everywhere in this domain, hence it's fine to exchange the order of the summation. (For the proof below, we'll exchange the order of summation by replacing $w$ with $\overline{w}$ or some other corresponding points in $L$).
+    
+    \textbf{Horizontal Line:}
     
     For all point (that's not a lattice point) on the horizontal line (the line $y=\frac{tm}{2}$ for some $m\in\mathbb{Z}$), $z=x+i\cdot\frac{tm}{2}$ for some $x\in\mathbb{R}$. 
     Which, since $itm\in L$, then $\wp(x-i\cdot\frac{tm}{2})=\wp((x+i\cdot\frac{tm}{2})-itm) = \wp(x+i\cdot\frac{tm}{2})$. Then, consider the expression $2\wp(x+i\cdot\frac{tm}{2})$, we get:
@@ -221,9 +221,9 @@ Assume the lattice is given by $L=\mathbb{Z}+\mathbb{Z}it$ for the $\wp$-functio
     $$=\left(\frac{1}{(x+itm/2)^2}+\frac{1}{\overline{(x+itm/2)}^2}\right)+\sum_{\substack{w\in L\\w\neq 0}}\left[\left(\frac{1}{(x+itm/2-w)^2}-\frac{1}{w^2}\right)+\left(\frac{1}{\overline{(x+itm/2-w)}^2}-\frac{1}{\overline{w}^2}\right)\right]$$
     $$= 2\textmd{Re}\left(\frac{1}{(x+itm/2)^2}\right)+\sum_{\substack{w\in L\\w\neq 0}}2\textmd{Re}\left(\frac{1}{(x+itm/2-w)^2}-\frac{1}{w^2}\right)$$
     $$2\textmd{Re}\left(\frac{1}{(x+itm/2)^2}\right)+2\sum_{\substack{w\in L\\w\neq 0}}\textmd{Re}\left(\frac{1}{(x+itm/2-w)^2}-\frac{1}{w^2}\right)$$
-    (Note: the above term converges, because for each component $z$ of the series, $|Re(z)|\leq |z|$, hence if the original series converges absolutely, the above series also converges; and, the original series $\wp(x+i\cdot\frac{tm}{2})$ is absolutely convergent).
+    (Note: the above series  converges, because for each component $z$ of the series, $|Re(z)|\leq |z|$, hence if the original series converges absolutely, the above series also converges; and, the original series $\wp(x+i\cdot\frac{tm}{2})$ is absolutely convergent).
     
-    Then, since $2\wp(x+i\cdot\frac{tm}{2})$ is real, so does $\wp(x+i\cdot\frac{tm}{2})$. This proves that $\wp$ is purely real on the line $y=\frac{tm}{2},\ m\in\mathbb{Z}$ with the given lattice.
+    Then, since $2\wp(x+i\cdot\frac{tm}{2})$ is real (since each component in the series is real), so does $\wp(x+i\cdot\frac{tm}{2})$. This proves that $\wp$ is purely real on the line $y=\frac{tm}{2},\ m\in\mathbb{Z}$ with the given lattice.
 
     \hfil
 
@@ -236,12 +236,10 @@ Assume the lattice is given by $L=\mathbb{Z}+\mathbb{Z}it$ for the $\wp$-functio
     $$=\left(\frac{1}{(n/2+iy)^2}-\frac{1}{(-n/2-iy)^2}\right)+\sum_{\substack{w\in L\\w\neq 0}}\left[\left(\frac{1}{(n/2+iy-w)^2}-\frac{1}{w^2}\right)-\left(\frac{1}{\overline{(-n/2+iy+\overline{w})}^2}-\frac{1}{\overline{(\overline{w})}^2}\right)\right]$$
     $$=\left(\frac{1}{(n/2+iy)^2}-\frac{1}{(n/2+iy)^2}\right)+\sum_{\substack{w\in L\\w\neq 0}}\left[\left(\frac{1}{(n/2+iy-w)^2}-\frac{1}{w^2}\right)-\left(\frac{1}{(-n/2-iy+w)^2}-\frac{1}{w^2}\right)\right]$$
     $$=0+\sum_{\substack{w\in L\\w\neq 0}}\left[\left(\frac{1}{(n/2+iy-w)^2}-\frac{1}{w^2}\right)-\left(\frac{1}{(n/2+iy-w)^2}-\frac{1}{w^2}\right)\right]=0$$
-    This shows that $2\cdot \textmd{Im}(\wp(\frac{n}{2}+iy)) = 0$, hence $\textmd{Im}(\wp(\frac{n}{2}+iy)) = 0$, which shows that $\wp(\frac{n}{2}+iy)$ is purely real. 
+    This shows that $2\cdot \textmd{Im}(\wp(\frac{n}{2}+iy)) = 0$, hence $\textmd{Im}(\wp(\frac{n}{2}+iy)) = 0$, so $\wp(\frac{n}{2}+iy)$ is purely real. 
     
     Then, this proves that $\wp$ is purely real on the line $x=\frac{n}{2},\ n\in\mathbb{Z}$ with the given lattice.
     
-    \hfil
-
     \hfil
 
     \item[(b)] To prove the problem, we'll consider only the fundamental region given in the graph (which is made up of $4$ rectangles).
@@ -250,12 +248,12 @@ Assume the lattice is given by $L=\mathbb{Z}+\mathbb{Z}it$ for the $\wp$-functio
     
     \begin{figure}[h!]
         \begin{center}
-            \includegraphics*[width=55mm]{image 1.jpg}
+            \includegraphics*[width=50mm]{image 1.jpg}
             \caption{Illustration of the rectangles in the fundamental region}
         \end{center}
     \end{figure}
 
-    Based on the above graph, within the fundamental region (with vertices $0,\ 1,\ (1+it),$ and $it$), the region $B_1,\ B_2$ are the two rectangles with distinct characterization (which, based on the relation of $\wp$, the two points $z,w$ in the fundamental region have the same image iff $z\equiv w$ or $z\equiv -w$ uner modulo $L$). Also, because $\wp$ has order $2$, at most $2$ distinct points in the fundamental region can be evaluated to be the same. Hence, for all points $z\in B_1$, the other point $w$ in the fundamental region with $\wp(z)=\wp(z)$ must occur in $(1+it)-B_1$ (the same case applies for $B_2$ and $(1+it)-B_2$).
+    Based on the above graph, within the fundamental region (with vertices $0,\ 1,\ (1+it),$ and $it$), the region $B_1,\ B_2$ are the two rectangles with distinct characterization (which, based on the relation of $\wp$, the two points $z,w$ in the fundamental region have the same image iff $z\equiv w$ or $z\equiv -w$ under modulo $L$). Also, because $\wp$ has order $2$, at most $2$ distinct points in the fundamental region can be evaluated to be the same. Hence, for all points $z\in B_1$, the other point $w$ in the fundamental region with $\wp(z)=\wp(z)$ must occur in $(1+it)-B_1$ (the same case applies for $B_2$ and $(1+it)-B_2$).
 
     Then, since the boundary of $B_1$ and $(1+it)-B_1$ only intersects at the midpoint of the fundamental region (which by the property of $\wp$, it has order $2$, so no other points evaluated to be the same as the midpoint), then for the other point on the boundary of $B_1$, since the corresponding point with the same value lies in the boundary of $(1+it)-B_1$ (so they are not in the same boundary), then restricting to $\partial B_1$, the function $\wp$ is in fact injective (and same logic applies to $\partial B_2$).
 
@@ -273,15 +271,55 @@ Assume the lattice is given by $L=\mathbb{Z}+\mathbb{Z}it$ for the $\wp$-functio
 
     Which, for each $c_i$, since it is a closed straight line, can generate continuous path $f_i:[0,1]\rightarrow c_i$ that satisfies the given orientation in the graph, and $f_i'$ being a nonzero constant in $(0,1)$ (i.e. can view each $c_i$ as a unit interval). And, since $c_i$ is contained in the boundary of the rectangle, then $\wp(c_i)\subseteq \mathbb{R}\cup\{\infty\}$. Hence, if exclude the point $w$, when restricting the domain to each $c_i$, can view $\wp$ as a real valued function from interval $[0,1]$ to $\mathbb{R}$ (so we're treating each $c_i$ as an interval in $\mathbb{R}$). Then, there are some properties we can derive:
     \begin{itemize}
-        \item $e_2\in (e_1,e_3)$: Suppose the contrary that this is false, then either $e_2<e_1,e_3$ or $e_2>e_1,e_3$ (for definiteness, consider the first case). Yet, if we choose $y\in\mathbb{R}$ such that $y\in (e_2,e_1)$ and $y\in (e_2,e_3)$, since $p_1,p_2,p_3$ maps to $e_1,e_2,e_3$ respectively, while they're the endpoints of $c_2$ and $c_3$, then by Intermediate Value Theorem, there exists $z_2\in c_2$ and $z_3\in c_3$ (which are not the endpoints $p_1,p_2,p_3$), such that $\wp(z_2)=\wp(z_3)=y$ (since each $c_i$ can be mapped to by the unit interval $[0,1]$ in a linear manner, can treat $c_i$ as an interval in $\mathbb{R}$). But, since $z_2\neq z_3$ (because they're not the endpoints, while $c_2,c_3$ only intersect at the endpoint), this violates the injectivity of $\wp$ on the boundary of the rectangle.
+        \item $e_2\in (e_1,e_3)$: Suppose the contrary that this is false, then either $e_2<e_1,e_3$ or $e_2>e_1,e_3$ (for definiteness, consider the first case). Yet, if we choose $y\in\mathbb{R}$ such that $y\in (e_2,e_1)$ and $y\in (e_2,e_3)$, since $p_1,p_2,p_3$ maps to $e_1,e_2,e_3$ respectively, while they're the endpoints of $c_2$ and $c_3$, then by Intermediate Value Theorem, there exists $z_2\in c_2$ and $z_3\in c_3$ (which are not the endpoints $p_1,p_2,p_3$), such that $\wp(z_2)=\wp(z_3)=y$ (since each $c_i$ can be mapped to by the unit interval $[0,1]$ in a linear manner, can treat $c_i$ as an interval in $\mathbb{R}$). But, since $z_2\neq z_3$ (because they're not $p_2$ by assumption, while $c_2,c_3$ only intersect at $p_2$), this violates the injectivity of $\wp$ on the boundary of the rectangle.
         Hence, $e_2\in (e_1,e_3)$ is enforced.
 
         \item $\wp$ is monotonic on each $c_i$: Since $\wp'$ only evaluates to be $0$ at the midpoints (the points with $a\notin L$, but $2a\in L$), then on the boundary, the only part with $\wp'=0$ is $p_1,p_2,p_3$. Which, if viewing each $c_i$ as an interval in $\mathbb{R}$, since $\wp'\neq 0$ on these intervals except at the endpoints, then the derivative (in form of $\wp' \cdot f_i'$) is either $>0$ or $<0$ for all points in the interior of $c_i$. Hence, the function must be monotonic.
         
         Also, based on the fact that $\wp(p_1)=e_1<e_2=\wp(p_2)$ and $\wp(p_2)=e_2<e_3=\wp(p_3)$ derived above, on $c_2$ and $c_3$ with the specified orientation, $\wp$ is monotonically increasing.
 
-        \item $\wp$ is also increasing on $c_1$ and $c_4$:
+        Then, this also enforces $\wp$ to be increasing on $c_1$ and $c_4$, since if they're decreasing instead, there exists $z_1\in c_1$, $z_4\in c_4$, such that $\wp(z_1)>\wp(p_1)=e_1$, while $\wp(z_4)<\wp(p_3)=e_3$, then again by Intermediate Value Theorem, some points on the segmant $\overline{z_1p_1}$ and some other points on the segmant $\overline{z_4p_3}$ will be mapped into the interval $(e_1,e_3)$, which contradicts the injectivity of $\wp$ on the boundary.
+
+        \textbf{Insert Image 3}
     \end{itemize}
+
+    Now, to prove that the boundary rectangle surjects onto $\mathbb{R}$ by $\wp$, consider the following:
+
+    First, since $\wp(w)=\infty$, for all $M>0$, there exists $r>0$, such that $|z-w|<r$ implies $|\wp(z)|>M$. So, for any $x<e_1$, choose $M>\max\{|e_1|,|x|\}\geq 0$, then any $z_1\in c_1$ ($z_1\neq p_1$) that satisfies $0<|w-z_1|<r$ (where $r$ corresponds to $M$), has $|\wp(z_1)|>M$ (so, $\wp(z_1)>M$ or $\wp(z_1)<-M$). But, with the monotonicity of $\wp$ on $c_1$, we must have $\wp(z_1)<\wp(p_1)=e_1$. Then, since $e_1\leq |e_1|<M$, $\wp(z_1)>M$ would cause a contradiction. So, $\wp(z_1)<-M$, while $-M<-|x|\leq x$. So, given $\wp(z_1)<-M<x<e_1 = \wp(p_1)$, by Intermediate Value Theorem, there exists $z$ in the segmant $\overline{z_1 p_1}\subseteq c_1$, such that $\wp(z)=x$.
+    
+    Then, for any $x\in (e_1,e_3)$, we can also use Intermediate Value Theorem on $c_2$ (if $x\in (e_1,e_2)$) or on $c_3$ (if $x\in (e_2,e_3)$) to get that $x$ is also in the image of $\wp$ on the boundary of the rectangle. (Note: if $x=e_2$, then $\wp(p_2)=e_2$).
+
+    Lastly, for $x>e_3$, using the same logic as the first case, choose $M>\max\{|e_3|,|x|\}\geq 0$, for any $z_4\in c_4$ ($z_4\neq p_3$) that satisfies $0<|w-z_4|<r$, satisfies $|\wp(z_4)|>M$. Hence, since $\wp$ is increasing on $c_4$, with $z_4\neq p_3$, we have $\wp(z_4)>\wp(p_3)=e_3$. Which, since $M>|e_3|\geq e_3$, we must have $\wp(z_4)>M$ for $|\wp(z_4)|>M$ to be satisfied.
+    So, because $\wp(z_4)>M>|x|\geq x > e_3$, by Intermediate Value Theorem again, there exists $z\in \overline{p_3z_4}\subseteq c_4$, with $\wp(z)=x$. 
+
+    The above three cases cover all $x\in\mathbb{R}$, which for all such $x$, there exists $z$ on the boundary of the rectangle, such that $\wp(z)=x$, showing that the boundary surjects onto $\mathbb{R}$ with $\wp$.
+
+    \textbf{Insert some image here to illustrate what happened}
+
+    \hfil
+
+    \textbf{3. The interior of the rectangle is within a half plane:}
+
+    From the prvious part, we got that for all $x\in \mathbb{R}$, there exists $z$ on the boundary, with $\wp(z)=x$, then since within a fundamental region, the other point $w$ with $\wp(w)=\wp(z)=x$ lies within the other boundary based on the statement in \textbf{1}, it implies that all $u$ in the interior of the rectangle (not on the boundary of any rectangle) must have $\wp(u)\notin \mathbb{R}$, so $\wp(u)$ must be in upper or lower half plane.
+
+    However, since the interior of the rectangle is connected, while $\wp$ is continuous, this enforces the image of the interior to be continuous, hence the image of the interior must be fully contained in one of the upper or lower half plane, but not both (since the upper half plane $\textmd{Im}(z)>0$ and lower half plane $\textmd{Im}(z)<0$ are separated, if a connected set has image lying in both half planes, it forms a nontrivial separation of the image, which contradicts the fact that continuous function maps connected set to connected set).
+
+    \hfil
+
+    \textbf{4. The interior has its image cover the whole half plane:}
+
+    \textbf{Insert an Image Showing C/L hat}
+
+    Recall that in \textbf{HW 4 Problem 3}, under the quotient $\mathbb{C}/\widehat{L}$ (where $z\sim z'$ iff $z\equiv \pm z'\mod\ L$), $\wp:\mathbb{C}/\widehat{L}\rightarrow\overline{\mathbb{C}}$ forms a bijection, hence consider just the region shown in the above figure (removing the point $w\in L$), $\wp$ is in fact bijective onto $\mathbb{C}$.
+
+    Then, since $\mathbb{R}$ has its preimage being precisely the boundary (since the boundary surjects onto $\mathbb{R}$, and other points in the interior of the rectangles have image not in $\mathbb{R}$), then for all $z\in\mathbb{C}\setminus\mathbb{R}$, its preimage $\wp^{-1}(z)$ in the region above, must be in one of the rectangles' interior. 
+
+    Which, if the interior $B_1^\circ$ gets mapped into the upper half plane, every $z$ in the upper half plane must have its preimage (in the region drawn above) being in $B_1^\circ$: Suppose the contrary that this is false, then there exists $z$ in the upper half plane, with its preimage being in $B_2^\circ$ instead. But, since $B_1^\circ$ gets mapped into the upper half plane, all $w$ in the lower half plane must have their preimage being in $B_2^\circ$, showing that the image of $B_2^\circ$ is not connected (since there are points in the image being in the upper half plane, while some others are in the lower half plane). Yet, this contradicts the fact that $B_2^\circ$ is connected, and $\wp$ is continuous.
+    So, $B_1^\circ$ must have its image being the whole upper half plane, to avoid the contradiction (same logic applies to $B_2^\circ$, which has its image being the whole lower half plane).
+
+    \hfil
+
+    Finally, since each interior of the rectangle must have its image being the whole upper or lower half plane, while $\wp$ is injective on each rectangle's interior and $\wp' \neq 0$ in the interior (since the only $3$ points in the fundamental region with $\wp'=0$, are the three midpoints that lie on the boundary of the rectangles), then $\wp$ maps each interior of the rectangle conformally onto the upper or lower half plane.
 \end{itemize}
 
 \end{document}
