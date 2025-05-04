@@ -92,7 +92,7 @@ colback=blue!10
         \begin{itemize}
             \item[(a)] Define $S$ as in the proof of Theorem $9.32$. Show that $SA$ is a projection in $\mathbb{R}^n$ whose null space is $\textmd{null}(A)$ and whose range is $\textmd{range}(S)$.
             \item[(b)] Use (a) to show that 
-            $$\dim(\textmd{null}(A)+\dim(\textmd{range}(A))=n$$
+            $$\dim(\textmd{null}(A))+\dim(\textmd{range}(A))=n$$
         \end{itemize}
     \end{question}
 \end{myBox}
@@ -105,8 +105,43 @@ colback=blue!10
     $$A\left(\sum_{i=1}^{r}a_iz_i\right) = \sum_{i=1}^{r}a_i(Az_i) = \sum_{i=1}^{r}a_iy_i$$
     By the linear independence of $y_1,...,y_r\in \textmd{range}(A)$, each $a_i = 0$, which proves the linear independence of $z_1,...,z_r\in\mathbb{R}^n$.
 
-    Finally, define $S\in\mathcal{L}(\textmd{range}(A),\mathbb{R}^n)$ the same as in the text, which has the following formula:
+    \begin{comment}
+    Now, we can expand the linearly independent list $z_1,...,z_r\in\mathbb{R}^n$ into a basis, say $z_1,...,z_r,x_1,...,x_k\in\mathbb{R}^n$ with $r+k=n$.
+    Which, each $x_j$ with $j\in\{1,...,k\}$ must satisfy $Ax_j = \bar{0}\in\mathbb{R}^m$ (or $x_j\in \textmd{null}(A)\subseteq\mathbb{R}^n$): Since $Ax_j\in\textmd{range}(A)$, then it is spanned by $y_1,...,y_r$, there exists $a_1,...,a_r\in\mathbb{R}$ such that the following equation is true:
+    $$Ax_j = \sum_{i=1}^{r}a_iy_i$$
+    By the definition of $z_i$ given above, $Ax_j$ can then be rewrite as:
+    $$Ax_j = \sum_{i=1}^{r}a_iy_i = \sum_{i=1}^{r}a_i(Az_i) = A\left(\sum_{i=1}^{r}a_iz_i\right)$$
+    \end{comment}
+
+    Now, define $S\in\mathcal{L}(\textmd{range}(A),\mathbb{R}^n)$ the same as in the text, which has the following formula:
     $$\forall c_1,...,c_r\in\mathbb{R},\quad S\left(\sum_{i=1}^{r}c_iy_i\right)=\sum_{i=1}^{r}c_iz_i$$
+    Then, for all $x\in\mathbb{R}^n$, since $Ax\in\textmd{range}(A)$, it is spanned by $y_1,...,y_r$, hence there exists unique $a_1,...,a_r\in\mathbb{R}$, such that the following is true:
+    $$Ax = \sum_{i=1}^{r}a_iy_i$$
+    Hence, we get the following:
+    $$SAx = S\left(\sum_{i=1}^{r}a_iy_i\right) = \sum_{i=1}^{r}a_iz_i$$
+    Hence, applying $SA$ twice, we get:
+    $$SA(SAx) = SA\left(\sum_{i=1}^{r}a_iz_i\right) = S\left(\sum_{i=1}^{r}a_iy_i\right) = \sum_{i=1}^{r}a_iz_i$$
+    This shows that $SA(SAx) = SAx$ for all $x\in\mathbb{R}^n$, hence $SA$ is a projection on $\mathbb{R}^n$.
+
+    \hfil
+
+    Now, to find the null space and range, consider the following:
+    \begin{itemize}
+        \item For all $x\in\textmd{null}(A)$, since $Ax = 0$, then $SAx = S(0)=0$, so $x\in \textmd{null}(SA)$, or $\textmd{null}(A)\subseteq \textmd{null}(SA)$.
+        
+        On the other hand, for all $\in \textmd{null}(SA)$, since $S(Ax)=0$, $Ax \in \textmd{null(S)}$. But, since $Ax\in\textmd{range}(A)$, there exists unique $a_1,...,a_r\in\mathbb{R}$, with $Ax = \sum_{i=1}^{r}a_iy_i$. Hence, we have the following:
+        $$ 0 = S(Ax)=S\left(\sum_{i=1}^{r}a_iy_i\right) = \sum_{i=1}^{r}a_iz_i$$
+        Hence, by linear independence of $z_1,...,z_r\in\mathbb{R}^n$, we must have $a_i=0$ for all index $i\in\{1,...,r\}$.
+        This proves that $Ax = \sum_{i=1}^{r}a_iy_i = 0$, so $x\in\textmd{null}(A)$. Hence, $\textmd{null}(SA)\subseteq \textmd{null}(A)$, showing that $\textmd{null}(SA)= \textmd{null}(A)$.
+
+        \item For all $z\in\textmd{range}(SA)$, there exists $x\in\mathbb{R}^n$ with $SAx = z$. Since $z=S(Ax)\in \textmd{range}(S)$, then $\textmd{range}(SA)\subseteq\textmd{range}(S)$.
+        
+        Similarly, for all $z\in\textmd{range}(S)$, there exists $y\in \textmd{range}(A)$ (the domain of $S$), with $Sy = z$; then because there exists $x\in\mathbb{R}^n$, with $Ax = y$ by the definition of range, we have $SAx = S(Ax) = Sy = z$, hence $z\in \textmd{range}(SA)$, proving that $\textmd{range}(S)\subseteq \textmd{range}(SA)$, or $\textmd{range}(S)=\textmd{range}(SA)$.
+    \end{itemize}
+    Hence, the above to cases proves that $\textmd{null}(SA)= \textmd{null}(A)$, while $\textmd{range}(S)=\textmd{range}(SA)$. So, $SA$ is a projection in $\mathbb{R}^n$ with null space being $\textmd{null}(A)$, and range being $\textmd{range}(S)$.
+
+    \hfil
+
     \item[(b)] 
 \end{itemize}
 
