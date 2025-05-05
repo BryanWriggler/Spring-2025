@@ -50,9 +50,119 @@ colback=blue!10
 
 If we define the function $f:\mathbb{R}^4\rightarrow\mathbb{R}^3$ by $f=(f_1,f_2,f_3)$, with $f_1,f_2,f_3:\mathbb{R}^4\rightarrow\mathbb{R}$ defined as:
 $$f_1(x,y,z,u)=3x+y-z+u^2,\quad f_2(x,y,z,u)=x-y+2z+u,\quad f_3(x,y,z,u)=2x+2y-3z+2u$$
-Which, there exists an obvious solution to $f(\bar{x})=\bar{0}\in\mathbb{R}^3$, which is $\bar{x}=(0,0,0,0)\in\mathbb{R}^4$.
+So, in the order of $x,y,z,u$ from the left to right, the differential of $f$ is given as follow:
+$$A=Df(x,y,z,u)=\begin{pmatrix}
+    3&1&-1&2u\\
+    1&-1&2&1\\
+    2&2&-3&2
+\end{pmatrix}$$
+Notice that there exists an obvious solution to $f(\bar{x})=\bar{0}\in\mathbb{R}^3$, which is $\bar{x}=(0,0,0,0)\in\mathbb{R}^4$, so there exists $\bar{x}\in\mathbb{R}^4$, with $f(\bar{x})=0$.
 
-\textbf{}
+Now, since $f_1,f_2,f_3$ are all multivariable polynomials of variables $x,y,z,u$, then the partial derivatives all exist and are all continuous, hence $f$ is in fact continuously differentiable. To apply Implicit Function Theorem, we just need to verify when isolating one variable, the singularity of $f$'s differential with respect to the other variables, at all points $\bar{x}\in\mathbb{R}^4$ with $f(\bar{x})=0$.
+
+\hfil
+
+\textbf{Isolating $z$:}
+
+If isolate $z$, with respect to $x,y,u$, $A$ has a corresponding linear operator $A_{xyu}\in\mathcal{L}(\mathbb{R}^3)$ given by:
+$$A_{xyu}=\begin{pmatrix}
+    3&1&2u\\
+    1&-1&1\\
+    2&2&2
+\end{pmatrix}$$
+Which has its determinant given by:
+$$\det A_{xyu} = 2u(2-(-2))-1(2-2)+3((-2)-2)=8u-12$$
+So, $A_{xyu}$ is not invertible iff $\det A_{xyu}=0$ iff $u=\frac{3}{2}$.
+
+\hfil
+
+\textbf{Isolating $y$:}
+
+If isolate $y$, with respect to $x,z,u$, $A$ has a corresponding linear operator $A_{xzu}\in\mathcal{L}(\mathbb{R}^3)$ given by:
+$$A_{xzu}=\begin{pmatrix}
+    3&-1&2u\\
+    1&2&1\\
+    2&-3&2
+\end{pmatrix}$$
+Which has its determinant given by:
+$$\det A_{xzu} = 2u((-3)-4)-(-1)(2-2)+3(4-(-3))=-14u+21$$
+So, $A_{xzu}$ is not invertible iff $\det A_{xzu}=0$ iff $u=\frac{3}{2}$.
+
+\hfil
+
+\textbf{Isolating $x$:}
+
+If isolate $x$, with respect to $y,z,u$, $A$ has a corresponding linear operator $A_{yzu}\in\mathcal{L}(\mathbb{R}^3)$ given by:
+$$A_{yzu}=\begin{pmatrix}
+    1&-1&2u\\
+    -1&2&1\\
+    2&-3&2
+\end{pmatrix}$$
+Which has its determinant given by:
+$$\det A_{yzu}=2u(3-4)-(-1)((-2)-2)+1(4-(-3)) = -2u-4+7 = -2u+3$$
+So, $A_{yzu}$ is not invertible iff $\det A_{yzu}=0$ iff $u=\frac{3}{2}$.
+
+\hfil
+
+\textbf{Isolating $u$:}
+
+If isolate $u$, with respect to $x,y,z$, $A$ has a corresponding linear operator $A_{xyz}\in\mathcal{L}(\mathbb{R}^3)$ given by:
+$$A_{xyz}=\begin{pmatrix}
+    3&1&-1\\
+    1&-1&2\\
+    2&2&-3
+\end{pmatrix}$$
+Which has its determinant given by:
+$$\det A_{xyz}=3(3-4)-1((-3)-4)-1(2-(-2))=-3+7-4 = 0$$
+So regardless of the point, when isolating $u$, the differential with respect to $x,y,z$ is always noninvertible.
+
+\hfil
+
+\hfil
+
+Notice that in the first three cases, the only possibility for the linear operators to be noninvertible, is when $u=\frac{3}{2}$. Which, to see if there are solutions corresponding to $u=\frac{3}{2}$, plug into the original equation, it's equivalent to the following systems of linear equation:
+$$\begin{cases}
+    3x+y-z=-u^2=-9/4\\
+    x-y+2z=-u=-3/2\\
+    2x+2y-3z=-2u = -3
+\end{cases}$$
+Which, after row reduction, we get:
+$$\begin{cases}
+    2x+2y-3z=-3/4\\
+    x-y+2z=-3/2\\
+    2x+2y-3z = -3
+\end{cases} \implies \begin{cases}
+    2x+2y-3z=-3/4\\
+    x-y+2z=-3/2\\
+    0x+0y+0z=-9/4
+\end{cases}$$
+Since there is an inconsistency in the system, there is no solution to $f(x,y,z,\frac{3}{2})=0$. Hence, for all $\bar{x}\in\mathbb{R}^4$ satisfying $f(\bar{x})=0$ (which implies $u\neq \frac{3}{2}$), the first three cases (when isolating $z,y,$ or $x$) has the linear operator of the remaining variables (corresponding to the differential $Df(\bar{x})$) being invertible, hence Implicit Function Theorem applys.
+
+So, when solving $x,y,u$ in terms of $z$, by Implicit Function Theorem, if given $(x,y,z,u)\in\mathbb{R}^4$ satisfies $f(x,y,z,u)$, there exists open neighborhood $U\subseteq \mathbb{R}^4$ of $(x,y,z,u)$ and open neighborhood $V\subseteq \mathbb{R}$ of $u$, such that all $u'\in V$ corresponds to a unique $(x',y',z')\in\mathbb{R}^3$, such that $(x',y',z',u')\in U$, and $f(x',y',z',u')=0$. 
+
+Hence, for each $z\in\mathbb{R}$ that corresponds to some $(x,y,u)\in\mathbb{R}^3$ satisfying $f(x,y,z,u)=0$, such correspondance is unique based on Implicit Function Theorem (since within an open neighborhood $V$ of $u$, each $u'$ corresponds to a unique $(x',y',z')\in\mathbb{R}^3$ such that $f(x',y',z',u')=0$), therefore it's possible to solve $x,y,u$ in terms of $z$. And, same logic applies when solving $x,z,u$ in terms of $y$, and solving $y,z,u$ in terms of $x$ (since in all three cases, Implicit Function Theorem applies).
+
+\hfil
+
+Finally, the reason why it's not possible to solve $x,y,z$ in terms of $u$, is because for some $u\in\mathbb{R}$, there exists more than one solution to the corresponding $(x,y,z)\in\mathbb{R}^3$: Fix $u=0$, then the original system of equations become:
+$$\begin{cases}
+    3x+y-z = -u^2=0\\
+    x-y+2z=-u=0\\
+    2x+2y-3z = -2u = 0
+\end{cases}$$
+Written in matrix equation, we get:
+$$\begin{pmatrix}
+    3&1&-1\\
+    1&-1&2\\
+    2&2&-3
+\end{pmatrix}\begin{pmatrix}
+    x\\y\\z
+\end{pmatrix}=\begin{pmatrix}
+    0\\0\\0
+\end{pmatrix}$$
+Notice that this matrix is exactly $A_{xyz}$ calculated in one of the previous parts, with $\det A_{xyz}=0$, hence, this matrix is not invertible, which also implies that it is not injective, therefore its null space is nontrivial, there exists nonzero $(x,y,z)\in\mathbb{R}^3$, such that the above equation holds.
+
+But, this implies $f(x,y,z,0)=f(0,0,0,0)=\bar{0}\in\mathbb{R}^3$, showing that there are multiple $(x,y,z)\in\mathbb{R}^3$ corresponding to $u=0$, such that the system of equations hold, therefore it's not possible to solve for $x,y,z$ in terms of $u$, due to the existence of multiple solutions.
 
 \break
 
@@ -78,35 +188,36 @@ Evaluate at $(0,1,-1)$, we get $f(0,1,-1) = 0^2\cdot 1 + e^0 + (-1) = 0+1-1 = 0$
 
 On the other hand, $D_1f(x,y_1,y_2)$ is given as follow:
 $$D_1f(x,y_1,y_2) = \frac{\partial}{\partial x}(x^2y_1+e^x+y_2) = 2xy_1 + e^x$$
-Hence, $D_1f(0,1,-1) = 2\cdot 0\cdot 1 + e^{-1} = e^{-1}\neq 0$.
+Hence, $D_1f(0,1,-1) = 2\cdot 0\cdot 1 + e^{0} = 1\neq 0$.
 
 \hfil
 
 \textbf{Validity of Implicit Function Theorem:}
 
 If we consider the partial derivatives with respect to all variables, we get:
-$$\frac{\partial f}{\partial x}=2xy_1+e^x,\quad \frac{\partial f}{\partial y_1} = x^2,\quad \frac{\partial f}{\partial x} = 1$$
+$$\frac{\partial f}{\partial x}=2xy_1+e^x,\quad \frac{\partial f}{\partial y_1} = x^2,\quad \frac{\partial f}{\partial y_2} = 1$$
 Hence, since the partial derivative of $f$ with respect to any variable is continuous, then $f$ is continuously differentiable, with $Df(x,y_1,y_2) = (2xy_1+e^x, x^2, 1)\in\mathcal{L}(\mathbb{R}^3,\mathbb{R})$.
 
 Then, since in the previous part, we get that $D_1f(0,1,-1) \neq 0$, which if view $\mathbb{R}^3 = \mathbb{R}^{1+2}$, with $(0,1,-1) = (0,\bar{0}) + (0,(1,-1))$, then $A = D_1f(0,1,-1)\in\mathcal{L}(\mathbb{R}^3,\mathbb{R})$, can be broken down as follow:
-$$\forall x\in\mathbb{R},\ \bar{y}\in\mathbb{R}^2,\quad A(x,\bar{y}) = A_x(x)+A_y(\bar{y}),\quad A_x = D_1f(0,1,-1)\in\mathcal{L}(\mathbb{R}),\quad A_y = \left(\frac{\partial f}{\partial y_1},\frac{\partial f}{\partial y_2}\right)\in\mathcal{L}(\mathbb{R}^2,\mathbb{R})$$
+$$\forall x\in\mathbb{R},\ \bar{y}\in\mathbb{R}^2,\quad A(x,\bar{y}) = A_x(x)+A_y(\bar{y}),\quad A_x = D_1f(0,1,-1)\in\mathcal{L}(\mathbb{R}),\quad A_y = \left(\frac{\partial f}{\partial y_1},\frac{\partial f}{\partial y_2}\right)\bigg|_{(0,1,-1)}\in\mathcal{L}(\mathbb{R}^2,\mathbb{R})$$
 Then, since $f$ is continuously differentiable, while $A_x=D_1f(0,1,-1)$ for $A=Df(0,1,-1)$ is invertible (since $D_1f(0,1,-1) \neq 0$), then by Implicit Function Theorem, there exists open neighborhood $U\subseteq\mathbb{R}^3$ of $(0,1,-1)$, open neighborhood $V\subseteq \mathbb{R}^2$ of $(1,-1)$, such that for all $\bar{y}\in V$, there exists a unique $x\in \mathbb{R}$, such that $f(x,\bar{y}) = 0$.
 
-Which, define $g:V\rightarrow\mathbb{R}$ by $g(\bar{y}) = x$ got from the previous part, then $g$ is continuously differentiable.
+Which, define $g:V\rightarrow\mathbb{R}$ by $g(\bar{y}) = x$ got from the previous part, then $g$ is continuously differentiable, with $g(1,-1)=0$ (since $g(0,1,-1)=0$, $(1,-1)$ corresponds to $x=0$).
 
 And, by the equation of $Dg(0,1,-1)$, given $A = Df(0,1,-1)$ and $A_x$ and $A_y$ provided above, it is given by the following:
-$$Dg(1,-1) = A_x^{-1}A_y = \left(D_1f(0,1,-1)\right)^{-1}\begin{pmatrix}\frac{\partial f}{\partial y_1} & \frac{\partial f}{\partial y_2}\end{pmatrix}\bigm|_{(0,1,-1)}$$
-$$ = \frac{1}{e^{-1}}\begin{pmatrix}\frac{\partial f}{\partial y_1} & \frac{\partial f}{\partial y_2}\end{pmatrix}\bigm|_{(0,1,-1)} = e\begin{pmatrix}\frac{\partial f}{\partial y_1} & \frac{\partial f}{\partial y_2}\end{pmatrix}\bigm|_{(0,1,-1)}$$
-So, by the uniqueness of the differential, we know the following: 
+$$Dg(1,-1) = -A_x^{-1}A_y = -\left(D_1f(0,1,-1)\right)^{-1}\begin{pmatrix}\frac{\partial f}{\partial y_1} & \frac{\partial f}{\partial y_2}\end{pmatrix}\bigm|_{(0,1,-1)} = \begin{pmatrix}-\frac{\partial f}{\partial y_1} & -\frac{\partial f}{\partial y_2}\end{pmatrix}\bigm|_{(0,1,-1)}$$
+Also, by the uniqueness of the differential, we know the following: 
 $$Dg(y_1,y_2) = \begin{pmatrix}
     \frac{\partial g}{\partial y_1} & \frac{\partial g}{\partial y_2}
 \end{pmatrix}$$
 Then, we get the following relations:
-$$D_1g(1,-1)=\frac{\partial g}{\partial y_1}\bigm|_{(1,-1)} = e\frac{\partial f}{\partial y_1}\bigm|_{(0,1,-1)} = e\cdot 0^2 = 0$$
-$$D_2g(1,-1)=\frac{\partial g}{\partial y_2}\bigm|_{(1,-1)} = e\frac{\partial f}{\partial y_2}\bigm|_{(0,1,-1)} = e\cdot 1 = e$$
+$$D_1g(1,-1)=\frac{\partial g}{\partial y_1}\bigm|_{(1,-1)} = -\frac{\partial f}{\partial y_1}\bigm|_{(0,1,-1)} = -0^2 = 0$$
+$$D_2g(1,-1)=\frac{\partial g}{\partial y_2}\bigm|_{(1,-1)} = -\frac{\partial f}{\partial y_2}\bigm|_{(0,1,-1)} = -1$$
+So, $D_1g(1,-1)=0$, and $D_2g(1,-1)=-1$.
  
+\hfil
 
-\break
+\hfil
 
 \section*{3}
 \begin{myBox}[]{}
@@ -146,16 +257,16 @@ $$Df(x,y)=\begin{pmatrix}
         0&0\\0& x^3
     \end{pmatrix}$$
     Which again, with $x\neq 0$, the above matrix has rank $1$.
-    \item If both $x,y\neq 0$, then consider any vector $r(x,-y)$ for $r\in\mathbb{R}$, we get::
+    \item If both $x,y\neq 0$, then consider any vector $r(x,y)$ for $r\in\mathbb{R}$, we get::
     $$Df(x,y)r\begin{pmatrix}x\\-y\end{pmatrix} =\frac{1}{(x^2+y^2)^2}\begin{pmatrix}
         xy^2&-x^2y\\
         (y^3-x^2y) & (x^3-xy^2)
-    \end{pmatrix}r\begin{pmatrix}x\\-y\end{pmatrix}$$
+    \end{pmatrix}r\begin{pmatrix}x\\y\end{pmatrix}$$
     $$\frac{r}{(x^2+y^2)^2}\begin{pmatrix}
         x^2y^2 - x^2y^2\\
-        (xy^3-x^3y)-(-x^3y+xy^3)
+        (xy^3-x^3y)+(x^3y-xy^3)
     \end{pmatrix} = \bar{0}$$
-    So the $\textmd{span}\{(x,-y)\}$ is within the null space of $Df(x,y)$, so the dimension of null space is at least $1$. On the other hand, consider $(1,0)\in\mathbb{R}^2$ (that is linearly independent with $(x,-y)$, since $(x,-y)$ has both entries being nonzero), it has the following:
+    So the $\textmd{span}\{(x,y)\}$ is within the null space of $Df(x,y)$, so the dimension of null space is at least $1$. On the other hand, consider $(1,0)\in\mathbb{R}^2$ (which is linearly independent with $(x,y)$, since $(x,y)$ has both entries being nonzero), it has the following:
     $$Df(x,y)\begin{pmatrix}1\\0\end{pmatrix} = \frac{1}{(x^2+y^2)^2}\begin{pmatrix}
         xy^2&-x^2y\\
         (y^3-x^2y) & (x^3-xy^2)
@@ -207,7 +318,7 @@ Hence, $(u,v)$ is also in the range of $f$. This proves that $f$ has the range p
     \item[(a)] Given that $A$ has rank $r$, then its range $\textmd{range}(A)\subseteq \mathbb{R}^m$ is an $r$-dimensional linear subspace, hence there exists $y_1,...,y_r\in \textmd{range}(A)$ that forms a basis of it.
     
     Then, by the text in Rudin, choose $z_1,...,z_r\in\mathbb{R}^n$, so for each index $i\in \{1,...,r\}$, $Az_i=y_i$. Which, the collection $z_1,...,z_r\in\mathbb{R}^n$ is linearly independent, since if $a_1,...,a_r\in\mathbb{R}$ satisfies $\sum_{i=1}^{r}a_iz_i = \bar{0}$, then the following is true:
-    $$A\left(\sum_{i=1}^{r}a_iz_i\right) = \sum_{i=1}^{r}a_i(Az_i) = \sum_{i=1}^{r}a_iy_i$$
+    $$0=A\bar{0}=A\left(\sum_{i=1}^{r}a_iz_i\right) = \sum_{i=1}^{r}a_i(Az_i) = \sum_{i=1}^{r}a_iy_i$$
     By the linear independence of $y_1,...,y_r\in \textmd{range}(A)$, each $a_i = 0$, which proves the linear independence of $z_1,...,z_r\in\mathbb{R}^n$.
 
     \begin{comment}
@@ -222,7 +333,7 @@ Hence, $(u,v)$ is also in the range of $f$. This proves that $f$ has the range p
     $$\forall c_1,...,c_r\in\mathbb{R},\quad S\left(\sum_{i=1}^{r}c_iy_i\right)=\sum_{i=1}^{r}c_iz_i$$
     Then, for all $x\in\mathbb{R}^n$, since $Ax\in\textmd{range}(A)$, it is spanned by $y_1,...,y_r$, hence there exists unique $a_1,...,a_r\in\mathbb{R}$, such that the following is true:
     $$Ax = \sum_{i=1}^{r}a_iy_i$$
-    Hence, we get the following:
+    Hence, with $SA\in\mathcal{L}(\mathbb{R}^n)$, we get the following:
     $$SAx = S\left(\sum_{i=1}^{r}a_iy_i\right) = \sum_{i=1}^{r}a_iz_i$$
     Hence, applying $SA$ twice, we get:
     $$SA(SAx) = SA\left(\sum_{i=1}^{r}a_iz_i\right) = S\left(\sum_{i=1}^{r}a_iy_i\right) = \sum_{i=1}^{r}a_iz_i$$
@@ -243,14 +354,16 @@ Hence, $(u,v)$ is also in the range of $f$. This proves that $f$ has the range p
         
         Similarly, for all $z\in\textmd{range}(S)$, there exists $y\in \textmd{range}(A)$ (the domain of $S$), with $Sy = z$; then because there exists $x\in\mathbb{R}^n$, with $Ax = y$ by the definition of range, we have $SAx = S(Ax) = Sy = z$, hence $z\in \textmd{range}(SA)$, proving that $\textmd{range}(S)\subseteq \textmd{range}(SA)$, or $\textmd{range}(S)=\textmd{range}(SA)$.
     \end{itemize}
-    Hence, the above to cases proves that $\textmd{null}(SA)= \textmd{null}(A)$, while $\textmd{range}(S)=\textmd{range}(SA)$. So, $SA$ is a projection in $\mathbb{R}^n$ with null space being $\textmd{null}(A)$, and range being $\textmd{range}(S)$.
+    Hence, the above two cases proves that $\textmd{null}(SA)= \textmd{null}(A)$, while $\textmd{range}(S)=\textmd{range}(SA)$. So, $SA$ is a projection in $\mathbb{R}^n$ with null space being $\textmd{null}(A)$, and range being $\textmd{range}(S)$.
 
     \hfil
 
     \item[(b)] With the linearly independent set $z_1,...,z_r\in\mathbb{R}^n$ given in \textbf{part (a)}, we'll consider an extra list $x_1,...,x_k\in \textmd{null}(A)\subseteq\mathbb{R}^n$ that forms a basis of $\textmd{null}(A)$. Our goal is to prove that $x_1,...,x_k,z_1,...,z_r$ forms a basis of $\mathbb{R}^n$.
     
-    First, consider $a_1,...,a_k,b_1,...,b_r\in\mathbb{R}$, suppose the vector $\sum_{i=1}^{k}a_ix_i+\sum_{j=1}^{r}b_jz_j = \bar{0}\in\mathbb{R}^n$, then we have the following:
+    First, consider $a_1,...,a_k,b_1,...,b_r\in\mathbb{R}$, such that the vector $\sum_{i=1}^{k}a_ix_i+\sum_{j=1}^{r}b_jz_j = \bar{0}\in\mathbb{R}^n$, then we have the following:
     $$0=A(\bar{0})=A\left(\sum_{i=1}^{k}a_ix_i+\sum_{j=1}^{r}b_jz_j\right) = A\left(\sum_{i=1}^{k}a_ix_i\right)+A\left(\sum_{j=1}^{r}b_jz_j\right)=\sum_{j=1}^{r}b_j(Az_j) = \sum_{j=1}^{r}b_jy_j$$
+    (Note: since $x_1,...,x_k\in\textmd{null}(A)$, then $\sum_{i=1}^{k}a_ix_i\in\textmd{null}(A)$).
+
     Which, by the linear independence of $y_1,...,y_r\in\textmd{range}(A)$ assumed in \textbf{part (a)}, we must have $b_j = 0$ for all $j\in\{1,...,n\}$. So, $\sum_{i=1}^{k}a_ix_i+\sum_{j=1}^{r}b_jz_j = \sum_{i=1}^{k}a_ix_i = \bar{0}$. But again, based on the linear independence ov $x_1,...,x_k$ by assumption, we get $a_i=0$ for all $i\in\{1,...,k\}$.
     This proves that all $a_i,b_j = 0$, which the collection $x_1,...,x_k,z_1,...,z_r$ is linearly independent.
 
@@ -268,7 +381,7 @@ Hence, $(u,v)$ is also in the range of $f$. This proves that $f$ has the range p
 
     Which, since $x_1,...,x_k$ is a basis of $\textmd{null}(A)$, then $\dim(\textmd{null}(A)) = k$.
     
-    On the other hand, since $S\in\mathcal{L}(\textmd{range}(A),\mathbb{R}^n)$ is injective (since it maps $y_1,...,y_r$ a basis of $\textmd{range}(A)$, to $z_1,...,z_r\in\mathbb{R}^n$ a linearly independent set), then the domain $\textmd{range}(A)$ and range are in fact isomorphic as vector spaces, while the range of $S$ is precisely $\textmd{span}\{z_1,...,z_r\}$ (since the definition of $S$ is maps $y_i$ to $z_i$ for each $i\in\{1,...,r\}$, showing that the output value must be a linear combination of all $z_i$).
+    On the other hand, since $S\in\mathcal{L}(\textmd{range}(A),\mathbb{R}^n)$ is injective (since it maps $y_1,...,y_r$ a basis of $\textmd{range}(A)$, to $z_1,...,z_r\in\mathbb{R}^n$ a linearly independent set), then the domain of $S$, $\textmd{range}(A)$ and range of $S$ are in fact isomorphic as vector spaces, while the range of $S$ is precisely $\textmd{span}\{z_1,...,z_r\}$ (since the definition of $S$ is maps $y_i$ to $z_i$ for each $i\in\{1,...,r\}$, showing that the output value must be a linear combination of all $z_i$).
     Hence, $\dim(\textmd{range}(A)) = \dim(\textmd{span}\{z_1,...,z_r\}) = r$ (since $z_1,...,z_r$ is linearly independent, it forms a basis of the span).
 
     So, compile the information from above, we get:
