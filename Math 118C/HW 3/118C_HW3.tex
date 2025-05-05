@@ -48,6 +48,8 @@ colback=blue!10
 
 \textbf{Pf:}
 
+
+
 \break
 
 \section*{2}
@@ -66,10 +68,39 @@ colback=blue!10
 
 \textbf{Pf:}
 
-\textbf{$f$ and $Df$ at $(0,1,-1)$:}
+\textbf{$f$ and $D_1f$ at $(0,1,-1)$:}
 
-Consider $f(0,1,-1)$, we get:
-$$$$
+Evaluate at $(0,1,-1)$, we get $f(0,1,-1) = 0^2\cdot 1 + e^0 + (-1) = 0+1-1 = 0$.
+
+On the other hand, $D_1f(x,y_1,y_2)$ is given as follow:
+$$D_1f(x,y_1,y_2) = \frac{\partial}{\partial x}(x^2y_1+e^x+y_2) = 2xy_1 + e^x$$
+Hence, $D_1f(0,1,-1) = 2\cdot 0\cdot 1 + e^{-1} = e^{-1}\neq 0$.
+
+\hfil
+
+\textbf{Validity of Implicit Function Theorem:}
+
+If we consider the partial derivatives with respect to all variables, we get:
+$$\frac{\partial f}{\partial x}=2xy_1+e^x,\quad \frac{\partial f}{\partial y_1} = x^2,\quad \frac{\partial f}{\partial x} = 1$$
+Hence, since the partial derivative of $f$ with respect to any variable is continuous, then $f$ is continuously differentiable, with $Df(x,y_1,y_2) = (2xy_1+e^x, x^2, 1)\in\mathcal{L}(\mathbb{R}^3,\mathbb{R})$.
+
+Then, since in the previous part, we get that $D_1f(0,1,-1) \neq 0$, which if view $\mathbb{R}^3 = \mathbb{R}^{1+2}$, with $(0,1,-1) = (0,\bar{0}) + (0,(1,-1))$, then $A = D_1f(0,1,-1)\in\mathcal{L}(\mathbb{R}^3,\mathbb{R})$, can be broken down as follow:
+$$\forall x\in\mathbb{R},\ \bar{y}\in\mathbb{R}^2,\quad A(x,\bar{y}) = A_x(x)+A_y(\bar{y}),\quad A_x = D_1f(0,1,-1)\in\mathcal{L}(\mathbb{R}),\quad A_y = \left(\frac{\partial f}{\partial y_1},\frac{\partial f}{\partial y_2}\right)\in\mathcal{L}(\mathbb{R}^2,\mathbb{R})$$
+Then, since $f$ is continuously differentiable, while $A_x=D_1f(0,1,-1)$ for $A=Df(0,1,-1)$ is invertible (since $D_1f(0,1,-1) \neq 0$), then by Implicit Function Theorem, there exists open neighborhood $U\subseteq\mathbb{R}^3$ of $(0,1,-1)$, open neighborhood $V\subseteq \mathbb{R}^2$ of $(1,-1)$, such that for all $\bar{y}\in V$, there exists a unique $x\in \mathbb{R}$, such that $f(x,\bar{y}) = 0$.
+
+Which, define $g:V\rightarrow\mathbb{R}$ by $g(\bar{y}) = x$ got from the previous part, then $g$ is continuously differentiable.
+
+And, by the equation of $Dg(0,1,-1)$, given $A = Df(0,1,-1)$ and $A_x$ and $A_y$ provided above, it is given by the following:
+$$Dg(1,-1) = A_x^{-1}A_y = \left(D_1f(0,1,-1)\right)^{-1}\begin{pmatrix}\frac{\partial f}{\partial y_1} & \frac{\partial f}{\partial y_2}\end{pmatrix}\bigm|_{(0,1,-1)}$$
+$$ = \frac{1}{e^{-1}}\begin{pmatrix}\frac{\partial f}{\partial y_1} & \frac{\partial f}{\partial y_2}\end{pmatrix}\bigm|_{(0,1,-1)} = e\begin{pmatrix}\frac{\partial f}{\partial y_1} & \frac{\partial f}{\partial y_2}\end{pmatrix}\bigm|_{(0,1,-1)}$$
+So, by the uniqueness of the differential, we know the following: 
+$$Dg(y_1,y_2) = \begin{pmatrix}
+    \frac{\partial g}{\partial y_1} & \frac{\partial g}{\partial y_2}
+\end{pmatrix}$$
+Then, we get the following relations:
+$$D_1g(1,-1)=\frac{\partial g}{\partial y_1}\bigm|_{(1,-1)} = e\frac{\partial f}{\partial y_1}\bigm|_{(0,1,-1)} = e\cdot 0^2 = 0$$
+$$D_2g(1,-1)=\frac{\partial g}{\partial y_2}\bigm|_{(1,-1)} = e\frac{\partial f}{\partial y_2}\bigm|_{(0,1,-1)} = e\cdot 1 = e$$
+ 
 
 \break
 
