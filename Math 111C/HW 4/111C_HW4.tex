@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math 111C HW4}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $F$ be a field and $f\in F[x]$ be an irreducible polynomial. Prove that all roots of $f(x)$ in $\overline{F}$ have the same multiplicity.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        \begin{itemize}
+            \item[(a)] Let $\zeta_6\in\mathbb{C}$ be a primitive $6^{th}$ root of unity. Find $m_{\zeta_6,\mathbb{Q}}(x)$.
+            \item[(b)] Let $m,n\in\mathbb{N}$ such that $m\equiv 2(\mod\ 6)$ and $n\equiv 4(\mod\ 6)$. Prove that $f(x)=x^m+x^n+1$ is not irreducible over $\mathbb{Q}$. 
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Prove that if $F$ is an infinite field, then its multiplicative group $F$ is never cyclic.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $K/F$ be a field extension and $m,n\in\mathbb{N}$. Let $\alpha,\beta\in K$ with $[F(\alpha):F]=m$ and $[F(\beta):F]=n$.
+        \begin{itemize}
+            \item[(a)] Show that $[F(\alpha,\beta):F]\leq mn$.
+            \item[(b)] If $\gcd(m,n)=1$, show that $[F(\alpha,\beta):F]=mn$.
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{5}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $K$ be a finite field. Show that $K$ is not algebraically closed.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\end{document}
