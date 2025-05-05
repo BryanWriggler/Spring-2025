@@ -61,11 +61,15 @@ colback=blue!10
 \section*{3}
 \begin{myBox}[]{}
     \begin{question}
-        Prove that if $F$ is an infinite field, then its multiplicative group $F$ is never cyclic.
+        Prove that if $F$ is an infinite field, then its multiplicative group $F^\times$ is never cyclic.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+Suppose the contrary, that $F$ is infinite while $F^\times$ is cyclic, then there exists $a\in F^\times$, such that $F^\times = \left<a\right>$ (under multiplication).
+
+First, notice that $a\neq 0$ (since $a\in F^\times$) and $a\neq 1$ (since $\left<1\right> = \{1\}$, if $a=1$, then $F^\times$ is finite, contradicting the assumption that $F=F^\times\cup \{0\}$ is infinite). Also, since $F^\times$ must be infinite based on similar reason, then $a\neq -1$ (since $(-1)^2=1$, then $|\left<a\right>| = |a|=2$ as the order of $a$, showing that $F^\times$ is again finite, which is a contradiction).
 
 \break
 
