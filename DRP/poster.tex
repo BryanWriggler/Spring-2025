@@ -29,14 +29,14 @@
 \usepackage[T1]{fontenc}
 
 
-\title{An Introduction to Cryptography}
-\author{Lainey Watlington}
+\title{Introduction to Lie Groups}
+\author{Zih-Yu Hsieh, mentored by Arthur Jiang}
 \institute{\textsuperscript{}University of California - Santa Barbara}
-\titlegraphic{\includegraphics[width=0.7\textwidth]{logo.png}}
+\titlegraphic{\includegraphics[width=0.6\textwidth]{logo.png}}
 
 \makeatletter
 \renewcommand\TP@maketitle{%
-   \begin{minipage}{0.8\linewidth}
+   \begin{minipage}{0.6\linewidth}
         \centering
         \color{titlefgcolor}
         {\bfseries \Huge \sc \@title \par}
@@ -60,101 +60,39 @@
 \centering
 \begin{columns}
     \column{0.32}    
-    \block{The Beginnings of Cryptography}{
-        Cryptography is the study of methods of sending messages in a disguised form so that only the intended recipients can remove the disguise and read the message. \\
-        At the most basic level, a \textbf{cryptosystem} is the process of converting plaintext to a cyphertext using encryption and subsequently converting that cyphertext back to plaintext using decryption. \\
-        One of the earliest cryptosystems was created using \textbf{digraphs}, which map two characters in a message to a number. Let us consider the 27 letter alphabet which contains letters A-Z and a blank. Then, given any message, the following digraph can be used as an enciphering function where $x$ and $y$ are two characters which occur in succession in the message:
-        \begin{align*}
-            & 27x + y = C
-        \end{align*}
-        The deciphering function is given by:
-        \begin{align*}
-        \begin{cases}
-            C \mod 27 = x \\
-            C - x = y 
-        \end{cases}
-        \end{align*} 
-        Most early cryptosystems were based on a similar idea of using a rule, or a \textbf{key}, to shift the letters in a message to a different location. The idea was that only the person with the key would be able to decipher the message.
+    \block{History of Lie Groups}{
+       Back in nineteenth century, the mathematician Sophus Lie was inspired by Galois' development of group theory and its application on analyzing polynomials. Which, he intended to develop symmetries in PDEs and geometry, specifically using group actions. With further development on manifolds, Lie's groundwork had become the current form of lie groups, a tool used to study specific structures of manifolds.
     }
-    \block{Breaking a Cryptosystem}{
-        Cryptosystems were developed in order to help protect sensitive information. In modern times, cryptography is widely used in the field of cybersecurity to protect people's
-        \begin{itemize}
-            \item passwords
-            \item credit card information 
-            \item identity information 
-            \item other sensitive forms of data
-        \end{itemize}
-        In an increasingly digital world, cryptosystems have become extremely important in protecting this information. \\ 
-        \par 
-        \par 
-        \par
-        \textbf{Cryptanalysis} is the science of "breaking" the code of cryptosystems. People do this in order to gain access to data that is not intended for them. This begs the question, "How does one break a cryptosystem?". To do so, one needs two types of information
-        \begin{enumerate}
-            \item The general nature, or the \textbf{structure} of the system
-            \item The specific choice of certain parameters connected with the given cryptosystem, like the shift parameter, also known as the \textbf{enciphering key}
-        \end{enumerate}
+
+    \block{Preliminaries - Smooth Manifold}{
+        A manifold $M$ with dimension $n$, is a topological space that is locally like $\mathbb{R}^n$. More precisely, for any point $m\in M$, there exists an open neighborhood $U\subseteq M$ along with a homeomorphism $\phi:U\rightarrow \mathbb{R}^n$ (i.e. $\phi$ is a continuous bijective map, with its inverse $\phi^{-1}$ also being continuous).
+
+        A smooth structure 
     }
-    
+
+    \block{Preliminaries - Group}{
+
+    }
 
     \column{0.36}
-    \block{An Example in Python}{
-        Let us extend the idea of a digraph to a cryptosystem which enciphers a message of length $n$ from an alphabet of any size. Let $N$ represent the size of the alphabet. Then, the enciphering function will be represented by
-        \begin{align*}
-            & N^{n-1}x_{1} + N^{n-2}x_{2} + \cdots + Nx_{n-1} + x_{n-1} = C
-        \end{align*}
-        The Python code for an enciphering transformation of this form is as follows:
 
-        The deciphering transformation will subtract $C \mod N$ from $C$ $n$ times and update $C$ after each iteration. The Python code for a deciphering transformation of this form is:
+    \block{An Example in Python}{
+        
     }
     
     \block{Primality and Factorization}{ 
-        Cryptosystems have evolved over time to prevent people from breaking them. 
-        \begin{itemize}
-            \item The easier it is to guess the enciphering key of a cryptosystem, the easier it is to break the cryptosystem.
-            \item So, methods of creating difficult to guess keys were developed
-        \end{itemize}
-        \textbf{Public Key Cryptography:} the enciphering and deciphering algorithms are publicly known, but the enciphering and deciphering keys are concealed. Gaining access to the keys allows you to break the system.
-        \vspace{20pt}
-        \par How do we create difficult to guess keys?
-        \begin{itemize}
-            \item \textbf{Factoring primes} is really difficult once we start dealing with very large numbers. So, if we multiply two large primes together, factoring them becomes almost impossible without having access to a key.
-            \item The \textbf{discrete logarithm} problem is an idea based on the fact that if we know $y = b^{x}$, it is extremely difficult to solve for 
-            \begin{align*}
-                & x = \log_{b} y
-            \end{align*}
-        \end{itemize}
-        \textbf{Fermat Factorization} provides a way of "breaking" some public key cryptosystems. If two primes are close enough together, this algorithm allows one to efficiently calculate the two primes that have been multiplied together. This form of factorization is used to break RSA cryptosystems.
 
     }
     
-
-
     \column{0.32}
-    \block{The Foundations of Modern Cryptography: Elliptic Curves}{
-        \textbf{Elliptic Curve Cryptography}
-        \begin{itemize}
-            \item An approach to public key cryptography which utilizes elliptic curves over finite fields to create keys.
-            \item It is essentially impossible to find the discrete logarithm of a random element of an elliptic curve with respect to a publicly known base point.
-            \item The larger the elliptic curve, the more secure the cryptosystem is since the discrete logarithm becomes more difficult to compute.
-        \end{itemize}
-        \textbf{An Elliptic Curve Over the Real Numbers}
-        \textbf{Insert Image}
-        \begin{itemize}
-            \item Elliptic curves over the reals form an abelian group. Thus, if we perform operations on two elements of the curve, we will end up with another element on the curve. 
-        \end{itemize}
-        \textbf{An Elliptic Curve Over the Complex Numbers}
 
-        \begin{itemize}
-            \item Elliptic curves over the complex numbers form a torus. 
-            \item We can think of plotting elements of the curve over the integer lattice and then connecting all of the edges together.
-        \end{itemize}
+    \block{The Foundations of Modern Cryptography: Elliptic Curves}{
+
     }
     
- 
-    
-    \block{Acknowledgements}{
-        \textbf{Reference Material:} "A Course in Number Theory and Cryptography" by Neal Koblitz \\
-        Thank you to the UCSB Directed Reading Program and to my mentor Katherine Merkl for making this project possible.
+    \block{Reference and Acknowledgements}{
+        \textbf{Reference Material:} "Introduction to Smooth Manifold" by John M. Lee \\
+        I want to thank my mentor Arthur Jiang for providing an initiation and constant support for this project.
     }
     
 \end{columns}
