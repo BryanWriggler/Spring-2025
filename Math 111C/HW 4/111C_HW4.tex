@@ -166,7 +166,7 @@ Since in all cases, $F^\times$ being cyclic would lead to a contradiction, then 
     \begin{question}
         Let $K/F$ be a field extension and $m,n\in\mathbb{N}$. Let $\alpha,\beta\in K$ with $[F(\alpha):F]=m$ and $[F(\beta):F]=n$.
         \begin{itemize}
-            \item[(a)] Show that $[F(\alpha,\beta):F]\leq mn$.
+            \item[(a)] Show that $[F(\alpha\beta):F]\leq mn$.
             \item[(b)] If $\gcd(m,n)=1$, show that $[F(\alpha,\beta):F]=mn$.
         \end{itemize}
     \end{question}
@@ -184,6 +184,8 @@ Given that $[F(\alpha):F]=m$ and $[F(\beta):F]=n$ with $m,n\in\mathbb{N}$, since
 
     Which, since $F(\alpha,\beta) = F(\alpha)(\beta)$, then $[F(\alpha,\beta):F(\alpha)] = \deg(m_{\beta,F(\alpha)}) \leq n$, hence we get the following inequality:
     $$[F(\alpha,\beta):F]=[F(\alpha,\beta):F(\alpha)]\cdot [F(\alpha):F]\leq mn$$
+    Now, since $\alpha\beta\in F(\alpha,\beta)$, then $F(\alpha\beta)\subseteq F(\alpha,\beta)$, hence:
+    $$[F(\alpha\beta):F]\leq [F(\alpha,\beta):F]\leq mn$$
 
     \hfil
 
