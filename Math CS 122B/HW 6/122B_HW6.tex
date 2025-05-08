@@ -38,10 +38,88 @@ colback=blue!10
     \begin{question}
         Freitag Chap. V.6 Exercise 5:
 
+        Lef $f$ be an elliptic function for the lattice $L$. We choose $b_1,...,b_n$ to be a system of representatives modulo $L$ for the poles of $f$, and we consider for each $j$ the principal part of $f$ in the pole $b_j$:
+        $$\sum_{v=1}^{l_j}\frac{a_{v,j}}{(z-b_j)^v}$$
+        The Second Liiouville Theorem ensures the relation 
+        $$\sum_{j=1}^{n}a_{1,j}=0$$
+        Show:
+        \begin{itemize}
+            \item[(a)] Let $c_1,...,c_n\in\mathbb{C}$ b given numbers, and let $b_1,...,b_n$ modulo $L$ be a set of different points in $\mathbb{C}/L$. The function 
+            $$h(z):=\sum_{j=1}^{n}c_j\zeta(z-b_j)$$
+            constructed by means of the Weierstrass $\zeta$-function, is then elliptic, iff 
+            $$\sum_{j=1}^{n}c_j=0$$
+            \item[(b)] Let $b_1,...,b_n$ be pairwise different modulo $L$, and let $l_1,...,l_n$ be prescribed natural numbers. Let $a_{v,j}$ ($1\leq j\leq n$, $1\leq v\leq l_j$) be complex numbers such that $\sum_{j=1}^{n}a_{1,j}=0$ and $a_{l_j,j}\neq 0$ for all $j$.
+            
+            Then, there exists an elliptic function for the lattice $L$, having poles modulo $L$ exactly in the points $b_1,...,b_n$, and having the corresponding principal parts respectively equal to 
+            $$\sum_{v=1}^{l_j}\frac{a_{v,j}}{(z-b_j)^v}$$
+        \end{itemize}
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+\begin{itemize}
+    \item[(a)] Given the Weierstrass $\sigma$-function below ($\sigma:\mathbb{C}\rightarrow\mathbb{C}$), the Weierstrass $\zeta$-function ($\zeta:\mathbb{C}\setminus L\rightarrow\mathbb{C}$) is defined as:
+    $$\sigma(z)=z\prod_{\substack{w\in L\\w\neq 0}}\left(1-\frac{z}{w}\right)\exp\left(\frac{z}{w}+\frac{1}{2}\left(\frac{z}{w}\right)^2\right),\quad \zeta(z)=\frac{\sigma'(z)}{\sigma(z)}$$
+    Based on the formula of $\sigma$, it has simple zeros at all $w\in L$; and, it implies that $\zeta$ is not defined only on $L$. Now, to prove the statement, consider the following:
+    \begin{itemize}
+        \item[$\implies:$] Suppose the defined $h(z)$ is elliptic. Then, since for each index $j\in\{1,...,n\}$, $\sigma(z-b_j)$ has a simple zero at $(w+b_j)$ for each $w\in L$ (which the set $b_j+L$ contains all the simple zeros of $\sigma(z-b_j)$, which is discrete). Then, since $\bigcup_{j=1}^{n}(b_j+L)$ is also discrete, choose the fundamental region $P$ of lattice $L$ such that $\partial P$ contains no points from $\bigcup_{j=1}^{n}(b_j+L)$ (the set containing all the zeros of each $\sigma(z-b_j)$, also the set of all undefined points of all $\zeta(z-b_j)$), by the Second Liouville's Theorem, we get the following:
+        $$0=\frac{1}{2\pi i}\int_{\partial P}h(z)dz = \frac{1}{2\pi i}\int_{\partial P}\sum_{j=1}^{n}c_j\zeta(z-b_j)dz = \sum_{j=1}^{n}c_j\cdot\frac{1}{2\pi i}\int_{\partial P}\frac{\sigma'(z-b_j)}{\sigma(z-b_j)}dz$$
+        For each $j\in\{1,...,n\}$, since $P$ only contains one representative of $b_j\in\mathbb{C}/L$, then it only contains one zero of $\sigma(z-b_j)$. Hence, by argument principle, we get the following:
+        $$\frac{1}{2\pi i}\int_{\partial P}\frac{\sigma'(z-b_j)}{\sigma(z-b_j)}dz = 1 = \textmd{Number of zeros of } \sigma(z-b_j) \textmd{ in } P$$
+        Hence, the original integral becomes:
+        $$0=\frac{1}{2\pi i}\int_{\partial P}h(z)dz = \sum_{j=1}^{n}c_j\cdot\frac{1}{2\pi i}\int_{\partial P}\frac{\sigma'(z-b_j)}{\sigma(z-b_j)}dz = \sum_{j=1}^{n}c_j$$
+        So, $\sum_{j=1}^{n}c_j = 0$.
+
+        \hfil
+
+        \item[$\impliedby:$] Now, suppose $\sum_{j=1}^{n}c_j = 0$. For all $w\in L$, since $\sigma(z+w)$ and $\sigma(z)$ both have simple zeros at any $w'\in L$, then $\frac{\sigma(z+w)}{\sigma(z)}$ is an entire function with no zeros in $\mathbb{C}$ (since the zeros cancel out at each $w'\in L$). Hence, there exists an analytic function $h:\mathbb{C}\rightarrow\mathbb{C}$, with $\frac{\sigma(z+w)}{\sigma(z)}=e^{h(z)}$. Then, apply derivatives, we get:
+        $$\frac{\sigma'(z+w)\sigma(z)-\sigma'(z)\sigma(z+w)}{(\sigma(z))^2} = h'(z)e^{h(z)} = h'(z)\cdot\frac{\sigma(z+w)}{\sigma(z)}$$
+        $$\frac{\sigma'(z+w)\sigma(z+w)}{\sigma(z+w)\sigma(z)}-\frac{\sigma'(z)\sigma(z+w)}{(\sigma(z))^2}=h'(z)\cdot\frac{\sigma(z+w)}{\sigma(z)}$$
+        $$\frac{\sigma'(z+w)}{\sigma(z+w)}-\frac{\sigma'(z)}{\sigma(z)}=h'(z)$$
+        On the other hand, since $\left(\frac{\sigma'(z)}{\sigma(z)}\right)' = -\wp(z)$, then:
+        $$h''(z)=\left(\frac{\sigma'}{\sigma}\right)'(z+w)-\left(\frac{\sigma'}{\sigma}\right)'(z) = (-\wp(z+w))-(-\wp(z))=0$$
+        Hence, $h(z)$ is in fact a degree $1$ polynomial. So, there exists $a_w,b_w\in\mathbb{C}$, such that:
+        $$\frac{\sigma(z+w)}{\sigma(z)}=e^{h(z)}=e^{a_wz+b_w},\quad \sigma(z+w)=e^{a_wz+b_w}\sigma(z)$$
+        Then, apply the derivative, and take its quotient with $\sigma(z+w)$, we get:
+        $$\sigma'(z+w)=a_we^{a_wz+b_w}\sigma(z)+e^{a_wz+b_w}\sigma'(z)$$
+        $$\zeta(z+w)=\frac{\sigma'(z+w)}{\sigma(z+w)}=\frac{a_we^{a_wz+b_w}\sigma(z)+e^{a_wz+b_w}\sigma'(z)}{e^{a_wz+b_w}\sigma(z)} = a_w+\frac{\sigma'(z)}{\sigma(z)}=a_w+\zeta(z)$$
+        Which, apply it to the definition of $h(z)$, we get:
+        $$h(z+w)=\sum_{j=1}^{n}c_j\zeta(z-b_j+w) = \sum_{j=1}^{n}c_j(a_w+\zeta(z-b_j)) = a_j\sum_{j=1}^{n}c_j+\sum_{j=1}^{n}c_j\zeta(z-b_j) = \sum_{j=1}^{n}c_j\zeta(z-b_j) = h(z)$$
+
+        (Note: recall that $\sum_{j=1}^{n}c_j$ is assumed to be $0$).
+
+        Hence, $h(z)$ is an elliptic function.
+    \end{itemize}
+    he above two implication shows that $h(z)$ is an elliptic function iff $\sum_{j=1}^{n}c_j=0$.
+    
+    \hfil
+
+    \item[(b)] To construct the desired principal part for each point $b_1,...,b_n$ modulo $L$, we need to consider the order 1 case separately from the other poles:
+    
+    \hfil
+    
+    For order $1$, we have the condition that $\sum_{j=1}^{n}a_{1,j}=0$, so we can utilize the statement proven in \textbf{part (a)}. Notice that $\zeta(z)=\frac{\sigma'(z)}{\sigma(z)}$ is the logarithmic derivative of $\sigma(z)$, with the formula given in \textbf{part (a)}, we get the following:
+    $$\zeta(z)=\frac{\sigma'(z)}{\sigma(z)}=\frac{1}{z}+\sum_{\substack{w\in L\\w\neq 0}}\left(\frac{-1/w}{1-z/w}+\frac{d}{dz}\left(\frac{z}{w}+\frac{1}{2}\cdot\frac{z^2}{w^2}\right)\right) = \frac{1}{z}+\sum_{\substack{w\in L\\w\neq 0}}\left(\frac{1}{z-w}+\frac{1}{w}+\frac{z}{w^2}\right)$$
+    This demonstrats that $\zeta(z)$ has its principal part given as $\frac{1}{z-w}$ at all $w\in L$. Hence, $\zeta(z-b_j)$ would have its principal part given as $\frac{1}{z-b_j}$ for all point equivalent to $b_j\mod\ L$. 
+    Which, using the statement in \textbf{part (a)}, we know since $\sum_{j=1}^{n}a_{1,j}=0$, it implies that $h_1(z)=\sum_{j=1}^{n}a_{1,j}\zeta(z-b_j)$ is an elliptic function; moreover, since each $b_j$ is distinct, its principal part is governed by only $a_{1,j}\zeta(z-b_j)$ for each index $j$, hence this is an elliptic function describing the principal part up to the simple poles at each point.
+
+    \hfil
+
+    For order $\geq 2$, we could utilize the fact that $\wp(z)$ has a double pole at all $w\in L$. Recall the formula of $\wp(z)$ in series form:
+    $$\wp(z) = \frac{1}{z^2}+\sum_{\substack{w\in L\\w\neq 0}}\left(\frac{1}{(z-w)^2}-\frac{1}{w^2}\right)$$
+    Which, its principal part is given by $\frac{1}{(z-w)^2}$ at all $w\in L$. So, for any index $j$ with $l_j\geq 2$, to describe the principal part with $\frac{a_{2,j}}{(z-b_j)^2}$ at each point equivalent to $b_j\mod\ L$, we can use $a_{2,j}\wp(z-b_j)$ (shift the double poles to each point in $b_j+L$).
+    
+    Besides that, for any $n> 0$, since $\wp(z)$ converges normally within $\mathbb{C}\setminus L$, then its $n^{th}$ order derivative can be performed term by term:
+    $$\wp^{(n)}(z)=\frac{d^n}{dz^n}\left(\frac{1}{z^2}\right)+\sum_{\substack{w\in L\\w\neq 0}}\frac{d^n}{dz^n}\left(\frac{1}{(z-w)^2}-\frac{1}{w^2}\right) = \frac{(-1)^n\cdot (n+1)!}{z^{n+2}}+\sum_{\substack{w\in L\\w\neq 0}}\frac{(-1)^n\cdot (n+1)!}{(z-w)^{n+2}}$$
+    $$\frac{(-1)^n}{(n+1)!}\wp^{(n)}(z) = \frac{1}{z^{n+2}}+\sum_{\substack{w\in L\\w\neq 0}}\frac{1}{(z-w)^{(n+2)}}$$
+    This shows that the function $\frac{(-1)^n}{(n+1)!}\wp^{(n)}(z)$ has principal part $\frac{1}{(z-w)^{n+2}}$ at all $w\in L$. So, for all index $j$ with $l_j >2$, any $2<v<l_j$ with its principal part given by $\frac{a_{v,j}}{(z-b_j)^{v}}$ at each point equivalent to $b_j\mod\ L$, could be given by $a_{v,j}\cdot\frac{(-1)^{(v-2)}}{(v-1)!}\wp^{(v-2)}(z-b_j)$, based on similar logic as above.
+
+    \hfil
+
+    In general, to create an elliptic function with the prescribed principal parts, one explicit formula can be given as:
+    $$\sum_{j=1}^{n}a_{1,j}\zeta(z-b_j)+\sum_{j=1}^{n}\sum_{v=2}^{l_j}a_{v,j}\cdot\frac{(-1)^{v-2}}{(v-1)!}\wp^{(v-2)}(z-b_j)$$
+    (Note: if $l_j<2$, simply ignore the term).
+\end{itemize}
 
 \break
 
@@ -49,10 +127,46 @@ colback=blue!10
 \begin{myBox}[]{}
     \begin{question}
         Freitag Chap. V.6 Exercise 7:
+
+        We are interested in alternating $\mathbb{R}$-bilinear maps (forms)
+        $$A:\mathbb{C}\times\mathbb{C}\rightarrow\mathbb{R}$$
+        Show:
+        \begin{itemize}
+            \item[(a)] Any such map $A$ is of the form 
+            $$A(z,w)=h\textmd{Im}(z\overline{w})$$
+            with a uniquely determined real number $h$. We have explicitly $h=A(1,i)$.
+            \item[(b)] Let $L\subset \mathbb{C}$ be a lattice. Then $A$ is called a \emph{Riemannian form} with respect to $L$ iff $h$ is positive, and $A$ only takes integral values on $L\times L$. If 
+            $$L=\mathbb{Z}w_1+\mathbb{Z}w_2,\quad \textmd{Im}\left(\frac{w_2}{w_1}\right)>0$$
+            then the formula 
+            $$A(t_1w_1+t_2w_2,s_1w_1+s_2w_2):=\det\begin{pmatrix}t_1&s_1\\t_2&s_2\end{pmatrix}$$ defines a Riemannian form $A$ on $L$.
+            \item[(c)] A non-constant analytic function $\Theta:\mathbb{C}\rightarrow\mathbb{C}$ is called a \emph{theta function} for the lattice $L\subset \mathbb{C}$, iff it satisfies an equation of the type 
+            $$\Theta(z+w)=e^{a_wz+b_2}\cdot\Theta(z)$$ for all $z\in\mathbb{C}$, and all $w\in L$. Here, $a_w$ and $b_w$ are onstants that may depend on $w$, but not on $z$. 
+
+            Show the existence of a Riemannian form $A$ with respect to $L$, such that 
+            $$A(w,\lambda)=\frac{1}{2\pi i}(a_w\lambda - wa_\lambda)$$
+            for all $w,\lambda\in L$.
+        \end{itemize}
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+\begin{itemize}
+    \item[(a)] For any $z,w\in \mathbb{C}$, there exists $a,b,c,d\in\mathbb{R}$, with $z=a+bi$ and $w=c+di$. Then, by the property of a bilinear form, we get:
+    $$A(z,w)=A(a+bi,c+di) = A(a,c+di)+A(bi,c+di) = A(a,c)+A(a,di)+A(bi,c)+A(bi,di)$$
+    $$ = acA(1,1)+adA(1,i)+bcA(i,1)+bdA(i,i)$$
+    Then, because of the property of alternating form, $A(z,w)=-A(w,z)$, which any $u\in\mathbb{C}$ satisfies $A(u,u)=-A(u,u)$, so $A(u,u)=0$. Hence, we can further reduce the equation to the following:
+    $$A(z,w)=acA(1,1)+adA(1,i)+bcA(i,1)+bdA(i,i) = adA(1,i)-bcA(1,i) = (ad-bc)A(1,i)$$
+    Now, notice that if we take $z\overline{w}$, we get:
+    $$z\overline{w} = (a+bi)\overline{(c+di)} = (a+bi)(c-di) = (ac+bd)+(bc-ad)i$$
+    Which, $\textmd{Im}(z\overline{w}) = bc-ad$. So in fact, we get the following formula:
+    $$A(z,w) = (ad-bc)A(1,i) = -A(1,i)\cdot \textmd{Im}(z\overline{w})$$
+    So, let $h = -A(1,i)=A(i,1)$ (which is uniquely determined by the alternating form), we get:
+    $$A(z,w)=A(i,1)\cdot\textmd{Im}(z\overline{w})=h\cdot\textmd{Im}(z\overline{w})$$
+
+    \hfil
+
+    \item[(b)]
+\end{itemize}
 
 \break
 
