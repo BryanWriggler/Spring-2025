@@ -165,7 +165,58 @@ colback=blue!10
 
     \hfil
 
-    \item[(b)]
+    \item[(b)] If view $\mathbb{C}$ as an $\mathbb{R}$-vector space, it is a two-dimensional vector space. Which, the basis $w_1,w_2$ of the lattice $L$ is also a basis for $\mathbb{C}$. Then, for all $z,w\in\mathbb{C}$. Then, for all $z,w\in\mathbb{C}$, there exists $t_1,t_2,s_1,s_2\in\mathbb{R}$, such that $z=t_1w_1+t_2w_2$, and $w=s_1w_2+s_2w_2$.
+    
+    \hfil
+    
+    First, we'll check that the given form is an alternating bilinear form: 
+    
+    If consider $A(z,w)$ and $A(w,z)$, we get:
+    $$A(z,w)=A(t_1w_1+t_2w_2,s_1w_1+s_2w_2) = \det\begin{pmatrix}t_1&s_1\\t_2&s_2\end{pmatrix}$$ 
+    $$=-\det\begin{pmatrix}s_1&t_1\\s_2&t_2\end{pmatrix} = -A(s_1w_2+s_2w_2,t_1w_2+t_2w_2) = -A(w,z)$$
+    So, the alternating property is checked. Now, if given $u\in\mathbb{C}$, with $k_1,k_2\in\mathbb{R}$ satisfying $u=k_1w_1+k_2w_2$, then we get the following:
+    $$A(z+u,w)=A((t_1w_1+t_2w_2)+(k_1w_1+k_2w_2),s_1w_1+s_2w_2)$$
+    $$A((t_1+k_1)w_1+(t_2+k_2)w_2,s_1w_1+s_2w_2) = \det\begin{pmatrix}
+        (t_1+k_1) & s_1\\
+        (t_2+k_2) & s_2
+    \end{pmatrix}$$
+    $$ = (t_1+k_1)s_2 - (t_2+k_2)s_1 = (t_1s_2-t_2s_1)+(k_1s_2-k_2s_1)$$
+    $$=\det\begin{pmatrix}t_1&s_1\\t_2&s_2\end{pmatrix} + \det\begin{pmatrix}k_1&s_1\\k_2&s_2\end{pmatrix}$$
+    $$ = A(t_1w_1+t_2w_2,s_1w_1+s_2w_2)+ A(k_1w_1+k_2w_2,s_1w_1+s_2w_2)$$
+    $$= A(z,w)+A(u,w)$$
+    This proves the bilinearity (including the alternating property, this also proves the linearity of the second column).
+
+    So, $A$ defined in the question is an alternating bilinear form.
+
+    \hfil
+
+    Now, for all $z,w\in L\times L$, since there exists $t_1,t_2,s_1,s_2\in\mathbb{Z}$, with $z=t_1w_1+t_2w_2$ and $w=s_1w_1+s_2w_2$, we get:
+    $$A(z,w)=A(t_1w_1+t_2w_2,s_1w_1+s_2w_2)=\det\begin{pmatrix}t_1&s_1\\t_2&s_2\end{pmatrix} = t_1s_2-t_2s_1 \in\mathbb{Z}$$
+    So, $A$ yields integer value for all elements in $L\times L$.
+
+    \hfil
+
+    Lastly, consider $h=A(1,i)$ given in \textbf{part (a)}. Given that $w_1=a+bi$, $w_2=c_di$ with $a,b,c,d\in\mathbb{R}$, and $\textmd{Im}(w_2/w_1)>0$, we get:
+    $$\frac{w_2}{w_1}=\frac{c+di}{a+bi}=\frac{(c+di)(a-bi)}{(a+bi)(a-bi)} = \frac{(ac+bd)+(ad-bc)i}{a^2+b^2},\quad \textmd{Im}\left(\frac{w_2}{w_1}\right)=\frac{ad-bc}{a^2+b^2}>0$$
+    $$\implies ad-bc > 0$$
+    Then, given the definition of $A$, we know the following:
+    $$A(w_1,w_2) = \det\begin{pmatrix}1&0\\0&1\end{pmatrix} = 1$$
+    $$A(w_1,w_2)=A(a+bi,c+di) = acA(1,1)+ adA(1,i)+bcA(i,1)+bdA(i,i)$$
+    $$ = adA(1,i)-bcA(1,i) = (ad-bc)h$$
+    Hence, we derived the following:
+    $$(ad-bc)h = 1 <0,\quad ad-bc >0\implies h = \frac{1}{ad-bc}>0$$
+    Then, since $A$ is an alternating bilinear form, takes integer values on $L\times L$, and has $h>0$, $A$ is a Riemannian Form.
+
+    \hfil
+
+    \item[(c)] Given the definition of $\Theta$ function, we know for any $z\in \mathbb{C}$, if $\Theta(z)=0$, then for all $w\in L$, $\Theta(z+w)=e^{a_wz+b_w}\Theta(z) = 0$. Hence, let $b_1,...,b_n$ represent the zeros of $\Theta$ in a fundamental region $P$, then for all $z\in\mathbb{C}$, we get $\Theta(z)=0$ iff $z\equiv b_j\mod\ L$ for some $j\in\{1,...,n\}$ (since if $z\in P$ satisfies $z\neq b_j$ for all index $j$, then for all $w\in L$, $\Theta(z+w)=e^{a_wz+b_w}\Theta(z)\neq 0$).
+    
+    On the other hand, for all $w\in L$, if consider the derivative $\Theta'(z+w)$, we get:
+    $$\Theta'(z+w) = a_we^{a_wz+b_w}\Theta(z) + e^{a_wz+b_w}\Theta'(z)$$
+    Which, the following is true:
+    $$\frac{\Theta'(z+w)}{\Theta(z+w)}=\frac{a_we^{a_wz+b_w}\Theta(z) + e^{a_wz+b_w}\Theta'(z)}{e^{a_wz+b_w}\Theta(z)} = a_w+\frac{\Theta'(z)}{\Theta(z)}$$
+
+    
 \end{itemize}
 
 \break
@@ -174,6 +225,12 @@ colback=blue!10
 \begin{myBox}[]{}
     \begin{question}
         Freitag Chap. V.7 Exercise 5:
+
+        Show:
+        \begin{itemize}
+            \item[(a)] For the lattice $L_i=\mathbb{Z}+\mathbb{Z}i$ we have $g_3(i)=0$ and $g_2(i)\in\mathbb{R}^\times$, in particular $\Delta(i)=g_2^3(i)>0$.
+            \item[(b)] For the lattice $L_w=\mathbb{Z}+\mathbb{Z}w$, $w:=e^{2\pi i/3}$, we have $g_2(w)=0$ and $g_3(w)\in\mathbb{R}^\times$, in particular $\Delta(w)=-27g_3^2(w)$. 
+        \end{itemize}
     \end{question}
 \end{myBox}
 
@@ -185,6 +242,11 @@ colback=blue!10
 \begin{myBox}[]{}
     \begin{question}
         Freitag Chap. V.8 Exercise 3:
+
+        The Eisenstein series are "real" functions, i.e. $\overline{G_k(\mathcal{T})}=G_k(-\mathcal{T})$. This implies 
+        $$G_k\left(\frac{\alpha(-\overline{\mathcal{T}})+\beta}{\gamma(-\mathcal{T})+\delta}\right) = (\gamma(-\overline{\mathcal{T}})+\delta)\overline{G_k(\mathcal{T})} \quad \quad \textmd{and}$$
+        $$j\left(\frac{\alpha(-\overline{\mathcal{T}})+\beta}{\gamma(-\overline{\mathcal{T}})+\delta}\right)=\overline{j(\mathcal{T})}\quad\quad \textmd{for } \begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix}\in \Gamma$$
+        On the vertical half-lines $\textmd{Re}(\mathcal{T})=\pm\frac{1}{2}$ in $\mathbb{H}$ in $\mathbb{H}$ the Eisenstein series and the $j$-function are real. if $\mathcal{T}\in\mathbb{H}$ lies on the circle line $|\mathcal{T}|=1$, then $j(\mathcal{T})=\overline{j(\mathcal{T})}$. In particular, the $j$-function is real on the boundary of the modular figure, and on the imaginary axis.
     \end{question}
 \end{myBox}
 
