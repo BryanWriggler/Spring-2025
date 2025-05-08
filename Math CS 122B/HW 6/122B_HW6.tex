@@ -240,7 +240,7 @@ colback=blue!10
 
     Since $L$ is a lattice, $w_1$ and $w_2$ are linearly independent when viewing $\mathbb{C}$ as an $\mathbb{R}$-vector space, hence $w_1,w_2$ forms a basis of $\mathbb{C}$. Which, for all $u,v\in\mathbb{C}$, there exists $t_1,t_2,s_1,s_2\in\mathbb{R}$, such that $u=t_1w_1+t_2w_2$ and $v=s_1w_1+s_2w_2$. So, define the map $A:\mathbb{C}\times\mathbb{C}\rightarrow\mathbb{C}$ as follow:
     $$A(u,v) = A(t_1w_1+t_2w_2,s_1w_1+s_2w_2) = \frac{1}{2\pi i}((t_1a_{w_1}+t_2a_{w_2})v - (s_1a_{w_1}+s_2a_{w_2})u)$$
-    Notice that the image isn't guaranteed to be in $\mathbb{R}$. Temporarily, we'll postpone the proof of $A(\mathbb{C}\times \mathbb{C})\subseteq \mathbb{R}$, and verify that $A$ satisfies all the other properties of being a Riemannian Form first.
+    Notice that the image isn't guaranteed to be in $\mathbb{R}$. Temporarily, we'll postpone the proof of $A(\mathbb{C}\times \mathbb{C})\subseteq \mathbb{R}$, and verify that $A$ satisfies all the other properties of being a Riemannian Form first (except the part that $h>0$).
     \begin{itemize}
         \item \textbf{Alternating Property:}
         
@@ -271,10 +271,10 @@ colback=blue!10
         $$=\frac{1}{2\pi i}\left(\left(\int_{a}^{a+w}\frac{\Theta'(z)}{\Theta(z)}dz - \int_{a}^{a+w}\frac{\Theta'(z+\lambda)}{\Theta(z+\lambda)}dz\right)+\left(\int_{a}^{a+\lambda}\frac{\Theta'(z+w)}{\Theta(z+w)}dz - \int_{a}^{a+\lambda}\frac{\Theta'(z)}{\Theta(z)}dz\right)\right)$$
         $$=\frac{1}{2\pi i}\left(\int_{a}^{a+w}\left(\frac{\Theta'(z)}{\Theta(z)}-\left(a_\lambda+\frac{\Theta'(z)}{\Theta(z)}\right)\right)dz + \int_{a}^{a+\lambda}\left(a_w+\frac{\Theta'(z)}{\Theta(z)}-\frac{\Theta'(z)}{\Theta(z)}\right)dz\right)$$
         $$ = \frac{1}{2\pi i}\left(\int_{a}^{a+\lambda}a_wdz - \int_{a}^{a+w}a_\lambda dz\right) = \frac{1}{2\pi i}(a_w\lambda - a_\lambda w) = A(w,\lambda)$$
-        This shows that $A(w,\lambda)$ is in fact an integer.
+        This shows that $A(w,\lambda)$ is in fact an integer (the sign depends on the orientation of $P'$ described above).
     \end{itemize}
 
-    Finally, to prove the image is contained in $\mathbb{R}$, we'll utilize the continuity of $A$ (since fixing one entry, $A$ becomes a linear map that is continuous). 
+    Second to last, to prove the image is contained in $\mathbb{R}$, we'll utilize the continuity of $A$ (since fixing one entry, $A$ becomes a linear map that is continuous). 
 
     First, we'll prove that any $w,\lambda\in(\mathbb{Q}w_1+\mathbb{Q}w_2)$ satisfies $A(w,\lambda) \in\mathbb{R}$: Since both $w,\lambda$ have the coefficients of $w_1,w_2$ being rational, then for large enough $k,l\in\mathbb{N}$, $kw,l\lambda\in L$ (EX: choose $k,l$ to be the multiples of the denominators of the ratioal coefficients of $w,\lambda$ respectively, the each coefficient of $kw,l\lambda$ is an integer).
     So, evaluate in $A$, we get:
@@ -284,9 +284,19 @@ colback=blue!10
     $$\lim_{n\rightarrow\infty}A(u_n,v_n) = A(u,v)$$
     And, since each index $n$ satisfies $A(u_n,v_n)\in \mathbb{R}$ (recall that $(u_n,v_n)\in L'\times L'$), then by completeness of $\mathbb{R}$, $A(u,v)$ as a limit of sequence in $\mathbb{R}$, must also belong to $\mathbb{R}$. Hence, $A(u,v)\in\mathbb{R}$.
 
-    This finishes the prov
+    \hfil
 
-    
+    This proves that $A$ has an image in $\mathbb{R}$, hence it's in fact an alternating bilinear form $A:\mathbb{C}\times\mathbb{C}\rightarrow\mathbb{R}$, which yields integer values on $L\times L$ (based on the above information). 
+
+    The last task is to verify that $h$ corresponding to $A$ is in fact positive. Recall that $h=A(1,i)$, with the assumption that $w_1=a+bi$, $w_2=c+di$, and $\textmd{Im}(w_2/w_1)>0$, we know $ad-bc > 0$. Hence, we get the following:
+    $$A(w_1,w_2) =A(a+bi,c+di) = acA(1,1)+adA(1,i)+bcA(i,1)+bdA(i,i) = (ad-bc)A(1,i) = (ad-bc)h$$
+    Which, given the assumption that $\textmd{Im}(w_2/w_1)>0$, the orientation of the parallelagram is given as follow:
+
+    \textbf{insert image}
+
+    Hence, $A(w_1,w_2)$ when representing as the integral form mentioned before, it is nonnegative (since the integration is along a counterclockwise contour like above). So, given $(ad-bc)h = A(w_1,w_2)\geq 0$, then $h \geq 0$.
+
+    In terms for $h$ to be positive, we need $A(w_1,w_2)>0$, hence an extra condition imposed is that $\Theta$ needs to have at least a zero (so there is a zero within the fundamental region of lattice $L$, causing the integral form of $A(w_1,w_2)$ to be nonzero).
 \end{itemize}
 
 \break
