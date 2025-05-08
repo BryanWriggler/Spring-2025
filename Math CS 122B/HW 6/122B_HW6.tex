@@ -174,16 +174,16 @@ colback=blue!10
     If consider $A(z,w)$ and $A(w,z)$, we get:
     $$A(z,w)=A(t_1w_1+t_2w_2,s_1w_1+s_2w_2) = \det\begin{pmatrix}t_1&s_1\\t_2&s_2\end{pmatrix}$$ 
     $$=-\det\begin{pmatrix}s_1&t_1\\s_2&t_2\end{pmatrix} = -A(s_1w_2+s_2w_2,t_1w_2+t_2w_2) = -A(w,z)$$
-    So, the alternating property is checked. Now, if given $u\in\mathbb{C}$, with $k_1,k_2\in\mathbb{R}$ satisfying $u=k_1w_1+k_2w_2$, then we get the following:
-    $$A(z+u,w)=A((t_1w_1+t_2w_2)+(k_1w_1+k_2w_2),s_1w_1+s_2w_2)$$
-    $$A((t_1+k_1)w_1+(t_2+k_2)w_2,s_1w_1+s_2w_2) = \det\begin{pmatrix}
-        (t_1+k_1) & s_1\\
-        (t_2+k_2) & s_2
+    So, the alternating property is checked. Now, if given $u\in\mathbb{C}$, with $k_1,k_2\in\mathbb{R}$ satisfying $u=k_1w_1+k_2w_2$, then given arbitrary $k,l\in\mathbb{R}$, we get the following:
+    $$A(kz+lu,w)=A(k(t_1w_1+t_2w_2)+l(k_1w_1+k_2w_2),s_1w_1+s_2w_2)$$
+    $$A((kt_1+lk_1)w_1+(kt_2+lk_2)w_2,s_1w_1+s_2w_2) = \det\begin{pmatrix}
+        (kt_1+lk_1) & s_1\\
+        (kt_2+lk_2) & s_2
     \end{pmatrix}$$
-    $$ = (t_1+k_1)s_2 - (t_2+k_2)s_1 = (t_1s_2-t_2s_1)+(k_1s_2-k_2s_1)$$
-    $$=\det\begin{pmatrix}t_1&s_1\\t_2&s_2\end{pmatrix} + \det\begin{pmatrix}k_1&s_1\\k_2&s_2\end{pmatrix}$$
-    $$ = A(t_1w_1+t_2w_2,s_1w_1+s_2w_2)+ A(k_1w_1+k_2w_2,s_1w_1+s_2w_2)$$
-    $$= A(z,w)+A(u,w)$$
+    $$ = (kt_1+lk_1)s_2 - (kt_2+lk_2)s_1 = k(t_1s_2-t_2s_1)+l(k_1s_2-k_2s_1)$$
+    $$=k\det\begin{pmatrix}t_1&s_1\\t_2&s_2\end{pmatrix} + l\det\begin{pmatrix}k_1&s_1\\k_2&s_2\end{pmatrix}$$
+    $$ = kA(t_1w_1+t_2w_2,s_1w_1+s_2w_2)+ lA(k_1w_1+k_2w_2,s_1w_1+s_2w_2)$$
+    $$= kA(z,w)+lA(u,w)$$
     This proves the bilinearity (including the alternating property, this also proves the linearity of the second column).
 
     So, $A$ defined in the question is an alternating bilinear form.
@@ -209,12 +209,82 @@ colback=blue!10
 
     \hfil
 
-    \item[(c)] Given the definition of $\Theta$ function, we know for any $z\in \mathbb{C}$, if $\Theta(z)=0$, then for all $w\in L$, $\Theta(z+w)=e^{a_wz+b_w}\Theta(z) = 0$. Hence, let $b_1,...,b_n$ represent the zeros of $\Theta$ in a fundamental region $P$, then for all $z\in\mathbb{C}$, we get $\Theta(z)=0$ iff $z\equiv b_j\mod\ L$ for some $j\in\{1,...,n\}$ (since if $z\in P$ satisfies $z\neq b_j$ for all index $j$, then for all $w\in L$, $\Theta(z+w)=e^{a_wz+b_w}\Theta(z)\neq 0$).
+    \item[(c)] Let $L=\mathbb{Z}w_1+\mathbb{Z}w_2$, with $\textmd{Im}(\frac{w_2}{w_1})>0$. Given the definition of $\Theta$ function, we know for any $z\in \mathbb{C}$, if $\Theta(z)=0$, then for all $w\in L$, $\Theta(z+w)=e^{a_wz+b_w}\Theta(z) = 0$. Hence, let $b_1,...,b_n$ represent the zeros of $\Theta$ in a fundamental region $P$, then for all $z\in\mathbb{C}$, we get $\Theta(z)=0$ iff $z\equiv b_j\mod\ L$ for some $j\in\{1,...,n\}$ (since if $z\in P$ satisfies $z\neq b_j$ for all index $j$, then for all $w\in L$, $\Theta(z+w)=e^{a_wz+b_w}\Theta(z)\neq 0$).
     
     On the other hand, for all $w\in L$, if consider the derivative $\Theta'(z+w)$, we get:
     $$\Theta'(z+w) = a_we^{a_wz+b_w}\Theta(z) + e^{a_wz+b_w}\Theta'(z)$$
     Which, the following is true:
     $$\frac{\Theta'(z+w)}{\Theta(z+w)}=\frac{a_we^{a_wz+b_w}\Theta(z) + e^{a_wz+b_w}\Theta'(z)}{e^{a_wz+b_w}\Theta(z)} = a_w+\frac{\Theta'(z)}{\Theta(z)}$$
+
+    \hfil
+
+    \textbf{1. Relations of $a_w$ with basis $w_1,w_2$:}
+
+    For any $w\in L$, there exists $k,l\in\mathbb{Z}$, such that $w=kw_1+lw_2$. Which, notice the following:
+    $$\frac{\Theta'(z+w_1)}{\Theta(z+w_1)}=a_{w_1}+\frac{\Theta'(z)}{\Theta(z)}$$
+    Which, by induction, any $k\in\mathbb{Z}$ with $k\geq 0$ satisfies:
+    $$\frac{\Theta'(z+kw_1)}{\Theta(z+kw_1)}=ka_{w_1}+\frac{\Theta'(z)}{\Theta(z)}$$
+    Then, for $k<0$, since $z=(z+kw_1)-kw_1$ with $-k>0$, we get the following relation:
+    $$\frac{\Theta'(z)}{\Theta(z)}=\frac{\Theta'((z+kw_1)-kw_1)}{\Theta((z+kw_1)-kw_1)} = (-k)a_{w_1}+\frac{\Theta'(z+kw_1)}{\Theta(z+kw_1)},\quad \frac{\Theta'(z+kw_1)}{\Theta(z+kw_1)} = ka_{w_1}+\frac{\Theta'(z)}{\Theta(z)}$$
+    Hence, the above formula can be generalize to any $k\in\mathbb{Z}$. Then, apply similar logic to $w_2$, we also get the following:
+    $$\forall l\in\mathbb{Z},\quad \frac{\Theta'(z+lw_2)}{\Theta(z+lw_2)} = la_{w_2}+\frac{\Theta'(z)}{\Theta(z)}$$
+    So, for arbitrary $w\in L$, since there exists $k,l\in\mathbb{Z}$, with $w=kw_1+lw_2$, then the following relation is true:
+    $$a_w+\frac{\Theta'(z)}{\Theta(z)}=\frac{\Theta'(z+w)}{\Theta(z+w)} = \frac{\Theta'(z+kw_1+lw_2)}{\Theta(z+kw_1+lw_2)}$$
+    $$ = la_{w_2}+\frac{\Theta'(z+kw_1)}{\Theta'(z+kw_1)} = ka_{w_1}+la_{w_2}+\frac{\Theta'(z)}{\Theta(z)}$$
+    
+    $$\implies a_w = ka_{w_1}+la_{w_2}$$
+
+    \hfil
+
+    \textbf{2. Define the Riemannian Form:}
+
+    Since $L$ is a lattice, $w_1$ and $w_2$ are linearly independent when viewing $\mathbb{C}$ as an $\mathbb{R}$-vector space, hence $w_1,w_2$ forms a basis of $\mathbb{C}$. Which, for all $u,v\in\mathbb{C}$, there exists $t_1,t_2,s_1,s_2\in\mathbb{R}$, such that $u=t_1w_1+t_2w_2$ and $v=s_1w_1+s_2w_2$. So, define the map $A:\mathbb{C}\times\mathbb{C}\rightarrow\mathbb{C}$ as follow:
+    $$A(u,v) = A(t_1w_1+t_2w_2,s_1w_1+s_2w_2) = \frac{1}{2\pi i}((t_1a_{w_1}+t_2a_{w_2})v - (s_1a_{w_1}+s_2a_{w_2})u)$$
+    Notice that the image isn't guaranteed to be in $\mathbb{R}$. Temporarily, we'll postpone the proof of $A(\mathbb{C}\times \mathbb{C})\subseteq \mathbb{R}$, and verify that $A$ satisfies all the other properties of being a Riemannian Form first.
+    \begin{itemize}
+        \item \textbf{Alternating Property:}
+        
+        Given the definition of $A$, we get:
+        $$A(v,u)=A(s_1w_1+s_2w_2,t_1w_1+t_2w_2) = \frac{1}{2\pi i}((s_1a_{w_1}+s_2a_{w_2})u-(t_1a_{w_1}+t_2a_{w_2})v)$$
+        $$ = -\frac{1}{2\pi i}((t_1a_{w_1}+t_2a_{w_2})v-(s_1a_{w_1}+s_2a_{w_2})u) = -A(u,v)$$
+        \item \textbf{Bilinearity:}
+        
+        Given arbitrary $w \in\mathbb{C}$, there exists $r_1,r_2\in\mathbb{R}$, with $w=r_1w_1+r_2w_2$. Which, for arbitrary $k,l\in\mathbb{R}$ we get:
+        $$A(ku+lw,v)=A(k(t_1w_1+t_2w_2)+l(r_1w_1+r_2w_2),s_1w_1+s_2w_2) = A((kt_1+lr_1)w_1+(kt_2+lr_2)w_2,s_1w_1+s_2w_2)$$
+        $$ = \frac{1}{2\pi i}(((kt_1+lr_1)a_{w_1}+(kt_2+lr_2)a_{w_2})v-(s_1a_{w_1}+s_2a_{w_2})(ku+lw))$$
+        $$ = \frac{1}{2\pi i}\left(k(t_1a_{w_1}+t_2a_{w_2})v - (s_1a_{w_1}+s_2a_{w_2})ku\right)+\frac{1}{2\pi i}\left(l(r_1a_{w_1}+r_2a_{w_2})v - (s_1a_{w_1}+s_2a_{w_2})lw\right)$$
+        $$ = kA(u,v)+lA(w,v)$$
+        Combining the alternating property, the linearity in the second column is also given.
+
+        \item \textbf{$A$ yields integer values on $L\times L$:}
+        
+        Given any $w,\lambda\in L$, there exists $t_1,t_2,s_1,s_2\in \mathbb{Z}$, $w=t_1w_1+t_2w_2$, and $\lambda = s_1w_1+s_2w_2$. Which, with $a_w=t_1a_{w_1}+t_2a_{w_2}$ and $a_{\lambda}=s_1a_{w_1}+a_2a_{w_2}$ proven in statement $\textbf{1}$, we get:
+        $$A(w,\lambda) = A(t_1a_{w_1}+t_2a_{w_2},s_1a_{w_1}+s_2a_{w_2})$$
+        $$=\frac{1}{2\pi i}((t_1a_{w_1}+t_2a_{w_2})\lambda - (s_1a_{w_1}+s_2a_{w_2})w) = \frac{1}{2\pi i}(a_w\lambda -a_\lambda w)$$
+        This is the desired formula for any $w,\lambda\in L$. To prove that the value is an integer, consider the parallelagram $P$ spanned by $w$ and $\lambda$. Which, given $\partial P$, since it's closed and $\Theta$ has discrete zeros, then there existts $a\in\mathbb{C}$, such that $P'=a+P$ with $\partial P'$ containing no zeros of $\Theta$ (hence $\frac{\Theta'}{\Theta}$ is well-defined on $\partial P'$). 
+        
+        \textbf{Insert image}
+        
+        Which, WLOG, assume the orientation of $\partial P'$ is given by $a\rightarrow (a+w)\rightarrow (a+w+\lambda)\rightarrow (a+\lambda)\rightarrow a$, along with argument principal, we get the following:
+        $$\textmd{Number of zeros of } \Theta \textmd{ in } P' = \frac{1}{2\pi i}\int_{\partial P'}\frac{\Theta'(z)}{\Theta(z)}dz$$
+        $$ = \frac{1}{2\pi i}\left(\int_{a}^{a+w}\frac{\Theta'(z)}{\Theta(z)}dz+\int_{a+w}^{a+w+\lambda}\frac{\Theta'(z)}{\Theta(z)}dz+\int_{a+w+\lambda}^{a+\lambda}\frac{\Theta'(z)}{\Theta(z)}dz+\int_{a+\lambda}^{a}\frac{\Theta'(z)}{\Theta(z)}dz\right)$$
+        $$=\frac{1}{2\pi i}\left(\left(\int_{a}^{a+w}\frac{\Theta'(z)}{\Theta(z)}dz - \int_{a}^{a+w}\frac{\Theta'(z+\lambda)}{\Theta(z+\lambda)}dz\right)+\left(\int_{a}^{a+\lambda}\frac{\Theta'(z+w)}{\Theta(z+w)}dz - \int_{a}^{a+\lambda}\frac{\Theta'(z)}{\Theta(z)}dz\right)\right)$$
+        $$=\frac{1}{2\pi i}\left(\int_{a}^{a+w}\left(\frac{\Theta'(z)}{\Theta(z)}-\left(a_\lambda+\frac{\Theta'(z)}{\Theta(z)}\right)\right)dz + \int_{a}^{a+\lambda}\left(a_w+\frac{\Theta'(z)}{\Theta(z)}-\frac{\Theta'(z)}{\Theta(z)}\right)dz\right)$$
+        $$ = \frac{1}{2\pi i}\left(\int_{a}^{a+\lambda}a_wdz - \int_{a}^{a+w}a_\lambda dz\right) = \frac{1}{2\pi i}(a_w\lambda - a_\lambda w) = A(w,\lambda)$$
+        This shows that $A(w,\lambda)$ is in fact an integer.
+    \end{itemize}
+
+    Finally, to prove the image is contained in $\mathbb{R}$, we'll utilize the continuity of $A$ (since fixing one entry, $A$ becomes a linear map that is continuous). 
+
+    First, we'll prove that any $w,\lambda\in(\mathbb{Q}w_1+\mathbb{Q}w_2)$ satisfies $A(w,\lambda) \in\mathbb{R}$: Since both $w,\lambda$ have the coefficients of $w_1,w_2$ being rational, then for large enough $k,l\in\mathbb{N}$, $kw,l\lambda\in L$ (EX: choose $k,l$ to be the multiples of the denominators of the ratioal coefficients of $w,\lambda$ respectively, the each coefficient of $kw,l\lambda$ is an integer).
+    So, evaluate in $A$, we get:
+    $$A(kw,l\lambda)\in\mathbb{Z},\quad A(w,\lambda) = \frac{1}{kl}A(kw,l\lambda) \in\mathbb{R}$$
+    
+    Now, let $L' = \mathbb{Q}w_1+\mathbb{Q}w_2$, since $L'$ is a dense set in $\mathbb{C}$ (due to the denseness of $\mathbb{Q}$ in $\mathbb{R}$), then $L'\times L'$ is a dense set iin $\mathbb{C}\times \mathbb{C}$. So, for any $(u,v)\in\mathbb{C}\times \mathbb{C}$, it is a limit point of $L'\times L'$, hence there exists a sequence $(u_n,v_n)_{n\in\mathbb{N}}\subset L'\times L'$, with $\lim_{n\rightarrow\infty}(u_n,v_n) = (u,v)$. Hence, by continuity of $A$, we get:
+    $$\lim_{n\rightarrow\infty}A(u_n,v_n) = A(u,v)$$
+    And, since each index $n$ satisfies $A(u_n,v_n)\in \mathbb{R}$ (recall that $(u_n,v_n)\in L'\times L'$), then by completeness of $\mathbb{R}$, $A(u,v)$ as a limit of sequence in $\mathbb{R}$, must also belong to $\mathbb{R}$. Hence, $A(u,v)\in\mathbb{R}$.
+
+    This finishes the prov
 
     
 \end{itemize}
