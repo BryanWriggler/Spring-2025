@@ -373,13 +373,46 @@ To prove that $g_2,g_3$ yields real values for specific lattices, it suffices to
     \begin{question}
         Freitag Chap. V.8 Exercise 3:
 
-        The Eisenstein series are "real" functions, i.e. $\overline{G_k(\mathcal{T})}=G_k(-\mathcal{T})$. This implies 
-        $$G_k\left(\frac{\alpha(-\overline{\mathcal{T}})+\beta}{\gamma(-\mathcal{T})+\delta}\right) = (\gamma(-\overline{\mathcal{T}})+\delta)\overline{G_k(\mathcal{T})} \quad \quad \textmd{and}$$
+        The Eisenstein series are "real" functions, i.e. $\overline{G_k(\mathcal{T})}=G_k(-\overline{\mathcal{T}})$. This implies 
+        $$G_k\left(\frac{\alpha(-\overline{\mathcal{T}})+\beta}{\gamma(-\mathcal{T})+\delta}\right) = (\gamma(-\overline{\mathcal{T}})+\delta)^k\overline{G_k(\mathcal{T})} \quad \quad \textmd{and}$$
         $$j\left(\frac{\alpha(-\overline{\mathcal{T}})+\beta}{\gamma(-\overline{\mathcal{T}})+\delta}\right)=\overline{j(\mathcal{T})}\quad\quad \textmd{for } \begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix}\in \Gamma$$
         On the vertical half-lines $\textmd{Re}(\mathcal{T})=\pm\frac{1}{2}$ in $\mathbb{H}$ in $\mathbb{H}$ the Eisenstein series and the $j$-function are real. if $\mathcal{T}\in\mathbb{H}$ lies on the circle line $|\mathcal{T}|=1$, then $j(\mathcal{T})=\overline{j(\mathcal{T})}$. In particular, the $j$-function is real on the boundary of the modular figure, and on the imaginary axis.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+For all $\mathcal{T}\in\mathbb{H}$ (and $k\geq 3$), since $G_k(\mathcal{T})$ is a series of functions that converges normally within $\mathbb{H}$, then the following is true:
+$$\overline{G_k(\mathcal{T})}=\overline{\sum_{\substack{(a,b)\in\mathbb{Z}^2\\(a,b)\neq (0,0)}}\frac{1}{(a+b\mathcal{T})^k}} = \sum_{\substack{(a,b)\in\mathbb{Z}^2\\(a,b)\neq (0,0)}}\frac{1}{\overline{(a-b\mathcal{T})}^k} = \sum_{\substack{(a,b)\in\mathbb{Z}^2\\(a,b)\neq (0,0)}}\frac{1}{(a+b(-\overline{\mathcal{T}}))^k} = G_k(-\overline{\mathcal{T}})$$
+This verifies the first property in the problem. 
+
+Then, based on the relations given as follow:
+$$\forall \begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix}\in \Gamma,\quad G_k\left(\frac{\alpha \mathcal{T}+\beta}{\gamma\mathcal{T}+\delta}\right) = (\gamma\mathcal{T}+\delta)^kG_k(\mathcal{T})$$
+$$g_2(\mathcal{T})=60G_4(\mathcal{T}),\quad g_3(\mathcal{T})=140G_6(\mathcal{T}),\quad j(\mathcal{T})=\frac{g_2^3(\mathcal{T})}{g_2^3(\mathcal{T})-27g_3^2(\mathcal{T})}$$
+We can conclude the following:
+$$G_k\left(\frac{\alpha(-\overline{\mathcal{T}})+\beta}{\gamma(-\mathcal{T})+\delta}\right) = (\gamma(-\overline{\mathcal{T}})+\delta)^kG_k(-\overline{\mathcal{T}})=(\gamma(-\overline{\mathcal{T}})+\delta)^k\overline{G_k(\mathcal{T})}$$
+
+$$j\left(\frac{\alpha(-\overline{\mathcal{T}})+\beta}{\gamma(-\mathcal{T})+\delta}\right) = \frac{\left(g_2\left(\frac{\alpha(-\overline{\mathcal{T}})+\beta}{\gamma(-\mathcal{T})+\delta}\right)\right)^3}{\left(g_2\left(\frac{\alpha(-\overline{\mathcal{T}})+\beta}{\gamma(-\mathcal{T})+\delta}\right)\right)^3-27\left(g_3\left(\frac{\alpha(-\overline{\mathcal{T}})+\beta}{\gamma(-\mathcal{T})+\delta}\right)\right)^2}$$
+$$=\frac{\left(60G_4\left(\frac{\alpha(-\overline{\mathcal{T}})+\beta}{\gamma(-\mathcal{T})+\delta}\right)\right)^3}{\left(60G_4\left(\frac{\alpha(-\overline{\mathcal{T}})+\beta}{\gamma(-\mathcal{T})+\delta}\right)\right)^3-27\left(140G_6\left(\frac{\alpha(-\overline{\mathcal{T}})+\beta}{\gamma(-\mathcal{T})+\delta}\right)\right)^2}$$
+$$=\frac{(60(\gamma(-\overline{\mathcal{T}})+\delta)^4\overline{G_4(\mathcal{T})})^3}{(60(\gamma(-\overline{\mathcal{T}})+\delta)^4\overline{G_4(\mathcal{T})})^3-27(140(\gamma(-\overline{\mathcal{T}})+\delta)^6\overline{G_6(\mathcal{T})})^2}$$
+$$=\frac{(\gamma(-\overline{\mathcal{T}})+\delta)^{12}\overline{(60G_4(\mathcal{T}))}^3}{(\gamma(-\overline{\mathcal{T}})+\delta)^{12}\overline{(60G_4(\mathcal{T}))}^3-27\cdot (\gamma(-\overline{\mathcal{T}})+\delta)^{12}\overline{(140G_6(\mathcal{T}))}^2}$$
+$$=\frac{\overline{g_2(\mathcal{T})}^3}{\overline{g_2(\mathcal{T})}^3-27\overline{g_3(\mathcal{T})}^2} = \overline{\frac{g_2^3(\mathcal{T})}{g_2^3(\mathcal{T})-27g_3^2(\mathcal{T})}} = \overline{j(\mathcal{T})}$$
+So, the second and third properties are verified.
+
+\hfil
+
+Now, given $\mathcal{T}\in\mathbb{H}$ with $\textmd{Re}(\mathcal{T})=\pm\frac{1}{2}$ (WLOG, assume it is $\frac{1}{2}$, since if $\mathcal{T}=-\frac{1}{2}+yi$ for some $y>0$, then $\mathcal{T}+1 = \frac{1}{2}+yi = -\overline{\mathcal{T}}$, which since $-\overline{\mathcal{T}}=\frac{\mathcal{T}+1}{0\cdot\mathcal{T}+1}$, the two values are equivalent. Hence, swap $\mathcal{T}$ and $-\overline{\mathcal{T}}$, we still get the same case).
+
+Then, since $\mathcal{T}=\frac{1}{2}+yi$ for some $y>0$, $-\overline{\mathcal{T}} = -\frac{1}{2}+yi$, so $-\overline{\mathcal{T}}+1 = \mathcal{T}$. Using the previous properties, we get:
+$$G_k(\mathcal{T})=G_k\left(\frac{(-\overline{\mathcal{T}})+1}{0\cdot(-\overline{\mathcal{T}})+1}\right) = (0\cdot(-\overline{\mathcal{T}})+1)^k\overline{G_k(\mathcal{T})} = \overline{G_k(\mathcal{T})}$$
+$$G_k(\mathcal{T})=\overline{G_k(\mathcal{T})}\implies G_k(\mathcal{T})\in \mathbb{R}$$
+
+$$j(\mathcal{T})=j\left(\frac{(-\overline{\mathcal{T}})+1}{0\cdot(-\overline{\mathcal{T}})+1}\right) = \overline{j(\mathcal{T})}$$
+$$j(\mathcal{T})=\overline{j(\mathcal{T})}\implies j(\mathcal{T})\in\mathbb{R}$$
+This proves that both Eisenstein series and the $j$-function are real on $\textmd{Re}(\mathcal{T})=\pm\frac{1}{2}$.
+
+Finally, given $\mathcal{T}\in\mathbb{H}$ with $|\mathcal{T}|=1$, then since $\mathcal{T}=\frac{1}{\overline{\mathcal{T}}}=\frac{-1}{(-\overline{\mathcal{T}})}$, we get the following:
+$$j(\mathcal{T})=j\left(\frac{0\cdot(-\overline{\mathcal{T}})-1}{(-\overline{\mathcal{T}})+0}\right) = \overline{j(\mathcal{T})} \implies j(\mathcal{T})\in\mathbb{R}$$
+So, on the half circle $|\mathcal{T}|=1$ in $\mathbb{H}$, $j$-function is also real.
 
 \end{document}
