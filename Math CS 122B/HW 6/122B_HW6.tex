@@ -316,6 +316,56 @@ colback=blue!10
 
 \textbf{Pf:}
 
+Given any lattice $L=\mathbb{Z}+\mathbb{Z}\mathcal{T}$ with $\mathcal{T}\in\mathbb{H}$, recall that $g_2(\mathcal{T}) = 60G_4(\mathcal{T})$ and $g_3(\mathcal{T})=140G_6(\mathcal{T})$, and $\Delta(\mathcal{T}) \neq 0$ (since in case to have lattice, the half lattices yield distinct values $e_1,e_2,e_3$, which are roots of the polynomial $4w^3-g_2w-g_3$ proven before (when talking about the algebraic differential equation of $\wp$-function). Hence as $\Delta(\mathcal{T})=g_2^3(\mathcal{T})-27g_3^2(\mathcal{T})$ denotes the discriminant of the cubic polynomial above, having distinct roots implies $\Delta(\mathcal{T})\neq 0$).
+
+To prove that $g_2,g_3$ yields real values for specific lattices, it suffices to prove the case for $G_4$ and $G_6$.
+\begin{itemize}
+    \item[(a)] Given lattice $L_i = \mathbb{Z}+\mathbb{Z}i$, there are two properties:
+    \begin{itemize}
+        \item For all $w=a+bi\in L_i$, its conjugate $\overline{w}=a-bi\in L_i$ (since both $a,b\in\mathbb{Z}$).
+        \item Given same $w$, $iw = -b+ai \in L_i$ based on the same reason above.
+    \end{itemize}
+    Notice that the above pairing is a one-to-one correspondance. Hence, for $k\geq 3$, we get the following formula for $2G_k(i)$:
+    $$2G_k(i) = \sum_{\substack{w\in L_i\\w\neq 0}}\frac{1}{w^k}+\sum_{\substack{w\in L_i\\w\neq 0}}\frac{1}{\overline{w}^k} = \sum_{\substack{w\in L_i\\w\neq 0}}2\textmd{Re}\left(\frac{1}{w^4}\right) = 2\sum_{\substack{w\in L_i\\w\neq 0}}\textmd{Re}\left(\frac{1}{w^4}\right)\in \mathbb{R}$$
+    (Note: since for $k\geq 3$, $G_k(z)$ converges normally within $\mathbb{H}$).
+
+    So, both $G_4(i)$ and $G_6(i)$ are real, implying that $g_2(i)=60G_4(i),\ g_3(i)=140G_6(i)$ are also real.
+
+    Then, consider the similar formulation with $iw$ instead, we get:
+    $$2G_6(i) = \sum_{\substack{w\in L_i\\w\neq 0}}\frac{1}{w^6}+\sum_{\substack{w\in L_i\\w\neq 0}}\frac{1}{(iw)^6} = \sum_{\substack{w\in L\\w\neq 0}}\left(\frac{1}{w^6}-\frac{1}{w^6}\right) = 0$$
+    This implies that $G_6(i) = 0$, which $g_3(i) = 140G_6(i)=0$.
+
+    Finally, given the discriminant formula, since the following is true:
+    $$\Delta(i)=g_2^3(i)-27g_3^2(i) = g_2^3(i)$$
+    On the other hand, $\Delta(i)\neq 0$ (since $L_i$ is a lattice), which the above equation implies that $g_2(i)\neq 0$.
+    Also, recall that from \textbf{HW 5 Problem 5}, we've proven that given the lattice formed by $\mathbb{Z}+\mathbb{Z}ti$ (where $t\in\mathbb{R}$), $\wp(z)$ yields real values on all the half lines; specifically, on all the half points (the intersection of half lines), the value of $\wp$ (denoted as $e_1,e_2,e_3$) are all real. Since these three values are the roots of the cubic polynomial $4w^3-g_2(i)w-g_3(i)$, then because the cubic polynomial have three real distinct roots, its discriminant $\Delta(i) >0$, showing that $g_2^3(i)>0$, or $g_2(i)>0$.
+
+    Hence, for lattice $L_i$, we have $g_2(i)>0$, and $g_3(i)=0$ (so, $g_2(i)\in\mathbb{R}^\times$).
+
+    \hfil
+    
+    \item[(b)] Given $L_w=\mathbb{Z}+\mathbb{Z}w$ with $w=e^{2\pi i/3} = -\frac{1}{2}+\frac{\sqrt{3}}{2}i$ (which $w^3 = 1$), here are several of its properties:
+    \begin{itemize}
+        \item Since $e^{2\pi i/6} = \frac{1}{2}+\frac{\sqrt{3}}{2}i = 1+(-\frac{1}{2}+\frac{\sqrt{3}}{2}i)= 1+w\in L_w$, while $-\overline{w} = -(-\frac{1}{2}-\frac{\sqrt{3}}{2}i) = \frac{1}{2}+\frac{\sqrt{3}}{2}i = e^{2\pi i/6}$, so $-\overline{w}\in L$. Then, for all $\lambda = a+bw\in L_w$ (for some $a,b\in\mathbb{Z}$), we get:
+        $$-\overline{\lambda} = -(a+b\overline{w}) = -a+b(-\overline{w})\in L_w\implies\overline{\lambda}\in L_w$$
+        \item Since $e^{2\pi i/6}\in L_w$, then $-e^{2\pi i/6} = e^{2\pi i\cdot2/3} = w^2\in L_w$. Hence, given the same $\lambda$ above, we also get:
+        $$w\lambda = w(a+bw) = aw + bw^2 \in L_w$$
+        $$w^2\lambda = w^2(a+bw) = aw^2+bw^3 = b+aw^2\in L_2$$
+    \end{itemize}
+    Notice that all pairings above are one-to-one correspondance. Hence, for all $k\geq 3$, we get the following formula for $2G_k(w)$:
+    $$2G_k(w)=\sum_{\substack{\lambda\in L_w\\\lambda\neq 0}}\frac{1}{\lambda^k}+\sum_{\substack{\lambda\in L_w\\\lambda\neq 0}}\frac{1}{\overline{\lambda}^k} = \sum_{\substack{\lambda\in L_w\\\lambda\neq 0}}2\textmd{Re}\left(\frac{1}{\lambda^k}\right) = 2\sum_{\substack{\lambda\in L_\lambda\\w\neq 0}}\textmd{Re}\left(\frac{1}{\lambda^k}\right) \in \mathbb{R}$$ 
+    Hence, $G_k(w)\in\mathbb{R}$ for all $k\geq 3$. In particular, $G_4(w),G_6(w)\in\mathbb{R}$, implying that $g_2(w)=60G_4(w)$ and $g_3(w)=140G_6(w)$ are also real.
+    
+    Now, if we consider $3G_4(w)$ specifically, based on the second property of $L_w$ listed above (where $\lambda\in L_w$ implies $w\lambda$ and $w^2\lambda$ are in $L_w$), we get:
+    $$3G_4(w) = \sum_{\substack{\lambda\in L_w\\w\neq 0}}\frac{1}{\lambda^4}+\sum_{\substack{\lambda\in L_w\\w\neq 0}}\frac{1}{(w\lambda)^4}+\sum_{\substack{\lambda\in L_w\\w\neq 0}}\frac{1}{(w^2\lambda)^4} = \sum_{\substack{\lambda\in L_w\\\lambda\neq 0}}\left(\frac{1}{\lambda^4}+\frac{1}{w^4\lambda^4}+\frac{1}{w^8\lambda^4}\right)$$
+    $$\sum_{\substack{\lambda\in L_w\\\lambda\neq 0}}\left(\frac{1}{\lambda^4}+\frac{w^2}{w^6\lambda^4}+\frac{w}{w^9\lambda^4}\right)=\sum_{\substack{\lambda\in L_w\\\lambda\neq 0}}\left(\frac{1}{\lambda^4}+\frac{w^2}{\lambda^4}+\frac{w}{\lambda^4}\right) = (1+w+w^2)\sum_{\substack{\lambda\in L_w\\\lambda\neq 0}}\frac{1}{\lambda^4}$$
+    Since $w=e^{2\pi i/3}$ is a primitive $3^{rd}$ root of unity, then $1+w+w^2=0$, showing that $3G_4(w)=0$ based on the above equation. Hence, $G_4(w)=0$, so $g_2(w)=60G_4(w)=0$ also.
+
+    Finally, since $\Delta(w)=g_2^3(w)-27g_3^2(w) = -27g_3^2(w)$, and $\Delta(w)\neq 0$, then $g_3^2(w)\neq 0$.
+
+    So, in conclusion, we have $g_2(w)=0$, $g_3(w)\neq 0$, and $g_3(w)\in\mathbb{R}$, so $g_3(w)\in\mathbb{R}^\times$.
+\end{itemize}
+
 \break
 
 \section*{4}
