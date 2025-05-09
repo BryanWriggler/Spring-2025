@@ -60,7 +60,7 @@ colback=blue!10
 \begin{itemize}
     \item[(a)] Given the Weierstrass $\sigma$-function below ($\sigma:\mathbb{C}\rightarrow\mathbb{C}$), the Weierstrass $\zeta$-function ($\zeta:\mathbb{C}\setminus L\rightarrow\mathbb{C}$) is defined as:
     $$\sigma(z)=z\prod_{\substack{w\in L\\w\neq 0}}\left(1-\frac{z}{w}\right)\exp\left(\frac{z}{w}+\frac{1}{2}\left(\frac{z}{w}\right)^2\right),\quad \zeta(z)=\frac{\sigma'(z)}{\sigma(z)}$$
-    Based on the formula of $\sigma$, it has simple zeros at all $w\in L$; and, it implies that $\zeta$ is not defined only on $L$. Now, to prove the statement, consider the following:
+    Based on the formula of $\sigma$, it has simple zeros only at all $w\in L$; and, it implies that $\zeta$ is not defined only on $L$. Now, to prove the statement, consider the following:
     \begin{itemize}
         \item[$\implies:$] Suppose the defined $h(z)$ is elliptic. Then, since for each index $j\in\{1,...,n\}$, $\sigma(z-b_j)$ has a simple zero at $(w+b_j)$ for each $w\in L$ (which the set $b_j+L$ contains all the simple zeros of $\sigma(z-b_j)$, which is discrete). Then, since $\bigcup_{j=1}^{n}(b_j+L)$ is also discrete, choose the fundamental region $P$ of lattice $L$ such that $\partial P$ contains no points from $\bigcup_{j=1}^{n}(b_j+L)$ (the set containing all the zeros of each $\sigma(z-b_j)$, also the set of all undefined points of all $\zeta(z-b_j)$), by the Second Liouville's Theorem, we get the following:
         $$0=\frac{1}{2\pi i}\int_{\partial P}h(z)dz = \frac{1}{2\pi i}\int_{\partial P}\sum_{j=1}^{n}c_j\zeta(z-b_j)dz = \sum_{j=1}^{n}c_j\cdot\frac{1}{2\pi i}\int_{\partial P}\frac{\sigma'(z-b_j)}{\sigma(z-b_j)}dz$$
@@ -72,7 +72,7 @@ colback=blue!10
 
         \hfil
 
-        \item[$\impliedby:$] Now, suppose $\sum_{j=1}^{n}c_j = 0$. For all $w\in L$, since $\sigma(z+w)$ and $\sigma(z)$ both have simple zeros at any $w'\in L$, then $\frac{\sigma(z+w)}{\sigma(z)}$ is an entire function with no zeros in $\mathbb{C}$ (since the zeros cancel out at each $w'\in L$). Hence, there exists an analytic function $h:\mathbb{C}\rightarrow\mathbb{C}$, with $\frac{\sigma(z+w)}{\sigma(z)}=e^{h(z)}$. Then, apply derivatives, we get:
+        \item[$\impliedby:$] Now, suppose $\sum_{j=1}^{n}c_j = 0$. For all $w\in L$, since $\sigma(z+w)$ and $\sigma(z)$ both only have simple zeros at any $w'\in L$, then $\frac{\sigma(z+w)}{\sigma(z)}$ can be extended to an entire function with no zeros in $\mathbb{C}$ (since the zeros cancel out at each $w'\in L$). Hence, there exists an analytic function $h:\mathbb{C}\rightarrow\mathbb{C}$, with $\frac{\sigma(z+w)}{\sigma(z)}=e^{h(z)}$. Then, apply derivatives, we get:
         $$\frac{\sigma'(z+w)\sigma(z)-\sigma'(z)\sigma(z+w)}{(\sigma(z))^2} = h'(z)e^{h(z)} = h'(z)\cdot\frac{\sigma(z+w)}{\sigma(z)}$$
         $$\frac{\sigma'(z+w)\sigma(z+w)}{\sigma(z+w)\sigma(z)}-\frac{\sigma'(z)\sigma(z+w)}{(\sigma(z))^2}=h'(z)\cdot\frac{\sigma(z+w)}{\sigma(z)}$$
         $$\frac{\sigma'(z+w)}{\sigma(z+w)}-\frac{\sigma'(z)}{\sigma(z)}=h'(z)$$
@@ -84,7 +84,7 @@ colback=blue!10
         $$\sigma'(z+w)=a_we^{a_wz+b_w}\sigma(z)+e^{a_wz+b_w}\sigma'(z)$$
         $$\zeta(z+w)=\frac{\sigma'(z+w)}{\sigma(z+w)}=\frac{a_we^{a_wz+b_w}\sigma(z)+e^{a_wz+b_w}\sigma'(z)}{e^{a_wz+b_w}\sigma(z)} = a_w+\frac{\sigma'(z)}{\sigma(z)}=a_w+\zeta(z)$$
         Which, apply it to the definition of $h(z)$, we get:
-        $$h(z+w)=\sum_{j=1}^{n}c_j\zeta(z-b_j+w) = \sum_{j=1}^{n}c_j(a_w+\zeta(z-b_j)) = a_j\sum_{j=1}^{n}c_j+\sum_{j=1}^{n}c_j\zeta(z-b_j) = \sum_{j=1}^{n}c_j\zeta(z-b_j) = h(z)$$
+        $$h(z+w)=\sum_{j=1}^{n}c_j\zeta(z-b_j+w) = \sum_{j=1}^{n}c_j(a_w+\zeta(z-b_j)) = a_w\sum_{j=1}^{n}c_j+\sum_{j=1}^{n}c_j\zeta(z-b_j) = h(z)$$
 
         (Note: recall that $\sum_{j=1}^{n}c_j$ is assumed to be $0$).
 
@@ -100,8 +100,8 @@ colback=blue!10
     
     For order $1$, we have the condition that $\sum_{j=1}^{n}a_{1,j}=0$, so we can utilize the statement proven in \textbf{part (a)}. Notice that $\zeta(z)=\frac{\sigma'(z)}{\sigma(z)}$ is the logarithmic derivative of $\sigma(z)$, with the formula given in \textbf{part (a)}, we get the following:
     $$\zeta(z)=\frac{\sigma'(z)}{\sigma(z)}=\frac{1}{z}+\sum_{\substack{w\in L\\w\neq 0}}\left(\frac{-1/w}{1-z/w}+\frac{d}{dz}\left(\frac{z}{w}+\frac{1}{2}\cdot\frac{z^2}{w^2}\right)\right) = \frac{1}{z}+\sum_{\substack{w\in L\\w\neq 0}}\left(\frac{1}{z-w}+\frac{1}{w}+\frac{z}{w^2}\right)$$
-    This demonstrats that $\zeta(z)$ has its principal part given as $\frac{1}{z-w}$ at all $w\in L$. Hence, $\zeta(z-b_j)$ would have its principal part given as $\frac{1}{z-b_j}$ for all point equivalent to $b_j\mod\ L$. 
-    Which, using the statement in \textbf{part (a)}, we know since $\sum_{j=1}^{n}a_{1,j}=0$, it implies that $h_1(z)=\sum_{j=1}^{n}a_{1,j}\zeta(z-b_j)$ is an elliptic function; moreover, since each $b_j$ is distinct, its principal part is governed by only $a_{1,j}\zeta(z-b_j)$ for each index $j$, hence this is an elliptic function describing the principal part up to the simple poles at each point.
+    This demonstrates that $\zeta(z)$ has its principal part given as $\frac{1}{z-w}$ at all $w\in L$. Hence, $\zeta(z-b_j)$ would have its principal part given as $\frac{1}{z-b_j}$ for all point equivalent to $b_j\mod\ L$. 
+    Which, using the statement in \textbf{part (a)}, we know since $\sum_{j=1}^{n}a_{1,j}=0$, it implies that $\sum_{j=1}^{n}a_{1,j}\zeta(z-b_j)$ is an elliptic function; moreover, since each $b_j$ is distinct, its principal part is governed by only $a_{1,j}\zeta(z-b_j)$ for each index $j$, hence this is an elliptic function describing the principal part up to the simple poles at each point.
 
     \hfil
 
@@ -112,13 +112,13 @@ colback=blue!10
     Besides that, for any $n> 0$, since $\wp(z)$ converges normally within $\mathbb{C}\setminus L$, then its $n^{th}$ order derivative can be performed term by term:
     $$\wp^{(n)}(z)=\frac{d^n}{dz^n}\left(\frac{1}{z^2}\right)+\sum_{\substack{w\in L\\w\neq 0}}\frac{d^n}{dz^n}\left(\frac{1}{(z-w)^2}-\frac{1}{w^2}\right) = \frac{(-1)^n\cdot (n+1)!}{z^{n+2}}+\sum_{\substack{w\in L\\w\neq 0}}\frac{(-1)^n\cdot (n+1)!}{(z-w)^{n+2}}$$
     $$\frac{(-1)^n}{(n+1)!}\wp^{(n)}(z) = \frac{1}{z^{n+2}}+\sum_{\substack{w\in L\\w\neq 0}}\frac{1}{(z-w)^{(n+2)}}$$
-    This shows that the function $\frac{(-1)^n}{(n+1)!}\wp^{(n)}(z)$ has principal part $\frac{1}{(z-w)^{n+2}}$ at all $w\in L$. So, for all index $j$ with $l_j >2$, any $2<v<l_j$ with its principal part given by $\frac{a_{v,j}}{(z-b_j)^{v}}$ at each point equivalent to $b_j\mod\ L$, could be given by $a_{v,j}\cdot\frac{(-1)^{(v-2)}}{(v-1)!}\wp^{(v-2)}(z-b_j)$, based on similar logic as above.
+    This shows that the function $\frac{(-1)^n}{(n+1)!}\wp^{(n)}(z)$ has principal part $\frac{1}{(z-w)^{n+2}}$ at all $w\in L$. So, for all index $j$ with $l_j >2$, any $2<v\leq l_j$ with its principal part given by $\frac{a_{v,j}}{(z-b_j)^{v}}$ at each point equivalent to $b_j\mod\ L$, could be given by $a_{v,j}\cdot\frac{(-1)^{(v-2)}}{(v-1)!}\wp^{(v-2)}(z-b_j)$, based on similar logic as above.
 
     \hfil
 
-    In general, to create an elliptic function with the prescribed principal parts, one explicit formula can be given as:
+    In general, since the finite sum of elliptic function of the same lattice stays as an elliptic function, to create an elliptic function with the prescribed principal parts described in the question, one explicit formula can be given as:
     $$\sum_{j=1}^{n}a_{1,j}\zeta(z-b_j)+\sum_{j=1}^{n}\sum_{v=2}^{l_j}a_{v,j}\cdot\frac{(-1)^{v-2}}{(v-1)!}\wp^{(v-2)}(z-b_j)$$
-    (Note: if $l_j<2$, simply ignore the term).
+    (Note: if $l_j<2$, simply ignore the corresponding index $j$ for the second sum).
 \end{itemize}
 
 \break
@@ -162,6 +162,9 @@ colback=blue!10
     $$A(z,w) = (ad-bc)A(1,i) = -A(1,i)\cdot \textmd{Im}(z\overline{w})$$
     So, let $h = -A(1,i)=A(i,1)$ (which is uniquely determined by the alternating form), we get:
     $$A(z,w)=A(i,1)\cdot\textmd{Im}(z\overline{w})=h\cdot\textmd{Im}(z\overline{w})$$
+    To make $h=A(1,i)$, another way is using the formula $A(z,w)=h\cdot \textmd{Im}(\overleftarrow{z}w)$ instead (since $\textmd{Im}(\overleftarrow{z}w)=-\textmd{Im}(z\overleftarrow{w})$).
+
+    \hfil
 
     \hfil
 
@@ -196,7 +199,7 @@ colback=blue!10
 
     \hfil
 
-    Lastly, consider $h=A(1,i)$ given in \textbf{part (a)}. Given that $w_1=a+bi$, $w_2=c_di$ with $a,b,c,d\in\mathbb{R}$, and $\textmd{Im}(w_2/w_1)>0$, we get:
+    Lastly, consider $h=A(1,i)$ given in \textbf{part (a)}. Given that $w_1=a+bi$, $w_2=c+di$ for some $a,b,c,d\in\mathbb{R}$, and $\textmd{Im}(w_2/w_1)>0$, we get:
     $$\frac{w_2}{w_1}=\frac{c+di}{a+bi}=\frac{(c+di)(a-bi)}{(a+bi)(a-bi)} = \frac{(ac+bd)+(ad-bc)i}{a^2+b^2},\quad \textmd{Im}\left(\frac{w_2}{w_1}\right)=\frac{ad-bc}{a^2+b^2}>0$$
     $$\implies ad-bc > 0$$
     Then, given the definition of $A$, we know the following:
@@ -204,12 +207,16 @@ colback=blue!10
     $$A(w_1,w_2)=A(a+bi,c+di) = acA(1,1)+ adA(1,i)+bcA(i,1)+bdA(i,i)$$
     $$ = adA(1,i)-bcA(1,i) = (ad-bc)h$$
     Hence, we derived the following:
-    $$(ad-bc)h = 1 <0,\quad ad-bc >0\implies h = \frac{1}{ad-bc}>0$$
+    $$(ad-bc)h = 1 >0,\quad ad-bc >0\implies h = \frac{1}{ad-bc}>0$$
     Then, since $A$ is an alternating bilinear form, takes integer values on $L\times L$, and has $h>0$, $A$ is a Riemannian Form.
 
     \hfil
 
-    \item[(c)] Let $L=\mathbb{Z}w_1+\mathbb{Z}w_2$, with $\textmd{Im}(\frac{w_2}{w_1})>0$. Given the definition of $\Theta$ function, we know for any $z\in \mathbb{C}$, if $\Theta(z)=0$, then for all $w\in L$, $\Theta(z+w)=e^{a_wz+b_w}\Theta(z) = 0$. Hence, let $b_1,...,b_n$ represent the zeros of $\Theta$ in a fundamental region $P$, then for all $z\in\mathbb{C}$, we get $\Theta(z)=0$ iff $z\equiv b_j\mod\ L$ for some $j\in\{1,...,n\}$ (since if $z\in P$ satisfies $z\neq b_j$ for all index $j$, then for all $w\in L$, $\Theta(z+w)=e^{a_wz+b_w}\Theta(z)\neq 0$).
+    \hfil
+
+    \item[(c)] Let $L=\mathbb{Z}w_1+\mathbb{Z}w_2$, with $\textmd{Im}(\frac{w_2}{w_1})>0$. 
+    
+    We'll first investigate the $\Theta$-function: Given the definition of $\Theta$ function, we know for any $z\in \mathbb{C}$, if $\Theta(z)=0$, then for all $w\in L$, $\Theta(z+w)=e^{a_wz+b_w}\Theta(z) = 0$. Hence, let $b_1,...,b_n$ represent the zeros of $\Theta$ in a fundamental region $P$, then for all $z\in\mathbb{C}$, we get $\Theta(z)=0$ iff $z\equiv b_j\mod\ L$ for some $j\in\{1,...,n\}$ (since if $z\in P$ satisfies $z\neq b_j$ for all index $j$, then for all $w\in L$, $\Theta(z+w)=e^{a_wz+b_w}\Theta(z)\neq 0$).
     
     On the other hand, for all $w\in L$, if consider the derivative $\Theta'(z+w)$, we get:
     $$\Theta'(z+w) = a_we^{a_wz+b_w}\Theta(z) + e^{a_wz+b_w}\Theta'(z)$$
@@ -220,7 +227,7 @@ colback=blue!10
 
     \textbf{1. Relations of $a_w$ with basis $w_1,w_2$:}
 
-    For any $w\in L$, there exists $k,l\in\mathbb{Z}$, such that $w=kw_1+lw_2$. Which, notice the following:
+    Notice the following relation of $w_1$ and $\Theta$:
     $$\frac{\Theta'(z+w_1)}{\Theta(z+w_1)}=a_{w_1}+\frac{\Theta'(z)}{\Theta(z)}$$
     Which, by induction, any $k\in\mathbb{Z}$ with $k\geq 0$ satisfies:
     $$\frac{\Theta'(z+kw_1)}{\Theta(z+kw_1)}=ka_{w_1}+\frac{\Theta'(z)}{\Theta(z)}$$
@@ -240,7 +247,7 @@ colback=blue!10
 
     Since $L$ is a lattice, $w_1$ and $w_2$ are linearly independent when viewing $\mathbb{C}$ as an $\mathbb{R}$-vector space, hence $w_1,w_2$ forms a basis of $\mathbb{C}$. Which, for all $u,v\in\mathbb{C}$, there exists $t_1,t_2,s_1,s_2\in\mathbb{R}$, such that $u=t_1w_1+t_2w_2$ and $v=s_1w_1+s_2w_2$. So, define the map $A:\mathbb{C}\times\mathbb{C}\rightarrow\mathbb{C}$ as follow:
     $$A(u,v) = A(t_1w_1+t_2w_2,s_1w_1+s_2w_2) = \frac{1}{2\pi i}((t_1a_{w_1}+t_2a_{w_2})v - (s_1a_{w_1}+s_2a_{w_2})u)$$
-    Notice that the image isn't guaranteed to be in $\mathbb{R}$. Temporarily, we'll postpone the proof of $A(\mathbb{C}\times \mathbb{C})\subseteq \mathbb{R}$, and verify that $A$ satisfies all the other properties of being a Riemannian Form first (except the part that $h>0$).
+    Notice that the image isn't guaranteed to be in $\mathbb{R}$. Temporarily, we'll postpone the proof of $A(\mathbb{C}\times \mathbb{C})\subseteq \mathbb{R}$, and verify that $A$ satisfies all the other properties of being a Riemannian Form first (except the part that $h>0$, since it requires the fact that image of $A$ is a subset of $\mathbb{R}$).
     \begin{itemize}
         \item \textbf{Alternating Property:}
         
@@ -250,11 +257,12 @@ colback=blue!10
         \item \textbf{Bilinearity:}
         
         Given arbitrary $w \in\mathbb{C}$, there exists $r_1,r_2\in\mathbb{R}$, with $w=r_1w_1+r_2w_2$. Which, for arbitrary $k,l\in\mathbb{R}$ we get:
-        $$A(ku+lw,v)=A(k(t_1w_1+t_2w_2)+l(r_1w_1+r_2w_2),s_1w_1+s_2w_2) = A((kt_1+lr_1)w_1+(kt_2+lr_2)w_2,s_1w_1+s_2w_2)$$
-        $$ = \frac{1}{2\pi i}(((kt_1+lr_1)a_{w_1}+(kt_2+lr_2)a_{w_2})v-(s_1a_{w_1}+s_2a_{w_2})(ku+lw))$$
+        $$A(ku+lw,v)=A(k(t_1w_1+t_2w_2)+l(r_1w_1+r_2w_2),s_1w_1+s_2w_2)$$
+        $$ = A((kt_1+lr_1)w_1+(kt_2+lr_2)w_2,s_1w_1+s_2w_2)$$
+        $$= \frac{1}{2\pi i}(((kt_1+lr_1)a_{w_1}+(kt_2+lr_2)a_{w_2})v-(s_1a_{w_1}+s_2a_{w_2})(ku+lw))$$
         $$ = \frac{1}{2\pi i}\left(k(t_1a_{w_1}+t_2a_{w_2})v - (s_1a_{w_1}+s_2a_{w_2})ku\right)+\frac{1}{2\pi i}\left(l(r_1a_{w_1}+r_2a_{w_2})v - (s_1a_{w_1}+s_2a_{w_2})lw\right)$$
         $$ = kA(u,v)+lA(w,v)$$
-        Combining the alternating property, the linearity in the second column is also given.
+        Combining the alternating property, the linearity in the second column is also given, which proves the bilinearity.
 
         \item \textbf{$A$ yields integer values on $L\times L$:}
         
@@ -263,10 +271,15 @@ colback=blue!10
         $$=\frac{1}{2\pi i}((t_1a_{w_1}+t_2a_{w_2})\lambda - (s_1a_{w_1}+s_2a_{w_2})w) = \frac{1}{2\pi i}(a_w\lambda -a_\lambda w)$$
         This is the desired formula for any $w,\lambda\in L$. To prove that the value is an integer, consider the parallelagram $P$ spanned by $w$ and $\lambda$. Which, given $\partial P$, since it's closed and $\Theta$ has discrete zeros, then there existts $a\in\mathbb{C}$, such that $P'=a+P$ with $\partial P'$ containing no zeros of $\Theta$ (hence $\frac{\Theta'}{\Theta}$ is well-defined on $\partial P'$). 
         
-        \textbf{Insert image}
+        \begin{figure}[h!]
+            \begin{center}
+                \includegraphics*[width=60mm]{q2 orient 1.jpg}
+                \caption{Example Orientation}
+            \end{center}
+        \end{figure}
         
         Which, WLOG, assume the orientation of $\partial P'$ is given by $a\rightarrow (a+w)\rightarrow (a+w+\lambda)\rightarrow (a+\lambda)\rightarrow a$, along with argument principal, we get the following:
-        $$\textmd{Number of zeros of } \Theta \textmd{ in } P' = \frac{1}{2\pi i}\int_{\partial P'}\frac{\Theta'(z)}{\Theta(z)}dz$$
+        $$\pm\textmd{Number of zeros of } \Theta \textmd{ in } P' = \frac{1}{2\pi i}\int_{\partial P'}\frac{\Theta'(z)}{\Theta(z)}dz$$
         $$ = \frac{1}{2\pi i}\left(\int_{a}^{a+w}\frac{\Theta'(z)}{\Theta(z)}dz+\int_{a+w}^{a+w+\lambda}\frac{\Theta'(z)}{\Theta(z)}dz+\int_{a+w+\lambda}^{a+\lambda}\frac{\Theta'(z)}{\Theta(z)}dz+\int_{a+\lambda}^{a}\frac{\Theta'(z)}{\Theta(z)}dz\right)$$
         $$=\frac{1}{2\pi i}\left(\left(\int_{a}^{a+w}\frac{\Theta'(z)}{\Theta(z)}dz - \int_{a}^{a+w}\frac{\Theta'(z+\lambda)}{\Theta(z+\lambda)}dz\right)+\left(\int_{a}^{a+\lambda}\frac{\Theta'(z+w)}{\Theta(z+w)}dz - \int_{a}^{a+\lambda}\frac{\Theta'(z)}{\Theta(z)}dz\right)\right)$$
         $$=\frac{1}{2\pi i}\left(\int_{a}^{a+w}\left(\frac{\Theta'(z)}{\Theta(z)}-\left(a_\lambda+\frac{\Theta'(z)}{\Theta(z)}\right)\right)dz + \int_{a}^{a+\lambda}\left(a_w+\frac{\Theta'(z)}{\Theta(z)}-\frac{\Theta'(z)}{\Theta(z)}\right)dz\right)$$
@@ -276,27 +289,38 @@ colback=blue!10
 
     Second to last, to prove the image is contained in $\mathbb{R}$, we'll utilize the continuity of $A$ (since fixing one entry, $A$ becomes a linear map that is continuous). 
 
-    First, we'll prove that any $w,\lambda\in(\mathbb{Q}w_1+\mathbb{Q}w_2)$ satisfies $A(w,\lambda) \in\mathbb{R}$: Since both $w,\lambda$ have the coefficients of $w_1,w_2$ being rational, then for large enough $k,l\in\mathbb{N}$, $kw,l\lambda\in L$ (EX: choose $k,l$ to be the multiples of the denominators of the ratioal coefficients of $w,\lambda$ respectively, the each coefficient of $kw,l\lambda$ is an integer).
+    First, we'll prove that any $w,\lambda\in(\mathbb{Q}w_1+\mathbb{Q}w_2)$ satisfies $A(w,\lambda) \in\mathbb{R}$: Since both $w,\lambda$ have the coefficients of $w_1,w_2$ being rational, then for large enough $k,l\in\mathbb{N}$, $kw,l\lambda\in L$ (EX: choose $k,l$ to be the multiples of the denominators of the ratioal coefficients of $w,\lambda$ respectively, then each coefficient of $kw,l\lambda$ is an integer).
     So, evaluate in $A$, we get:
     $$A(kw,l\lambda)\in\mathbb{Z},\quad A(w,\lambda) = \frac{1}{kl}A(kw,l\lambda) \in\mathbb{R}$$
     
-    Now, let $L' = \mathbb{Q}w_1+\mathbb{Q}w_2$, since $L'$ is a dense set in $\mathbb{C}$ (due to the denseness of $\mathbb{Q}$ in $\mathbb{R}$), then $L'\times L'$ is a dense set iin $\mathbb{C}\times \mathbb{C}$. So, for any $(u,v)\in\mathbb{C}\times \mathbb{C}$, it is a limit point of $L'\times L'$, hence there exists a sequence $(u_n,v_n)_{n\in\mathbb{N}}\subset L'\times L'$, with $\lim_{n\rightarrow\infty}(u_n,v_n) = (u,v)$. Hence, by continuity of $A$, we get:
+    Now, let $L' = \mathbb{Q}w_1+\mathbb{Q}w_2$, since $L'$ is a dense set in $\mathbb{C}$ (due to the denseness of $\mathbb{Q}$ in $\mathbb{R}$), then $L'\times L'$ is a dense set in $\mathbb{C}\times \mathbb{C}$. So, for any $(u,v)\in\mathbb{C}\times \mathbb{C}$, it is a limit point of $L'\times L'$, hence there exists a sequence $(u_n,v_n)_{n\in\mathbb{N}}\subset L'\times L'$, with $\lim_{n\rightarrow\infty}(u_n,v_n) = (u,v)$. Therefore, by continuity of $A$, we get:
     $$\lim_{n\rightarrow\infty}A(u_n,v_n) = A(u,v)$$
-    And, since each index $n$ satisfies $A(u_n,v_n)\in \mathbb{R}$ (recall that $(u_n,v_n)\in L'\times L'$), then by completeness of $\mathbb{R}$, $A(u,v)$ as a limit of sequence in $\mathbb{R}$, must also belong to $\mathbb{R}$. Hence, $A(u,v)\in\mathbb{R}$.
+    And, since each index $n$ satisfies $A(u_n,v_n)\in \mathbb{R}$ (recall that $(u_n,v_n)\in L'\times L'$), then by completeness of $\mathbb{R}$, $A(u,v)$ as a limit of sequence in $\mathbb{R}$, must also belong to $\mathbb{R}$. So, $A(u,v)\in\mathbb{R}$.
+
+    This proves that $A$ has an image in $\mathbb{R}$, hence it's in fact an alternating bilinear form $A:\mathbb{C}\times\mathbb{C}\rightarrow\mathbb{R}$.
 
     \hfil
-
-    This proves that $A$ has an image in $\mathbb{R}$, hence it's in fact an alternating bilinear form $A:\mathbb{C}\times\mathbb{C}\rightarrow\mathbb{R}$, which yields integer values on $L\times L$ (based on the above information). 
 
     The last task is to verify that $h$ corresponding to $A$ is in fact positive. Recall that $h=A(1,i)$, with the assumption that $w_1=a+bi$, $w_2=c+di$, and $\textmd{Im}(w_2/w_1)>0$, we know $ad-bc > 0$. Hence, we get the following:
     $$A(w_1,w_2) =A(a+bi,c+di) = acA(1,1)+adA(1,i)+bcA(i,1)+bdA(i,i) = (ad-bc)A(1,i) = (ad-bc)h$$
     Which, given the assumption that $\textmd{Im}(w_2/w_1)>0$, the orientation of the parallelagram is given as follow:
 
-    \textbf{insert image}
+    \begin{figure}[h!]
+        \begin{center}
+            \includegraphics*[width=60mm]{q2 orient 2.jpg}
+            \caption{Orientation of the Parallelagram (Counter Clockwise Contour)}
+        \end{center}
+    \end{figure}
 
-    Hence, $A(w_1,w_2)$ when representing as the integral form mentioned before, it is nonnegative (since the integration is along a counterclockwise contour like above). So, given $(ad-bc)h = A(w_1,w_2)\geq 0$, then $h \geq 0$.
+    Hence, $A(w_1,w_2)$ when representing as the integral form:
+    $$A(w_1,w_2)=\frac{1}{2\pi i}\int_{\partial P}\frac{\Theta'(z)}{\Theta(z)}dz = \textmd{Number of zeros of }\Theta \textmd{ in } P \geq 0$$
+    It is nonnegative (since the integration is along a counterclockwise contour like above). So, given $(ad-bc)h = A(w_1,w_2)\geq 0$, then $h \geq 0$.
 
     In terms for $h$ to be positive, we need $A(w_1,w_2)>0$, hence an extra condition imposed is that $\Theta$ needs to have at least a zero (so there is a zero within the fundamental region of lattice $L$, causing the integral form of $A(w_1,w_2)$ to be nonzero).
+
+    \hfil
+
+    Compiling all the information, the defined $A:\mathbb{C}\times \mathbb{C}\rightarrow\mathbb{R}$ is in fact an alternating bilinear form, that yields integer values on $L\times L$ (with formula $A(w,\lambda)=\frac{1}{2\pi i}(a_w\lambda-a_\lambda w)$), and also $h>0$ (under a nontrivial case), hence it is a Riemannian Form. This proves the existence of Riemannian Form satisfying the given formula on $L\times L$.
 \end{itemize}
 
 \break
@@ -316,9 +340,9 @@ colback=blue!10
 
 \textbf{Pf:}
 
-Given any lattice $L=\mathbb{Z}+\mathbb{Z}\mathcal{T}$ with $\mathcal{T}\in\mathbb{H}$, recall that $g_2(\mathcal{T}) = 60G_4(\mathcal{T})$ and $g_3(\mathcal{T})=140G_6(\mathcal{T})$, and $\Delta(\mathcal{T}) \neq 0$ (since in case to have lattice, the half lattices yield distinct values $e_1,e_2,e_3$, which are roots of the polynomial $4w^3-g_2w-g_3$ proven before (when talking about the algebraic differential equation of $\wp$-function). Hence as $\Delta(\mathcal{T})=g_2^3(\mathcal{T})-27g_3^2(\mathcal{T})$ denotes the discriminant of the cubic polynomial above, having distinct roots implies $\Delta(\mathcal{T})\neq 0$).
+Given any lattice $L=\mathbb{Z}+\mathbb{Z}\mathcal{T}$ with $\mathcal{T}\in\mathbb{H}$, recall that $g_2(\mathcal{T}) = 60G_4(\mathcal{T})$ and $g_3(\mathcal{T})=140G_6(\mathcal{T})$, and $\Delta(\mathcal{T}) \neq 0$ (since in case to have lattice, the half lattices yield distinct values $e_1,e_2,e_3$, which are roots of the polynomial $4w^3-g_2w-g_3$, when talking about the algebraic differential equation of $\wp$-function). Hence as $\Delta(\mathcal{T})=g_2^3(\mathcal{T})-27g_3^2(\mathcal{T})$ denotes the discriminant of the cubic polynomial above, having distinct roots implies $\Delta(\mathcal{T})\neq 0$.
 
-To prove that $g_2,g_3$ yields real values for specific lattices, it suffices to prove the case for $G_4$ and $G_6$.
+To prove that $g_2,g_3$ yield real values for specific lattices, it suffices to prove the case for $G_4$ and $G_6$.
 \begin{itemize}
     \item[(a)] Given lattice $L_i = \mathbb{Z}+\mathbb{Z}i$, there are two properties:
     \begin{itemize}
@@ -326,8 +350,8 @@ To prove that $g_2,g_3$ yields real values for specific lattices, it suffices to
         \item Given same $w$, $iw = -b+ai \in L_i$ based on the same reason above.
     \end{itemize}
     Notice that the above pairing is a one-to-one correspondance. Hence, for $k\geq 3$, we get the following formula for $2G_k(i)$:
-    $$2G_k(i) = \sum_{\substack{w\in L_i\\w\neq 0}}\frac{1}{w^k}+\sum_{\substack{w\in L_i\\w\neq 0}}\frac{1}{\overline{w}^k} = \sum_{\substack{w\in L_i\\w\neq 0}}2\textmd{Re}\left(\frac{1}{w^4}\right) = 2\sum_{\substack{w\in L_i\\w\neq 0}}\textmd{Re}\left(\frac{1}{w^4}\right)\in \mathbb{R}$$
-    (Note: since for $k\geq 3$, $G_k(z)$ converges normally within $\mathbb{H}$).
+    $$2G_k(i) = \sum_{\substack{w\in L_i\\w\neq 0}}\frac{1}{w^k}+\sum_{\substack{w\in L_i\\w\neq 0}}\frac{1}{\overline{w}^k} = \sum_{\substack{w\in L_i\\w\neq 0}}2\textmd{Re}\left(\frac{1}{w^k}\right)\in \mathbb{R}$$
+    (Note: since for $k\geq 3$, $G_k(z)$ converges normally within $\mathbb{H}$, hence changing the order of summation doesn't matter).
 
     So, both $G_4(i)$ and $G_6(i)$ are real, implying that $g_2(i)=60G_4(i),\ g_3(i)=140G_6(i)$ are also real.
 
@@ -338,7 +362,7 @@ To prove that $g_2,g_3$ yields real values for specific lattices, it suffices to
     Finally, given the discriminant formula, since the following is true:
     $$\Delta(i)=g_2^3(i)-27g_3^2(i) = g_2^3(i)$$
     On the other hand, $\Delta(i)\neq 0$ (since $L_i$ is a lattice), which the above equation implies that $g_2(i)\neq 0$.
-    Also, recall that from \textbf{HW 5 Problem 5}, we've proven that given the lattice formed by $\mathbb{Z}+\mathbb{Z}ti$ (where $t\in\mathbb{R}$), $\wp(z)$ yields real values on all the half lines; specifically, on all the half points (the intersection of half lines), the value of $\wp$ (denoted as $e_1,e_2,e_3$) are all real. Since these three values are the roots of the cubic polynomial $4w^3-g_2(i)w-g_3(i)$, then because the cubic polynomial have three real distinct roots, its discriminant $\Delta(i) >0$, showing that $g_2^3(i)>0$, or $g_2(i)>0$.
+    Also, recall that from \textbf{HW 5 Problem 5}, we've proven that given the lattice formed by $\mathbb{Z}+\mathbb{Z}ti$ (where $t\in\mathbb{R}$), $\wp(z)$ yields real values on all the half lines $x=\frac{n}{2}$ and $y=\frac{tm}{2}$ ($m,n\in\mathbb{Z}$); specifically, on all the half points (the intersection of half lines), the value of $\wp$ (denoted as $e_1,e_2,e_3$) are all real. Since these three values are the roots of the cubic polynomial $4w^3-g_2(i)w-g_3(i)$, then because the cubic polynomial have three real distinct roots, its discriminant $\Delta(i) >0$, showing that $g_2^3(i)>0$, or $g_2(i)>0$.
 
     Hence, for lattice $L_i$, we have $g_2(i)>0$, and $g_3(i)=0$ (so, $g_2(i)\in\mathbb{R}^\times$).
 
@@ -353,7 +377,7 @@ To prove that $g_2,g_3$ yields real values for specific lattices, it suffices to
         $$w^2\lambda = w^2(a+bw) = aw^2+bw^3 = b+aw^2\in L_2$$
     \end{itemize}
     Notice that all pairings above are one-to-one correspondance. Hence, for all $k\geq 3$, we get the following formula for $2G_k(w)$:
-    $$2G_k(w)=\sum_{\substack{\lambda\in L_w\\\lambda\neq 0}}\frac{1}{\lambda^k}+\sum_{\substack{\lambda\in L_w\\\lambda\neq 0}}\frac{1}{\overline{\lambda}^k} = \sum_{\substack{\lambda\in L_w\\\lambda\neq 0}}2\textmd{Re}\left(\frac{1}{\lambda^k}\right) = 2\sum_{\substack{\lambda\in L_\lambda\\w\neq 0}}\textmd{Re}\left(\frac{1}{\lambda^k}\right) \in \mathbb{R}$$ 
+    $$2G_k(w)=\sum_{\substack{\lambda\in L_w\\\lambda\neq 0}}\frac{1}{\lambda^k}+\sum_{\substack{\lambda\in L_w\\\lambda\neq 0}}\frac{1}{\overline{\lambda}^k} = \sum_{\substack{\lambda\in L_w\\\lambda\neq 0}}2\textmd{Re}\left(\frac{1}{\lambda^k}\right)\in \mathbb{R}$$ 
     Hence, $G_k(w)\in\mathbb{R}$ for all $k\geq 3$. In particular, $G_4(w),G_6(w)\in\mathbb{R}$, implying that $g_2(w)=60G_4(w)$ and $g_3(w)=140G_6(w)$ are also real.
     
     Now, if we consider $3G_4(w)$ specifically, based on the second property of $L_w$ listed above (where $\lambda\in L_w$ implies $w\lambda$ and $w^2\lambda$ are in $L_w$), we get:
