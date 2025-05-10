@@ -1,0 +1,15 @@
+Information about manifold:
+\begin{comment}
+    \block{Smooth Manifold \& Smooth Functions}{
+        Given a topological space $M$ of dimension $n$, it's a manifold if it locally looks like $\mathbb{R}^n$: More precisely, for each $m\in M$, there exists an open neighborhood $U\subseteq M$ that is homeomorphic to some open set $\tilde{U}\subseteq\mathbb{R}^n$. Together, such pair $(U,\phi)$ is called a \textbf{Chart}, and collection of all charts of $M$ is called an \textbf{Atlas}.
+
+        A manifold $M$ has a smooth structure, if any two charts can be composed into a smooth map. Or, given two charts $(U,\phi)$ and $(V,\varphi)$ with $U\cap V\neq \emptyset$, when restricting to $\phi(U\cap V)s\subseteq \tilde{U}$ and $\varphi(U\cap V)\subseteq \tilde{V}$, the map $$\varphi\circ \phi^{-1}:\phi(U\cap V)\rightarrow \varphi(U\cap V)$$
+        is a smooth map between open subsets of $\mathbb{R}^n$. 
+
+        \textbf{Insert Image}
+
+        A function $F:M\rightarrow\mathbb{R}$ is smooth, if for any smooth chart $(U,\phi)$, the composition 
+        $$f\circ \phi^{-1}:\phi(U)\rightarrow \mathbb{R}$$
+        is a smooth map. A collection of smooth functions on $M$ is denoted as $C^\infty(M)$.
+    }
+    \end{comment}

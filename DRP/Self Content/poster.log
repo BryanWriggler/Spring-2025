@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  9 MAY 2025 11:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  9 MAY 2025 20:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -871,7 +871,9 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 \c@blind@randommax=\count457
 \c@blind@pangramcount=\count458
 \c@blind@pangrammax=\count459
-)) (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/helvet.sty
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write5
+ Excluding comment 'comment') (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/helvet.sty
 Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
@@ -889,24 +891,24 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 LaTeX Warning: Unused global option(s):
     [margin=1in,innermargin=-4.5in,blockverticalspace=-0.25in].
 
-No file poster.aux.
+(./poster.aux)
 \openout1 = `poster.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+ (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count462
 \scratchdimen=\dimen368
@@ -970,7 +972,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 <logo.png, id=29, 325.6968pt x 325.6968pt>
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 37.
+Package pdftex.def Info: logo.png  used on input line 39.
 (pdftex.def)             Requested size: 177.77696pt x 177.77705pt.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
@@ -986,83 +988,76 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'poster.bbl' not found.
 
 No file poster.bbl.
-Package biblatex Info: Reference section=0 on input line 37.
-Package biblatex Info: Reference segment=0 on input line 37.
+Package biblatex Info: Reference section=0 on input line 39.
+Package biblatex Info: Reference segment=0 on input line 39.
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no = in font nullfont!
 Missing character: There is no 1 in font nullfont!
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 19.70294pt on input line 39.
+(Font)              scaled to size 19.70294pt on input line 41.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 49.01033pt on input line 39.
+(Font)              scaled to size 49.01033pt on input line 41.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 49.01033pt on input line 39.
+(Font)              scaled to size 49.01033pt on input line 41.
 LaTeX Font Info:    Font shape `T1/phv/m/sc' will be
-(Font)              scaled to size 49.01033pt on input line 39.
+(Font)              scaled to size 49.01033pt on input line 41.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 40.84036pt on input line 39.
+(Font)              scaled to size 40.84036pt on input line 41.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 34.03839pt on input line 39.
+(Font)              scaled to size 34.03839pt on input line 41.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 39.
+Package pdftex.def Info: logo.png  used on input line 41.
 (pdftex.def)             Requested size: 177.77696pt x 177.77705pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 39.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 41.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 39.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 41.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 39.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 41.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 39.
+Package pdftex.def Info: logo.png  used on input line 41.
 (pdftex.def)             Requested size: 177.77696pt x 177.77705pt.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 34.03839pt on input line 44.
+(Font)              scaled to size 34.03839pt on input line 58.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 23.63593pt on input line 44.
- [1
+(Font)              scaled to size 23.63593pt on input line 58.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 23.63593pt on input line 58.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 67.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+) [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc} <./logo.png>] (./poster.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                poster
-(biblatex)                and rerun LaTeX afterwards.
-
 Package logreq Info: Writing requests to 'poster.run.xml'.
 \openout1 = `poster.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28235 strings out of 474116
- 593744 string characters out of 5743681
- 1948187 words of memory out of 5000000
- 50074 multiletter control sequences out of 15000+600000
- 588041 words of font info for 73 fonts, out of 8000000 for 9000
+ 28323 strings out of 474116
+ 595438 string characters out of 5743681
+ 1962187 words of memory out of 5000000
+ 50151 multiletter control sequences out of 15000+600000
+ 596527 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,11n,121p,739b,2260s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on poster.pdf (1 page, 453685 bytes).
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on poster.pdf (1 page, 499688 bytes).
 PDF statistics:
- 49 PDF objects out of 1000 (max. 8388607)
- 23 compressed objects within 1 object stream
+ 74 PDF objects out of 1000 (max. 8388607)
+ 38 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  114 words of extra memory for PDF output out of 10000 (max. 10000000)
 
