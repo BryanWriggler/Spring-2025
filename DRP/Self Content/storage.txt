@@ -13,3 +13,13 @@ Information about manifold:
         is a smooth map. A collection of smooth functions on $M$ is denoted as $C^\infty(M)$.
     }
     \end{comment}
+
+    Some parts about geometric tangent space:
+    %Delete everything about geometric tangent space (just a small intuition)
+        %In simplest case, if embedd manifold $M^n$ into $\mathbb{R}^m$, for any chart $(U,\phi)$ of $M$, since $\phi:U\rightarrow\phi(U)\subseteq \mathbb{R}^n$ has its inverse $\phi^{-1}$ being smooth, for any $u\in U\subseteq M$, a tangent vector $v_u$ associates with vector $v\in\mathbb{R}^n$, is characterized by differential of $\phi^{-1}$:
+        %$$v_u := D\phi^{-1}(\phi(u))(v) = \lim_{t\rightarrow 0}\frac{\phi^{-1}(\phi(u)+tv)-\phi^{-1}(\phi(u))}{t}$$
+        %A collection of all such vector is the \textbf{Geometric Tangent Space} of $u$, denoted as $T_u(M)$.
+
+        %\textbf{insert image}
+
+        %Notice that for any smooth function $f\in C^\infty(M)$, it has a notion of directional derivative at $u$ depending on the tangent vector $v_u\in T_u(M)$, and such derivative satisfies genral differentiation rules (for instance, product rule). 

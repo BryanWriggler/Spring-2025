@@ -19,6 +19,35 @@
 
 \addbibresource{refs.bib}
 
+% set colored boxes
+\usepackage[most]{tcolorbox}
+\newtcolorbox{definitionBox}{
+  colback=blue!10,
+  colframe=blue!50!black,
+  fonttitle=\bfseries,
+  title=Definition,
+  arc=3mm,
+  boxrule=0.8pt
+}
+
+\newtcolorbox{propertyBox}{
+  colback=teal!10,
+  colframe=teal!50!black,
+  fonttitle=\bfseries,
+  title=Property,
+  arc=3mm,
+  boxrule=0.8pt
+}
+
+\newtcolorbox{exampleBox}{
+  colback=cyan!10,
+  colframe=cyan!50!black,
+  fonttitle=\bfseries,
+  title=Example,
+  arc=3mm,
+  boxrule=0.8pt
+}
+
 % set theme parameters
 \tikzposterlatexaffectionproofoff
 \usetheme{SUTheme}
@@ -41,61 +70,72 @@
 \centering
 \begin{columns}
     \column{0.32}
-    \block{Tangent Space, Tangent Vectors and Derivations}{
-        %Delete everything about geometric tangent space (just a small intuition)
-        In simplest case, if embedd manifold $M^n$ into $\mathbb{R}^m$, for any chart $(U,\phi)$ of $M$, since $\phi:U\rightarrow\phi(U)\subseteq \mathbb{R}^n$ has its inverse $\phi^{-1}$ being smooth, for any $u\in U\subseteq M$, a tangent vector $v_u$ associates with vector $v\in\mathbb{R}^n$, is characterized by differential of $\phi^{-1}$:
-        $$v_u := D\phi^{-1}(\phi(u))(v) = \lim_{t\rightarrow 0}\frac{\phi^{-1}(\phi(u)+tv)-\phi^{-1}(\phi(u))}{t}$$
-        A collection of all such vector is the \textbf{Geometric Tangent Space} of $u$, denoted as $T_u(M)$.
+    \block{Tangent Vectors as Derivations}{
+        When embedding smooth manifolds into Euclidean Space, tangent vectors are associated with directional derivatives.
 
-        \textbf{insert image}
+        \textbf{Insert geometric object}
 
-        Notice that for any smooth function $f\in C^\infty(M)$, it has a notion of directional derivative at $u$ depending on the tangent vector $v_u\in T_u(M)$, and such derivative satisfies genral differentiation rules (for instance, product rule). 
+        To generalize such notion into abstract smooth manifold, we need an analogy:
         
-        \hfil
-
-        To generalize such notion into abstract manifold (space with no definition of vectors), we need a notion of \textbf{Derivation}: For any point $u\in M$, a \textbf{Derivation at $u$}, is a linear map $v_u:C^\infty(M)\rightarrow\mathbb{R}$, that satisfies the product rule:
-        $$\forall f,g\in C^\infty(M),\quad v_u(fg) = f(u)(v_u g)+g(u)(v_u f)$$ 
-        Which, the set of all derivations at $u$, denoted as $T_u(M)$, is the \textbf{Tangent Space} of $M$ at $u$, and each derivation $v_u\in T_u(M)$ is called the \textbf{Tangent Vector} of $u$.
+        \begin{definitionBox}
+            Any point $u\in M$, a \textbf{Derivation at $u$}, is a linear map $v_u:C^\infty(M)\rightarrow\mathbb{R}$, that satisfies the product rule:
+            $$\forall f,g\in C^\infty(M),\quad v_u(fg) = f(u)(v_u g)+g(u)(v_u f)$$ 
+            Which, the set of all derivations at $u$, denoted as $T_u(M)$, is the \textbf{Tangent Space} of $M$ at $u$, and each derivation $v_u\in T_u(M)$ is a \textbf{Tangent Vector} of $u$.
+        \end{definitionBox}
     }
     \block{Vector Fields \& Smooth Conditions}{
-        Given smooth manifold $M$, a vector field $X$ is a function associating each point $u\in M$ with a tangent vector of $u$, so $X(u)\in T_u(M)$. More precisely, a vector field is a map $X:M\rightarrow TM$ (where $TM$ denotes the \textbf{Tangent Bundle} of $M$), such that with the canonical projection map $\pi:TM\rightarrow M$, $\pi\circ X:M\rightarrow M$ is an identity.
+        Given smooth manifold $M$, a vector field $X$ is a function assigning each point $u\in M$ with a tangent vector of $u$. More precisely:
+        \begin{definitionBox}
+            a vector field is a map $X:M\rightarrow TM$ (where $TM$ denotes the \textbf{Tangent Bundle} of $M$), with $X(u) = X_u\in T_u(M)$.
 
-        Which, $X$ is a \textbf{Smooth Vector Field}, if $X:M\rightarrow TM$ is a smooth map. And, a collection of smooth vector fields on $M$ is denoted as $\mathfrak{X}(M)$.
+            Which, $X$ is a \textbf{Smooth Vector Field}, if $X:M\rightarrow TM$ is a smooth map. 
+            
+            A collection of smooth vector fields on $M$ is denoted as $\mathfrak{X}(M)$, which is an $\mathbb{R}$-vector space.
+        \end{definitionBox}
         
         \textbf{insert image}
 
         An equivalent condition of saying a vector field $X$ is smooth, is through smooth functions $f\in C^\infty(M)$: Since for all $u\in M$, $X(u)= X_u\in T_u(M)$ is a derivation at $u$, define $Xf:M\rightarrow\mathbb{R}$ by $Xf(u) = X_u(f)$. Then, $X$ is a smooth vector field iff $Xf\in C^\infty(M)$.
+
+        Based on such condition, a smooth vector field is also a \textbf{Derivation:}
+        \begin{propertyBox}
+            For all $f,g\in C^\infty(M)$, given $X\in\mathfrak{X}(M)$, any $u\in M$ satisfies product rule:
+            $$X(fg)(u) = X_u(fg) = f(u)(X_ug) + g(u)(X_uf) = f(u)Xg(u)+g(u)Xf(u)$$
+            $$\implies X(fg) = f(Xg) + g(Xf)$$
+        \end{propertyBox}
     }
     \block{Vector Fields of Different Manifolds}{
-        Given $M,N$ two smooth manifolds, and smooth map $F:M\rightarrow N$. Let $X\in\mathfrak{X}(M)$, it would be ideal if we can send vector field $X$ to be a vector field of $N$. Yet, this requires both injectivity and surjectivity, which is too much to assume.
+        Given $M,N$ two smooth manifolds, and smooth map $F:M\rightarrow N$. Let $X\in\mathfrak{X}(M)$, it would be ideal if we can send vector field $F$ maps $X$ to a vector field of $N$. Yet, this requires $F$ to be both injective and surjective:
         
-        \textbf{Insert an example}
+        \textbf{Insert an example for both injectivity and surjectivity}
 
-        So, we'll consider a weaker notion, called an \textbf{$F$-Relation}: Given $X\in\mathfrak{X}(M)$ and $Y\in\mathfrak{X}(N)$, the two are $F$-related, if for all $u\in M$, the following is true:
-        $$dF_u(X_u) = Y_{F(u)}$$
-        Simply speaking, $F$ maps the tangent vectors collected by $X$, to be compatible with tangent vectors collected by $Y$.
+        So, we'll consider a weaker notion: 
+        \begin{definitionBox}
+            Given $X\in\mathfrak{X}(M)$ and $Y\in\mathfrak{X}(N)$, the two are $F$-related, if for all $u\in M$, the following is true:
+            $$dF_u(X_u) = Y_{F(u)}$$
+            Simply speaking, $F$ maps the tangent vectors collected by $X$, to be compatible with tangent vectors collected by $Y$.
+        \end{definitionBox}
 
         \textbf{Insert another example}
 
-        \textbf{Thm:} If $F$ is a diffeomorphism, then for every $X\in\mathfrak{X}(M)$, there exists a unique $Y\in\mathfrak{X}(N)$, such that $X$ and $Y$ are $F$-related.
+        %\textbf{Thm:} If $F$ is a diffeomorphism, then for every $X\in\mathfrak{X}(M)$, there exists a unique $Y\in\mathfrak{X}(N)$, such that $X$ and $Y$ are $F$-related.
     }
 
     \column{0.36}
 
-    \block{Lie Brackets on Vector Fields}{
-        The initial motivation is to combine two vector fields $X,Y\in \mathfrak{X}(M)$ to be another vector field. Which, for all $f\in C^\infty(M)$, since $Yf\in C^\infty(M)$ from previous characterization, then $XYf = X(Yf)\in C^\infty(M)$. But, if consider function $XY$, in general it's not a vector field.
-
-        EX: Define vector fields $X=\frac{\partial}{\partial x}$, $y=x\frac{\partial}{\partial y}$ on $\mathbb{R}^2$. Take smooth functions $f(x,y)=x$ and $g(x,y)=y$, then we get the following:
-        $$XY(fg) = X(x\frac{\partial}{\partial y}(xy)) = \frac{\partial}{\partial x}(x^2) = 2x$$
-        But, recall that vector field maps each point on $M$ to a derivation, so product rule should hold:
-        $$XY(fg) = f(XY g) + g(XY f)$$
-        With some computation, this equation doesn't hold for the example:
-        $$f(XY g)+g(XY f)=x(X(x\frac{\partial}{\partial y}(y))) + y(X(x\frac{\partial}{\partial y}(x)))$$
-        $$ = x(\frac{\partial}{\partial x}x)+y(X(x\cdot 0)) = x$$
-        So, we need to define a new operation, called \textbf{Lie Bracket}, which is defined as:
+    \block{Lie Brackets of Vector Fields}{
+        The initial motivation is to combine two vector fields $X,Y\in \mathfrak{X}(M)$ to be another vector field. Which, for all $f\in C^\infty(M)$, since $Yf\in C^\infty(M)$, then $XYf = X(Yf)\in C^\infty(M)$. But, in general $XY$ is not a derivation, hence not a vector field:
+        \begin{exampleBox}
+            Define vector fields $X=\frac{\partial}{\partial x}$, $y=x\frac{\partial}{\partial y}$ on $\mathbb{R}^2$. Take smooth functions $f(x,y)=x$ and $g(x,y)=y$, then we get the following:
+            $$XY(fg) = X(x\frac{\partial}{\partial y}(xy)) = \frac{\partial}{\partial x}(x^2) = 2x$$
+            But, product rule doesn't hold for this example:
+            $$f(XY g)+g(XY f)=x(X(x\frac{\partial}{\partial y}(y))) + y(X(x\frac{\partial}{\partial y}(x))) = x$$
+        \end{exampleBox}
+        So, we need to define a new operation on vector fields: 
+        \begin{definitionBox}
+            The \textbf{Lie Bracket} $[\cdot,\cdot]:\mathfrak{X}(M)\times \mathfrak{X}(M)\rightarrow \mathfrak{X}(M)$, is defined as:
         $$\forall X,Y\in\mathfrak{X}(M),\quad [X,Y]=XY-YX$$
-        $$\forall f\in C^\infty(M),\quad [X,Y]f = X(Yf)-Y(Xf)$$
-        Which, the output $[X,Y]\in\mathfrak{X}(M)$, and also satisfies the following:
+        Which, the output $[X,Y]\in\mathfrak{X}(M)$, and also satisfies these properties:
         \begin{center}
             \begin{itemize}
                 \item $\textbf{Bilinearity:}\quad [aX+bY,Z]=a[X,Z]+b[Y,Z]$
@@ -103,33 +143,55 @@
                 \item $\textbf{Jacobi's Identity:}\quad \left[X,[Y,Z]\right]+ \left[Y,[Z,X]\right]+ \left[Z,[X,Y]\right]=0$
             \end{itemize}
         \end{center}
-        Moreover, given smooth map $F:M\rightarrow N$, if $X_1,X_2\in\mathfrak{X}(M)$ and $Y_1,Y_2\in\mathfrak{X}(N)$ are $F$-related respectively, then $[X_1,X_2]\in \mathfrak{X}(M)$ and $[Y_1,Y_2]\in\mathfrak{X}(N)$ are also $F$-related. This is the essential tool for defining Lie Algebra on a Lie Group.
+        \end{definitionBox}
+        Moreover, Lie Bracket inherits relation of smooth maps:
+        \begin{propertyBox}
+            Given smooth map $F:M\rightarrow N$, if $X_1,X_2\in\mathfrak{X}(M)$ and $Y_1,Y_2\in\mathfrak{X}(N)$ are $F$-related respectively, then $[X_1,X_2]\in \mathfrak{X}(M)$ and $[Y_1,Y_2]\in\mathfrak{X}(N)$ are also $F$-related. 
+        \end{propertyBox}
     }
     \block{Lie Group \& Left-Invariant Vector Fields}{
-        A \textbf{Lie Group} $G$, is a smooth manifold along with group structure, such that the group operation $P:G\times G\rightarrow G$ by $P(g,h) = gh$, and the inversion map $i:G\rightarrow G$ by $i(g)=g^{-1}$ are both smooth maps between manifolds.
-
-        \textbf{EX: eucildean space}
+        The initial motivation, is to study group structures occuring in specific classes of smooth manifolds.
+        
+        \begin{definitionBox}
+            A \textbf{Lie Group} $G$, is a smooth manifold along with group structure, such that the group operation $P:G\times G\rightarrow G$ by $P(g,h) = gh$, and the inversion map $i:G\rightarrow G$ by $i(g)=g^{-1}$ are both smooth maps between manifolds.
+        \end{definitionBox}
 
         For all $g\in G$, denote the left multiplication $L_g:G\rightarrow G$ by $L_g(h)=gh$,
-        since $L_g = P\bigm|_{\{g\}\times G}$, all left multiplication is a smooth map; also, since $L_{g^{-1}}\circ L_g(h) = L_{g^{-1}}(gh) = g^{-1}gh = h$, every left multiplication has a smooth inverse, hence it's a \textbf{Diffeomorphism}.
+        since $L_g = P\bigm|_{\{g\}\times G}$, all left multiplication is a smooth map; also, since $L_{g^{-1}}$ is a smooth inverse of $L_g$, it's a \textbf{Diffeomorphism}. 
+        Since $L_g$ is a diffeomorphism, there's a notion of $X$ being $L_g$-related to itself:
 
-        \hfil
+        \begin{definitionBox}
+            Given any $X\in\mathfrak{X}(G)$ and all $g\in G$, $X$ is a \textbf{Left-Invariant Vector Field}, if for all $g\in G$, $X$ is $L_g$-related to itself.
 
-        \textbf{Left-Invariant vector fields:} Given any $X\in\mathfrak{X}(G)$ and all $g\in G$, since $L_g$ is a diffeomorphism, there's a notion of $X$ being $L_g$-related to itself. Which, we call $X$ a \textbf{Left-Invariant Vector Field}, if for all $g\in G$, $X$ is $L_g$-related to itself.
+            The collection of Left-Invariant vector fields $\mathfrak{g}\subseteq \mathfrak{X}(G)$, is a linear subspace.
+        \end{definitionBox}
 
-        \textbf{EX: euclidean addition, circle or torus}
-
-        \hfil
-
-        Recall that Lie Bracket of vector field preserves an $F$-relation. Then, for all $X,Y\in\mathfrak{G}$ that are left-invariant, since for all $g\in G$, $X$ and $Y$ are $L_g$ related to themselves, then the Lie Bracket $[X,Y]$ is also $L_g$ related to $[X,Y]$. Hence, $[X,Y]$ is also left-invariant, Lie Bracket on a Lie Group preserves left invariance of vector fields.
+        Recall that Lie Bracket of vector field preserves an $F$-relation between manifolds. Which, such property exists for Lie Groups:
+        \begin{propertyBox}
+            For all $X,Y\in\mathfrak{X}(G)$ that are left-invariant, since for all $g\in G$, $X$ and $Y$ are $L_g$ related to themselves, then the Lie Bracket $[X,Y]$ is also $L_g$ related to $[X,Y]$. Hence, $[X,Y]$ is also left-invariant, so Left-Invariant vector fields $\mathfrak{g}$ is closed under Lie Bracket's operation.
+        \end{propertyBox}
     }
 
     \column{0.32}
     \block{Lie Algebra on a Lie Group}{
-        
+        \begin{definitionBox}
+            Given a vector space $\mathfrak{g}$ over $\mathbb{R}$ or $\mathbb{C}$, associates with a binary operation $[\cdot,\cdot]:\mathfrak{g}\times \mathfrak{g}\rightarrow \mathfrak{g}$, such that the following holds:
+            \begin{itemize}
+                \item \textbf{Bilinearity:} $[aX+bY,Z]=a[X,Z]+b[Y,Z]$
+                \item \textbf{Antisymmetry:} $[X,Y]=-[Y,X]$
+                \item \textbf{Jacobi's Identity:} $\left[X,[Y,Z]\right]+\left[Y,[Z,X]\right]+\left[Z,[X,Y]\right]=0$
+            \end{itemize}
+            Then, the pair $(\mathfrak{g},[\cdot,\cdot])$ is a \textbf{Lie Algebra}.
+        \end{definitionBox}
+        In general, Lie Algebra is non-associative, which Jacobi's Identity is an alternative condition for Lie Algebra.
+
+        Finally, we can define \textbf{Lie Algebra of a Lie Group:}
+        \begin{definitionBox}
+            Given a lie group $G$, since the subset of left-invariant vector fields $\mathfrak{g}\subseteq \mathfrak{X}(G)$ forms a linear subspace, while closed under Lie Bracket's operation, then the pair $(\mathfrak{g},[\cdot,\cdot])$ forms a \textbf{Lie Algebra}, denoted as $\textmd{Lie}(G)$.
+        \end{definitionBox}
     }
 
-    \block{Application}{
+    \block{Example}{
 
     }
     
