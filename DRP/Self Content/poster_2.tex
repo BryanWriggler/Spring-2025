@@ -1,4 +1,4 @@
-\documentclass[20pt,,margin=1in,innermargin=-4.5in,blockverticalspace=-0.25in]{tikzposter}
+\documentclass[20pt,margin=1in,innermargin=-4.5in,blockverticalspace=-0.25in]{tikzposter}
 \geometry{paperwidth=43in,paperheight=32.5in}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -58,6 +58,7 @@
 \renewcommand\familydefault{\sfdefault} 
 \usepackage[T1]{fontenc}
 
+\linespread{0.9}
 
 \title{Lie Algebra of a Lie Group}
 \author{Zih-Yu Hsieh, mentored by Arthur Jiang}
@@ -124,14 +125,18 @@
             $$f(XY g)+g(XY f)=x\left(X\left(x\frac{\partial}{\partial y}(y)\right)\right) + y\left(X\left(x\frac{\partial}{\partial y}(x)\right)\right) = x$$
         \end{exampleBox}
         So, we need to define a new operation on vector fields: 
-        \begin{definitionxBox}
+        \begin{definitionBox}
             The \textbf{Lie Bracket} $[\cdot,\cdot]:\mathfrak{X}(M)\times \mathfrak{X}(M)\rightarrow \mathfrak{X}(M)$, is defined as:
         $$\forall X,Y\in\mathfrak{X}(M),\quad [X,Y]=XY-YX$$
-        Which, the output $[X,Y]\in\mathfrak{X}(M)$, and also satisfies these properties:
+        Which, the output $[X,Y]\in\mathfrak{X}(M)$, since it satisfies product rule:
+        $$[X,Y](fg) = X(Y(fg))-Y(X(fg))= X(f(Yg)+g(Yf))-Y(f(Xg)+g(Xf))$$
+        $$ = f(XYg)+(Yg)(Xf)+g(XYf)+(Yf)(Xg)-f(YXg)-(Xg)(Yf)-g(YXf)-(Xf)(Yg)$$
+        $$ = f(XYg-YXg)+g(XYf-YXf) = f[X,Y](g)+g[X,Y](f)$$
+        Lie Bracket also satisfies these properties:
         \begin{itemize}
-            \item $\textbf{Bilinearity:}\quad [aX+bY,Z]=a[X,Z]+b[Y,Z]$
-            \item $\textbf{Antisymmetry:}\quad [X,Y]=-[Y,X]$
-            \item $\textbf{Jacobi's Identity:}\quad \left[X,[Y,Z]\right]+ \left[Y,[Z,X]\right]+ \left[Z,[X,Y]\right]=0$
+            \item \textbf{Bilinearity:} $[aX+bY,Z]=a[X,Z]+b[Y,Z]$
+            \item \textbf{Antisymmetry:} $[X,Y]=-[Y,X]$
+            \item \textbf{Jacobi's Identity:} $\left[X,[Y,Z]\right]+ \left[Y,[Z,X]\right]+ \left[Z,[X,Y]\right]=0$
         \end{itemize}
         \end{definitionBox}
         Moreover, Lie Bracket inherits relation of smooth maps:
@@ -140,15 +145,14 @@
         \end{propertyBox}
     }
     \block{Lie Group \& Left-Invariant Vector Fields}{
-        The initial motivation, is to study group structures occuring in specific classes of smooth manifolds.
+        The initial motivation is to study group structures in some smooth manifolds.
         
         \begin{definitionBox}
             A \textbf{Lie Group} $G$, is a smooth manifold along with group structure, such that the group operation $P:G\times G\rightarrow G$ by $P(g,h) = gh$, and the inversion map $i:G\rightarrow G$ by $i(g)=g^{-1}$ are both smooth maps between manifolds.
         \end{definitionBox}
 
         For all $g\in G$, denote the left multiplication $L_g:G\rightarrow G$ by $L_g(h)=gh$,
-        since $L_g = P\bigm|_{\{g\}\times G}$, all left multiplication is a smooth map; also, since $L_{g^{-1}}$ is a smooth inverse of $L_g$, it's a \textbf{Diffeomorphism}. 
-        Since $L_g$ is a diffeomorphism, there's a notion of $X$ being $L_g$-related to itself:
+        since $L_g = P\bigm|_{\{g\}\times G}$, it is a smooth map. Hence, there's a notion of $X$ being $L_g$-related to itself:
 
         \begin{definitionBox}
             Given any $X\in\mathfrak{X}(G)$ and all $g\in G$, $X$ is a \textbf{Left-Invariant Vector Field}, if for all $g\in G$, $X$ is $L_g$-related to itself.
@@ -156,7 +160,7 @@
             The collection of Left-Invariant vector fields $\mathfrak{g}\subseteq \mathfrak{X}(G)$, is a linear subspace.
         \end{definitionBox}
 
-        Recall that Lie Bracket of vector field preserves an $F$-relation between manifolds. Which, such property exists for Lie Groups:
+        Recall that Lie Bracket of vector field preserves $F$-relation between manifolds, so:
         \begin{propertyBox}
             For all $X,Y\in\mathfrak{X}(G)$ that are left-invariant, since for all $g\in G$, $X$ and $Y$ are $L_g$ related to themselves, then the Lie Bracket $[X,Y]$ is also $L_g$ related to $[X,Y]$. Hence, $[X,Y]$ is also left-invariant, so Left-Invariant vector fields $\mathfrak{g}$ is closed under Lie Bracket's operation.
         \end{propertyBox}
@@ -165,7 +169,7 @@
     \column{0.32}
     \block{Lie Algebra on a Lie Group}{
         \begin{definitionBox}
-            Given a vector space $\mathfrak{g}$ over $\mathbb{R}$ or $\mathbb{C}$, associates with a binary operation $[\cdot,\cdot]:\mathfrak{g}\times \mathfrak{g}\rightarrow \mathfrak{g}$, such that the following holds:
+            Given a vector space $\mathfrak{g}$ over $\mathbb{R}$ or $\mathbb{C}$, with a binary operation $[\cdot,\cdot]:\mathfrak{g}\times \mathfrak{g}\rightarrow \mathfrak{g}$, such that the following holds:
             \begin{itemize}
                 \item \textbf{Bilinearity:} $[aX+bY,Z]=a[X,Z]+b[Y,Z]$
                 \item \textbf{Antisymmetry:} $[X,Y]=-[Y,X]$
@@ -177,17 +181,20 @@
 
         Finally, we can define \textbf{Lie Algebra of a Lie Group:}
         \begin{definitionBox}
-            Given a lie group $G$, since the subset of left-invariant vector fields $\mathfrak{g}\subseteq \mathfrak{X}(G)$ forms a linear subspace, while closed under Lie Bracket's operation, then the pair $(\mathfrak{g},[\cdot,\cdot])$ forms a \textbf{Lie Algebra}, denoted as $\textmd{Lie}(G)$.
+            Given a lie group $G$, since the subset of left-invariant vector fields $\mathfrak{g}\subseteq \mathfrak{X}(G)$ forms a linear subspace, while closed under Lie Bracket's operation, then the pair $(\mathfrak{g},[\cdot,\cdot])$ forms a \textbf{Lie Algebra} of $G$, denoted as $\textmd{Lie}(G)$.
         \end{definitionBox}
 
-        \textbf{Insert example}
+        Here's an example of Lie Algebra on a Lie Group:
+
+        \begin{exampleBox}
+            
+        \end{exampleBox}
     }
     
-   \block{Acknowledgements}{
+   \block{Acknowledgements \& Reference}{
         I want to thank my mentor Arthur Jiang for the effort and kindness of guiding me through the materials, and provide helpful information on the project. I'd also like to thank the UCSB Math Department Directed Reading Program for this opportunity.
-    }
-    
-    \block{References}{
+
+        \textbf{Reference:}
         John M. Lee, Introduction to Smooth Manifolds, 2nd Edition
     }
 \end{columns}
