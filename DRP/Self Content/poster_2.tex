@@ -71,11 +71,7 @@
 \begin{columns}
     \column{0.32}
     \block{Tangent Vectors as Derivations}{
-        When embedding smooth manifolds into Euclidean Space, tangent vectors are associated with directional derivatives.
-
-        \textbf{Insert geometric object}
-
-        To generalize such notion into abstract smooth manifold, we need an analogy:
+        When embedding smooth manifolds into $\mathbb{R}^n$, tangent vectors are associated with directional derivatives. To generalize tangent vectors into abstract smooth manifold, we need an analogy:
         
         \begin{definitionBox}
             Any point $u\in M$, a \textbf{Derivation at $u$}, is a linear map $v_u:C^\infty(M)\rightarrow\mathbb{R}$, that satisfies the product rule:
@@ -84,9 +80,9 @@
         \end{definitionBox}
     }
     \block{Vector Fields \& Smooth Conditions}{
-        Given smooth manifold $M$, a vector field $X$ is a function assigning each point $u\in M$ with a tangent vector of $u$. More precisely:
+        Given smooth manifold $M$, a vector field assigns each point with a tangent vector. More precisely:
         \begin{definitionBox}
-            a vector field is a map $X:M\rightarrow TM$ (where $TM$ denotes the \textbf{Tangent Bundle} of $M$), with $X(u) = X_u\in T_u(M)$.
+            a vector field is a map $X:M\rightarrow TM$ ($TM$ denotes the \textbf{Tangent Bundle}), with $X(u) = X_u\in T_u(M)$.
 
             Which, $X$ is a \textbf{Smooth Vector Field}, if $X:M\rightarrow TM$ is a smooth map. 
             
@@ -95,9 +91,7 @@
         
         \textbf{insert image}
 
-        An equivalent condition of saying a vector field $X$ is smooth, is through smooth functions $f\in C^\infty(M)$: Since for all $u\in M$, $X(u)= X_u\in T_u(M)$ is a derivation at $u$, define $Xf:M\rightarrow\mathbb{R}$ by $Xf(u) = X_u(f)$. Then, $X$ is a smooth vector field iff $Xf\in C^\infty(M)$.
-
-        Based on such condition, a smooth vector field is also a \textbf{Derivation:}
+        An equivalent condition of saying a vector field $X$ is smooth, is through smooth functions $f\in C^\infty(M)$: For all $u\in M$, $X(u)= X_u\in T_u(M)$ is a derivation at $u$, define $Xf:M\rightarrow\mathbb{R}$ by $Xf(u) = X_u(f)$, then $X$ is a smooth vector field iff $Xf\in C^\infty(M)$. Which, a smooth vector field can be viewed as a \textbf{Derivation:}
         \begin{propertyBox}
             For all $f,g\in C^\infty(M)$, given $X\in\mathfrak{X}(M)$, any $u\in M$ satisfies product rule:
             $$X(fg)(u) = X_u(fg) = f(u)(X_ug) + g(u)(X_uf) = f(u)Xg(u)+g(u)Xf(u)$$
@@ -105,44 +99,40 @@
         \end{propertyBox}
     }
     \block{Vector Fields of Different Manifolds}{
-        Given $M,N$ two smooth manifolds, and smooth map $F:M\rightarrow N$. Let $X\in\mathfrak{X}(M)$, it would be ideal if we can send vector field $F$ maps $X$ to a vector field of $N$. Yet, this requires $F$ to be both injective and surjective:
+        Given $M,N$ two smooth manifolds, and smooth map $F:M\rightarrow N$. Let $X\in\mathfrak{X}(M)$, an ideal situation is mapping $X$ to a smooth vector field of $N$ through $F$. Yet, this requires $F$ to be bijective:
         
-        \textbf{Insert an example for both injectivity and surjectivity}
+        \textbf{Insert an example for bijective}
 
         So, we'll consider a weaker notion: 
         \begin{definitionBox}
-            Given $X\in\mathfrak{X}(M)$ and $Y\in\mathfrak{X}(N)$, the two are $F$-related, if for all $u\in M$, the following is true:
+            Given $X\in\mathfrak{X}(M)$ and $Y\in\mathfrak{X}(N)$, the two are $\boldsymbol{F}$\textbf{-related}, if for all $u\in M$, the following is true:
             $$dF_u(X_u) = Y_{F(u)}$$
             Simply speaking, $F$ maps the tangent vectors collected by $X$, to be compatible with tangent vectors collected by $Y$.
         \end{definitionBox}
 
         \textbf{Insert another example}
-
-        %\textbf{Thm:} If $F$ is a diffeomorphism, then for every $X\in\mathfrak{X}(M)$, there exists a unique $Y\in\mathfrak{X}(N)$, such that $X$ and $Y$ are $F$-related.
     }
 
     \column{0.36}
 
     \block{Lie Brackets of Vector Fields}{
-        The initial motivation is to combine two vector fields $X,Y\in \mathfrak{X}(M)$ to be another vector field. Which, for all $f\in C^\infty(M)$, since $Yf\in C^\infty(M)$, then $XYf = X(Yf)\in C^\infty(M)$. But, in general $XY$ is not a derivation, hence not a vector field:
+        The initial motivation is to combine two vector fields $X,Y\in \mathfrak{X}(M)$ to be another vector field. For all $f\in C^\infty(M)$, since $Yf\in C^\infty(M)$, then $XYf := X(Yf)\in C^\infty(M)$. But, in general $XY$ is not a derivation, hence not a vector field:
         \begin{exampleBox}
-            Define vector fields $X=\frac{\partial}{\partial x}$, $y=x\frac{\partial}{\partial y}$ on $\mathbb{R}^2$. Take smooth functions $f(x,y)=x$ and $g(x,y)=y$, then we get the following:
-            $$XY(fg) = X(x\frac{\partial}{\partial y}(xy)) = \frac{\partial}{\partial x}(x^2) = 2x$$
+            Define vector fields $X=\frac{\partial}{\partial x}$, $Y=x\frac{\partial}{\partial y}$ on $\mathbb{R}^2$. Take smooth functions $f(x,y)=x$ and $g(x,y)=y$, then we get the following:
+            $$XY(fg) = X\left(x\frac{\partial}{\partial y}(xy)\right) = \frac{\partial}{\partial x}(x^2) = 2x$$
             But, product rule doesn't hold for this example:
-            $$f(XY g)+g(XY f)=x(X(x\frac{\partial}{\partial y}(y))) + y(X(x\frac{\partial}{\partial y}(x))) = x$$
+            $$f(XY g)+g(XY f)=x\left(X\left(x\frac{\partial}{\partial y}(y)\right)\right) + y\left(X\left(x\frac{\partial}{\partial y}(x)\right)\right) = x$$
         \end{exampleBox}
         So, we need to define a new operation on vector fields: 
-        \begin{definitionBox}
+        \begin{definitionxBox}
             The \textbf{Lie Bracket} $[\cdot,\cdot]:\mathfrak{X}(M)\times \mathfrak{X}(M)\rightarrow \mathfrak{X}(M)$, is defined as:
         $$\forall X,Y\in\mathfrak{X}(M),\quad [X,Y]=XY-YX$$
         Which, the output $[X,Y]\in\mathfrak{X}(M)$, and also satisfies these properties:
-        \begin{center}
-            \begin{itemize}
-                \item $\textbf{Bilinearity:}\quad [aX+bY,Z]=a[X,Z]+b[Y,Z]$
-                \item $\textbf{Antisymmetry:}\quad [X,Y]=-[Y,X]$
-                \item $\textbf{Jacobi's Identity:}\quad \left[X,[Y,Z]\right]+ \left[Y,[Z,X]\right]+ \left[Z,[X,Y]\right]=0$
-            \end{itemize}
-        \end{center}
+        \begin{itemize}
+            \item $\textbf{Bilinearity:}\quad [aX+bY,Z]=a[X,Z]+b[Y,Z]$
+            \item $\textbf{Antisymmetry:}\quad [X,Y]=-[Y,X]$
+            \item $\textbf{Jacobi's Identity:}\quad \left[X,[Y,Z]\right]+ \left[Y,[Z,X]\right]+ \left[Z,[X,Y]\right]=0$
+        \end{itemize}
         \end{definitionBox}
         Moreover, Lie Bracket inherits relation of smooth maps:
         \begin{propertyBox}
@@ -189,10 +179,8 @@
         \begin{definitionBox}
             Given a lie group $G$, since the subset of left-invariant vector fields $\mathfrak{g}\subseteq \mathfrak{X}(G)$ forms a linear subspace, while closed under Lie Bracket's operation, then the pair $(\mathfrak{g},[\cdot,\cdot])$ forms a \textbf{Lie Algebra}, denoted as $\textmd{Lie}(G)$.
         \end{definitionBox}
-    }
 
-    \block{Example}{
-
+        \textbf{Insert example}
     }
     
    \block{Acknowledgements}{
