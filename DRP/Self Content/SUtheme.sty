@@ -48,7 +48,7 @@
 
 \definecolorpalette{SUPalette} {
     \definecolor{colorOne}{named}{SUBlue}
-    \definecolor{colorTwo}{named}{SUBlue}
+    \definecolor{colorTwo}{named}{SUSky}
     \definecolor{colorThree}{named}{SUBlue}
 }
 
@@ -103,7 +103,7 @@
     \draw[color=framecolor, fill=blockbodybgcolor,
     rounded corners=\blockroundedcorners] (blockbody.south west)
     rectangle (blockbody.north east);
-    \ifBlockHasTitle
+    \S \ifBlockHasTitle \S
     \draw[color=framecolor, fill=blocktitlebgcolor,
     rounded corners=\blockroundedcorners] (blocktitle.south west)
     rectangle (blocktitle.north east);

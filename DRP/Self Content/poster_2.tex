@@ -61,7 +61,7 @@
 \linespread{0.8}
 
 \title{Lie Algebra of a Lie Group}
-\author{Zih-Yu Hsieh, mentored by Arthur Jiang}
+\author{Zih-Yu Hsieh \quad\quad Mentor: Arthur Jiang}
 \institute{University of California Santa Barbara}
 \titlegraphic{\includegraphics[width=0.06\textwidth]{logo.png}}
 
@@ -77,7 +77,7 @@
         \begin{definitionBox}
             Any point $u\in M$, a \textbf{Derivation at $u$}, is a linear map $v_u:C^\infty(M)\rightarrow\mathbb{R}$, that satisfies the product rule:
             $$\forall f,g\in C^\infty(M),\quad v_u(fg) = f(u)(v_u g)+g(u)(v_u f)$$ 
-            Which, the set of all derivations at $u$, denoted as $T_u(M)$, is the \textbf{Tangent Space} of $M$ at $u$, and each derivation $v_u\in T_u(M)$ is a \textbf{Tangent Vector} of $u$.
+            The vector space of all derivations at $u$, or $T_u(M)$, is the \textbf{Tangent Space} of $M$ at $u$, and each derivation $v_u\in T_u(M)$ is a \textbf{Tangent Vector} of $u$.
         \end{definitionBox}
     }
     \block{Vector Fields \& Smooth Conditions}{
@@ -161,7 +161,7 @@
 
         \begin{definitionBox}
             Given any $X\in\mathfrak{X}(G)$ and all $g\in G$, $X$ is a \textbf{Left-Invariant Vector Field}, if for all $g\in G$, $X$ is $L_g$-related to itself. Which, for all $g\in G$: 
-            $$(dL_g)_e(X_e) = X_{L_g(e)} = X_g$$ 
+            $$d(L_g)_e(X_e) = X_{L_g(e)} = X_g$$ 
             So, $X$ is uniquely determined by its tangent vector at identity, $X_e\in T_e(G)$.
 
             The collection of Left-Invariant vector fields $\mathfrak{g}\subseteq \mathfrak{X}(G)$, is a linear subspace. 
@@ -186,9 +186,7 @@
             \end{itemize}
             Then, the pair $(\mathfrak{g},[\cdot,\cdot])$ is a \textbf{Lie Algebra}.
         \end{definitionBox}
-        In general, Lie Algebra is non-associative, which Jacobi's Identity is an alternative condition for Lie Algebra.
-
-        Finally, we can define \textbf{Lie Algebra of a Lie Group:}
+        In general, Lie Algebra is non-associative, so Jacobi's Identity is an alternative condition. Finally, we can define \textbf{Lie Algebra of a Lie Group:}
         \begin{definitionBox}
             Given a lie group $G$, since the subset of left-invariant vector fields $\mathfrak{g}\subseteq \mathfrak{X}(G)$ forms a linear subspace, while closed under Lie Bracket's operation, then the pair $(\mathfrak{g},[\cdot,\cdot])$ forms a \textbf{Lie Algebra} of $G$, denoted as $Lie(G)$.
         \end{definitionBox}
@@ -198,29 +196,41 @@
         \begin{exampleBox}
             \textbf{General Linear Group \& its Lie Algebra:}
             
-            Given the group of all invertible matrices $GL_n(\mathbb{R})\subset M_n(\mathbb{R})$, since $M_n(\mathbb{R})\cong \mathbb{R}^n$ and $GL_n(\mathbb{R})$ is an open subset, it's a smooth manifold with dimension $n^2$.
+            Given $GL_n(\mathbb{R})\subset M_n(\mathbb{R})$, since $M_n(\mathbb{R})\cong \mathbb{R}^n$ and $GL_n(\mathbb{R})$ is an open subset, it's a smooth manifold with dimension $n^2$.
             
-            Which, since product of matrices and inversion are smooth functions, $GL_n(\mathbb{R})$ is a Lie Group.
+            Which, the product of matrices and inversion are smooth functions, so $GL_n(\mathbb{R})$ is a Lie Group.
 
-            Now, consider $\mathfrak{g}=Lie(GL_n(\mathbb{R}))$, recall that each Left-Invariant vector field $X\in\mathfrak{g}$ is uniquely characterized by $X_{I_n}\in T_{I_n}(GL_n(\mathbb{R}))$. In fact, such characterization is a 1-to-1 correspondance. As vector spaces, $\mathfrak{g}\cong T_{I_n}(GL_n(\mathbb{R}))$.
+            Now, consider $\mathfrak{g}=Lie(GL_n(\mathbb{R}))$: Each Left-Invariant vector field $X\in\mathfrak{g}$ is uniquely characterized by $X_{I_n}\in T_{I_n}(GL_n(\mathbb{R}))$. In fact, such characterization is a 1-to-1 correspondance. So, as vector spaces, $\mathfrak{g}\cong T_{I_n}(GL_n(\mathbb{R}))$.
 
             \hfil
 
             \textbf{Lie Algebra on $M_n(\mathbb{R})$:}
 
-            Given $M_n(\mathbb{R})$ as $\mathbb{R}$-vector space, and the commutator operation $[A,B]=AB-BA$, one can verity that the pair $(M_n(\mathbb{R}),[\cdot,\cdot])$ forms a Lie Algebra, normally denoted as $\mathfrak{gl}_n(\mathbb{R})$.
+            Given $M_n(\mathbb{R})$ as $\mathbb{R}$-vector space and the commutator $[A,B]=AB-BA$, the pair $(M_n(\mathbb{R}),[\cdot,\cdot])$ in fact forms a Lie Algebra, denoted as $\mathfrak{gl}_n(\mathbb{R})$.
 
-            , with global coordinate provided by $M_n(\mathbb{R})$, denote as $(X^i_j)_{1\leq i,j\leq n}$
+            
 
             \hfil
 
-            \textbf{Lie Algebra Isomorphism:}
+            \textbf{Lie Algebra Isomorphism between $\mathfrak{g}$ and $\mathfrak{gl}_n(\mathbb{R})$:}
+
+            $GL_n(\mathbb{R})$ has a global coordinate provided by $M_n(\mathbb{R})$, denote as $(X^i_j)_{1\leq i,j\leq n}$.
             
+            For each $A\in \mathfrak{gl}_n(\mathbb{R})$, there's a 1-to-1 correspondance to a tangent vector in $T_{I_n}(GL_n(\mathbb{R}))$:
+            $$A = (A^i_j)\mapsto A^i_j\frac{\partial}{\partial X^i_j}\bigg|_{I_n}$$
+            Which, the above tangent vector defines a Left-Invariant vector field $A^L\in \mathfrak{g}$. For all $X\in \mathfrak{g}$, the left multiplication $L_X$ provides the following relation:
+            $$A^L_X=d(L_X)_{I_n}\left(A^i_j\frac{\partial}{\partial X^i_j}\bigg|_{I_n}\right) = X^i_j A^j_k\frac{\partial}{\partial X^i_k}\bigg|_{X},\quad A^L=X^i_j A^j_k\frac{\partial}{\partial X^i_k}$$
+            Which, for arbitrary $A,B\in\mathfrak{gl}_n(\mathbb{R})$, Lie Bracket of $A^L,\ B^L\in\mathfrak{g}$ generates:
+            $$\left[A^L,B^L\right] = X^i_jA^j_k\frac{\partial}{\partial X^i_k}(X^p_qB^q_r)\frac{\partial}{\partial X^p_r}-X^p_qB^q_r\frac{\partial}{\partial X^p_r}(X^i_jA^j_k)\frac{\partial}{\partial X^i_k}$$
+            Which, each $A^j_k,\ B^q_r$ are constants, while $\frac{\partial}{\partial X^i_k}X^p_r = 1$ iff $(i,k)=(p,r)$ and is $0$ otherwise. Then, match $j=q$ for the same index, we get:
+            $$\left[A^L,B^L\right] = X^i_j(A^j_kB^k_r-B^j_kA^k_r)\frac{\partial}{\partial X^i_r} = (AB-BA)^L=[A,B]^L$$
+            Hence, $\mathfrak{g}$ and $\mathfrak{gl}_n(\mathbb{R})$ are isomorphic as Lie Algebra.
         \end{exampleBox}
     }
     
+
    \block{Acknowledgements \& Reference}{
-        I want to thank my mentor Arthur Jiang for the effort and insights on the guidings through the materials and the project. I also want to thank UCSB Math Department Directed Reading Program for providing this opportunity. Finally, go check out Siyu Chen's poster on the application in physics!
+        I want to thank mentor Arthur Jiang for the effort and insights on the materials and the project, as well associative UCSB Math DRP for this opportunity. 
 
         \textbf{Reference:}
         John M. Lee, Introduction to Smooth Manifolds, 2nd Edition
