@@ -30,11 +30,11 @@
   boxrule=0.8pt
 }
 
-\newtcolorbox{propertyBox}{
+\newtcolorbox{theoremBox}{
   colback=teal!10,
   colframe=teal!50!black,
   fonttitle=\bfseries,
-  title=Property,
+  title=Theorem,
   arc=3mm,
   boxrule=0.8pt
 }
@@ -60,7 +60,6 @@
 
 \linespread{0.8}
 
-\titlegraphic{\includegraphics[width=0.06\textwidth]{lie.png}}
 \title{Lie Algebra of a Lie Group}
 \author{Zih-Yu Hsieh \quad\quad Mentor: Arthur Jiang}
 \institute{University of California Santa Barbara}
@@ -82,7 +81,7 @@
             The vector space of all derivations at $u$, or $T_u(M)$, is the \textbf{Tangent Space} of $M$ at $u$, and each derivation $v_u\in T_u(M)$ is a \textbf{Tangent Vector} of $u$.
         \end{definitionBox}
     }
-    \block{Vector Fields \& Smooth Conditions}{
+    \block{Vector Fields \& Smooth Condition}{
         \vspace*{-1em}
         \begin{definitionBox}
             a vector field is a map $X:M\rightarrow TM$ ($TM$ denotes the \textbf{Tangent Bundle}), with $X(u) = X_u\in T_u(M)$.
@@ -93,11 +92,11 @@
         \end{definitionBox}
 
         An equivalent condition of saying a vector field $X$ is smooth, is through smooth functions $f\in C^\infty(M)$: For all $u\in M$, $X(u)= X_u\in T_u(M)$ is a derivation at $u$, define $Xf:M\rightarrow\mathbb{R}$ by $Xf(u) = X_u(f)$, then $X$ is a smooth vector field iff $Xf\in C^\infty(M)$. Which, a smooth vector field can be viewed as a \textbf{Derivation:}
-        \begin{propertyBox}
+        \begin{theoremBox}
             For all $f,g\in C^\infty(M)$, given $X\in\mathfrak{X}(M)$, any $u\in M$ satisfies product rule:
             $$X(fg)(u) = X_u(fg) = f(u)(X_ug) + g(u)(X_uf) = f(u)Xg(u)+g(u)Xf(u)$$
             $$\implies X(fg) = f(Xg) + g(Xf)$$
-        \end{propertyBox}
+        \end{theoremBox}
     }
     \block{Vector Fields of Different Manifolds}{
         \vspace*{-1em}
@@ -127,7 +126,7 @@
 
     \column{0.36}
 
-    \block{Lie Brackets of Vector Fields}{
+    \block{Lie Bracket of Vector Fields}{
         \vspace*{-1em}
         The initial motivation is to combine two vector fields $X,Y\in \mathfrak{X}(M)$ to be another vector field. For all $f\in C^\infty(M)$, since $Yf\in C^\infty(M)$, then $XYf := X(Yf)\in C^\infty(M)$. But, in general $XY$ is not a derivation, hence not a vector field:
         \begin{exampleBox}
@@ -152,11 +151,11 @@
         \end{itemize}
         \end{definitionBox}
         Moreover, Lie Bracket inherits relation of smooth maps:
-        \begin{propertyBox}
+        \begin{theoremBox}
             Given smooth map $F:M\rightarrow N$, if $X_1,X_2\in\mathfrak{X}(M)$ and $Y_1,Y_2\in\mathfrak{X}(N)$ are $F$-related respectively, then $[X_1,X_2]\in \mathfrak{X}(M)$ and $[Y_1,Y_2]\in\mathfrak{X}(N)$ are also $F$-related. 
-        \end{propertyBox}
+        \end{theoremBox}
     }
-    \block{Lie Group \& Left-Invariant Vector Fields}{
+    \block{Lie Groups \& Left-Invariant Vector Fields}{
         \vspace*{-1em}
         The initial motivation is to study group structures in some smooth manifolds.
         
@@ -178,9 +177,9 @@
         \end{definitionBox}
 
         Recall that Lie Bracket of vector field preserves $F$-relation between manifolds, so:
-        \begin{propertyBox}
+        \begin{theoremBox}
             For all $X,Y\in\mathfrak{X}(G)$ that are left-invariant, since for all $g\in G$, $X$ and $Y$ are $L_g$ related to themselves, then the Lie Bracket $[X,Y]$ is also $L_g$ related to $[X,Y]$. Hence, $[X,Y]$ is also left-invariant, so $\mathfrak{g}$ is closed under Lie Bracket's operation.
-        \end{propertyBox}
+        \end{theoremBox}
     }
 
     \column{0.32}
@@ -205,7 +204,7 @@
         \begin{exampleBox}
             \textbf{General Linear Group \& its Lie Algebra:}
             
-            Given $GL_n(\mathbb{R})\subset M_n(\mathbb{R})$, since $M_n(\mathbb{R})\cong \mathbb{R}^n$ and $GL_n(\mathbb{R})$ is an open subset, it's a smooth manifold with dimension $n^2$.
+            Given $GL_n(\mathbb{R})\subset M_n(\mathbb{R})$, since $M_n(\mathbb{R})\cong \mathbb{R}^{n^2}$ and $GL_n(\mathbb{R})$ is an open subset, it's a smooth manifold with dimension $n^2$.
             
             Which, the product of matrices and inversion are smooth functions, so $GL_n(\mathbb{R})$ is a Lie Group.
 
@@ -239,7 +238,7 @@
 
    \block{Acknowledgements \& Reference}{
         \vspace*{-1em}
-        I want to thank mentor Arthur Jiang for the effort and insights on the materials and the project, as well as UCSB Math DRP for this opportunity. 
+        I want to thank my mentor Arthur Jiang for the effort and insights on the materials and this project, as well as UCSB Math DRP for this opportunity. 
 
         \hfil
 
