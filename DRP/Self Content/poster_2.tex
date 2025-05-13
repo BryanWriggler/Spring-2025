@@ -88,12 +88,12 @@
 
             Which, $X$ is a \textbf{Smooth Vector Field}, if $X:M\rightarrow TM$ is a smooth map. 
             
-            A collection of smooth vector fields on $M$ is denoted as $\mathfrak{X}(M)$, which is an $\mathbb{R}$-vector space.
+            A collection of smooth vector fields on $M$ is $\mathfrak{X}(M)$, which is an $\mathbb{R}$-vector space.
         \end{definitionBox}
 
-        An equivalent condition of saying a vector field $X$ is smooth, is through smooth functions $f\in C^\infty(M)$: For all $u\in M$, $X(u)= X_u\in T_u(M)$ is a derivation at $u$, define $Xf:M\rightarrow\mathbb{R}$ by $Xf(u) = X_u(f)$, then $X$ is a smooth vector field iff $Xf\in C^\infty(M)$. Which, a smooth vector field can be viewed as a \textbf{Derivation:}
+        An equivalent condition of saying a vector field $X$ is smooth, is through smooth functions $f\in C^\infty(M)$: For all $u\in M$, $X(u)= X_u\in T_u(M)$ is a derivation at $u$, define $Xf:M\rightarrow\mathbb{R}$ by $Xf(u) = X_u(f)$, then $X$ is a smooth vector field iff $Xf\in C^\infty(M)$. Which, the \textbf{Derivation} is an equivalent condition for smooth vector field:
         \begin{theoremBox}
-            For all $f,g\in C^\infty(M)$, given $X\in\mathfrak{X}(M)$, any $u\in M$ satisfies product rule:
+            For all $f,g\in C^\infty(M)$, given vector field $X$, $X\in\mathfrak{X}(M)$ iff it satisfies product rule for all $u\in M$:
             $$X(fg)(u) = X_u(fg) = f(u)(X_ug) + g(u)(X_uf) = f(u)Xg(u)+g(u)Xf(u)$$
             $$\implies X(fg) = f(Xg) + g(Xf)$$
         \end{theoremBox}
@@ -169,9 +169,9 @@
         \begin{definitionBox}
             Given any $X\in\mathfrak{X}(G)$ and all $g\in G$, $X$ is a \textbf{Left-Invariant Vector Field}, if for all $g\in G$, $X$ is $L_g$-related to itself. Which, for all $g\in G$: 
             $$d(L_g)_e(X_e) = X_{L_g(e)} = X_g$$ 
-            So, $X$ is uniquely determined by its tangent vector at identity, $X_e\in T_e(G)$.
+            So, $X$ is uniquely determined by its tangent vector at identity, $X_e\in T_e(G)$. In fact, each $v_e\in T_e(G)$ also corresponds to a unique Left-Invariant vector field.
 
-            The collection of Left-Invariant vector fields $\mathfrak{g}\subseteq \mathfrak{X}(G)$, is a linear subspace. 
+            The collection of Left-Invariant vector fields $\mathfrak{g}\subseteq \mathfrak{X}(G)$, is a linear subspace, and $\mathfrak{g}\cong T_e(G)$ as vector spaces, based on the above relation.
             
             %Also, as vector spaces, $\mathfrak{g}\cong T_e(G)$.
         \end{definitionBox}
@@ -204,11 +204,9 @@
         \begin{exampleBox}
             \textbf{General Linear Group \& its Lie Algebra:}
             
-            Given $GL_n(\mathbb{R})\subset M_n(\mathbb{R})$, since $M_n(\mathbb{R})\cong \mathbb{R}^{n^2}$ and $GL_n(\mathbb{R})$ is an open subset, it's a smooth manifold with dimension $n^2$.
-            
-            Which, the product of matrices and inversion are smooth functions, so $GL_n(\mathbb{R})$ is a Lie Group.
+            Given $GL_n(\mathbb{R})\subset M_n(\mathbb{R})$, since $M_n(\mathbb{R})\cong \mathbb{R}^{n^2}$ and $GL_n(\mathbb{R})$ is an open subset, it's a natural smooth manifold with dimension $n^2$. Which, the product of invertible matrices and inversion are smooth maps, so $GL_n(\mathbb{R})$ is a Lie Group.
 
-            Now, consider $\mathfrak{g}=Lie(GL_n(\mathbb{R}))$: Each Left-Invariant vector field $X\in\mathfrak{g}$ is uniquely characterized by $X_{I_n}\in T_{I_n}(GL_n(\mathbb{R}))$. In fact, such characterization is a 1-to-1 correspondance. So, as vector spaces, $\mathfrak{g}\cong T_{I_n}(GL_n(\mathbb{R}))$.
+            Now, consider $\mathfrak{g}=Lie(GL_n(\mathbb{R}))$: Each $X\in\mathfrak{g}$ is uniquely characterized by $X_{I_n}\in T_{I_n}(GL_n(\mathbb{R}))$. And, as vector spaces, $\mathfrak{g}\cong T_{I_n}(GL_n(\mathbb{R}))$.
 
             \hfil
 
@@ -226,21 +224,19 @@
             
             For each $A\in \mathfrak{gl}_n(\mathbb{R})$, it corresponds to a tangent vector in $T_{I_n}(GL_n(\mathbb{R}))$:
             $$A = (A^i_j)\mapsto A^i_j\frac{\partial}{\partial X^i_j}\bigg|_{I_n}$$
-            Which, the above tangent vector defines a Left-Invariant vector field $A^L\in \mathfrak{g}$. For all $X\in \mathfrak{g}$, the left multiplication $L_X$ provides the following relation:
+            The above tangent vector defines a Left-Invariant vector field $A^L\in \mathfrak{g}$. For all $X\in \mathfrak{g}$, the left multiplication $L_X$ is in fact a linear operator on $M_n(\mathbb{R})$, so its differential is identical to itself. Which, it provides the following relation:
             $$A^L_X=d(L_X)_{I_n}\left(A^i_j\frac{\partial}{\partial X^i_j}\bigg|_{I_n}\right) = X^i_j A^j_k\frac{\partial}{\partial X^i_k}\bigg|_{X},\quad A^L=X^i_j A^j_k\frac{\partial}{\partial X^i_k}$$
             Which, for arbitrary $A,B\in\mathfrak{gl}_n(\mathbb{R})$, Lie Bracket of $A^L,\ B^L\in\mathfrak{g}$ generates:
             $$\left[A^L,B^L\right] = X^i_jA^j_k\frac{\partial}{\partial X^i_k}(X^p_qB^q_r)\frac{\partial}{\partial X^p_r}-X^p_qB^q_r\frac{\partial}{\partial X^p_r}(X^i_jA^j_k)\frac{\partial}{\partial X^i_k}$$
             Which, each $A^j_k,\ B^q_r$ are constants, while $\frac{\partial}{\partial X^i_k}X^p_r = 1$ iff $(i,k)=(p,r)$ and is $0$ otherwise. Then, match $j=q$ for the same intermediate index, we get:
             $$\left[A^L,B^L\right] = X^i_j(A^j_kB^k_r-B^j_kA^k_r)\frac{\partial}{\partial X^i_r} = (AB-BA)^L=[A,B]^L$$
-            Hence, $\mathfrak{gl}_n(\mathbb{R})$ and $\mathfrak{g}$ are isomorphic as Lie Algebra, since $A\mapsto A^L$ preserves Lie Bracket.
+            Hence, the map $\mathfrak{gl}_n(\mathbb{R})\rightarrow \mathfrak{g}$ by $A\mapsto A^L$ is a Lie Algebra Isomorphism.
         \end{exampleBox}
     }
 
    \block{Acknowledgements \& Reference}{
         \vspace*{-1em}
-        I want to thank my mentor Arthur Jiang for the effort and insights on the materials and this project, as well as UCSB Math DRP for this opportunity. 
-
-        \hfil
+        I want to thank my mentor Arthur Jiang for the effort and insights on the materials and this project, as well as UCSB Math DRP for this opportunity. Also, check out the cool project of my peer \textbf{Siyu Chen's} poster about Lie Group and Lie Algebra's applications in physics!
 
         \textrm{\textbf{Reference:} Lee, J.M. \textit{Introduction to Smooth Manifolds}; 2nd ed.; Springer: New York, 2012; 9781441999825}
     }
