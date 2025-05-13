@@ -91,9 +91,9 @@
             A collection of smooth vector fields on $M$ is $\mathfrak{X}(M)$, which is an $\mathbb{R}$-vector space.
         \end{definitionBox}
 
-        An equivalent condition of saying a vector field $X$ is smooth, is through smooth functions $f\in C^\infty(M)$: For all $u\in M$, $X(u)= X_u\in T_u(M)$ is a derivation at $u$, define $Xf:M\rightarrow\mathbb{R}$ by $Xf(u) = X_u(f)$, then $X$ is a smooth vector field iff $Xf\in C^\infty(M)$. Which, the \textbf{Derivation} is an equivalent condition for smooth vector field:
+        An equivalent condition of saying $X$ is smooth, is by smooth functions $f\in C^\infty(M)$: For all $u\in M$, $X(u)= X_u\in T_u(M)$ is a derivation at $u$, define $Xf:M\rightarrow\mathbb{R}$ by $Xf(u) = X_u(f)$, then $X$ is a smooth vector field iff $Xf\in C^\infty(M)$. Which, the \textbf{Derivation} is an equivalent condition for smooth vector field:
         \begin{theoremBox}
-            For all $f,g\in C^\infty(M)$, given vector field $X$, $X\in\mathfrak{X}(M)$ iff it satisfies product rule for all $u\in M$:
+            Given vector field $X$, $X\in\mathfrak{X}(M)$ iff it satisfies product rule. i.e. For all $u\in M$, and all $f,g\in C^\infty(M)$:
             $$X(fg)(u) = X_u(fg) = f(u)(X_ug) + g(u)(X_uf) = f(u)Xg(u)+g(u)Xf(u)$$
             $$\implies X(fg) = f(Xg) + g(Xf)$$
         \end{theoremBox}
@@ -107,8 +107,6 @@
 
             \textbf{Figure 1:} Example of Conflicting Tangent Vectors
         \end{center}
-
-        \hfil
 
         So, we'll consider a weaker notion: 
         \begin{definitionBox}
@@ -178,7 +176,7 @@
 
         Recall that Lie Bracket of vector field preserves $F$-relation between manifolds, so:
         \begin{theoremBox}
-            For all $X,Y\in\mathfrak{X}(G)$ that are left-invariant, since for all $g\in G$, $X$ and $Y$ are $L_g$ related to themselves, then the Lie Bracket $[X,Y]$ is also $L_g$-related to $[X,Y]$. Hence, $[X,Y]$ is also left-invariant, so $\mathfrak{g}$ is closed under Lie Bracket's operation.
+            For all $X,Y\in\mathfrak{g}$, since for all $g\in G$, $X$ and $Y$ are $L_g$ related to themselves, then the Lie Bracket $[X,Y]$ is also $L_g$-related to $[X,Y]$. Hence, $[X,Y]$ is also left-invariant, or $[X,Y]\in \mathfrak{g}$. So, $\mathfrak{g}$ is closed under Lie Bracket's operation.
         \end{theoremBox}
     }
 
@@ -204,7 +202,7 @@
         \begin{exampleBox}
             \textbf{General Linear Group \& its Lie Algebra:}
             
-            Given $GL_n(\mathbb{R})\subset M_n(\mathbb{R})$, since $M_n(\mathbb{R})\cong \mathbb{R}^{n^2}$ and $GL_n(\mathbb{R})$ is an open subset, it's a natural smooth manifold with dimension $n^2$. The product of matrices and inversion are smooth maps, so $GL_n(\mathbb{R})$ is a Lie Group.
+            Given $M_n(\mathbb{R})\cong \mathbb{R}^{n^2}$, and $GL_n(\mathbb{R})\subset M_n(\mathbb{R})$ as an open subset, it's a natural smooth manifold with dimension $n^2$. The product of matrices and the inversion are smooth maps, so $GL_n(\mathbb{R})$ is a Lie Group.
 
             Now, consider $\mathfrak{g}=Lie(GL_n(\mathbb{R}))$: Each $X\in\mathfrak{g}$ is uniquely characterized by $X_{I_n}\in T_{I_n}(GL_n(\mathbb{R}))$. And, as vector spaces, $\mathfrak{g}\cong T_{I_n}(GL_n(\mathbb{R}))$.
 
@@ -226,9 +224,9 @@
             $$A = (A^i_j)\mapsto A^i_j\frac{\partial}{\partial X^i_j}\bigg|_{I_n}$$
             The above tangent vector defines a Left-Invariant vector field $A^L\in \mathfrak{g}$. For all $X\in \mathfrak{g}$, the left multiplication $L_X$ is in fact a linear operator on $M_n(\mathbb{R})$, so its differential is identical to itself. Which, it provides the following relation:
             $$A^L_X=d(L_X)_{I_n}\left(A^i_j\frac{\partial}{\partial X^i_j}\bigg|_{I_n}\right) = X^i_j A^j_k\frac{\partial}{\partial X^i_k}\bigg|_{X},\quad A^L=X^i_j A^j_k\frac{\partial}{\partial X^i_k}$$
-            Which, for arbitrary $A,B\in\mathfrak{gl}_n(\mathbb{R})$, Lie Bracket of $A^L,\ B^L\in\mathfrak{g}$ generates:
+            Then, for arbitrary $A,B\in\mathfrak{gl}_n(\mathbb{R})$, Lie Bracket of $A^L,\ B^L\in\mathfrak{g}$ generates:
             $$\left[A^L,B^L\right] = X^i_jA^j_k\frac{\partial}{\partial X^i_k}(X^p_qB^q_r)\frac{\partial}{\partial X^p_r}-X^p_qB^q_r\frac{\partial}{\partial X^p_r}(X^i_jA^j_k)\frac{\partial}{\partial X^i_k}$$
-            Which, each $A^j_k,\ B^q_r$ are constants, while $\frac{\partial}{\partial X^i_k}X^p_r = 1$ iff $(i,k)=(p,r)$ and is $0$ otherwise. Then, match $j=q$ for the same intermediate index, we get:
+            Because each $A^j_k,\ B^q_r$ are constants, while $\frac{\partial}{\partial X^i_k}X^p_q = 1$ iff $(i,k)=(p,q)$ and is $0$ otherwise. Then, match up related indices, we get:
             $$\left[A^L,B^L\right] = X^i_j(A^j_kB^k_r-B^j_kA^k_r)\frac{\partial}{\partial X^i_r} = (AB-BA)^L=[A,B]^L$$
             Hence, the map $\mathfrak{gl}_n(\mathbb{R})\rightarrow \mathfrak{g}$ by $A\mapsto A^L$ is a Lie Algebra Isomorphism.
         \end{exampleBox}
