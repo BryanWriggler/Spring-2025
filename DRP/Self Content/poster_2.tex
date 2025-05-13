@@ -58,7 +58,7 @@
 \renewcommand\familydefault{\sfdefault} 
 \usepackage[T1]{fontenc}
 
-\linespread{0.9}
+\linespread{0.8}
 
 \title{Lie Algebra of a Lie Group}
 \author{Zih-Yu Hsieh, mentored by Arthur Jiang}
@@ -100,7 +100,7 @@
         Given $M,N$ two smooth manifolds, and smooth map $F:M\rightarrow N$. Let $X\in\mathfrak{X}(M)$, an ideal situation is mapping $X$ to a smooth vector field of $N$ through $F$. Yet, this requires $F$ to be bijective:
         
         \begin{center}
-            \includegraphics[width=0.18\textwidth]{example 1.png} 
+            \includegraphics[width=0.21\textwidth]{example 1.png} 
 
             \textbf{Figure 1:} Example of Conflicting Tangent Vectors
         \end{center}
@@ -113,7 +113,7 @@
         \end{definitionBox}
 
         \begin{center}
-            \includegraphics[width=0.18\textwidth]{example 2.png} 
+            \includegraphics[width=0.21\textwidth]{example 2.png} 
 
             \textbf{Figure 2:} A demonstration of $F$-Relation
         \end{center}
@@ -160,14 +160,18 @@
         since $L_g = P\bigm|_{\{g\}\times G}$, it is a smooth map. Hence, there's a notion of $X$ being $L_g$-related to itself:
 
         \begin{definitionBox}
-            Given any $X\in\mathfrak{X}(G)$ and all $g\in G$, $X$ is a \textbf{Left-Invariant Vector Field}, if for all $g\in G$, $X$ is $L_g$-related to itself.
+            Given any $X\in\mathfrak{X}(G)$ and all $g\in G$, $X$ is a \textbf{Left-Invariant Vector Field}, if for all $g\in G$, $X$ is $L_g$-related to itself. Which, for all $g\in G$: 
+            $$(dL_g)_e(X_e) = X_{L_g(e)} = X_g$$ 
+            So, $X$ is uniquely determined by its tangent vector at identity, $X_e\in T_e(G)$.
 
-            The collection of Left-Invariant vector fields $\mathfrak{g}\subseteq \mathfrak{X}(G)$, is a linear subspace.
+            The collection of Left-Invariant vector fields $\mathfrak{g}\subseteq \mathfrak{X}(G)$, is a linear subspace. 
+            
+            %Also, as vector spaces, $\mathfrak{g}\cong T_e(G)$.
         \end{definitionBox}
 
         Recall that Lie Bracket of vector field preserves $F$-relation between manifolds, so:
         \begin{propertyBox}
-            For all $X,Y\in\mathfrak{X}(G)$ that are left-invariant, since for all $g\in G$, $X$ and $Y$ are $L_g$ related to themselves, then the Lie Bracket $[X,Y]$ is also $L_g$ related to $[X,Y]$. Hence, $[X,Y]$ is also left-invariant, so Left-Invariant vector fields $\mathfrak{g}$ is closed under Lie Bracket's operation.
+            For all $X,Y\in\mathfrak{X}(G)$ that are left-invariant, since for all $g\in G$, $X$ and $Y$ are $L_g$ related to themselves, then the Lie Bracket $[X,Y]$ is also $L_g$ related to $[X,Y]$. Hence, $[X,Y]$ is also left-invariant, so $\mathfrak{g}$ is closed under Lie Bracket's operation.
         \end{propertyBox}
     }
 
@@ -186,18 +190,37 @@
 
         Finally, we can define \textbf{Lie Algebra of a Lie Group:}
         \begin{definitionBox}
-            Given a lie group $G$, since the subset of left-invariant vector fields $\mathfrak{g}\subseteq \mathfrak{X}(G)$ forms a linear subspace, while closed under Lie Bracket's operation, then the pair $(\mathfrak{g},[\cdot,\cdot])$ forms a \textbf{Lie Algebra} of $G$, denoted as $\textmd{Lie}(G)$.
+            Given a lie group $G$, since the subset of left-invariant vector fields $\mathfrak{g}\subseteq \mathfrak{X}(G)$ forms a linear subspace, while closed under Lie Bracket's operation, then the pair $(\mathfrak{g},[\cdot,\cdot])$ forms a \textbf{Lie Algebra} of $G$, denoted as $Lie(G)$.
         \end{definitionBox}
 
         Here's an example of Lie Algebra on a Lie Group:
 
         \begin{exampleBox}
-             d
+            \textbf{General Linear Group \& its Lie Algebra:}
+            
+            Given the group of all invertible matrices $GL_n(\mathbb{R})\subset M_n(\mathbb{R})$, since $M_n(\mathbb{R})\cong \mathbb{R}^n$ and $GL_n(\mathbb{R})$ is an open subset, it's a smooth manifold with dimension $n^2$.
+            
+            Which, since product of matrices and inversion are smooth functions, $GL_n(\mathbb{R})$ is a Lie Group.
+
+            Now, consider $\mathfrak{g}=Lie(GL_n(\mathbb{R}))$, recall that each Left-Invariant vector field $X\in\mathfrak{g}$ is uniquely characterized by $X_{I_n}\in T_{I_n}(GL_n(\mathbb{R}))$. In fact, such characterization is a 1-to-1 correspondance. As vector spaces, $\mathfrak{g}\cong T_{I_n}(GL_n(\mathbb{R}))$.
+
+            \hfil
+
+            \textbf{Lie Algebra on $M_n(\mathbb{R})$:}
+
+            Given $M_n(\mathbb{R})$ as $\mathbb{R}$-vector space, and the commutator operation $[A,B]=AB-BA$, one can verity that the pair $(M_n(\mathbb{R}),[\cdot,\cdot])$ forms a Lie Algebra, normally denoted as $\mathfrak{gl}_n(\mathbb{R})$.
+
+            , with global coordinate provided by $M_n(\mathbb{R})$, denote as $(X^i_j)_{1\leq i,j\leq n}$
+
+            \hfil
+
+            \textbf{Lie Algebra Isomorphism:}
+            
         \end{exampleBox}
     }
     
    \block{Acknowledgements \& Reference}{
-        I want to thank my mentor Arthur Jiang for the effort and kindness of guiding me through the materials, and provide helpful information on the project. I'd also like to thank the UCSB Math Department Directed Reading Program for this opportunity. Also, go check out Siyu Chen's poster as a continuation on its application on physics!
+        I want to thank my mentor Arthur Jiang for the effort and insights on the guidings through the materials and the project. I also want to thank UCSB Math Department Directed Reading Program for providing this opportunity. Finally, go check out Siyu Chen's poster on the application in physics!
 
         \textbf{Reference:}
         John M. Lee, Introduction to Smooth Manifolds, 2nd Edition
