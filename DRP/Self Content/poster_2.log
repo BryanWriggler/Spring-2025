@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  12 MAY 2025 18:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  12 MAY 2025 19:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -998,7 +998,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 
 
 LaTeX Warning: Unused global option(s):
-    [margin=1in,innermargin=-4.5in,blockverticalspace=-0.25in].
+    [margin=0.9in,innermargin=-4.5in,blockverticalspace=-0.25in].
 
 (./poster_2.aux)
 \openout1 = `poster_2.aux'.
@@ -1052,15 +1052,15 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(72.26999pt, 2963.07pt, 72.26999pt)
-* v-part:(T,H,B)=(72.26999pt, 2204.23502pt, 72.26999pt)
+* h-part:(L,W,R)=(65.04256pt, 2977.52487pt, 65.04256pt)
+* v-part:(T,H,B)=(65.04256pt, 2218.68988pt, 65.04256pt)
 * \paperwidth=3107.60999pt
 * \paperheight=2348.775pt
-* \textwidth=2963.07pt
-* \textheight=2204.23502pt
-* \oddsidemargin=0.0pt
-* \evensidemargin=0.0pt
-* \topmargin=-50.0pt
+* \textwidth=2977.52487pt
+* \textheight=2218.68988pt
+* \oddsidemargin=-7.22743pt
+* \evensidemargin=-7.22743pt
+* \topmargin=-57.22743pt
 * \headheight=20.0pt
 * \headsep=30.0pt
 * \topskip=20.0pt
@@ -1082,7 +1082,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 File: logo.png Graphic file (type png)
 <use logo.png>
 Package pdftex.def Info: logo.png  used on input line 69.
-(pdftex.def)             Requested size: 177.77696pt x 177.77705pt.
+(pdftex.def)             Requested size: 178.64421pt x 178.64676pt.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/biblatex/lbx/english.lbx
@@ -1118,7 +1118,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 File: logo.png Graphic file (type png)
 <use logo.png>
 Package pdftex.def Info: logo.png  used on input line 71.
-(pdftex.def)             Requested size: 177.77696pt x 177.77705pt.
+(pdftex.def)             Requested size: 178.64421pt x 178.64676pt.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 71.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1134,55 +1134,37 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 File: logo.png Graphic file (type png)
 <use logo.png>
 Package pdftex.def Info: logo.png  used on input line 71.
-(pdftex.def)             Requested size: 177.77696pt x 177.77705pt.
+(pdftex.def)             Requested size: 178.64421pt x 178.64676pt.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 34.03839pt on input line 82.
+(Font)              scaled to size 34.03839pt on input line 83.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 23.63593pt on input line 82.
+(Font)              scaled to size 23.63593pt on input line 83.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 23.63593pt on input line 82.
-
-Missing character: There is no Ÿ in font nullfont!
-Missing character: There is no Ÿ in font nullfont!
-LaTeX Font Info:    Trying to load font information for U+euf on input line 98.
-(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/ueuf.fd
+(Font)              scaled to size 23.63593pt on input line 83.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 100.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
-Missing character: There is no Ÿ in font nullfont!
-Missing character: There is no Ÿ in font nullfont!
 <example 1.png, id=43, 1550.79375pt x 463.7325pt>
 File: example 1.png Graphic file (type png)
 <use example 1.png>
-Package pdftex.def Info: example 1.png  used on input line 120.
-(pdftex.def)             Requested size: 622.26459pt x 186.07701pt.
+Package pdftex.def Info: example 1.png  used on input line 125.
+(pdftex.def)             Requested size: 714.62231pt x 213.69455pt.
 <example 2.png, id=44, 1644.1425pt x 518.93875pt>
 File: example 2.png Graphic file (type png)
 <use example 2.png>
-Package pdftex.def Info: example 2.png  used on input line 120.
-(pdftex.def)             Requested size: 622.26459pt x 196.39902pt.
-Missing character: There is no Ÿ in font nullfont!
-Missing character: There is no Ÿ in font nullfont!
-
-Overfull \hbox (1.0675pt too wide) detected at line 151
-\OT1/cmr/m/n/24.88 = \OML/cmm/m/it/24.88 f\OT1/cmr/m/n/24.88 (\OML/cmm/m/it/24.88 XYg\OT1/cmr/m/n/24.88 ) + (\OML/cmm/m/it/24.88 Yg\OT1/cmr/m/n/24.88 )(\OML/cmm/m/it/24.88 Xf\OT1/cmr/m/n/24.88 ) + \OML/cmm/m/it/24.88 g\OT1/cmr/m/n/24.88 (\OML/cmm/m/it/24.88 XYf\OT1/cmr/m/n/24.88 ) + (\OML/cmm/m/it/24.88 Yf\OT1/cmr/m/n/24.88 )(\OML/cmm/m/it/24.88 Xg\OT1/cmr/m/n/24.88 ) \OMS/cmsy/m/n/24.88 ^^@ \OML/cmm/m/it/24.88 f\OT1/cmr/m/n/24.88 (\OML/cmm/m/it/24.88 YXg\OT1/cmr/m/n/24.88 ) \OMS/cmsy/m/n/24.88 ^^@ \OT1/cmr/m/n/24.88 (\OML/cmm/m/it/24.88 Xg\OT1/cmr/m/n/24.88 )(\OML/cmm/m/it/24.88 Yf\OT1/cmr/m/n/24.88 ) \OMS/cmsy/m/n/24.88 ^^@ \OML/cmm/m/it/24.88 g\OT1/cmr/m/n/24.88 (\OML/cmm/m/it/24.88 YXf\OT1/cmr/m/n/24.88 ) \OMS/cmsy/m/n/24.88 ^^@ \OT1/cmr/m/n/24.88 (\OML/cmm/m/it/24.88 Xf\OT1/cmr/m/n/24.88 )(\OML/cmm/m/it/24.88 Yg\OT1/cmr/m/n/24.88 )
- []
-
-LaTeX Font Info:    Trying to load font information for TS1+phv on input line 151.
-(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1phv.fd
+Package pdftex.def Info: example 2.png  used on input line 125.
+(pdftex.def)             Requested size: 714.62231pt x 225.55441pt.
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 157.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 23.63593pt on input line 151.
-
-Missing character: There is no Ÿ in font nullfont!
-Missing character: There is no Ÿ in font nullfont!
-Missing character: There is no Ÿ in font nullfont!
-Missing character: There is no Ÿ in font nullfont!
-Missing character: There is no Ÿ in font nullfont!
-Missing character: There is no Ÿ in font nullfont!
-Missing character: There is no Ÿ in font nullfont!
-Missing character: There is no Ÿ in font nullfont!
-[1
+(Font)              scaled to size 23.63593pt on input line 157.
+LaTeX Font Info:    Trying to load font information for T1+aer on input line 247.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/ae/t1aer.fd
+File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
+) [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc} <./logo.png> <./example 1.png> <./example 2.png>] (./poster_2.aux)
  ***********
@@ -1194,18 +1176,18 @@ Package logreq Info: Writing requests to 'poster_2.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35036 strings out of 474116
- 764760 string characters out of 5743681
- 2001187 words of memory out of 5000000
- 56760 multiletter control sequences out of 15000+600000
- 599600 words of font info for 105 fonts, out of 8000000 for 9000
+ 35087 strings out of 474116
+ 765605 string characters out of 5743681
+ 2003187 words of memory out of 5000000
+ 56797 multiletter control sequences out of 15000+600000
+ 607066 words of font info for 116 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,14n,121p,741b,2473s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on poster_2.pdf (1 page, 783171 bytes).
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on poster_2.pdf (1 page, 808429 bytes).
 PDF statistics:
- 100 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
+ 110 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  172 words of extra memory for PDF output out of 10000 (max. 10000000)
 

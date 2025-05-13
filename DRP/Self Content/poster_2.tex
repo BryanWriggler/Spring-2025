@@ -1,4 +1,4 @@
-\documentclass[20pt,margin=1in,innermargin=-4.5in,blockverticalspace=-0.25in]{tikzposter}
+\documentclass[20pt,margin=0.9in,innermargin=-4.5in,blockverticalspace=-0.25in]{tikzposter}
 \geometry{paperwidth=43in,paperheight=32.5in}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -72,6 +72,7 @@
 \begin{columns}
     \column{0.32}
     \block{Tangent Vectors as Derivations}{
+        \vspace*{-1em}
         When embedding smooth manifolds into $\mathbb{R}^n$, tangent vectors are associated with directional derivatives. To generalize tangent vectors into abstract smooth manifold, we need an analogy:
         
         \begin{definitionBox}
@@ -81,6 +82,7 @@
         \end{definitionBox}
     }
     \block{Vector Fields \& Smooth Conditions}{
+        \vspace*{-1em}
         \begin{definitionBox}
             a vector field is a map $X:M\rightarrow TM$ ($TM$ denotes the \textbf{Tangent Bundle}), with $X(u) = X_u\in T_u(M)$.
 
@@ -97,13 +99,16 @@
         \end{propertyBox}
     }
     \block{Vector Fields of Different Manifolds}{
+        \vspace*{-1em}
         Given $M,N$ two smooth manifolds, and smooth map $F:M\rightarrow N$. Let $X\in\mathfrak{X}(M)$, an ideal situation is mapping $X$ to a smooth vector field of $N$ through $F$. Yet, this requires $F$ to be bijective:
         
         \begin{center}
-            \includegraphics[width=0.21\textwidth]{example 1.png} 
+            \includegraphics[width=0.24\textwidth]{example 1.png} 
 
             \textbf{Figure 1:} Example of Conflicting Tangent Vectors
         \end{center}
+
+        \hfil
 
         So, we'll consider a weaker notion: 
         \begin{definitionBox}
@@ -113,7 +118,7 @@
         \end{definitionBox}
 
         \begin{center}
-            \includegraphics[width=0.21\textwidth]{example 2.png} 
+            \includegraphics[width=0.24\textwidth]{example 2.png} 
 
             \textbf{Figure 2:} A demonstration of $F$-Relation
         \end{center}
@@ -122,6 +127,7 @@
     \column{0.36}
 
     \block{Lie Brackets of Vector Fields}{
+        \vspace*{-1em}
         The initial motivation is to combine two vector fields $X,Y\in \mathfrak{X}(M)$ to be another vector field. For all $f\in C^\infty(M)$, since $Yf\in C^\infty(M)$, then $XYf := X(Yf)\in C^\infty(M)$. But, in general $XY$ is not a derivation, hence not a vector field:
         \begin{exampleBox}
             Define vector fields $X=\frac{\partial}{\partial x}$, $Y=x\frac{\partial}{\partial y}$ on $\mathbb{R}^2$. Take smooth functions $f(x,y)=x$ and $g(x,y)=y$, then we get the following:
@@ -150,6 +156,7 @@
         \end{propertyBox}
     }
     \block{Lie Group \& Left-Invariant Vector Fields}{
+        \vspace*{-1em}
         The initial motivation is to study group structures in some smooth manifolds.
         
         \begin{definitionBox}
@@ -177,6 +184,7 @@
 
     \column{0.32}
     \block{Lie Algebra on a Lie Group}{
+        \vspace*{-1em}
         \begin{definitionBox}
             Given a vector space $\mathfrak{g}$ over $\mathbb{R}$ or $\mathbb{C}$, with a binary operation $[\cdot,\cdot]:\mathfrak{g}\times \mathfrak{g}\rightarrow \mathfrak{g}$, such that the following holds:
             \begin{itemize}
@@ -216,24 +224,26 @@
 
             $GL_n(\mathbb{R})$ has a global coordinate provided by $M_n(\mathbb{R})$, denote as $(X^i_j)_{1\leq i,j\leq n}$.
             
-            For each $A\in \mathfrak{gl}_n(\mathbb{R})$, there's a 1-to-1 correspondance to a tangent vector in $T_{I_n}(GL_n(\mathbb{R}))$:
+            For each $A\in \mathfrak{gl}_n(\mathbb{R})$, it corresponds to a tangent vector in $T_{I_n}(GL_n(\mathbb{R}))$:
             $$A = (A^i_j)\mapsto A^i_j\frac{\partial}{\partial X^i_j}\bigg|_{I_n}$$
             Which, the above tangent vector defines a Left-Invariant vector field $A^L\in \mathfrak{g}$. For all $X\in \mathfrak{g}$, the left multiplication $L_X$ provides the following relation:
             $$A^L_X=d(L_X)_{I_n}\left(A^i_j\frac{\partial}{\partial X^i_j}\bigg|_{I_n}\right) = X^i_j A^j_k\frac{\partial}{\partial X^i_k}\bigg|_{X},\quad A^L=X^i_j A^j_k\frac{\partial}{\partial X^i_k}$$
             Which, for arbitrary $A,B\in\mathfrak{gl}_n(\mathbb{R})$, Lie Bracket of $A^L,\ B^L\in\mathfrak{g}$ generates:
             $$\left[A^L,B^L\right] = X^i_jA^j_k\frac{\partial}{\partial X^i_k}(X^p_qB^q_r)\frac{\partial}{\partial X^p_r}-X^p_qB^q_r\frac{\partial}{\partial X^p_r}(X^i_jA^j_k)\frac{\partial}{\partial X^i_k}$$
-            Which, each $A^j_k,\ B^q_r$ are constants, while $\frac{\partial}{\partial X^i_k}X^p_r = 1$ iff $(i,k)=(p,r)$ and is $0$ otherwise. Then, match $j=q$ for the same index, we get:
+            Which, each $A^j_k,\ B^q_r$ are constants, while $\frac{\partial}{\partial X^i_k}X^p_r = 1$ iff $(i,k)=(p,r)$ and is $0$ otherwise. Then, match $j=q$ for the same intermediate index, we get:
             $$\left[A^L,B^L\right] = X^i_j(A^j_kB^k_r-B^j_kA^k_r)\frac{\partial}{\partial X^i_r} = (AB-BA)^L=[A,B]^L$$
-            Hence, $\mathfrak{g}$ and $\mathfrak{gl}_n(\mathbb{R})$ are isomorphic as Lie Algebra.
+            Hence, $\mathfrak{gl}_n(\mathbb{R})$ and $\mathfrak{g}$ are isomorphic as Lie Algebra, since $A\mapsto A^L$ preserves Lie Bracket.
         \end{exampleBox}
     }
     
 
    \block{Acknowledgements \& Reference}{
-        I want to thank mentor Arthur Jiang for the effort and insights on the materials and the project, as well associative UCSB Math DRP for this opportunity. 
+        \vspace*{-1em}
+        I want to thank mentor Arthur Jiang for the effort and insights on the materials and the project, as well as UCSB Math DRP for this opportunity. 
 
-        \textbf{Reference:}
-        John M. Lee, Introduction to Smooth Manifolds, 2nd Edition
+        \hfil
+
+        \textrm{\textbf{Reference:} Lee, J.M. \textit{Introduction to Smooth Manifolds}; 2nd ed.; Springer: New York, 2012; 9781441999825}
     }
 \end{columns}
 \end{document}
