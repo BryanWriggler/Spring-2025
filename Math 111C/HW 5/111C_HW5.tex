@@ -54,7 +54,7 @@ So, our assumption is false, $|F|=p^n$ for some $n\in\mathbb{N}$.
 
 \break
 
-\section*{2 (not done)}
+\section*{2 (insert commutative diagram)}
 \begin{myBox}[]{}
     \begin{question}
         Show that $\mathbb{F}_2[x]/(x^3+x+1)\cong \mathbb{F}_2[y]/(y^3+y^2+1)$ and find an explicit isomorphism.
@@ -75,7 +75,25 @@ Hence, $\phi_2^{-1}\circ \phi_1:K_1\rightarrow K_2$ is an isomorphism, showing t
 
 \hfil
 
+\textbf{Construction of Isomorphism:}
 
+Now, consider the element $(y+1)\in \mathbb{F}_2[y]$, it satisfies the following:
+$$(y+1)^3+(y+1)+1 = (y+1)(y+1)^2+(y+1)+1 = (y+1)(y^2+1^2)+(y+1)\cdot 1+1$$
+$$ = (y+1)(y^2+1+1)+1 = (y+1)y^2 + 1 = y^3+y^2+1$$
+So, this implies that $(\overline{y+1})^3+\overline{y+1}+1 = \overline{y^3+y^2+1}= 0$ in $K_2$.
+
+Hence, consider the ring isomorphism by $\phi:\mathbb{F}_2[x]\rightarrow\mathbb{F}_2[y]$ by $\phi(x)=(y+1)$, the maximal ideal $(x^3+x+1)\subset \mathbb{F}_2[x]$ has its image $\phi((x^3+x+1)) = ((y+1)^3+(y+1)+1) = (y^3+y^2+1)$, hence if take the projection $\pi_y:\mathbb{F}_2[y]\rightarrow K_2$ by $\pi_y(p(y))=\overline{p(y)}=p(y)\mod\ (y^3+y^2+1)$, the composition $\pi_y\circ\phi:\mathbb{F}_2[x]\rightarrow K_2$ becomes a ring homomorphism where the kernel is valid.
+
+Which, since $\phi(x^3+x+1)=(y+1)^3+(y+1)+1 = y^3+y^2+1$, then $\pi_y\circ\phi(x^3+x+1)=\overline{y^3+y^2+1}=0$, hence $x^3+x+1\in \ker(\pi\circ\phi)$, or $(x^3+x+1)\subseteq \ker(\pi\circ\phi)$. Then, by \textbf{Generalized First Isomorphism Theorem}, there exists unique well-defined ring homomorphism $\overline{\phi}:\mathbb{F}_2[x]/(x^3+x+1)\rightarrow K_2$, such that with the projection $\pi_x:\mathbb{F}_2[x]\rightarrow K_1$ by $\pi(p(x))=\overline{p(x)}=p(x)\mod\ (x^3+x+1)$, the following diagram commutes:
+
+\textbf{Insert commutative diagram}
+
+Or, $\overline{\phi}\circ \pi_x = \pi_y\circ \phi$.
+
+Then, since $\pi_y\circ\phi$ is surjective (since both $\pi_y$ and $\phi$ are surjective), while $\pi_x$ is surjective, then in case for $\overline{\phi}\circ \pi_x$ to be surjective, $\overline{\phi}$ is surjective. On the other hand, since $\overline{\phi}:K_1\rightarrow K_2$ with $K_1$ being a field, this map is injective. 
+
+So, $\overline{\phi}$ is a well-defined isomorphism between $K_1$ and $K_2$, with the following formula:
+$$\overline{\phi}(1)=1,\quad \overline{\phi}(\overline{x}) = \overline{y+1}\in K_2$$
 
 \break
 
@@ -111,7 +129,7 @@ Yet, recall that $F$ is assumed to be a perfect field, while $K/F$ is a finite e
 
 \textbf{Pf:}
 
-Suppose $F$ is a perfect field, then all finite extension is a separable extension. Which, for any algebraicextension extension $K/F$, there are two cases to consider:
+Suppose $F$ is a perfect field, then all finite extension is a separable extension. Which, for any algebraic extension $K/F$, there are two cases to consider:
 
 \hfil
 
@@ -144,6 +162,8 @@ This shows that $L/K$ is in fact a separable extension, which proves that $K$ is
 \hfil
 
 \textbf{2. When $[K:F]=\infty$:}
+
+
 
 \break
 
