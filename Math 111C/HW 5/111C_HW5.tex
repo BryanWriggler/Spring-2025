@@ -230,9 +230,11 @@ Before starting, let $\mathbb{F}_p(w) = F_1$, and $F_2 = \mathbb{F}_p(t)$, then 
     $$q(w)\cdot \frac{f_i(w)^p}{g_i(w)^p}t^i = t^i\cdot f_i(w)^p\cdot \prod_{\substack{j=1\\j\neq i}}^{p-1}g_j(w)^p\in F_2[w]$$
     (Note: the $g_i(w)^p$ in $q(w)$ got cancelled out by the denominator).
 
-    Hence, $q(w)\cdot \frac{f_i(w)^p}{g_i(w)^p}t^i$ as a polynomial of $w$, is in fact having degree $l_ip$ for some $l_i\in\mathbb{N}$ (since it is also product of polynomials, each raised to the power of $p$).
+    Now, notice that for any $k(w)=a_nw^n+...+a_1w+a_0\in F_2[w]$, since $F_2[w]$ has characteristic $p$, apply Frobenius Endomorphism, we get:
+    $$(a_nw^n+...+a_1w+a_0)^p = a_n^p(w^p)^n+...a_1^pw^p+a_0^p$$
+    Which, let $l(w)=a_n^pw^n+...+a_1^pw+a_0$, we get that $(k(w))^p = l(w^p)$ for some $l(w)\in F_2[w]$.  Hence, since $q(w)\cdot \frac{f_i(w)^p}{g_i(w)^p}t^i$ is the product of $f_i(w)^p$, along with all $g_j(w)^p$ (where $f_i,g_j\in F_2[w]$), then there exists $l_i(w)\in F_2[w]$, such that $q(w)\cdot \frac{f_i(w)^p}{g_i(w)^p}t^i = l_i(w^p)$.
 
-    Then, $q(w)\cdot \gamma^p$ as the summation of all $q(w)\cdot \frac{f_i(w)^p}{g_i(w)^p}t^i$ (with index $i\in \{0,...,n\}$, since $q(w)\cdot \gamma^p = q(w)\left(\frac{f_{p-1}(w)^p}{g_{p-1}(w)^p}t^{p-1}+...+\frac{f_0(w)^p}{g_0(w)^p}\right)$), then since it's a sum of polynomials of $w$ with degree being multiples of $p$, then the sum $q(w)\cdot \gamma^p$ must have its degree $\deg_w(q(w)\cdot \gamma^p) = lp$ for some $l\in\mathbb{N}$.
+    Then, $q(w)\cdot \gamma^p$ as the summation of all $l_i(w^p)$, then since it's a sum of polynomials of indeterminate $w^p$, then the sum $q(w)\cdot \gamma^p$ must have its degree $\deg_w(q(w)\cdot \gamma^p) = lp$ for some $l\in\mathbb{N}$.
 
     Hence, we must have $lp = 1+kp$ (since they're the degree of the same polynomial). But again, since the left side is divisible by $p$, while the right side is not divisible by $p$, we reach a contradiction.
     Hence, our assumption must be false, $K(\alpha)$ can't contain a root of $x^p-w$. Hence, followed from the prove before this section, $[K(\alpha,\beta):K(\alpha)] = p$,
