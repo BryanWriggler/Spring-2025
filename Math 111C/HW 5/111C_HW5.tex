@@ -219,6 +219,8 @@ Before starting, let $\mathbb{F}_p(w) = F_1$, and $F_2 = \mathbb{F}_p(t)$, then 
     
     And, if showing that $x^p-w\in K(\alpha)[x]$ is irreducible, since it is monic and $\beta$ is assumed to be a root of it, then $\beta$ must have its minimal polynomial over $K(\alpha)$ being $x^p-w$, hence $K(\alpha,\beta) = K(\alpha)(\beta)\cong K(\alpha)[x](^p-w)$, showing that $[K(\alpha,\beta):K(\alpha)]=p$. So, the last goal is to prove $x^p-w$ is irreducible over $K(\alpha)$ (Note: since $K(\alpha)$ is again having characteristic $p$, it suffices to show that $x^p-w$ has no roots in $K(\alpha)$).
 
+    \hfil
+
     Suppose the contrary that there exists $\gamma\in K(\alpha)$ which satisfies $\gamma^p-w = 0$, then since $K(\alpha)\cong K[x]/(x^p-t)$, there exists $a_0,...,a_{p-1}\in K = F_2(w)$, such that the following is true:
     $$\gamma = a_{p-1}\alpha^{p-1}+...+a_0$$
     Which, each $a_i$ can be expressed as $\frac{f_i(w)}{g_i(w)}$ for some $f_i(w), g_i(w)\in F_2[w]$. Then, using Frobenius Endomorphism, we get the following:
@@ -234,7 +236,11 @@ Before starting, let $\mathbb{F}_p(w) = F_1$, and $F_2 = \mathbb{F}_p(t)$, then 
 
     Hence, $q(w)\cdot \frac{f_i(w)^p}{g_i(w)^p}t^i$ as a polynomial of $w$, is in fact having degree $l_ip$ for some $l_i\in\mathbb{N}$ (since it is also product of polynomials, each raised to the power of $p$).
 
-    Then, $q(w)\cdot \gamma^p$ as the summation of all $q(w)\cdot \frac{f_i(w)^p}{g_i(w)^p}t^i$ (with index $i\in \{0,...,n\}$)
+    Then, $q(w)\cdot \gamma^p$ as the summation of all $q(w)\cdot \frac{f_i(w)^p}{g_i(w)^p}t^i$ (with index $i\in \{0,...,n\}$, since $q(w)\cdot \gamma^p = q(w)\left(\frac{f_{p-1}(w)^p}{g_{p-1}(w)^p}t^{p-1}+...+\frac{f_0(w)^p}{g_0(w)^p}\right)$), then since it's a sum of polynomials of $w$ with degree being multiples of $p$, then the sum $q(w)\cdot \gamma^p$ must have its degree $\deg_w(q(w)\cdot \gamma^p) = lp$ for some $l\in\mathbb{N}$.
+
+    Hence, we must have $lp = 1+kp$ (since they're the degree of the same polynomial). But again, since the left side is divisible by $p$, while the right side is not divisible by $p$, we reach a contradiction.
+    Hence, our assumption must be false, $K(\alpha)$ can't contain a root of $x^p-w$. Hence, followed from the prove before this section, $[K(\alpha,\beta):K(\alpha)] = p$,
+    showing that $[L:K]=p^2$.
 
     \hfil
     
@@ -242,7 +248,23 @@ Before starting, let $\mathbb{F}_p(w) = F_1$, and $F_2 = \mathbb{F}_p(t)$, then 
 
     \hfil
 
-    \item[(d)]   
+    \item[(d)] In \textbf{part (b)}, we've proven that $K(\alpha,\beta)=K(\alpha)(\beta) \cong K(\alpha)[x]/(x^p-w)$, hence for all $a\in K(\alpha,\beta)$, there exists $a_0,...,a_{p-1}\in K(\alpha)$, such that the following holds:
+    $$a = a_{p-1}\alpha^{p-1}+...+a_0$$
+    Which, applying Frobenius Endomorphism, we get:
+    $$a^p = (a_{p-1}\alpha^{p-1}+...+a_0)^p = a_{p-1}^p(\alpha^p)^{p-1}+...+a_0^p$$
+    $$ = a_{p-1}^p(t)^{p-1}+...+a_0^p$$
+    Since $t\in K\subset K(\alpha)$, while each $a_i\in K(\alpha)$, then $a^p\in K(\alpha)$.
+
+    Now, for all $\delta\in K(\alpha)$, since $K(\alpha)\cong K[x]/(x^p-t)$, there exists $b_0,...,b_{p-1}\in K$, such that the following holds:
+    $$\delta = b_{p-1}\alpha^{p-1}+...+b_0$$
+    Then again, applying Frobenius Endomorphism, we get:
+    $$\delta^p = (b_{p-1}\alpha^{p-1}+...+b_0)^p = b_{p-1}^p(\alpha^p)^{p-1}+...+b_0^p$$
+    $$ = b_{p-1}^pt^{p-1}+...+b_0^p$$
+    Since each $b_i^p \in K$, while $t\in K$, this shows that $\delta^p \in K$.
+
+    Hence, going back to $a^p = a_{p-1}^p(t)^{p-1}+...+a_0^p$, since each $a_i\in K(\alpha)$, then $a_i^p\in K$, showing that $a^p$ as a finite sum and product of elements in $K$, is in $K$.
+
+    So, $a^p\in K$, showing that all element $a\in K(\alpha,\beta)=L$ satisfies $a^p\in K$.
 \end{itemize}
 
 \end{document}
