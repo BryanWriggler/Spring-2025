@@ -1,0 +1,125 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math 118C HW4}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Rudin Pg. 242 Problem 27:
+
+        Put $f(0,0)=0$, and 
+        $$f(x,y)=\frac{xy(x^2-y^2)}{x^2+y^2}$$
+        if $(x,y)\neq (0,0)$. Prove that 
+        \begin{itemize}
+            \item[(a)] $f,\ D_1f,\ D_2f$ are continuous in $\mathbb{R}^2$.
+            \item[(b)] $D_{12}f$ and $D_{21}f$ exist at every point of $\mathbb{R}^2$, and are continuous except at $(0,0)$.
+            \item[(c)] $D_{12}f(0,0)=1$, and $D_{21}f(0,0)=-1$.  
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        Rudin Pg. 242 Problem 28:
+
+        For $t\geq 0$, put 
+        $$\varphi(x,t)=\begin{cases}
+            x & 0\leq x\leq \sqrt{t}\\
+            -x+2\sqrt{t} & \sqrt{t}\leq x\leq 2\sqrt{t}\\
+            0 & \textmd{otherwise}
+        \end{cases}$$
+        and put $\varphi(x,t)=-\varphi(x,|t|)$ if $t<0$.
+
+        Show that $\varphi$ is continuous on $\mathbb{R}^2$, and $D_2\varphi(x,0)=0$ for all $x$. Define 
+        $$f(t)=\int_{-1}^{1}\varphi(x,t)dx$$
+        Show that $f(t)=t$ if $|t|<\frac{1}{4}$. Hence 
+        $$f'(0)\neq \int_{-1}^{1}D_2\varphi(x,0)dx$$
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Rudin Pg. 243 Problem 30:
+
+        Let $f\in \mathcal{C}^{(m)}(E)$, where $E$ is an open subset of $\mathbb{R}^n$. Fix $a\in E$, and suppose $x\in\mathbb{R}^n$ is so close to $0$ that the points $p(t)=a+tx$ lie in $E$ whenever $0\leq t\leq 1$. Define $h(t)=f(p(t))$ for all $t\in\mathbb{R}$ for which $p(t)\in E$.
+        \begin{itemize}
+            \item[(a)] For $1\leq k\leq m$, show (by repeated application of the chain rule) that 
+            $$h^{(k)}(t)=\sum (D_{l_1...l_k}f)(p(t))x_{l_1}...x_{l_k}$$
+            The sum extends over all order $k$-tuples $(l_1,...,l_k)$ in which each $l_j$ is one of the integers $1,...,n$.
+            \item[(b)] By Taylor's Theorem:
+            $$h(1)=\sum_{k=0}^{m-1}\frac{h^{(k)}(0)}{k!}+\frac{h^{(m)}(t)}{m!}$$
+            for some $t\in (0,1)$. Use this to prove Taylor's Theorem in $n$ variables by showing that the formula 
+            $$f(a+x)=\sum_{k=0}^{m-1}\frac{1}{k!}\left(\sum(D_{l_1...l_k}f)(a)x_{l_1}...x_{l_k}\right)+r(x)$$
+            represents $f(a+x)$ as the sum of its so-called "Taylor polynomial of degree $m-1$" plus a remainder that satisfies 
+            $$\lim_{x\rightarrow 0}\frac{r(x)}{|x|^{m-1}}=0$$
+            Each of the inner sums extends over all ordered $k$-tuples $(l_1,...,l_k)$, as in part (a); as usual, the zero-order derivative of $f$ is simply $f$, so that the constant term of the Taylor polynomial of $f$ at $a$ is $f(a)$.
+            \item[(c)] Exercise $29$ shows that repetition occurs in the Taylor polynomial as written in part (b). For instance, $D_{113}$ occurs three times, as $D_{113}, D_{131}, D_{311}$. The sum of the corresponding three terms can be written in the form 
+            $$3(D_1^2D_3f)(a)x_1^2x_3$$
+            Prove (by calculating how often each derivative occurs) that the Taylor polynomial in (b) can be written in the form 
+            $$\sum\frac{(D_1^{s_1}...D_n^{s_n}f)(a)}{s_1!...s_n!}x_1^{s_1}...x_n^{s_n}$$
+            Here the summation extends over all ordered $n$-tuples $(s_1,...,s_n)$ such that each $s_i$ is a nonnegative integer and $s_1+...+s_n\leq m-1$.
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        Rudin Pg. 288 Problem 2:
+
+        For $i=1,2,3,...$, let $\varphi_i\in \mathcal{C}(\mathbb{R})$ have support in $(2^{-i},2^{1-i})$, such that $\int\varphi_i=1$. Put 
+        $$f(x,y)=\sum_{i=1}^{\infty}(\varphi_i(x)-\varphi_{i+1}(x))\varphi_i(y)$$
+        Then $f$ has compact support in $\mathbb{R}^2$, $f$ is cotinuous except at $(0,0)$, and 
+        $$\int dy\int f(x,y)dx = 0,\quad \textmd{but } \int dx\int f(x,y)dy = 1$$
+        Observe that $f$ is unbounded in every neighborhood of $(0,0)$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\end{document}
