@@ -195,7 +195,32 @@ For all $x\in\mathbb{R}$, if $x=0$, then regardless of the points,
 
 \textbf{Pf:}
 
+Given $a,x\in\mathbb{R}^n$ (where $x=(x_1,...,x_n)$ for fixed $x_1,...,x_n\in\mathbb{R}^n$) and $p(t)=a+tx$ for $t\in [0,1]$, then $p'(t)=x$.
 
+Now, we'll use induction to verify the formula (and we'll use matrix representation of the differentials).
+
+First, for $k=1$, using chain rule, we get the following:
+$$h'(t) = Df(p(t))p'(t) = \begin{pmatrix}
+    D_1f & ... & D_nf
+\end{pmatrix}\bigg|_{p(t)}\begin{pmatrix}
+    x_1\\\vdots\\x_n
+\end{pmatrix} = \sum_{i=1}^{n}D_if(p(t))x_i$$
+Since all the possible $1$-tuple is included in the summation, the $h'(t)$ satisfies the given formula.
+
+Now, suppose for given $1\leq k\leq (m-1)$, $h^{(k)}(t)$ satisfies the following formula:
+$$h^{(k)}(t) = \sum(D_{l_1...l_k}f)(p(t))x_{l_1}...x_{l_k}$$
+Since for each $k$-tuple $(l_1,...,l_k)$ (where each $l_i\in \{1,...,n\}$) has the function $x_{l_1}...x_{l_k}D_{l_1...l_k}f(p(t))$ being a differentiable function from $(0,1)$ to $\mathbb{R}$ (where $D_{l_1...l_k}f(z)$ for $z\in E$ is a differentiable function, since it has only been differentiated $k<m$ times, while $f\in C^{(m)}(E)$). Then, to calculate the $(k+1)^{th}$ derivative, we get:
+$$h^{(k+1)}(t) = \sum\frac{d}{dt}(D_{l_1...l_k}f)(p(t))x_{l_1}...x_{l_k}$$
+
+$$\forall (l_1,...,l_k),\quad \frac{d}{dt}(D_{l_1...l_k}f)(p(t))x_{l_1}...x_{l_k} = x_{l_1}...x_{l_k}D\left(D_{l_1...l_k}f\right)(p(t))p'(t)$$
+$$= x_{l_1}...x_{l_k}\sum_{i=1}^{n}D_i\left(D_{l_1...l_k}f\right)(p(t))x_i = \sum_{i=1}^{n}D_{il_1...l_k}f(p(t))x_ix_{l_1}...x_{l_k}$$
+
+$$\implies h^{(k+1)}(t) = \sum\left(\sum_{i=1}^{n}D_{il_1...l_k}f(p(t))x_ix_{l_1}...x_{l_k}\right)$$
+Which, the first summation indicates all possible $k$-tuple $(l_1,...,l_k)$ for $l_j\in \{1,...,n\}$.
+
+Now, for all $(k+1)$-tuple $(j_0,j_1,...,j_k)$ where each $j_l\in \{1,...,n\}$, choose the unique $k$-tuple $(j_1,...,j_k)$, then $D_{j_0j_1...j_k}f(p(t))x_{j_0}x_{j_1}...x_{j_k}$ appears precisely once in the summation of $h^{(k+1)}(t)$ given above; similarly, since each $k$-tuple $(l_1,...,l_k)$ and $i\in\{1,...,n\}$ corresponds to a unique $(k+1)$-tuple $(i,l_1,...,l_k)$, so the summation in $h^{(k+1)}(t)$ has a 1-to-1 correspondance to all $(k+1)$-tuple. Then, the summation $h^{(k+1)}(t)$ can also be described as:
+$$h^{(k+1)}(t) = \sum D_{l_1...l_kl_{k+1}}f(p(t))x_{l_1}...x_{l_k}x_{l_{k+1}}$$
+Where each $(l_1,...,l_k,l_{k+1})$ is a $(k+1)$-tuple with entries from $\{1,...,n\}$.
 
 \break
 
@@ -213,5 +238,7 @@ For all $x\in\mathbb{R}$, if $x=0$, then regardless of the points,
 \end{myBox}
 
 \textbf{Pf:}
+
+\textbf{The function $f$ is well-defined:}
 
 \end{document}
