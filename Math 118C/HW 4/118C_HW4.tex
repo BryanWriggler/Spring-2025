@@ -51,6 +51,61 @@ colback=blue!10
 
 \textbf{Pf:}
 
+For all $(x,y)\in\mathbb{R}^2$ with $(x,y)\neq (0,0)$, using polar coordinates, $(x,y)=(r\cos(\theta),r\sin(\theta))$ for some $r>0$ and $\theta\in [0,2\pi)$. Which, $|(x,y)|=r$, when consider limit definition, we'll use polar coordinates instead.
+
+\begin{itemize}
+    \item[(a)] \textbf{$f$ is continuous:}
+    
+    For $(x,y)\neq (0,0)$, since $f$ is a defined rational function, it is continuous, so it suffices to show $f$ is continuous at $0$. For all $\epsilon>0$, choose $\delta=\sqrt{\frac{\epsilon}{2}}>0$, then for all $(x,y)$ satisfying $0<|(x,y)|=r<\delta$, we get the following:
+    $$|f(x,y)-f(0,0)|=\left|\frac{(r\cos(\theta))(r\sin(\theta))((r\cos(\theta))^2-(r\sin(\theta))^2)}{(r\cos(\theta))^2+(r\sin(\theta))^2}-0\right|$$
+    $$ = \left|\frac{r^4\sin(\theta)\cos(\theta)(\cos^2(\theta)-\sin^2(\theta))}{r^2}\right| \leq r^2|sin(\theta)|\cdot |\cos(\theta)|\cdot (|\cos(\theta)|^2+|\sin(\theta)|^2)$$
+    $$\leq 2r^2 < 2\left(\sqrt{\frac{\epsilon}{2}}\right)^2 = 2\cdot\frac{\epsilon}{2} = \epsilon$$
+    This shows that $f$ is continuous at $(0,0)$, hence $f$ in continuous in $\mathbb{R}^2$.
+
+    \hfil
+
+    \textbf{$D_1f$ is continuous:}
+
+    First, using basic differentiation rule, for $(x,y)\neq (0,0)$, we get the following:
+    $$D_1f(x,y) = \frac{\partial}{\partial x}\left(\frac{xy(x^2-y^2)}{x^2+y^2}\right) = \frac{(3x^2y-y^3)(x^2+y^2)-xy(x^2-y^2)2x}{(x^2+y^2)^2} = \frac{x^4y+4x^2y^3-y^5}{(x^2+y^2)^2}$$
+    Which, at $(0,0)$, $D_1f$ could be obtained through limit:
+    $$D_1f(0,0)=\lim_{h\rightarrow 0}\frac{f(h,0)-f(0,0)}{h} = \lim_{h\rightarrow 0}\frac{h\cdot 0(h^2-0^2)}{(h^2+0^2)h} = \lim_{h\rightarrow 0} 0 = 0$$
+    Which, $D_1f(x,y)$ for $(x,y)\neq (0,0)$ is again a rational function, which is continuous, so to verify continuity, it suffices to check $(0,0)$. For all $\epsilon>0$, choose $\delta=\frac{\epsilon}{6}>0$, then for all $(x,y)$ satisfying $0<|(x,y)|=r<\delta$, we get the following:
+    $$|D_1f(x,y)-D_1f(0,0)| = \left|\frac{(r\cos(\theta))^4(r\sin(\theta))+4(r\cos(\theta))^2(r\sin(\theta))^3-(r\sin(\theta)^5)}{((r\cos(\theta))^2+(r\sin(\theta))^2)^2}-0\right|$$
+    $$ = \left|\frac{r^5(\cos^4(\theta)\sin(\theta)+4\cos^2(\theta)\sin^3(\theta))-\sin^5(\theta)}{r^4}\right| \leq r(|cos^4(\theta)\sin(\theta)|+4|cos^2(\theta)\sin^3(\theta)|+|\sin^5(\theta)|)$$
+    $$\leq r(1+4+1) < 6\cdot\frac{\epsilon}{6} = \epsilon$$
+    This proves the continuity of $D_1f$ at $(0,0)$, so $D_1f$ is continuous in $\mathbb{R}^2$.
+
+    \hfil
+
+    \textbf{$D_2f$ is continuous:}
+
+    Using differentiation rule, for $(x,y)\neq (0,0)$, we get the following:
+    $$D_2f(x,y)=\frac{\partial}{\partial y}\left(\frac{xy(x^2-y^2)}{x^2+y^2}\right) = \frac{(x^3-3xy^2)(x^2+y^2)-xy(x^2-y^2)2y}{(x^2+y^2)^2} = \frac{x^5-xy^4-4x^3y^2}{(x^2+y^2)^2}$$
+    Again, at $(0,0)$, $D_2f$ could be obtained through limit:
+    $$D_2f(0,0)=\lim_{h\rightarrow 0}\frac{f(0,h)-f(0,0)}{h} = \lim_{h\rightarrow 0}\frac{0\cdot h(0^2-h^2)}{(0^2+h^2)h} = \lim_{h\rightarrow 0}0=0$$
+    Notice that $D_2f(x,y)$ for $(x,y)\neq (0,0)$ is a rational function, which is continuous, so to verify continuity, it suffices to check $(0,0)$. For all $\epsilon>0$, choose $\delta=\frac{\epsilon}{6}>0$, then for all $(x,y)$ satisfying $0<|(x,y)|=r<\delta$, we get the following:
+    $$|D_2f(x,y)-D_2f(0,0)|=\left|\frac{(r\cos(\theta))^5-(r\cos(\theta))(r\sin(\theta))^4-4(r\cos(\theta))^3(r\sin(\theta))^2}{((r\cos(\theta))^2+(r\sin(\theta))^2)^2}-0\right|$$
+    $$= \left|\frac{r^5(\cos^5(\theta)-\cos(\theta)\sin^4(\theta)-4\cos^3(\theta)\sin^2(\theta))}{r^4}\right| \leq r(|\cos^5(\theta)|+|\cos(\theta)\sin^4(\theta)|+4|\cos^3(\theta)\sin^2(\theta)|)$$
+    $$ \leq r(1+1+4) < 6\cdot \frac{\epsilon}{6} = \epsilon$$
+    This proves the continuity of $D_2f$ at $(0,0)$, hence $D_2f$ is continuous in $\mathbb{R}^2$.
+
+    \hfil
+
+    \hfil
+
+    \item[(b)] \textbf{Function $D_{21}f$:}
+    
+    Given that $D_1f(x,y)=\frac{x^4y+4x^2y^3-y^5}{(x^2+y^2)^2}$ for $(x,y)\neq (0,0)$ and $D_1f(0,0)=0$, apply differentiation rule for $(x,y)\neq (0,0)$, we get:
+    $$D_{21}f(x,y) = \frac{\partial}{\partial y}\left(\frac{x^4y+4x^2y^3-y^5}{(x^2+y^2)^2}\right) = \frac{(x^4+12x^2y^2-5y^4)(x^2+y^2)^2-(x^4y+4x^2y^3-y^5)2(x^2+y^2)2y}{(x^2+y^2)^4}$$
+    Which, $D_{21}f(x,y)$ is continuous for $(x,y)\neq (0,0)$ (since it's a rational function).
+
+    Now, to get $D_{21}f(0,0)$, we'll use limit definition:
+    $$D_{21}f(0,0)=\lim_{h\rightarrow 0}\frac{D_1f(0,h)-D_1f(0,0)}{h} = \lim_{h\rightarrow 0}\frac{0^4\cdot h + 4\cdot 0^2\cdot h^3-h^5}{(0^2+h^2)^2 h} = \lim_{h\rightarrow 0}-\frac{h^5}{h^5}=-1$$
+    Hence, $D_{21}f$ exists on the whole $\mathbb{R}^2$, and is continuous at all $(x,y)\neq (0,0)$.
+    \item[(c)]  
+\end{itemize}
+
 \break
 
 \section*{2}
