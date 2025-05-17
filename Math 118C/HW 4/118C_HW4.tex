@@ -157,6 +157,10 @@ For all $(x,y)\in\mathbb{R}^2$ with $(x,y)\neq (0,0)$, using polar coordinates, 
 
 \textbf{Continuity of $\varphi$:}
 
+First, for the open half plane $x<0$, since $\varphi(x,t)=0$, then $\varphi$ is continuous.
+
+
+
 \hfil
 
 \textbf{$D_2\varphi$ when $t=0$:}
@@ -169,7 +173,19 @@ So, regardless of $x\in\mathbb{R}$, we have $D_2\varphi(x,0)=0$.
 
 \hfil
 
+\textbf{Function $f(t)$:}
 
+Given $f(t)=\int_{-1}^{1}\varphi(x,t)dt$, when $|t|<\frac{1}{4}$, there are several cases to consider:
+\begin{itemize}
+    \item when $t\geq 0$, then $0\leq \sqrt{t}<\sqrt{\frac{1}{4}}=\frac{1}{2}$, while $0\leq 2\sqrt{t}<1$. Hence, the integral expression can be broken down as the following pieces:
+    $$\int_{-1}^{1}\varphi(x,t)dx=\int_{-1}^{0}0 dx + \int_{0}^{\sqrt{t}}x dx + \int_{\sqrt{t}}^{2\sqrt{t}}(-x+2\sqrt{t})dx + \int_{2\sqrt{t}}^{1}0 dx$$
+    $$ = \frac{1}{2}x^2\bigg|_{0}^{\sqrt{t}}+\left(-\frac{1}{2}x^2+2\sqrt{t}x\right)\bigg|_{\sqrt{t}}^{2\sqrt{t}} = \frac{1}{2}t + ((4t-2t)-(2t-\frac{1}{2}t)) = t$$
+    \item when $t<0$ (where $t=-|t|$), since $\varphi(x,t)=-\varphi(x,|t|)$ with $|t|>0$, then inheriting from the above expression, we get:
+    $$\int_{-1}^{1}\varphi(x,t)dx = -\int_{-1}^{1}\varphi(x,|t|)dx = -|t| = t$$
+\end{itemize}
+Hence, for $|t|<\frac{1}{4}$, we can deduce that $f(t) = t$, which $f'(t)=1$. So, the following inequality is true:
+$$f'(0) = 1 \neq 0 = \int_{-1}^{1}0dx = \int_{-1}^{1}D_2\varphi(x,0)dx$$
+This shows that differentiation under integral sign fails under certain situation.
 
 \break
 
