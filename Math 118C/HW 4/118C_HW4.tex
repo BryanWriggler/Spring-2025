@@ -157,9 +157,18 @@ For all $(x,y)\in\mathbb{R}^2$ with $(x,y)\neq (0,0)$, using polar coordinates, 
 
 \textbf{Continuity of $\varphi$:}
 
-First, for the open half plane $x<0$, since $\varphi(x,t)=0$, then $\varphi$ is continuous.
+First, in the open half plane $x<0$, since $\varphi(x,t)=0$, then $\varphi$ is continuous.
 
+Similarly, in the open region where all $(x,t)$ satisfies $x>2\sqrt{|t|}$, since again $\varphi(x,t)=0$ by the restriction, then $\varphi$ is again continuous.
 
+Then, for the open region where all $(x,t)$ satisfies $0<x<\sqrt{|t|}$, since the function $\varphi$ is described by $x$ for $t>0$, and $-x$ for $t<0$, then the addition $\varphi$ is also continuous within this region.
+
+Also, for the open region where all $(x,t)$ satisfies $\sqrt{|t|}<x<2\sqrt{|t|}$, since the function $\varphi$ is described by $-x+2\sqrt{|t|}$ for $t>0$, while described by $-(-x+2\sqrt{|t|})$ when $t<0$, so since both $x,\sqrt{|t|}$ are continuous functions, $\varphi$ as their linear combination is again continuous within this region.
+
+Hence, the only regions left to check, is the lines where $(x,t)$ satisfies $x=0$, $x=\sqrt{|t|}$, or $x=2\sqrt{|t|}$. (Note: Since both $x$ and $\sqrt{|t|}$ are continuous functions, then for any given $(x_0,t_0)$, for all $\epsilon>0$, there exists $\delta>0$, such that $|x-x_0|<\delta \implies |x-x_0|<\frac{\epsilon}{2}$, and $|t-t_0|<\delta\implies |\sqrt{|t|}-\sqrt{|t_0|}|<\frac{\epsilon}{2}$). 
+\begin{itemize}
+    \item For the line $x=0$, we have $\varphi(0,t)=0$. 
+\end{itemize}
 
 \hfil
 
