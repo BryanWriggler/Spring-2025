@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math CS 122B HW7}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        The functional equation of the $\zeta$-function can also be written in the following form:
+        $$\zeta(1-s)=2(2\pi)^{-s}\Gamma(s)\cos\left(\frac{\pi s}{2}\right)\zeta(s)$$
+        Deduce from this: In the half-plane $\sigma\leq 0$, the function $\zeta(s)$ has exactly the zeros $s=-2k,\ k\in\mathbb{N}$. All other zeros of the $\zeta$-function are located in the vertical strip $0<\textmd{Re} s<1$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+First, recall that for the half plane $\sigma>1$, the following inequality is given:
+$$\left|\frac{\zeta(\sigma+it)}{\sigma-1}\right|^4|\zeta(\sigma+2it)|[\zeta(\sigma)(\sigma-1)]^3\geq (\sigma-1)^{-1}$$
+Since for $\sigma>1$, the expressiong $(\sigma-1)^{-1}>0$, this enforces all $s = \sigma+it$ in the half plane to have $\zeta(s)\neq 0$ (or else the left side of the inequality is $0$, which violates the inequality). Similarly, this inequality can be extended onto the line $\textmd{Re}(s)=1$, where $\zeta(s)$ has no zeros on this line also. So, for $\sigma\geq 1$, $\zeta(s)$ has no zero.
+
+\hfil
+
+Now, in the half plane $\sigma\leq 0$, for all $s'\neq 0$, since it can be written as $s'=1-s$, where $s=1-s'$ has $\textmd{Re}(s)=1-\textmd{Re}(s') \geq 1$ (and since $s'\neq 0$, then $s\neq 1$). So, $\zeta(s)$ after the continuation past $\textmd{Re}(s)=1$, has $\zeta(s)$ being well-defined.
+
+Then, by the functional equation, we get the following:
+$$\zeta(s')=\zeta(1-s)=2(2\pi)^{-s}\Gamma(s)\cos\left(\frac{\pi s}{2}\right)\zeta(s)$$
+Since $\textmd{Re}(s)\geq 1$ with $s\neq 1$, then $\zeta(s)\neq 0$ based on what is mentioned during the start; also, $\Gamma(s)\neq 0$ for all $s\in \mathbb{C}\setminus \{0,-1,-2,...\}$, while $2(2\pi)^{-s}\neq 0$ for all $s\in\mathbb{C}$. Hence, in case for $\zeta(1-s)=0$, we must have $\cos(\frac{\pi s}{2})=0$, which enforces $\frac{\pi s}{2} = k\pi + \frac{\pi}{2}$ for some $k\in\mathbb{Z}$, or $s = 2k+1$ fo some $k\in\mathbb{Z}$. Now, under this assumption, since $\textmd{Re}(s)\geq 1$ while $s\neq 1$, then $k\geq 1$. So, when transfering back to $s'=1-s$, we get $s' = 1-(2k+1)=-2k$ for integer $k\geq 1$.
+
+Hence, for $\textmd{Re}(s')\leq 0$, for $\zeta(s')=0$, then $s' = -2k$ for some $k\in\mathbb{N}$ (this is an iff since at all these points, $\cos(\frac{\pi s}{2})=0$, which $\zeta(s')=\zeta(1-s)=0$).
+
+\hfil
+
+Finally, for $s'=0$ (where if $s'=1-s$, $s=1$). Recall that $\zeta(s)$ has a simple pole at $s=1$, while $\cos(\frac{\pi s}{2})$ has a simple zero at $s=1$ (where the input is $\frac{\pi}{2}$, where $\cos$ is $0$). Hence, $\cos(\frac{\pi s}{2}) = (s-1)h(z)$ for some analytic function $h$ where $h(1)\neq 0$. Also, we know $\lim_{s\rightarrow 1}(s-1)\zeta(s) = 1$ (has been given in the textbook). Then, we get the following:
+$$\lim_{s\rightarrow 1}\zeta(1-s) = \lim_{s\rightarrow 1}2(2\pi)^{-s}\Gamma(s)h(s)(s-1)\zeta(s) = 2(2\pi)^{-1}\Gamma(1)h(1)\cdot \lim_{s\rightarrow 1}(s-1)\zeta(s) = 2(2\pi)^{-1}\Gamma(1)h(1)\neq 0$$
+Hence, we can deduce that at $s=1$ (where $s'=1-s=0$), $\zeta(s')$ has a removable singularity that has limit not being $0$, henc $\zeta(s')$ as an extension has $\zeta(0)\neq 0$.
+
+\hfil
+
+The above casees proves that when $\sigma\geq 1$ or $\sigma\leq 0$, $\zeta(s)=0$ iff $s=-2k$ for some $k\in\mathbb{N}$, where for any other input $\zeta$ is nonzero.
+
+Hence, if there are any other zeros, it must exist in the vertical strip $0<\textmd{Re}(s)<1$.
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        The following special case of the Hecke Theorem was already known to B. Riemann (1859):
+        $$\xi(s):=\pi ^{-s/2}\Game\left(\frac{s}{2}\right)\zeta(s)=\sum_{n=1}^{\infty}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}$$
+        $$=\frac{1}{2}\int_{1}^{\infty}(\mathcal{\theta}(it)-1)(t^{s/2}+t^{(1-s)/2})\frac{dt}{t}-\frac{1}{s}-\frac{1}{1-s}$$
+        Deduce directly this special case, and use it to prove the meromorphic continuation and the functional equation.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\end{document}
