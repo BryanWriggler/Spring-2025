@@ -165,10 +165,41 @@ Then, for the open region where all $(x,t)$ satisfies $0<x<\sqrt{|t|}$, since th
 
 Also, for the open region where all $(x,t)$ satisfies $\sqrt{|t|}<x<2\sqrt{|t|}$, since the function $\varphi$ is described by $-x+2\sqrt{|t|}$ for $t>0$, while described by $-(-x+2\sqrt{|t|})$ when $t<0$, so since both $x,\sqrt{|t|}$ are continuous functions, $\varphi$ as their linear combination is again continuous within this region.
 
-Hence, the only regions left to check, is the lines where $(x,t)$ satisfies $x=0$, $x=\sqrt{|t|}$, or $x=2\sqrt{|t|}$. (Note: Since both $x$ and $\sqrt{|t|}$ are continuous functions, then for any given $(x_0,t_0)$, for all $\epsilon>0$, there exists $\delta>0$, such that $|x-x_0|<\delta \implies |x-x_0|<\frac{\epsilon}{2}$, and $|t-t_0|<\delta\implies |\sqrt{|t|}-\sqrt{|t_0|}|<\frac{\epsilon}{2}$). 
+Hence, the only regions left to check, is the lines where $(x,t)$ satisfies $x=0$, $x=\sqrt{|t|}$, or $x=2\sqrt{|t|}$. (Note: Since both $x$ and $2\sqrt{|t|}$ are continuous functions, then for any given $(x_0,t_0)$, for all $\epsilon>0$, there exists $\delta>0$, such that $|x-x_0|<\delta \implies |x-x_0|<\frac{\epsilon}{2}$, and $|t-t_0|<\delta\implies |2\sqrt{|t|}-2\sqrt{|t_0|}|<\frac{\epsilon}{2}$). (Note 2: below when $\pm$ appears, it considers the case where $t$ could be positive or negative). (Note 3: below we'll directly assume the choice of $\delta$ relates to $\epsilon>0$).
 \begin{itemize}
-    \item For the line $x=0$, we have $\varphi(0,t)=0$. 
+    \item For the line $x=0$, we have $\varphi(0,t)=0$. Which, for any $(0,t_0)$:
+    
+    If $t_0=0$, for all $(x,t)$ with $|(x,t)-(0,0)|<\delta$, since $|x-0|,|t-0|<\delta$, we get the following three cases:
+    $$\varphi(x,t)=\pm x,\quad |\varphi(x,t)-\varphi(0,0)| = |x-0| < \frac{\epsilon}{2}<\epsilon$$
+    $$\varphi(x,t)=\pm(-x+2\sqrt{|t|}),\quad |\varphi(x,t)-\varphi(0,0)| = |-x+2\sqrt{|t|}| \leq |x| + |2\sqrt{|t|}| < \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$$
+    $$\varphi(x,t)=0,\quad |\varphi(x,t)-\varphi(0,0)| = |0-0| < \epsilon$$
+
+    For $t_0\neq 0$ instead, we can add an extra condition, not only $|(x,t)-(0,t_0)|<\delta$, but shrink $\delta$ so that $|x|<\sqrt{|t|}$ for all point in the region. Hence, we no longer need to consider the second case of the function, which left with the following two cases:
+    $$\varphi(x,t)=\pm x,\quad |\varphi(x,t)-\varphi(0,t_0)| = |x-0| < \frac{\epsilon}{2}<\epsilon$$
+    $$\varphi(x,t)=0,\quad |\varphi(x,t)-\varphi(0,t_0)|=|0|<\epsilon$$
+    This shows that $\varphi$ is continuous at all $(0,t_0)$.
+
+    \item For the line $x=\sqrt{|t|}$ (assume $(x,t)\neq (0,0)$, which has checked before). Then, for all $(x_0,t_0)$ on this line, since $x_0=\sqrt{|t_0|}$, then $\varphi(x_0,t_0)=\pm x_0$. Then, choose $\delta>0$, such that for all $(x,t)$ satisfying $|(x,t)-(x_0,t_0)| <\delta$, $0<x<2\sqrt{|t|}$, and $t$ has the same sign with $t_0$. Then, we don't need to consider the case where $\varphi(x,t)=0$, and $\varphi(x,t)$ and $\varphi(x_0,t_0)$ are following the same sign (since assuming $t,t_0$ have the same sign). So, we get the following two cases:
+    $$\varphi(x,t)=\pm x,\quad |\varphi(x,t)-\varphi(x_0,t_0)| = |\pm x - \pm x_0| = |x-x_0| < \frac{\epsilon}{2}<\epsilon$$
+
+    $$\varphi(x,t)=\pm(-x+2\sqrt{t}),\quad \textmd{since } x = x_0+\delta',\ |\delta'-0|<\delta,\ |\delta'-0| < \frac{\epsilon}{2}$$
+    $$\implies |\varphi(x,t)-\varphi(x_0,t_0)| = |\pm(-(x_0+\delta')+2\sqrt{|t|})-\pm x_0| = |2\sqrt{|t|} - 2x_0-\delta'| \leq |2\sqrt{|t|}-2\sqrt{|t_0|}|+|\delta'|$$
+    $$< \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$$
+    (Note: the second case has$x_0=\sqrt{|t_0|}$, and $|2\sqrt{|t|}-2\sqrt{|t_0|}|<\frac{\epsilon}{2}$ since assuming $|t-t_0|<\delta$).
+    
+    This proves continuity on the line $x=\sqrt{|t|}$.
+
+    \item For the line $x=2\sqrt{|t|}$, for all $(x_0,t_0)$ on the line (again, assume $(x_0,t_0)\neq (0,0)$), since $x_0=2\sqrt{|t_0|}$, then $\varphi(x_0,t_0)=\pm (-x_0+2\sqrt{|t_0|}) = \pm(-2\sqrt{|t_0|}+2\sqrt{|t_0|}) = 0$. Which, choose $\delta>0$, such that not only satisfy the relationship with $\epsilon$, but also for any $(x,t)$ with $|(x,t)-(x_0,t_0)|$, we have $x>\sqrt{|t|}$. This avoids the case where $\varphi(x,t)=x$. Then, we get the following two cases:
+    $$\varphi(x,t)=\pm(-x+2\sqrt{|t|}),\quad \textmd{since } x=x_0+\delta',\quad |\delta'-0|<\delta,\ |\delta'-0|<\frac{\epsilon}{2}$$
+    $$\implies |\varphi(x,t)-\varphi(x_0,t_0)| = |-x+2\sqrt{|t|}| = |-(x_0+\delta')+2\sqrt{|t|}|\leq |2\sqrt{|t|}-2\sqrt{|t_0|}|+|\delta'|$$
+    $$< \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$$
+
+    $$\varphi(x,t)=0,\quad |\varphi(x,t)-\varphi(x_0,t_0)| = 0<\epsilon$$
+    (Note: the first case has $x_0=2\sqrt{|t_0|}$, while $|2\sqrt{|t|}-2\sqrt{|t_0|}|<\frac{\epsilon}{2}$ since $|t-t_0|<\delta$).
+
+    This proves continuity on the line $x=2\sqrt{|t|}$.
 \end{itemize}
+The above situation covers the all points in $\mathbb{R}^2$, hence $\varphi$ is continuous on $\mathbb{R}^2$.
 
 \hfil
 
