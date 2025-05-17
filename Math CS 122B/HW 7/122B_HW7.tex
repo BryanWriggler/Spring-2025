@@ -72,16 +72,80 @@ Hence, if there are any other zeros, it must exist in the vertical strip $0<\tex
 
 \break
 
-\section*{2}
+\section*{2 (continuation \& functional not done)}
 \begin{myBox}[]{}
     \begin{question}
         The following special case of the Hecke Theorem was already known to B. Riemann (1859):
-        $$\xi(s):=\pi ^{-s/2}\Game\left(\frac{s}{2}\right)\zeta(s)=\sum_{n=1}^{\infty}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}$$
-        $$=\frac{1}{2}\int_{1}^{\infty}(\mathcal{\theta}(it)-1)(t^{s/2}+t^{(1-s)/2})\frac{dt}{t}-\frac{1}{s}-\frac{1}{1-s}$$
+        $$\xi(s):=\pi ^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)=\sum_{n=1}^{\infty}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}$$
+        $$=\frac{1}{2}\int_{1}^{\infty}(\vartheta(it)-1)(t^{s/2}+t^{(1-s)/2})\frac{dt}{t}-\frac{1}{s}-\frac{1}{1-s}$$
         Deduce directly this special case, and use it to prove the meromorphic continuation and the functional equation.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+For this problem, first assume $\textmd{Re}(s)>1$ (where $\zeta(s)$ is defined with the original series form). We'll break down into two different equations:
+
+\hfil
+
+\textbf{Equation 1:}
+
+We'll first prove the following:
+$$\pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)=\sum_{n=1}^{\infty}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}$$
+For each $n\in\mathbb{N}$, the integral within the right hand side summation, after doing the substitution $u = \pi n^2t$ (where $du=\pi n^2dt$), we get the following:
+$$\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} = \int_{0}^{\infty}e^{-u}\left(\frac{u}{\pi n^2}\right)^{s/2}\frac{du/(\pi n^2)}{u/(\pi n^2)} = (\pi n^2)^{-s/2}\int_{0}^{\infty}e^{-u}u^{s/2}\frac{du}{u}$$
+$$ = \pi^{-s/2}n^{-s}\int_{0}^{\infty}e^{-u}u^{s/2-1}du = \pi^{-s/2}n^{-s}\Gamma\left(\frac{s}{2}\right)$$
+Hence, for the series, since $\zeta(s)=\sum_{n=1}^{\infty}n^{-s}$ converges normally within $\textmd{Re}(s)>1$, we get the following:
+$$\sum_{n=1}^{\infty}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} = \sum_{n=1}^{\infty}\pi^{-s/2}n^{-s}\Gamma\left(\frac{s}{2}\right) = \pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\sum_{n=1}^{\infty}n^{-s} = \pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)$$
+So, the first equatity holds.
+
+\hfil
+
+\textbf{Equation 2:}
+
+Our second goal is to prove the following:
+$$\sum_{n=1}^{\infty}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}=\frac{1}{2}\int_{1}^{\infty}(\vartheta(it)-1)(t^{s/2}+t^{(1-s)/2})\frac{dt}{t}-\frac{1}{s}-\frac{1}{1-s}$$
+
+Since the summation is absolutely convergent for $\textmd{Re}(s)>1$ (based on how $\xi(s)$ is defined), then swapping the order of summation causes no issue. Hence, since for all $n\in\mathbb{N}$, since $n^2=(-n)^2$, the infinite summation can also be decomposed as:
+$$\sum_{n=1}^{\infty}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} = \frac{1}{2}\sum_{n=1}^{\infty}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}+\frac{1}{2}\sum_{n=-\infty}^{-1}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}$$
+$$= \frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} =\frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{1}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}+\frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{0}^{1}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}$$
+For the first summation, recall that the Theta Series is defined as $\vartheta:\mathbb{H}\rightarrow\mathbb{C},\ \vartheta(\tau) = \sum_{n=-\infty}^{\infty}e^{i\pi n^2\tau}$.
+Since for $n=0$, $e^{i\pi n^2\tau} = e^0=1$, then we get the following:
+$$\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}e^{i\pi n^2\tau} = \vartheta(\tau)-1$$
+If consider $\tau=it$ for $t\in(0,\infty)$, we get the following:
+$$\vartheta(it)-1 = \sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}e^{i\pi n^2\cdot it} = \sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}e^{-\pi n^2t}$$
+So, for the first summation in the equation, since $\vartheta$ is a normally convergent series of function, the summation and integral can change the order of operation. Hence:
+$$\frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{1}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} = \frac{1}{2}\int_{1}^{\infty}\left(\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}e^{-\pi n^2t}\right)t^{s/2}\frac{dt}{t} = \frac{1}{2}\int_{1}^{\infty}(\vartheta(it)-1)t^{s/2}\frac{dt}{t}$$
+Now, to work on the second summation, for all $n\in\mathbb{Z}$ with $n\neq 0$, with the substitution $u=\frac{1}{t}$, $du=-\frac{1}{t^2}dt$ (or $\frac{dt}{t}=-tdu = -\frac{du}{u}$), we get the following integral representation:
+$$\int_{0}^{1}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} = -\int_{\infty}^{1}e^{-\pi n^2\cdot 1/u}u^{-s/2}\frac{du}{u} = \int_{1}^{\infty}e^{-\pi n^2\cdot 1/u}u^{-s/2}\frac{du}{u}$$
+Which, based on the above change of variable and the property of Theta Series, the second summation in the equation can be rewrite as:
+$$\frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{0}^{1}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} = \frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{1}^{\infty}e^{-\pi n^2\cdot 1/u}u^{-s/2}\frac{du}{u} = \frac{1}{2}\int_{1}^{\infty}\left(\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}e^{-\pi n^2\cdot 1/u}\right)u^{-s/2}\frac{du}{u}$$
+$$ = \frac{1}{2}\int_{1}^{\infty}\left(\vartheta\left(\frac{i}{u}\right)-1\right)u^{-s/2}\frac{du}{u}$$
+Which, there is a property of Theta Series given below:
+$$\vartheta\left(-\frac{1}{z}\right)=\sqrt{\frac{z}{i}}\vartheta(z)$$
+Hence, for $u\in(0,\infty)$, let $z=iu$, we get the following:
+$$\vartheta\left(\frac{i}{u}\right)=\vartheta\left(-\frac{1}{iu}\right) = \sqrt{\frac{iu}{i}}\vartheta(iu) = u^{1/2}\vartheta(iu)$$
+So, the summation can be modified as follow:
+$$\frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{0}^{1}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} = \frac{1}{2}\int_{1}^{\infty}\left(u^{1/2}\vartheta(iu)-1\right)u^{-s/2}\frac{du}{u}$$
+$$ = \frac{1}{2}\int_{1}^{\infty}(\vartheta(iu)-1)u^{1/2}u^{-s/2}\frac{du}{u} + \frac{1}{2}\int_{1}^{\infty}u^{1/2}u^{-s/2}\frac{du}{u}-\frac{1}{2}\int_{1}^{\infty}u^{-s/2}\frac{du}{u}$$
+For the integrals at the middle and the right, since the power of $u$ is given by $\frac{1-s}{2}-1$ and $\frac{-s}{2}-1$, then because $\textmd{Re}(s)>1$, the two powers of $u$ both have the real parts being less than $-1$. Hence, the integral absolutely converges, and using power rule, we yield:
+$$\frac{1}{2}\int_{1}^{\infty}u^{1/2}u^{-s/2}\frac{du}{u} = \frac{1}{2}\int_{1}^{\infty}u^{\frac{1-s}{2}-1}du = \frac{1}{2}\cdot\frac{2}{1-s}u^{\frac{1-s}{2}}\bigg|_{1}^{\infty} = -\frac{1}{1-s}$$
+$$\frac{1}{2}\int_{1}^{\infty}u^{-s/2}\frac{du}{u}=\frac{1}{2}\int_{1}^{\infty}u^{-s/2-1}du = -\frac{1}{2}\cdot\frac{2}{s}u^{-s/2}\bigg|_{1}^{\infty} = \frac{1}{s}u^{-s/2}\bigg|_{1}^{\infty} = \frac{1}{s}$$
+(Note: since $\textmd{Re}(s)>1$, then $\textmd{Re}(\frac{1-s}{2})<0$ and $\textmd{Re}(-\frac{s}{2})<0$, so $\lim_{u\rightarrow\infty}u^{\frac{1-s}{2}}=0$ and $\lim_{u\rightarrow\infty}u^{-s/2}=0$).
+So, combining the pieces for the second summation, we get:
+$$\frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{0}^{1}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} = \frac{1}{2}\int_{1}^{\infty}(\vartheta(iu)-1)u^{1/2}u^{-s/2}\frac{du}{u} + \frac{1}{2}\int_{1}^{\infty}u^{1/2}u^{-s/2}\frac{du}{u}-\frac{1}{2}\int_{1}^{\infty}u^{-s/2}\frac{du}{u}$$
+$$ = \frac{1}{2}\int_{1}^{\infty}(\vartheta(it)-1)t^{(1-s)/2}\frac{dt}{t}+\left(-\frac{1}{1-s}\right) - \frac{1}{s} = \frac{1}{2}\int_{1}^{\infty}(\vartheta(it)-1)t^{(1-s)/2}\frac{dt}{t} - \frac{1}{s}-\frac{1}{1-s}$$
+Finally, the original equation can be obtained as follow:
+$$\sum_{n=1}^{\infty}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} = \frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{1}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}+\frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{0}^{1}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}$$
+$$ = \left(\frac{1}{2}\int_{1}^{\infty}(\vartheta(it)-1)t^{s/2}\frac{dt}{t}\right)+\left(\frac{1}{2}\int_{1}^{\infty}(\vartheta(it)-1)t^{(1-s)/2}\frac{dt}{t} - \frac{1}{s}-\frac{1}{1-s}\right)$$
+$$ = \frac{1}{2}\int_{1}^{\infty}(\vartheta(it)-1)(t^{s/2}+t^{(1-s)/2})\frac{dt}{t}-\frac{1}{s}-\frac{1}{1-s}$$
+This verifies the second equation. Together with the first and the second equation proven, the function $\xi(s)$ defined in the question for $\textmd{Re}(s)>1$ satisfies the following equation:
+$$\xi(s):=\pi ^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)=\sum_{n=1}^{\infty}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}$$
+$$=\frac{1}{2}\int_{1}^{\infty}(\vartheta(it)-1)(t^{s/2}+t^{(1-s)/2})\frac{dt}{t}-\frac{1}{s}-\frac{1}{1-s}$$
+
+\hfil
+
+\textbf{Meromorphic Continuation:}
+
 
 \end{document}
