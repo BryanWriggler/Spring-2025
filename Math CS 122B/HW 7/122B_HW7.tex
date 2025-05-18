@@ -50,19 +50,17 @@ Since for $\sigma>1$, the expressiong $(\sigma-1)^{-1}>0$, this enforces all $s 
 
 \hfil
 
-Now, in the half plane $\sigma\leq 0$, for all $s'\neq 0$, since it can be written as $s'=1-s$, where $s=1-s'$ has $\textmd{Re}(s)=1-\textmd{Re}(s') \geq 1$ (and since $s'\neq 0$, then $s\neq 1$). So, $\zeta(s)$ after the continuation past $\textmd{Re}(s)=1$, has $\zeta(s)$ being well-defined.
-
-Then, by the functional equation, we get the following:
+Now, in the half plane $\sigma\leq 0$, for all $s'\neq 0$, since it can be written as $s'=1-s$, where $s=1-s'$ has $\textmd{Re}(s)=1-\textmd{Re}(s') \geq 1$ (and since $s'\neq 0$, then $s\neq 1$). Then, by the functional equation, we get the following:
 $$\zeta(s')=\zeta(1-s)=2(2\pi)^{-s}\Gamma(s)\cos\left(\frac{\pi s}{2}\right)\zeta(s)$$
 Since $\textmd{Re}(s)\geq 1$ with $s\neq 1$, then $\zeta(s)\neq 0$ based on what is mentioned during the start; also, $\Gamma(s)\neq 0$ for all $s\in \mathbb{C}\setminus \{0,-1,-2,...\}$, while $2(2\pi)^{-s}\neq 0$ for all $s\in\mathbb{C}$. Hence, in case for $\zeta(1-s)=0$, we must have $\cos(\frac{\pi s}{2})=0$, which enforces $\frac{\pi s}{2} = k\pi + \frac{\pi}{2}$ for some $k\in\mathbb{Z}$, or $s = 2k+1$ fo some $k\in\mathbb{Z}$. Now, under this assumption, since $\textmd{Re}(s)\geq 1$ while $s\neq 1$, then $k\geq 1$. So, when transfering back to $s'=1-s$, we get $s' = 1-(2k+1)=-2k$ for integer $k\geq 1$.
 
-Hence, for $\textmd{Re}(s')\leq 0$, for $\zeta(s')=0$, then $s' = -2k$ for some $k\in\mathbb{N}$ (this is an iff since at all these points, $\cos(\frac{\pi s}{2})=0$, which $\zeta(s')=\zeta(1-s)=0$).
+Hence, for $\textmd{Re}(s')\leq 0$, if $\zeta(s')=0$, then $s' = -2k$ for some $k\in\mathbb{N}$ (this is an iff since at all these points, $s=2-s'$ satisfies $\cos(\frac{\pi s}{2})=0$, which $\zeta(s')=\zeta(1-s)=0$).
 
 \hfil
 
 Finally, for $s'=0$ (where if $s'=1-s$, $s=1$). Recall that $\zeta(s)$ has a simple pole at $s=1$, while $\cos(\frac{\pi s}{2})$ has a simple zero at $s=1$ (where the input is $\frac{\pi}{2}$, where $\cos$ is $0$). Hence, $\cos(\frac{\pi s}{2}) = (s-1)h(z)$ for some analytic function $h$ where $h(1)\neq 0$. Also, we know $\lim_{s\rightarrow 1}(s-1)\zeta(s) = 1$ (has been given in the textbook). Then, we get the following:
 $$\lim_{s\rightarrow 1}\zeta(1-s) = \lim_{s\rightarrow 1}2(2\pi)^{-s}\Gamma(s)h(s)(s-1)\zeta(s) = 2(2\pi)^{-1}\Gamma(1)h(1)\cdot \lim_{s\rightarrow 1}(s-1)\zeta(s) = 2(2\pi)^{-1}\Gamma(1)h(1)\neq 0$$
-Hence, we can deduce that at $s=1$ (where $s'=1-s=0$), $\zeta(s')$ has a removable singularity that has limit not being $0$, henc $\zeta(s')$ as an extension has $\zeta(0)\neq 0$.
+Hence, we can deduce that at $s=1$ (where $s'=1-s=0$), $\zeta(s')$ has a removable singularity that has limit not being $0$, so $\zeta(s')$ as an extension has $\zeta(0)\neq 0$.
 
 \hfil
 
@@ -72,7 +70,7 @@ Hence, if there are any other zeros, it must exist in the vertical strip $0<\tex
 
 \break
 
-\section*{2 (continuation \& functional not done)}
+\section*{2}
 \begin{myBox}[]{}
     \begin{question}
         The following special case of the Hecke Theorem was already known to B. Riemann (1859):
@@ -106,7 +104,7 @@ So, the first equatity holds.
 Our second goal is to prove the following:
 $$\sum_{n=1}^{\infty}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}=\frac{1}{2}\int_{1}^{\infty}(\vartheta(it)-1)(t^{s/2}+t^{(1-s)/2})\frac{dt}{t}-\frac{1}{s}-\frac{1}{1-s}$$
 
-Since the summation is absolutely convergent for $\textmd{Re}(s)>1$ (based on how $\xi(s)$ is defined), then swapping the order of summation causes no issue. Hence, since for all $n\in\mathbb{N}$, since $n^2=(-n)^2$, the infinite summation can also be decomposed as:
+Since the summation is absolutely convergent for $\textmd{Re}(s)>1$ (based on how $\xi(s)$ is defined), then swapping the order of summation causes no issue. Hence, for all $n\in\mathbb{N}$, since $n^2=(-n)^2$, the series can also be decomposed as:
 $$\sum_{n=1}^{\infty}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} = \frac{1}{2}\sum_{n=1}^{\infty}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}+\frac{1}{2}\sum_{n=-\infty}^{-1}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}$$
 $$= \frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{0}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} =\frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{1}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}+\frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{0}^{1}e^{-\pi n^2t}t^{s/2}\frac{dt}{t}$$
 For the first summation, recall that the Theta Series is defined as $\vartheta:\mathbb{H}\rightarrow\mathbb{C},\ \vartheta(\tau) = \sum_{n=-\infty}^{\infty}e^{i\pi n^2\tau}$.
@@ -116,7 +114,7 @@ If consider $\tau=it$ for $t\in(0,\infty)$, we get the following:
 $$\vartheta(it)-1 = \sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}e^{i\pi n^2\cdot it} = \sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}e^{-\pi n^2t}$$
 So, for the first summation in the equation, since $\vartheta$ is a normally convergent series of function, the summation and integral can change the order of operation. Hence:
 $$\frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{1}^{\infty}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} = \frac{1}{2}\int_{1}^{\infty}\left(\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}e^{-\pi n^2t}\right)t^{s/2}\frac{dt}{t} = \frac{1}{2}\int_{1}^{\infty}(\vartheta(it)-1)t^{s/2}\frac{dt}{t}$$
-Now, to work on the second summation, for all $n\in\mathbb{Z}$ with $n\neq 0$, with the substitution $u=\frac{1}{t}$, $du=-\frac{1}{t^2}dt$ (or $\frac{dt}{t}=-tdu = -\frac{du}{u}$), we get the following integral representation:
+Now, to work on the second summation, for all $n\in\mathbb{Z}$ with $n\neq 0$, given the substitution $u=\frac{1}{t}$, $du=-\frac{1}{t^2}dt$ (or $\frac{dt}{t}=-tdu = -\frac{du}{u}$), we get the following integral representation:
 $$\int_{0}^{1}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} = -\int_{\infty}^{1}e^{-\pi n^2\cdot 1/u}u^{-s/2}\frac{du}{u} = \int_{1}^{\infty}e^{-\pi n^2\cdot 1/u}u^{-s/2}\frac{du}{u}$$
 Which, based on the above change of variable and the property of Theta Series, the second summation in the equation can be rewrite as:
 $$\frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{0}^{1}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} = \frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{1}^{\infty}e^{-\pi n^2\cdot 1/u}u^{-s/2}\frac{du}{u} = \frac{1}{2}\int_{1}^{\infty}\left(\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}e^{-\pi n^2\cdot 1/u}\right)u^{-s/2}\frac{du}{u}$$
@@ -130,7 +128,7 @@ $$\frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{0}^{1}e^{-\pi n^2t}t
 $$ = \frac{1}{2}\int_{1}^{\infty}(\vartheta(iu)-1)u^{1/2}u^{-s/2}\frac{du}{u} + \frac{1}{2}\int_{1}^{\infty}u^{1/2}u^{-s/2}\frac{du}{u}-\frac{1}{2}\int_{1}^{\infty}u^{-s/2}\frac{du}{u}$$
 For the integrals at the middle and the right, since the power of $u$ is given by $\frac{1-s}{2}-1$ and $\frac{-s}{2}-1$, then because $\textmd{Re}(s)>1$, the two powers of $u$ both have the real parts being less than $-1$. Hence, the integral absolutely converges, and using power rule, we yield:
 $$\frac{1}{2}\int_{1}^{\infty}u^{1/2}u^{-s/2}\frac{du}{u} = \frac{1}{2}\int_{1}^{\infty}u^{\frac{1-s}{2}-1}du = \frac{1}{2}\cdot\frac{2}{1-s}u^{\frac{1-s}{2}}\bigg|_{1}^{\infty} = -\frac{1}{1-s}$$
-$$\frac{1}{2}\int_{1}^{\infty}u^{-s/2}\frac{du}{u}=\frac{1}{2}\int_{1}^{\infty}u^{-s/2-1}du = -\frac{1}{2}\cdot\frac{2}{s}u^{-s/2}\bigg|_{1}^{\infty} = \frac{1}{s}u^{-s/2}\bigg|_{1}^{\infty} = \frac{1}{s}$$
+$$\frac{1}{2}\int_{1}^{\infty}u^{-s/2}\frac{du}{u}=\frac{1}{2}\int_{1}^{\infty}u^{-s/2-1}du = -\frac{1}{2}\cdot\frac{2}{s}u^{-s/2}\bigg|_{1}^{\infty} = \frac{1}{s}u^{-s/2}\bigg|_{\infty}^{1} = \frac{1}{s}$$
 (Note: since $\textmd{Re}(s)>1$, then $\textmd{Re}(\frac{1-s}{2})<0$ and $\textmd{Re}(-\frac{s}{2})<0$, so $\lim_{u\rightarrow\infty}u^{\frac{1-s}{2}}=0$ and $\lim_{u\rightarrow\infty}u^{-s/2}=0$).
 So, combining the pieces for the second summation, we get:
 $$\frac{1}{2}\sum_{\substack{n\in\mathbb{Z}\\n\neq 0}}\int_{0}^{1}e^{-\pi n^2t}t^{s/2}\frac{dt}{t} = \frac{1}{2}\int_{1}^{\infty}(\vartheta(iu)-1)u^{1/2}u^{-s/2}\frac{du}{u} + \frac{1}{2}\int_{1}^{\infty}u^{1/2}u^{-s/2}\frac{du}{u}-\frac{1}{2}\int_{1}^{\infty}u^{-s/2}\frac{du}{u}$$
@@ -147,7 +145,7 @@ $$=\frac{1}{2}\int_{1}^{\infty}(\vartheta(it)-1)(t^{s/2}+t^{(1-s)/2})\frac{dt}{t
 
 \textbf{Meromorphic Continuation \& Functional equation of $\zeta$:}
 
-The textbook had introduced the meromorphic continuation of $\zeta$ onto the half plane $\textmd{Re}(s)>0$. Now, consider any $s$ satisfying $\frac{1}{2}<\textmd{Re}(s)<1$, then $(1-s)$ satisfies $\textmd{Re}(1-s)=1-\textmd{Re}(s)$, $0<\textmd{Re}(1-s)<\frac{1}{2}$. Since both $s,(1-s)$ are within the doamin of the extended $\zeta$, then if plug in the $\xi$-function defined above, using the integral expression, we get:
+The textbook had introduced the meromorphic continuation of $\zeta$ onto the half plane $\textmd{Re}(s)>0$. Now, consider any $s$ satisfying $\frac{1}{2}<\textmd{Re}(s)<1$, then $(1-s)$ satisfies $\textmd{Re}(1-s)=1-\textmd{Re}(s)$, $0<\textmd{Re}(1-s)<\frac{1}{2}$. Since both $s,(1-s)$ are within the domain of the extended $\zeta$, then if plug in the $\xi$-function defined above, using the integral expression, we get:
 $$\xi(s) = \int_{1}^{\infty}(\vartheta(it)-1)(t^{s/2}+t^{(1-s)/2})\frac{dt}{t}-\frac{1}{s}-\frac{1}{1-s}$$
 
 $$\xi(1-s)\int_{1}^{\infty}(\vartheta(it)-1)(t^{(1-s)/2}+t^{(1-(1-s))/2})\frac{dt}{t}-\frac{1}{1-s}-\frac{1}{1-(1-s)}$$
@@ -159,7 +157,7 @@ Now, recall the Duplication Formula of $\Gamma$-function:
 $$\forall z\in \mathbb{C}\setminus\{0,-1,-2,...\},\quad \Gamma\left(\frac{z}{2}\right)\Gamma\left(\frac{1+z}{2}\right)=\frac{\sqrt{\pi}}{2^{z-1}}\Gamma(z)$$
 Then, take $z=s$ (since $\frac{1}{2}<\textmd{Re}(s)<1$ by assumption now, it is valid), we get:
 $$\Gamma\left(\frac{s}{2}\right)\Gamma\left(\frac{1+s}{2}\right)=\frac{\sqrt{\pi}}{2^{s-1}}\Gamma(s)\implies \Gamma\left(\frac{s}{2}\right)=\frac{\sqrt{\pi }\cdot\Gamma(s)}{2^{s-1}\Gamma\left(\frac{1+s}{2}\right)}$$
-Hence, the expression go $\zeta(1-s)$ becomes:
+Hence, the expression $\zeta(1-s)$ becomes:
 
 $$\zeta(1-s)=\pi ^{1/2-s}\frac{\Gamma\left(\frac{s}{2}\right)}{\Gamma\left(\frac{1-s}{2}\right)}\zeta(s) = \frac{\sqrt{\pi}}{\pi^s\Gamma\left(\frac{1-s}{2}\right)}\cdot\frac{\sqrt{\pi}\cdot \Gamma(s)}{2^{s-1}\Gamma\left(\frac{1+s}{2}\right)}\zeta(s)$$
 $$ = \frac{2\pi \cdot\Gamma(s)}{(2\pi)^{s}}\cdot \frac{1}{\Gamma\left(\frac{1+s}{2}\right)\Gamma\left(1-\left(\frac{1+s}{2}\right)\right)}\zeta(s)$$
