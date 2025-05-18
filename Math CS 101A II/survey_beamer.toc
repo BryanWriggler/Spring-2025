@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Introduction}{4}{0}{1}
+\beamer@sectionintoc {2}{Even Order Regular Magic Squares are Singular - Bruce Mattingly, AMM, 107:9, 777-782}{11}{0}{2}
+\beamer@sectionintoc {3}{Singularity Condition of Odd-Order Regular Magic Square}{15}{0}{3}
+\beamer@sectionintoc {4}{Centrosymmetric and Skew-centrosymmetric Matrices and Regular Magic Squares}{31}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{36}{0}{5}
