@@ -145,7 +145,34 @@ $$=\frac{1}{2}\int_{1}^{\infty}(\vartheta(it)-1)(t^{s/2}+t^{(1-s)/2})\frac{dt}{t
 
 \hfil
 
-\textbf{Meromorphic Continuation:}
+\textbf{Meromorphic Continuation \& Functional equation of $\zeta$:}
 
+The textbook had introduced the meromorphic continuation of $\zeta$ onto the half plane $\textmd{Re}(s)>0$. Now, consider any $s$ satisfying $\frac{1}{2}<\textmd{Re}(s)<1$, then $(1-s)$ satisfies $\textmd{Re}(1-s)=1-\textmd{Re}(s)$, $0<\textmd{Re}(1-s)<\frac{1}{2}$. Since both $s,(1-s)$ are within the doamin of the extended $\zeta$, then if plug in the $\xi$-function defined above, using the integral expression, we get:
+$$\xi(s) = \int_{1}^{\infty}(\vartheta(it)-1)(t^{s/2}+t^{(1-s)/2})\frac{dt}{t}-\frac{1}{s}-\frac{1}{1-s}$$
+
+$$\xi(1-s)\int_{1}^{\infty}(\vartheta(it)-1)(t^{(1-s)/2}+t^{(1-(1-s))/2})\frac{dt}{t}-\frac{1}{1-s}-\frac{1}{1-(1-s)}$$
+$$ = \int_{1}^{\infty}(\vartheta(it)-1)(t^{s/2}+t^{(1-s)/2})\frac{dt}{t}-\frac{1}{s}-\frac{1}{1-s} = \xi(s)$$
+Hence, for $s$ satisfying $\frac{1}{2}<\textmd{Re}(s)<1$, $\xi(1-s)=\xi(s)$, which leads to the following functional equation:
+$$\pi^{-(1-s)/2}\Gamma\left(\frac{1-s}{2}\right)\zeta(1-s)=\xi(1-s)=\xi(s)=\pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)$$
+$$\implies \zeta(1-s) = \pi ^{1/2-s}\frac{\Gamma\left(\frac{s}{2}\right)}{\Gamma\left(\frac{1-s}{2}\right)}\zeta(s)$$
+Now, recall the Duplication Formula of $\Gamma$-function:
+$$\forall z\in \mathbb{C}\setminus\{0,-1,-2,...\},\quad \Gamma\left(\frac{z}{2}\right)\Gamma\left(\frac{1+z}{2}\right)=\frac{\sqrt{\pi}}{2^{z-1}}\Gamma(z)$$
+Then, take $z=s$ (since $\frac{1}{2}<\textmd{Re}(s)<1$ by assumption now, it is valid), we get:
+$$\Gamma\left(\frac{s}{2}\right)\Gamma\left(\frac{1+s}{2}\right)=\frac{\sqrt{\pi}}{2^{s-1}}\Gamma(s)\implies \Gamma\left(\frac{s}{2}\right)=\frac{\sqrt{\pi }\cdot\Gamma(s)}{2^{s-1}\Gamma\left(\frac{1+s}{2}\right)}$$
+Hence, the expression go $\zeta(1-s)$ becomes:
+
+$$\zeta(1-s)=\pi ^{1/2-s}\frac{\Gamma\left(\frac{s}{2}\right)}{\Gamma\left(\frac{1-s}{2}\right)}\zeta(s) = \frac{\sqrt{\pi}}{\pi^s\Gamma\left(\frac{1-s}{2}\right)}\cdot\frac{\sqrt{\pi}\cdot \Gamma(s)}{2^{s-1}\Gamma\left(\frac{1+s}{2}\right)}\zeta(s)$$
+$$ = \frac{2\pi \cdot\Gamma(s)}{(2\pi)^{s}}\cdot \frac{1}{\Gamma\left(\frac{1+s}{2}\right)\Gamma\left(1-\left(\frac{1+s}{2}\right)\right)}\zeta(s)$$
+Which, this expression allows the use of another property of $\Gamma$-function:
+$$\forall z\in \mathbb{C},\quad \frac{1}{\Gamma(z)\Gamma(1-z)}=\frac{\sin(\pi z)}{\pi}$$
+Take $z=\frac{1+s}{2}$, we get:
+$$\frac{1}{\Gamma\left(\frac{1+s}{2}\right)\Gamma\left(1-\left(\frac{1+s}{2}\right)\right)} =\frac{\sin\left(\pi\left(\frac{1+s}{2}\right)\right)}{\pi} = \frac{\sin\left(\frac{\pi s}{2}+\frac{\pi}{2}\right)}{\pi} = \frac{\cos\left(\frac{\pi s}{2}\right)}{\pi}$$
+So, the following functional equation of $\zeta$ (on $\frac{1}{2}<\textmd{Re}(s)<1$) can be deduced:
+$$\zeta(1-s)=\frac{2\pi \cdot\Gamma(s)}{(2\pi)^{s}}\cdot \frac{1}{\Gamma\left(\frac{1+s}{2}\right)\Gamma\left(1-\left(\frac{1+s}{2}\right)\right)}\zeta(s)$$
+$$=\frac{2\pi \cdot\Gamma(s)}{(2\pi)^s}\cdot\frac{\cos\left(\frac{\pi s}{2}\right)}{\pi}\zeta(s) = 2(2\pi)^{-s}\Gamma(s)\cos\left(\frac{\pi s}{2}\right)\zeta(s)$$
+This finishes the proof for the functional equation. Moreover, for all $s'$ with $\textmd{Re}(s')<\frac{1}{2}$, since given $s'=1-s$, or $s=1-s'$, we have $\textmd{Re}(s)=\textmd{Re}(1-s')=1-\textmd{Re}(s') > \frac{1}{2}$, then the following expression is well-defined:
+$$2(2\pi)^{-s}\Gamma(s)\cos\left(\frac{\pi s}{2}\right)\zeta(s)$$
+Hence, the meromorphic continuation of $\zeta$ onto the whole plane can be followed by the functional equation:
+$$\forall s'\in\mathbb{C},\ \textmd{Re}(s')<\frac{1}{2},\ \textmd{let }s'=1-s,\ \textmd{Re}(s)>\frac{1}{2},\quad \textmd{Define } \zeta(1-s):=2(2\pi)^{-s}\Gamma(s)\cos\left(\frac{\pi s}{2}\right)\zeta(s)$$
 
 \end{document}
