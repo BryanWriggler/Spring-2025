@@ -303,6 +303,79 @@ Where each $(l_1,...,l_k,l_{k+1})$ is a $(k+1)$-tuple with entries from $\{1,...
 
 \textbf{Pf:}
 
-\textbf{The function $f$ is well-defined:}
+\textbf{The function $f$ is well-defined, with compact support:}
+
+First, notice that for $x\leq 0$ or $x\geq 1$, since for all $i\in\mathbb{N}$, we have $(2^{-i},2^{1-i})\subseteq (0,1)$, then $x$ is not in the support of $\varphi_i$, hence $\varphi_i(x)=0$. So, for $(x,y)\notin (0,1)\times (0,1)$, since $\varphi_i(x),\varphi_i(y)=0$, then $f(x,y)=0$. 
+
+\hfil
+
+Now, for all $x\in (0,1)$, since $\lim_{i\rightarrow\infty}2^{-i}=0$, then take the smallest $i\in\mathbb{N}$ such that $2^{-i}<x$, then $x\leq 2^{1-i}$. So, if $x\neq 2^{1-i}$. Which, for other $j\neq i$, since $(2^{-j},2^{1-j})\cap (2^{-i},2^{1-i})=\emptyset$, this indicates $x\notin (2^{-j},2^{1-j})$ (containing the support of $\varphi_j$), hence $\varphi_j(x)=0$.
+
+So, for all $(x,y)\in (0,1)\times (0,1)$, since there exists $i,j\in\mathbb{N}$, such that $x\in (2^{-i},2^{1-i})$ and $y\in (2^{-j},2^{1-j})$, then if $k\neq i$, $\varphi_k(x)=0$; and if $k\neq j$, $\varphi_k(y)=0$. So, consider the infinite summation, we get:
+$$f(x,y) = \sum_{k=1}^{\infty}(\varphi_k(x)-\varphi_{k+1}(x))\varphi_k(y) = (\varphi_j(x)-\varphi_{j+1}(x))\varphi_j(y)$$
+(Note: if $k\neq j$, then $\varphi_k(y)=0$, so the other terms are trivial).
+
+Hence, regardles of $(x,y)\in\mathbb{R}^2$, $f(x,y)$ is well-defined. And, since for $(x,y)\notin (0,1)\times (0,1)$, $f(x,y)=0$, this shows that the support of $f$ is contained in $[0,1]\times [0,1]$, which is bounded. Then, because support is chosen to be closed, the support of $f$ is in fact compact.
+
+\hfil
+
+\textbf{Continuity of $f$ except at $(0,0)$:}
+
+For all $(x,y)\neq (0,0)$, there are several cases to consider:
+\begin{itemize}
+    \item If $y<0$ or $y>1$, then since for any $i\in\mathbb{N}$, $y$ is not in the support of $\varphi_i$ (given by $(2^{-i},2^{1-i})$), then $f(x,y)=0$ (since every term in the series include $\varphi_i(y)$ for some $i$), hence $f$ is continuous. (similarly, if $x<0$ or $x>1$, then $\varphi_i(x)=0$ for all $i\in\mathbb{N}$ also, then $f(x,y)=0$, since every term in the summation includes $(\varphi_i(x)-\varphi_{i+1}(x))$ for some $i$). So, for the region where $(x,y)\notin [0,1]\times [0,1]$, $f$ is continuous in this region (and the below cases we'll assume the points are in $[0,1]\times [0,1]$).
+    \item For $0<y<1$, then choose $i,j\in\mathbb{N}\cup\{0\}$, with $i<j$, such that $2^{-j}<y<2^{-i}$. Then, for any $(x_0,y_0)$ within this region, choose an open neighborhood $U$ that's also contained in the region. Since for this neighborhood $2^{-j}<y<2^{-i}$ for all points, there's only finitely many index $k\in\mathbb{N}$ satisfying $\varphi_k(y)\neq 0$ for some $(x,y)\in U$ (based on the formula initially derived), hence, $f$ can be expressed as finite product and summation of $\varphi_k$ with input $x$ or $y$, which $f$ is continuous in this region.
+    \item For any point with $y=1$ (and $x\neq 0$), choose open neighborhood $U$ such that all $(x,y)\in U$ satisfies $y>2^{-1}$. Then, since for all index $i>1$, any $(x,y)\in U$ has $y$ outside the support of $\varphi_i$, then $\varphi_i(y)=0$, forcing $f(x,y)=(\varphi_1(x)-\varphi_2(x))\varphi_1(y)$, hence $f$ is continuous in this region.
+    \item Then, for any point with $y=0$, since $x>0$, choose $j\in\mathbb{N}$ such that $2^{-j}<x$. Then, choose an open neighborhood $U$ such that all $(x',y')\in U$ has $2^{-j}<x'$, then again only finitely many index $i\in\mathbb{N}$ (specifically, with $i\leq j$) has $\varphi_i(x)\neq 0$ for some $(x,y)\in U$. Then, within $U$, $f$ can again be expressed as finite sum and product of $\varphi_k(x)$ and $\varphi_j(y)$, hence $f$ is still continuous in this region.
+\end{itemize}
+
+The above verifies the continuity of $f$ under various cases. Now, to prove that $f$ is discontinuous at $(0,0)$, it suffices to show that $f$ is unbounded in any neighborhood of $(0,0)$. 
+
+For all $i\in\mathbb{N}$, since $\varphi_i$ has support contained in $(2^{-i},2^{1-i})$, then along with the fact that $\varphi_i$ has integral being $1$, we get the following:
+$$\int_{2^{-i}}^{2^{1-i}}\varphi_i(x)dx = 1$$
+Which, if we define the function $\overline{\varphi}_i:[2^{-i},2^{1-i}]\rightarrow \mathbb{R}$ as follow:
+$$\overline{\varphi}_i(t) = \int_{2^{-i}}^{t}\varphi_i(x)dx$$
+Then, since $\varphi_i$ is continuous, $\overline{\varphi}_i$ is differentiable, with $\varphi_i(t)$ being its derivative. Then, with Mean Value Theorem, there exists $t_i\in (2^{-i},2^{1-i})$, such that the following is true:
+$$1-0 = 1 = \int_{2^{-i}}^{2^{1-i}}\varphi_i(x)dx = \overline{\varphi}_i(2^{1-i})-\overline{\varphi}_i(2^{-i}) = \varphi(t_i)(2^{1-i}-2^{-i}) = \varphi_i(t_i)\cdot 2^{-i}$$
+$$\implies \varphi_i(t_i)=2^i$$
+Which, if consider $f(t_i,t_i)$, since only index $i\in\mathbb{N}$ has $t_i$ being in the support of $\varphi_i$, then we get:
+$$f(t_i,t_i) = \sum_{k=1}^{\infty}(\varphi_k(t_i)-\varphi_{k+1}(t_i))\varphi_k(t_i) = (\varphi_i(t_i)-\varphi_{i+1}(t_i))\varphi_i(t_i) = (2^i-0)2^i = 2^{2i}$$
+Which, for all $M>0$ and $r>0$, for the open neighborhood $B_r(0,0)$, choose $i\in\mathbb{N}$ such that $2^{1-i}<\frac{r}{\sqrt{2}}$ and $2^i>M$. Then, the point $(t_i,t_i)$ satisfies:
+$$|(t_i,t_i)| = \sqrt{2t_i^2} < \sqrt{2\cdot (2^{1-i})^2} < \sqrt{2\cdot \left(\frac{r}{\sqrt{2}}\right)^2} = \sqrt{2\cdot \frac{r^2}{2}} = \sqrt{r^2}=r$$
+Hence, $(t_i,t_i)\in B_r(0,0)$. Also, $f(t_i,t_i)= 2^{2i} > 2^i > M$.
+This shows that $f$ is unbounded within any neighborhood of $(0,0)$, which $f$ is not continuous at $(0,0)$.
+
+\hfil
+
+\textbf{Integral of $f$:}
+
+Since $f$ has a support in $[0,1]\times [0,1]$, it suffices to consider the integral over this region. (Also, for all $i\in\mathbb{N}$, since $\varphi_i$ has support $(2^{-i},2^{1-i})\subseteq [0,1]$, then integration along one variable can be taken from $0$ to $1$, and $\int_{0}^{1}\varphi_i(x)dx = 1$ based on assumption).
+
+First, fix $y\in (0,1)$, since in the first section we've proven that $f(x,y)=(\varphi_j(x)-\varphi_{j+1}(x))\varphi_j(y)$ for some $j\in\mathbb{N}$, then:
+$$\int_{0}^{1}f(x,y)dx = \int_{0}^{1}(\varphi_j(x)-\varphi_{j+1}(x))\varphi_j(y)dx =\varphi_j(y)\left(\int_{0}^{1}\varphi_j(x)dx - \int_{0}^{1}\varphi_{j+1}(x)dx\right) = \varphi_j(y)(1-1) = 0$$
+This indicates that $\int f(x,y)dx = 0$. Hence, we get the following:
+$$\int dy\left(\int f(x,y)dx\right) = \int 0 dy = 0$$
+
+\hfil
+
+Else, if fix $x\in (0,1)$, there are two cases:
+\begin{itemize}
+    \item For $x\in (2^{-1},2^{1-1})$, since the only index $i\in\mathbb{N}$ such that $x$ is in $\varphi_i$'s support is $i=1$, then for index $i>2$, $\varphi_i(x)=0$. So, we get:
+    $$f(x,y)=\sum_{i=1}^{\infty}(\varphi_i(x)-\varphi_{i+1}(x))\varphi_i(y) = (\varphi_1(x)-\varphi_2(x))\varphi_1(y) = \varphi_1(x)\varphi_1(y)$$
+    (Note: $\varphi_2(x)=0$ for the fixed $x\in (2^{-1},2^{1-1})$).
+    Which, its integral with respect to $y$ becomes:
+    $$\int_{0}^{1}f(x,y)dy = \int_{0}^{1}\varphi_1(x)\varphi_1(y)dy = \varphi_1(x)$$
+    \item If $x\notin (2^{-1},2^{1-1})$, either $x\notin (2^{-i},2^{1-i})$ for all $i\in\mathbb{N}$ (which $x$ is not in the support of any $\varphi_i$, showing that $f(x,y)=0$, so $\int_{0}^{1}f(x,y)dy = 0$), or $x\in (2^{-i},2^{1-i})$ for some integer $i>1$. Which, for the second case, since $i-1\geq 1$, we get:
+    $$f(x,y)=\sum_{i=1}^{\infty}(\varphi_i(x)-\varphi_{i+1}(x))\varphi_i(y) = (\varphi_{i-1}(x)-\varphi_i(x))\varphi_{i-1}(y) + (\varphi_i(x)-\varphi_{i+1}(x))\varphi_i(y)$$
+    $$ = \varphi_i(x)(\varphi_i(y)-\varphi_{i-1}(y))$$
+    So, its integral with respect to $y$ becomes:
+    $$\int_{0}^{1}f(x,y)dy = \int_{0}^{1}\varphi_i(x)(\varphi_i(y)-\varphi_{i-1}(y))dy = \varphi_i(x)\left(\int_{0}^{1}\varphi_i(y)dy - \int_{0}^{1}\varphi_{i+1}(y)dy\right) = \varphi_i(x)(1-1)=0$$
+\end{itemize}
+So, if consider the integral, we get:
+$$\int dx\left(\int f(x,y)dy\right) = \int_{0}^{1}dx \left(\int f(x,y)dy\right) = \int_{0}^{2^{-1}}dx\left(\int f(x,y)dy\right) + \int_{2^{-1}}^{2^{1-1}}dx\left(\int f(x,y)dy\right)$$
+$$ = \int_{0}^{2^{-1}}0 dx + \int_{2^{-1}}^{2^{1-1}}\varphi_1(x)dx = \int\varphi_1(x)dx = 1$$
+(Note: since $\varphi_1$ has support $(2^{-1},2^{1-1})$, the above integral is valid).
+
+So, this shows that integrating $x$ or $y$ in different order actually causes a difference for this function.
 
 \end{document}
