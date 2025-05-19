@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math 111C HW6}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $E$ be a splitting field of $f(x)\in F[x]$ and $G=\textmd{Aut}(E/F)$. Prove that:
+        \begin{itemize}
+            \item[(a)] If $f(x)$ is irreducible, then $G$ acts transitively on the set of all roots of $f(x)$, i.e. if $\alpha,\beta$ are two roots of $f(x)$ in $E$, there exists $\sigma\in G$ with $\sigma(\alpha)=\beta$.
+            \item[(b)] If $f(x)$ has no repeated roots and $G$ acts transitively on the roots, then $f(x)$ is irreducible. 
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+        In each part, find the degree of the extension $K/F$.
+        \begin{itemize}
+            \item[(a)] Splitting field $K\subseteq\mathbb{C}$ of $f(x)=x^4-4$ over $F=\mathbb{Q}$.
+            \item[(b)] Splitting field $K\subseteq\mathbb{C}$ of $f(x)=x^6-2$ over $F=\mathbb{Q}$.
+            \item[(c)] Splitting field $K$ of $f(x)=x^{10}-2$ over $F=\mathbb{F}_5$.  
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $L$ be the splitting field of $f(x)=x^3+x+1$ over $\mathbb{Q}$ contained in $\mathbb{C}$. Prove that $\textmd{Aut}(L/\mathbb{Q})\cong S_3$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        Calculate the splitting field of $f(x)=x^3+x+1\in\mathbb{F}_2[x]$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{5}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $f(x)\in\mathbb{F}_p[x]$ be an irreducible polynomial of degree $3$. Prove that $f(x)$ is irreducible over $\mathbb{F}_{p^5}$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\end{document}
