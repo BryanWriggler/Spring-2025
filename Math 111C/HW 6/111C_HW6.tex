@@ -33,7 +33,7 @@ colback=blue!10
 \begin{document}
 \maketitle
 
-\section*{1 (not done)}
+\section*{1}
 \begin{myBox}[]{}
     \begin{question}
         Let $E$ be a splitting field of $f(x)\in F[x]$ and $G=\textmd{Aut}(E/F)$. Prove that:
@@ -59,7 +59,22 @@ colback=blue!10
 
     Then, the final step is to claim that $\sigma(E)=E$, or $\sigma\in \textmd{Aut}(E/F)$ after restricting the codomain.
 
+    Since $f(x)\in F[x]$, while $\sigma$ fixes $F$, then after extending the $F$-embedding $\sigma:E\rightarrow\overline{F}$ to a canonical ring homomorphism $\overline{\sigma}:E[x]\rightarrow\overline{F}[x]$ (which $\overline{\sigma}(a)=\sigma(a)$ and $\overline{\sigma}(x)=x$ for all $a\in E$, so this map is injective), then $\overline{\sigma}(f(x)) = f(x)$ (since all of its coefficients are in $F$, while $\sigma$ fixes $F$). So, since $\sigma(E)\cong E$, while $\overline{\sigma}$ preserves $f(x)$, then $\sigma(E)$ is also a splitting field of $f(x)$ under $\overline{F}$. However, since $\overline{F}$ is chosen in a way such that $E\subseteq \overline{F}$, then because a splitting field of a polynomial $f(x)\in F[x]$ is unique when chosen a larger algebraic extension of $F$ such that $f$ splits completely, then $E,\sigma(E)\subseteq \overline{F}$ while both being a splitting field of $f(x)$ implies that $E=\sigma(E)$, hence restricting the codomain of $\sigma$ to the range, we get that $\sigma:E\tilde{\rightarrow} E$, which $\sigma\in \textmd{Aut}(E)$. Finally, since we've proven that $\sigma\bigm|_F = \textmd{Id}_F$, then $\sigma\in \textmd{Aut}(E/F) = G$.
 
+    Hence, because $\sigma\in G$, while $\sigma\bigm|_{F(\alpha)}=\varphi$, and $\varphi(alpha)=\beta$ based on the setup, then $\sigma(\alpha)=\beta$. So, this proves that $G$ acts transitively on the set of all roots of $f(x)$.
+
+    \hfil
+
+    \item[(b)] Suppose $f(x)$ has no repeated roots, while $G$ acts transitively on the roots, then for any two roots of $f(x)$, denote as $\alpha,\beta \in E$, there exists $\sigma\in G=\textmd{Aut}(E/F)$, such that $\sigma(\alpha)=\beta$. Then, since $F(\alpha),F(\beta)\subseteq E$ are finite extensions of $F$, let $\varphi=\sigma\bigm|_{F(\alpha)}$, then we get the following:
+    $$\forall a_0,a_1,...,a_n\in F,\quad \varphi(a_0+a_1\alpha+...+a_n\alpha^n) = \sigma(a_0+a_1\alpha+...+a_n\alpha^n) = a_0+a_1\beta + ... + a_n\beta^n$$
+    This proves that $\varphi(F(\alpha))=F(\beta)$ (since choice of $a_0,a_1,...,a_n\in F$ are arbitrary), so after restricting the codomain, $\varphi:F(\alpha)\tilde{\rightarrow}F(\beta)$ is in fact an isomorphism.
+
+    Now, consider the minimal polynomials $m_{\alpha,F}(x),m_{\beta,F}(x)\in F[x]$: First, since $m_{\alpha,F}(\alpha)=0$, while all of its coefficients are in $F$, then we get:
+    $$\varphi(0)=\varphi(m_{\alpha,F}(\alpha)) = m_{\alpha,F}(\beta) = 0$$
+    So, this implies that $m_{\beta,F}(x)\mid m_{\alpha,F}(x)$ (since $\beta$ is a root of $m_{\alpha,F}(x)$). Then, because both $m_{\alpha,F}(x)$ and $m_{\beta,F}(x)$ are irreducible in $F[x]$, then $m_{\beta,F}(x)\mid m_{\alpha,F}(x)$ implies that $m_{\alpha,F}(x)=k\cdot m_{\beta,F}(x)$, where $k\in (F[x])^\times = F^\times$; but since both polynomials are monic, then $k=1$. So, $m_{\beta,F}(x)=m_{\alpha,F}(x)$. This implies that all roots of $f(x)$ must have the same minimal polynomial. So, WLOG, let $m(x)\in F[x]$ be the minimal polynomial of all roots of $f(x)$ in $E$.
+
+    Finally, since all roots of $f(x)$ has minimal polynomial $m(x)\in F[x]$, then $m(x)\mid f(x)$, so $\deg(m)\leq \deg(f)$; on the other hand, since $E$ is a splitting field of $f$, while $f$ is assumed to have no repeated roots, then let $n=\deg(f)$, it implies that there are $n$ distinct roots of $f$ in $E$.  Then, since they're all having $m(x)$ as the minimal polynomial, they're all roots of $m(x)$, so $m$ has at least $n$ distinct roots, showing that $\deg(m)\geq n = \deg(f)$.
+    So, this enforces $\deg(m)=\deg(f)$. And, because $m(x)\mid f(x)$, then $f(x)=k\cdot m(x)$ for some $k\in F$. Which, since $m(x)\in F[x]$ is irreducible (because it's a minimal polynomial of some elements in $E$), then $f(x)$ as a nonzero constant multiple of $m(x)$ is also irreducible. This finishes the proof.
 \end{itemize}
 
 \break
@@ -185,5 +200,16 @@ Finally, let $K'\subseteq K$ be the splitting field of $f(y)$ under $K$. Then, l
 \end{myBox}
 
 \textbf{Pf:}
+
+Since $|\mathbb{F}_{p^5}| = p^5$, then as a field extension of $\mathbb{F}_p$, we must have $[\mathbb{F}_{p^5}:\mathbb{F}_p]=5$ (Note: Given any finite extension $K/\mathbb{F}_p$, if $[K:\mathbb{F}_p]=k\in \mathbb{N}$, then the number of elements $|K| = p^k$).
+
+Now, given $f(x)\in\mathbb{F}_p[x]$ that is irreducible with degree $3$, we'll prove by contradiction that it is irreducible over $\mathbb{F}_{p^5}$.
+Suppose the contrary that it is reducible over $\mathbb{F}_{p^5}$, then since it is degree $3$, being reducible in $\mathbb{F}_{p^5}$ implies there exists a root in $\mathbb{F}_{p^5}$. 
+
+Let $\alpha\in\mathbb{F}_{p^5}$ be a root of $f(x)$, then since $f(x)\in\mathbb{F}_p[x]$ is irreducible, and WLOG can assume it is monic (by multiplying by $a^{-1}$, where $a$ is the leading coefficient of $f$), so we can treat $f(x)$ as the minimal polynomial of $\alpha$ over $\mathbb{F}_p$. Hence, $\mathbb{F}_p[x]/(f(x))\cong \mathbb{F}_p(\alpha)\subseteq \mathbb{F}_{p^5}$.
+
+However, since $f(x)$ has degree $3$, then $[\mathbb{F}_p(\alpha):\mathbb{F}_p] = 3$ based on the fact that $\mathbb{F}_p[x]/(f(x))\cong \mathbb{F}_p(\alpha)$; however, since $\mathbb{F}_p\subseteq \mathbb{F}_p(\alpha)\subseteq \mathbb{F}_{p^5}$, while $\mathbb{F}_p(\alpha)/\mathbb{F}_p$ and $\mathbb{F}_{p^5}/\mathbb{F}_p$ are proven to be finite extensions from above, then we get the following:
+$$5=[\mathbb{F}_{p^5}:\mathbb{F}_p] = [\mathbb{F}_{p^5}:\mathbb{F}_p(\alpha)]\cdot [\mathbb{F}_p(\alpha):\mathbb{F}_p] = [\mathbb{F}_{p^5}:\mathbb{F}_p(\alpha)]\cdot 3$$
+This indicates that $3\mid 5$, yet this is a contradiction since $3$ and $5$ are coprime. So, our assumption is false, $f(x)$ must be irreducible over $\mathbb{F}_{p^5}$.
 
 \end{document}
