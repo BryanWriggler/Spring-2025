@@ -33,7 +33,7 @@ colback=blue!10
 \begin{document}
 \maketitle
 
-\section*{1 (not done)}
+\section*{1 (need slight modification)}
 \begin{myBox}[]{}
     \begin{question}
         Stein and Shakarchi Pg. 201-202 Exercise 8:
@@ -89,20 +89,61 @@ colback=blue!10
 
     \textbf{2. $(s-1)\zeta(s)$ Has growth order $1$ for the whole plane:}
 
-    In the previous part the growth order is verified for $\textmd{Re}(s)\geq \frac{1}{2}$. so the rest suffices to show it for the half plane $\textmd{Re}(s')<\frac{1}{2}$.
+    In the previous part the growth order is verified for $\textmd{Re}(s)\geq \frac{1}{2}$. so the rest suffices to show it for the half plane $\textmd{Re}(s')<\frac{1}{2}$. (And, we'll utilize the fact that for all $s\in\mathbb{C}$, $|e^s|\leq e^{|s|}$, which can be seen using Taylor Series).
     
     Recall that in \textbf{HW 7}, we've proven the following functional equation of $\zeta$:
     $$\zeta(1-s) = 2(2\pi)^{-s}\Gamma(s)\cos\left(\frac{\pi s}{2}\right)\zeta(s)$$
     Hence, for any $s'$ with $\textmd{Re}(s')<\frac{1}{2}$, let $s' = 1-s$ for some $s\in\mathbb{C}$, then $s = 1-s'$, so $\textmd{Re}(s) = \textmd{Re}(1-s') > \frac{1}{2}$. Then, the equation $(s'-1)\zeta(s')$ becomes:
     $$(s'-1)\zeta(s') = ((1-s)-1)\zeta(1-s) = -s\cdot 2(2\pi)^{-s}\Gamma(s)\cos\left(\frac{\pi s}{2}\right)\zeta(s)$$
-    Which, $|s| = |1-s'| \leq |s'|+1$, so the growth order in terms of $|s|$ can be replaced using $|s'|$ instead. From the above equality, we do need to talk about the growth order or different components of the functions:
+    And, since $\cos(\frac{\pi}{2})=0$, $\cos(\frac{\pi s}{2}$ has a zero at $s=1$, then $\cos\left(\frac{\pi s}{2}\right) = (s-1)h(s)$ for some analytic function $h$. So, the above formula can be further written as:
+    $$((1-s)-1)\zeta(1-s) = -s\cdot 2(2\pi)^{-s}\Gamma(s)h(s)\cdot (s-1)\zeta(s)$$
+    Which, $|s| = |1-s'| \leq |s'|+1$, so the growth order in terms of $|s|$ can be replaced using $|s'|$ instead. From the above equality, we do need to talk about the growth order of different components:
     \begin{itemize}
-        \item For $(2\pi)^{-s} = e^{-\log(2\pi)s} = e^{-\log(2\pi)(x+iy)} = e^{-\log(2\pi)x}\cdot e^{-\log(2\pi)iy}$, it satisfies $|(2\pi)^{-s}| =  e^{-\log(2\pi)x}$
+        \item For $(2\pi)^{-s} = e^{-\log(2\pi)s} = e^{-\log(2\pi)(x+iy)} = e^{-\log(2\pi)x}\cdot e^{-\log(2\pi)iy}$, it satisfies the following: 
+        $$|(2\pi)^{-s}| =  |e^{-\log(2\pi)s}| \leq e^{\log(2\pi)|s|}$$
+        This proves that $(2\pi)^{-s}$ has growth order $1$.
+        \item For $\Gamma(s)$, since we're working with the half plane $\textmd{Re}(s)>\frac{1}{2}$, then it's valid to apply \textbf{Stirling's Formula} (given in \textbf{Freitag Proposition IV.1.14}): 
+        
+        Let $H(s)=\sum_{n=0}^{\infty}\left(\left(s+n+\frac{1}{2}\right)\log\left(1+\frac{1}{s+n}\right)-1\right)$, then $\Gamma(s)$ can be expressed as:
+        $$\Gamma(s)=\sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s}e^{H(z)} = \sqrt{2\pi}e^{(s-1/2)\log(s)-s+H(s)}$$
+        and $s\rightarrow\infty$ implies $H(s)\rightarrow 0$ (within the given half plane $\textmd{Re}(s)>\frac{1}{2}$).
+
+        Which, notice that for $s$ in the half plane, since $s\rightarrow\infty$ implies $H(s)\rightarrow 0$, then there exists $M>0$, such that $|s|>M$ implies $|H(s)|<1$. And, since for all $\epsilon>0$ (specifically, can limit to $\epsilon<1$), there exists $M'>0$, such that $|\log(s)| \leq |s|^\epsilon$, then for all $s$ in the half plant satisfies $|s|>M,M'$, we get:
+        $$\left|\left(s-\frac{1}{2}\right)\log(s)-s+H(s)\right| \leq \left(|s|+\frac{1}{2}\right)|\log(s)| + |s| + |H(s)| \leq \left(|s|+\frac{1}{2}\right)|s|^{\epsilon} + |s| + 1$$
+        $$\leq |s|^{1+\epsilon}+\frac{1}{2}|s|^\epsilon+|s|^{1+\epsilon}+1 \leq \frac{5}{2}|s|^{1+\epsilon}+1$$
+        Hence, $\Gamma(s)$ satisfies:
+        $$|\Gamma(s)| = \left|\sqrt{2\pi}e^{(s-1/2)\log(s)-s+H(s)}\right| \leq \sqrt{2\pi}\exp\left(\left|\left(s-\frac{1}{2}\right)\log(s)-s+H(s)\right|\right)$$
+        $$\leq \sqrt{2\pi}\exp\left(\frac{5}{2}|s|^{1+\epsilon}+1\right) = e\sqrt{2\pi}e^{\frac{5}{2}|s|^{1+\epsilon}}$$
+        Hence, for any $\epsilon>0$, with suitable constant $A_\epsilon,a_\epsilon>0$, on the half plane $\textmd{Re}(s)>\frac{1}{2}$, $|\Gamma(s)|\leq A_\epsilon e^{a_\epsilon|s|^{1+\epsilon}}$, showing that $\Gamma(s)$ has growth order $1$.
+
+        \item For $h(s)$ mentioned above, since $(s-1)h(s)=\cos\left(\frac{\pi s}{2}\right)$, and $\cos\left(\frac{\pi s}{2}\right)$ can be written as:
+        $$\cos\left(\frac{\pi s}{2}\right) = \frac{e^{i\frac{\pi s}{2}}+e^{-i\frac{\pi s}{2}}}{2}$$
+        Hence, the following inequality is true:
+        $$\left|\cos\left(\frac{\pi s}{2}\right)\right| \leq \frac{1}{2}\left(|e^{i\frac{\pi s}{2}}| + |e^{-i\frac{\pi s}{2}}|\right) \leq \frac{1}{2}\left(e^{\frac{\pi}{2}|s|}+e^{\frac{\pi}{2}|s|}\right) = e^{\frac{\pi}{2}|s|}$$
+        Hence, $\cos\left(\frac{\pi s}{2}\right)$ is with growth order $1$, which also implies that $h(s)$ is with growth order $1$.
     \end{itemize}
+    Finally, back to the original equation, since for any $s'$ with $\textmd{Re}(s')<\frac{1}{2}$, writing $s' = 1-s$ for $\textmd{Re}(s)>\frac{1}{2}$ yields the following expresion:
+    $$(s'-1)\zeta(s')=((1-s)-1)\zeta(1-s) = -s\cdot 2(2\pi)^{-s}\Gamma(s)h(s)\cdot (s-1)\zeta(s)$$
+    Then, since $s,\ (2\pi)^{-s},\ \Gamma(s),\ h(s)$ are all with growth order $1$, and $(s-1)\zeta(s)$ has been proven to have growth order $1$ also in the previous part, then the whole product $(s'-1)\zeta(s')$ is with growth order $1$ (with input $s$). However, since $|s| = |1-s'| \leq |s'|+1$ as mentioned before, then it is also with growth order $1$ with respect to $s'$.
+
+    \hfil
+
+    Regardless of the choise of $s$ (either $\textmd{Re}(s)\geq \frac{1}{2}$ or $\textmd{Re}(s)<\frac{1}{2}$), we eventually get that $(s-1)\zeta(s)$ is with growth order $1$. 
+    \begin{comment}
+    Then, since $F(s)$ defined in the question satisfies the following equation:
+    $$F(s)=\xi(1/2+s) = \pi^{-(1/2+s)/2}\Gamma\left(\frac{(1/2+s)}{2}\right)\zeta\left(\frac{1}{2}+s\right)$$
+    $$\left(\left(\frac{1}{2}+s\right)-1\right)F(s) = \pi^{-(1/2+s)/2}\Gamma\left(\frac{(1/2+s)}{2}\right)\left(\left(\frac{1}{2}+s\right)-1\right)\zeta\left(\frac{1}{2}+s\right)$$
+    Then, since $\left(\left(\frac{1}{2}+s\right)-1\right)\zeta\left(\frac{1}{2}+s\right)$, $\Gamma\left(\frac{(1/2+s)}{2}\right)$ and $\pi^{-(1/2+s)/2}$ are all well-defined on $\textmd{Re}(s)\geq 0$ (or $\textmd{Re}\left(\frac{1}{2}+s\right)\geq \frac{1}{2}$), and $F(s)$ is an even function , this implies 
+    \end{comment}
     
     \hfil
 
-    \item[(c)] In \textbf{Part (b)}, it was proven that $F$ has growth order $1$, while $G$ has growth order $1/2$. So based on Hadamard's result, 
+    \item[(c)] In \textbf{Part (b)}, it was proven that $F$ has growth order $1$, while $G$ (after being modified into an entire function) has growth order $1/2$. So based on Hadamard's result, it has infinitely many zeros, which also implies that $F(s)=G(s^2)$ has infinitely many zeros. However, since $F(s)$ is given as:
+    $$F(s)=\xi(1/2+s) =  \pi^{-(1/2+s)/2}\Gamma\left(\frac{(1/2+s)}{2}\right)\zeta\left(\frac{1}{2}+s\right)$$
+    Which, because $F(s)$ is even, it is enough to consider the half plane $\textmd{Re}(s)\geq 0$: Because $\pi^{z},\ \Gamma(z)$ are both nonzero functions, then these zeros of $F$ must be contributed by $\zeta(1/2+s)$; On the other hand, it is well-known that $\zeta(z)$ has no zeros for $\textmd{Re}(z)\geq 1$, hence for $\textmd{Re}(1/2+s)\geq 1$, or $\textmd{Re}(s)\geq \frac{1}{2}$, since $\zeta(1/2+s)$ has no zeros, then $F(s)$ has no zeros.
+    Hence, the zeros of $F(s)$ (on the half plane $\textmd{Re}(s)\geq 0$) must appear in the range $0\leq \textmd{Re}(s) < \frac{1}{2}$, which eventually implies that there are infinitely many $s$ in this strip (which satisfies $\frac{1}{2}\leq \textmd{Re}(1/2+s)<1$, with $(1/2+s)$ being in the critical strip) satisfying $\zeta(1/2+s) = 0$. 
+
+    So, we can conclude that $\zeta(s)$ has infinitely many zeros in the critical strip.
 \end{itemize}
 
 \break
@@ -190,15 +231,26 @@ colback=blue!10
 
 First, recall that the following formula of $\psi_1(x)$ holds for any $x>1$ and $c>1$:
 $$\psi_1(x)=\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(-\frac{\zeta'(s)}{\zeta(s)}\right)ds$$
-Which, to get a closed expression, we'll utilize a product formula for $\zeta$ under product formula, and residue theorem.
+Which, to get a closed expression, we'll utilize Hadamard's product formula for $\zeta$ and Residue Theorem.
 
 \hfil
 
-\textbf{1. Formula for $\zeta$:}
+\textbf{1. Product Formula for $\zeta$ and $-\frac{\zeta'}{\zeta}$:}
 
-Assume we get the following, based on the functional equation of $\zeta$:
-$$\zeta(s)=\frac{1}{2(s-1)}(\pi e^\gamma)^{s/2}\prod_{n=1}^{\infty}\left(1+\frac{s}{2k}\right)e^{-s/(2k)}\prod_{\textmd{Im}(\rho)>0}\left(1-\frac{s}{\rho}\right)\left(1-\frac{s}{(\overline{\rho})}\right)$$
-Where $\rho$ represents all the zeros of $\zeta$ within the critical strip. (Note: $\zeta$ has zero at)  
+Based on \textbf{Question 1 part (b)} in this assignment, we've proven that $(s-1)\zeta(s)$ is an entire function with growth order $1$, and it is zero precisely at all the zeros of $\zeta(s)$ since at $s=1$, $\zeta(s)$ has residue $1$. Which, $(s-1)\zeta(s)$ has zeros at $-2k$ for $k\in\mathbb{N}$, and all zeros of $\zeta$, denoted as $\rho$ in the critical strip.
+
+Then, based on \textbf{Hadamard's Factorization Theorem} (can be seen in \textbf{Stein and Shakarchi Chapter 5.5}), since $(s-1)\zeta(s)$ has growth order $1$ with the zeros mentioned above (which the zeros are all nonzero), then there exists polynomial $P(s) = cs+d$ with degree $1$ (at most the growth order), such that the following holds:
+$$(s-1)\zeta(s)=e^{cs+d}\left(\prod_{k=1}^{\infty}E_1\left(\frac{s}{2k}\right)\right)\left(\prod_{\rho}E_1\left(\frac{s}{\rho}\right)\right)$$
+$$ = e^{cs+d}\left(\prod_{k=1}^{\infty}\left(1-\frac{s}{2k}\right)e^{s/(2k)}\right)\left(\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{s/\rho}\right)$$
+Where the second product contains all nontrivial zeros of $\zeta$ in the critical strip. Hence, the following is a formula for $\zeta(s)$ in terms of products of zeros and poles:
+$$\zeta(s) = (s-1)^{-1}e^{cs+d}\left(\prod_{k=1}^{\infty}\left(1-\frac{s}{2k}\right)e^{s/(2k)}\right)\left(\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{s/\rho}\right)$$
+Then, utilizing logarithmic derivative, we get the following:
+$$\frac{\zeta'(s)}{\zeta(s)} = -\frac{1}{s-1}+c+\sum_{k=1}^{\infty}\left(\frac{1}{s-2k}+\frac{1}{2k}\right) + \sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right)$$
+And, this formula is normally convergent within any compact subset of the domain (not containing the zeros and the poles of $\zeta$), so integration can be exchanged with summation.
+
+\hfil
+
+\textbf{2. Breaking the integration }
 
 \break
 
