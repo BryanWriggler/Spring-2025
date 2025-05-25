@@ -102,7 +102,8 @@ colback=blue!10
         \item For $(2\pi)^{-s} = e^{-\log(2\pi)s} = e^{-\log(2\pi)(x+iy)} = e^{-\log(2\pi)x}\cdot e^{-\log(2\pi)iy}$, it satisfies the following: 
         $$|(2\pi)^{-s}| =  |e^{-\log(2\pi)s}| \leq e^{\log(2\pi)|s|}$$
         This proves that $(2\pi)^{-s}$ has growth order $1$.
-        \item For $\Gamma(s)$, since we're working with the half plane $\textmd{Re}(s)>\frac{1}{2}$, then it's valid to apply \textbf{Stirling's Formula} (given in \textbf{Freitag Proposition IV.1.14}): 
+        \item For $\Gamma(s)$, since we're working with the half plane $\textmd{Re}(s)>\frac{1}{2}$, then it's valid to apply \textbf{Stir
+    ing's Formula} (given in \textbf{Freitag Proposition IV.1.14}): 
         
         Let $H(s)=\sum_{n=0}^{\infty}\left(\left(s+n+\frac{1}{2}\right)\log\left(1+\frac{1}{s+n}\right)-1\right)$, then $\Gamma(s)$ can be expressed as:
         $$\Gamma(s)=\sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s}e^{H(z)} = \sqrt{2\pi}e^{(s-1/2)\log(s)-s+H(s)}$$
@@ -239,18 +240,81 @@ Which, to get a closed expression, we'll utilize Hadamard's product formula for 
 
 Based on \textbf{Question 1 part (b)} in this assignment, we've proven that $(s-1)\zeta(s)$ is an entire function with growth order $1$, and it is zero precisely at all the zeros of $\zeta(s)$ since at $s=1$, $\zeta(s)$ has residue $1$. Which, $(s-1)\zeta(s)$ has zeros at $-2k$ for $k\in\mathbb{N}$, and all zeros of $\zeta$, denoted as $\rho$ in the critical strip.
 
-Then, based on \textbf{Hadamard's Factorization Theorem} (can be seen in \textbf{Stein and Shakarchi Chapter 5.5}), since $(s-1)\zeta(s)$ has growth order $1$ with the zeros mentioned above (which the zeros are all nonzero), then there exists polynomial $P(s) = cs+d$ with degree $1$ (at most the growth order), such that the following holds:
-$$(s-1)\zeta(s)=e^{cs+d}\left(\prod_{k=1}^{\infty}E_1\left(\frac{s}{2k}\right)\right)\left(\prod_{\rho}E_1\left(\frac{s}{\rho}\right)\right)$$
-$$ = e^{cs+d}\left(\prod_{k=1}^{\infty}\left(1-\frac{s}{2k}\right)e^{s/(2k)}\right)\left(\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{s/\rho}\right)$$
+Then, based on \textbf{Hadamard's Factorization Theorem} (can be seen in \textbf{Stein and Shakarchi Chapter 5.5}), since $(s-1)\zeta(s)$ has growth order $1$ with the zeros mentioned above (which the zeros are all nonzero), then there exists polynomial $P(s) = ls+d$ with degree $1$ (at most the growth order), such that the following holds:
+$$(s-1)\zeta(s)=e^{ls+d}\left(\prod_{k=1}^{\infty}E_1\left(\frac{s}{2k}\right)\right)\left(\prod_{\rho}E_1\left(\frac{s}{\rho}\right)\right)$$
+$$ = e^{ls+d}\left(\prod_{k=1}^{\infty}\left(1-\frac{s}{2k}\right)e^{s/(2k)}\right)\left(\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{s/\rho}\right)$$
 Where the second product contains all nontrivial zeros of $\zeta$ in the critical strip. Hence, the following is a formula for $\zeta(s)$ in terms of products of zeros and poles:
-$$\zeta(s) = (s-1)^{-1}e^{cs+d}\left(\prod_{k=1}^{\infty}\left(1-\frac{s}{2k}\right)e^{s/(2k)}\right)\left(\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{s/\rho}\right)$$
+$$\zeta(s) = (s-1)^{-1}e^{ls+d}\left(\prod_{k=1}^{\infty}\left(1-\frac{s}{2k}\right)e^{s/(2k)}\right)\left(\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{s/\rho}\right)$$
 Then, utilizing logarithmic derivative, we get the following:
-$$\frac{\zeta'(s)}{\zeta(s)} = -\frac{1}{s-1}+c+\sum_{k=1}^{\infty}\left(\frac{1}{s-2k}+\frac{1}{2k}\right) + \sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right)$$
+$$\frac{\zeta'(s)}{\zeta(s)} = -\frac{1}{s-1}+l+\sum_{k=1}^{\infty}\left(\frac{1}{s-2k}+\frac{1}{2k}\right) + \sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right)$$
+$$-\frac{\zeta'(s)}{\zeta(s)}=\frac{1}{s-1}-l-\sum_{k=1}^{\infty}\frac{s}{(s-2k)2k}-\sum_{\rho}\frac{s}{(s-\rho)\rho}$$
 And, this formula is normally convergent within any compact subset of the domain (not containing the zeros and the poles of $\zeta$), so integration can be exchanged with summation.
 
 \hfil
 
-\textbf{2. Breaking the integration }
+\textbf{2. Contour Integration:}
+
+Now, choose any $c_0>1$, and restrict the domain to the open half plane $\textmd{Re}(s)<c_0$. CHoose any $c\in\mathbb{R}$ such that $1<c<c_0$, and define the contour $\gamma_{r}$ as the following semicircle for any $r\in\mathbb{R}_{>0}$:
+
+\textbf{Insert Image}
+
+Which, $\gamma_r$ is involved with semicircle $c_r$ with radius $r$, and the straight line $\ell_r$ parametrized by $c+it$, for $t\in [-r,r]$.
+
+Temporarily, assume $r$ is chosen so that $\gamma_{r}$ contains no zeros or poles of $\zeta$, and let $D_{r}$ be the region enclosed by $\gamma_{r}$. Then, if perform the contour integration, we get the following:
+$$\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)}\left(-\frac{\zeta'(s)}{\zeta(s)}\right)ds = \frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)}\left(\frac{1}{s-1}-l-\sum_{k=1}^{\infty}\frac{s}{(s-2k)2k}-\sum_{\rho}\frac{s}{(s-\rho)\rho}\right)ds$$
+$$ = \frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)(s-1)}ds-\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{lx^{s+1}}{s(s+1)}ds - \sum_{k=1}^{\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-2k)2k}ds - \sum_{\rho}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-\rho)\rho}ds$$
+
+Now, since we've restricted the domain to $\textmd{Re}(s)<c_0$, then for any $s=u+iv$ in this region (which $u<c_0$), for any fixed $x>1$, we get $x^{s+1} = x^{(u+iv)+1} = x^{u+1}\cdot x^{iv} = x^{u+1}\cdot e^{iv\log(x)}$, which $|x^{s+1}| = x^{u+1} < x^{c_0+1}$.
+
+\hfil
+
+Then, for the first integral above, there involves some fixed $\alpha\in \mathbb{C}$, where the denominator involve the terms $(s-\alpha)$. Then, one can choose radius $R>0$, such that for all radius $r>R$, the involved term $(s-\alpha)$ satisfies $|s-\alpha| > \frac{r}{2}$ (which $\frac{1}{|s-\alpha|}<\frac{2}{r}$). So, for the integration over the semicircle $c_r$, we get the following:
+$$\left|\frac{1}{2\pi i}\int_{c_{r}}\frac{x^{s+1}}{s(s+1)(s-1)}ds\right| \leq \frac{1}{2\pi}\int_{c_r}\frac{|x^{s+1}|}{|s(s+1)(s-1)|}|ds|< \frac{1}{2\pi}\int_{c_r}\frac{2^3\cdot x^{c_0+1}}{r^3}|ds|$$
+$$ = \frac{1}{2\pi}\cdot\frac{2^3\cdot x^{c_0+1}}{r^3}\cdot \pi r = \frac{2^2\cdot x^{c_0+1}}{r^2}$$
+(Note: We're integrating over a semicircle, so eventually the integration of a constnat multiplies by $\pi r$).
+
+Then, take $r\rightarrow\infty$, since $\frac{1}{r^2}\rightarrow 0$, the above inequality proves that $\left|\frac{1}{2\pi i}\int_{c_{r}}\frac{x^{s+1}}{s(s+1)(s-1)}ds\right|\rightarrow 0$, or $\frac{1}{2\pi i}\int_{c_{r}}\frac{x^{s+1}}{s(s+1)(s-1)}ds\rightarrow 0$. Hence, we get the following:
+$$\lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_r}\frac{x^{s+1}}{s(s+1)(s-1)}ds = \lim_{r\rightarrow\infty}\left(\frac{1}{2\pi i}\int_{c_r}\frac{x^{s+1}}{s(s+1)(s-1)}ds+\frac{1}{2\pi i}\int_{\ell_r}\frac{x^{s+1}}{s(s+1)(s-1)}ds\right)$$
+$$ = \lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{c-ir}^{c+ir}\frac{x^{s+1}}{s(s+1)(s-1)}ds = \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)(s-1)}ds$$
+
+Now, if we apply similar methods to the other integrals (integrating functions with polynomial of degree $2$ on the denominator), then we get the following instead (we'll use the second one as an example):
+$$\left|\frac{1}{2\pi i}\int_{c_{r}}\frac{lx^{s+1}}{s(s+1)}ds\right|\leq \frac{1}{2\pi}\int_{c_r}\frac{l|x^{s+1}|}{|s(s+1)|}|ds| < \frac{1}{2\pi}\int_{c_r}\frac{2^2\cdot l\cdot x^{c_0+1}}{r^2}|ds|$$
+$$ = \frac{1}{2\pi}\cdot \frac{2^2\cdot l\cdot x^{c_0+1}}{r^2}\cdot \pi r = \frac{2l\cdot x^{c_0+1}}{r}$$
+Take $r\rightarrow\infty$, since $\frac{1}{r}\rightarrow 0$, the above inequality proves that $\left|\frac{1}{2\pi i}\int_{c_{r}}\frac{lx^{s+1}}{s(s+1)}ds\right|\rightarrow 0$, or $\frac{1}{2\pi i}\int_{c_{r}}\frac{lx^{s+1}}{s(s+1)}ds\rightarrow 0$. Hence, we again get the following:
+$$\lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{lx^{s+1}}{s(s+1)}ds = \lim_{r\rightarrow\infty}\left(\frac{1}{2\pi i}\int_{c_{r}}\frac{lx^{s+1}}{s(s+1)}ds+\frac{1}{2\pi i}\int_{\ell_{r}}\frac{lx^{s+1}}{s(s+1)}ds\right)$$
+$$ = \lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{c-ir}^{c+ir}\frac{lx^{s+1}}{s(s+1)}ds = \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{lx^{s+1}}{s(s+1)}ds$$
+Apply the similar formulas to the other two sums, then we get the following:
+$$\lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)}\left(-\frac{\zeta'(s)}{\zeta(s)}\right)ds$$
+
+\hfil
+
+$$ = \lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)(s-1)}ds-\lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{lx^{s+1}}{s(s+1)}ds$$
+$$- \lim_{r\rightarrow\infty}\sum_{k=1}^{\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-2k)2k}ds - \lim_{r\rightarrow\infty}\sum_{\rho}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-\rho)\rho}ds$$
+
+\hfil
+
+$$ = \int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\cdot \frac{1}{s-1}ds-\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\cdot l ds$$
+$$-\sum_{k=1}^{\infty}\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\cdot \frac{s}{(s-2k)2k}ds -\sum_{\rho}\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\cdot \frac{s}{(s-\rho)\rho}ds$$
+
+\hfil
+
+$$ = \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(\frac{1}{s-1}-l-\sum_{k=1}^{\infty}\frac{s}{(s-2k)2k}-\sum_{\rho}\frac{s}{(s-\rho)\rho}\right)ds$$
+$$ = \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(-\frac{\zeta'(s)}{\zeta(s)}\right)ds = \psi_1(x)$$
+So, it suffices to show that the above limit provides the explicit formula mentioned in the question.
+
+\hfil
+
+\textbf{3. Value of each integration:}
+
+As a quick recap, we get the following formula:
+$$\psi_1(x) = \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(-\frac{\zeta'(s)}{\zeta(s)}\right)ds$$
+
+\hfil
+
+$$ = \lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)(s-1)}ds-\lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{lx^{s+1}}{s(s+1)}ds$$
+$$- \lim_{r\rightarrow\infty}\sum_{k=1}^{\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-2k)2k}ds - \lim_{r\rightarrow\infty}\sum_{\rho}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-\rho)\rho}ds$$
+Which, for each integration, there exists finitely many 
+
 
 \break
 
