@@ -224,7 +224,7 @@ colback=blue!10
 
         One of the "explicit formulas" in the theory of primes is as follows: if $\psi_1$ is the integrated Tchebychev function considered in Section $2$, then 
         $$\psi_1(x)=\frac{x^2}{2}-\sum_{\rho}\frac{x^{\rho+1}}{\rho(\rho+1)}-E(x)$$
-        where the sum is taken over all zeros $\rho$ of the $\zeta$-function in the critical strip. The error term is given by $E(x)=c_1x+c_0+\sum_{k=1}^{\infty}x^{1-2k}/(2k(2k-1))$, where $c_1=\zeta'(0)/\zeta(0)$ and $c_0=\zeta'(-1)/\zeta(-1)$. Note that $\sum_{\rho}1/|\rho|^{1+\epsilon}<\infty$ for every $\epsilon>0$, because $(1-s)\zeta(s)$ has order of growth $1$. Also, obviously $E(x)=O(x)$ as $x\rightarrow\infty$.
+        where the sum is taken over all zeros $\rho$ of the $\zeta$-function in the critical strip. The error term is given by $E(x)=c_1x+c_0+\sum_{k=1}^{\infty}x^{1-2k}/(2k(2k-1))$, where $c_1=\zeta'(0)/\zeta(0)$ and $c_0=-\zeta'(-1)/\zeta(-1)$. Note that $\sum_{\rho}1/|\rho|^{1+\epsilon}<\infty$ for every $\epsilon>0$, because $(1-s)\zeta(s)$ has order of growth $1$. Also, obviously $E(x)=O(x)$ as $x\rightarrow\infty$.
     \end{question}
 \end{myBox}
 
@@ -241,13 +241,13 @@ Which, to get a closed expression, we'll utilize Hadamard's product formula for 
 Based on \textbf{Question 1 part (b)} in this assignment, we've proven that $(s-1)\zeta(s)$ is an entire function with growth order $1$, and it is zero precisely at all the zeros of $\zeta(s)$ since at $s=1$, $\zeta(s)$ has residue $1$. Which, $(s-1)\zeta(s)$ has zeros at $-2k$ for $k\in\mathbb{N}$, and all zeros of $\zeta$, denoted as $\rho$ in the critical strip.
 
 Then, based on \textbf{Hadamard's Factorization Theorem} (can be seen in \textbf{Stein and Shakarchi Chapter 5.5}), since $(s-1)\zeta(s)$ has growth order $1$ with the zeros mentioned above (which the zeros are all nonzero), then there exists polynomial $P(s) = ls+d$ with degree $1$ (at most the growth order), such that the following holds:
-$$(s-1)\zeta(s)=e^{ls+d}\left(\prod_{k=1}^{\infty}E_1\left(\frac{s}{2k}\right)\right)\left(\prod_{\rho}E_1\left(\frac{s}{\rho}\right)\right)$$
-$$ = e^{ls+d}\left(\prod_{k=1}^{\infty}\left(1-\frac{s}{2k}\right)e^{s/(2k)}\right)\left(\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{s/\rho}\right)$$
+$$(s-1)\zeta(s)=e^{ls+d}\left(\prod_{k=1}^{\infty}E_1\left(-\frac{s}{2k}\right)\right)\left(\prod_{\rho}E_1\left(\frac{s}{\rho}\right)\right)$$
+$$ = e^{ls+d}\left(\prod_{k=1}^{\infty}\left(1+\frac{s}{2k}\right)e^{-s/(2k)}\right)\left(\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{s/\rho}\right)$$
 Where the second product contains all nontrivial zeros of $\zeta$ in the critical strip. Hence, the following is a formula for $\zeta(s)$ in terms of products of zeros and poles:
-$$\zeta(s) = (s-1)^{-1}e^{ls+d}\left(\prod_{k=1}^{\infty}\left(1-\frac{s}{2k}\right)e^{s/(2k)}\right)\left(\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{s/\rho}\right)$$
+$$\zeta(s) = (s-1)^{-1}e^{ls+d}\left(\prod_{k=1}^{\infty}\left(1+\frac{s}{2k}\right)e^{-s/(2k)}\right)\left(\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{s/\rho}\right)$$
 Then, utilizing logarithmic derivative, we get the following:
-$$\frac{\zeta'(s)}{\zeta(s)} = -\frac{1}{s-1}+l+\sum_{k=1}^{\infty}\left(\frac{1}{s-2k}+\frac{1}{2k}\right) + \sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right)$$
-$$-\frac{\zeta'(s)}{\zeta(s)}=\frac{1}{s-1}-l-\sum_{k=1}^{\infty}\frac{s}{(s-2k)2k}-\sum_{\rho}\frac{s}{(s-\rho)\rho}$$
+$$\frac{\zeta'(s)}{\zeta(s)} = -\frac{1}{s-1}+l+\sum_{k=1}^{\infty}\left(\frac{1}{s+2k}-\frac{1}{2k}\right) + \sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right)$$
+$$-\frac{\zeta'(s)}{\zeta(s)}=\frac{1}{s-1}-l+\sum_{k=1}^{\infty}\frac{s}{(s+2k)2k}-\sum_{\rho}\frac{s}{(s-\rho)\rho}$$
 And, this formula is normally convergent within any compact subset of the domain (not containing the zeros and the poles of $\zeta$), so integration can be exchanged with summation.
 
 \hfil
@@ -256,13 +256,18 @@ And, this formula is normally convergent within any compact subset of the domain
 
 Now, choose any $c_0>1$, and restrict the domain to the open half plane $\textmd{Re}(s)<c_0$. CHoose any $c\in\mathbb{R}$ such that $1<c<c_0$, and define the contour $\gamma_{r}$ as the following semicircle for any $r\in\mathbb{R}_{>0}$:
 
-\textbf{Insert Image}
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics*[width=60mm]{contour2.jpg}
+        \caption{The contour used for integration}
+    \end{center}
+\end{figure}
 
-Which, $\gamma_r$ is involved with semicircle $c_r$ with radius $r$, and the straight line $\ell_r$ parametrized by $c+it$, for $t\in [-r,r]$.
+Which, $\gamma_r$ is involved with semicircle $c_r$ with radius $r$ centered at $s=c$, and the straight line $\ell_r$ parametrized by $c+it$, for $t\in [-r,r]$.
 
 Temporarily, assume $r$ is chosen so that $\gamma_{r}$ contains no zeros or poles of $\zeta$, and let $D_{r}$ be the region enclosed by $\gamma_{r}$. Then, if perform the contour integration, we get the following:
-$$\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)}\left(-\frac{\zeta'(s)}{\zeta(s)}\right)ds = \frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)}\left(\frac{1}{s-1}-l-\sum_{k=1}^{\infty}\frac{s}{(s-2k)2k}-\sum_{\rho}\frac{s}{(s-\rho)\rho}\right)ds$$
-$$ = \frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)(s-1)}ds-\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{lx^{s+1}}{s(s+1)}ds - \sum_{k=1}^{\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-2k)2k}ds - \sum_{\rho}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-\rho)\rho}ds$$
+$$\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)}\left(-\frac{\zeta'(s)}{\zeta(s)}\right)ds = \frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)}\left(\frac{1}{s-1}-l+\sum_{k=1}^{\infty}\frac{s}{(s+2k)2k}-\sum_{\rho}\frac{s}{(s-\rho)\rho}\right)ds$$
+$$ = \frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)(s-1)}ds-\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{lx^{s+1}}{s(s+1)}ds + \sum_{k=1}^{\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s+2k)2k}ds - \sum_{\rho}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-\rho)\rho}ds$$
 
 Now, since we've restricted the domain to $\textmd{Re}(s)<c_0$, then for any $s=u+iv$ in this region (which $u<c_0$), for any fixed $x>1$, we get $x^{s+1} = x^{(u+iv)+1} = x^{u+1}\cdot x^{iv} = x^{u+1}\cdot e^{iv\log(x)}$, which $|x^{s+1}| = x^{u+1} < x^{c_0+1}$.
 
@@ -289,16 +294,16 @@ $$\lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1
 \hfil
 
 $$ = \lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)(s-1)}ds-\lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{lx^{s+1}}{s(s+1)}ds$$
-$$- \lim_{r\rightarrow\infty}\sum_{k=1}^{\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-2k)2k}ds - \lim_{r\rightarrow\infty}\sum_{\rho}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-\rho)\rho}ds$$
+$$+ \lim_{r\rightarrow\infty}\sum_{k=1}^{\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s+2k)2k}ds - \lim_{r\rightarrow\infty}\sum_{\rho}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-\rho)\rho}ds$$
 
 \hfil
 
 $$ = \int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\cdot \frac{1}{s-1}ds-\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\cdot l ds$$
-$$-\sum_{k=1}^{\infty}\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\cdot \frac{s}{(s-2k)2k}ds -\sum_{\rho}\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\cdot \frac{s}{(s-\rho)\rho}ds$$
+$$+\sum_{k=1}^{\infty}\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\cdot \frac{s}{(s+2k)2k}ds -\sum_{\rho}\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\cdot \frac{s}{(s-\rho)\rho}ds$$
 
 \hfil
 
-$$ = \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(\frac{1}{s-1}-l-\sum_{k=1}^{\infty}\frac{s}{(s-2k)2k}-\sum_{\rho}\frac{s}{(s-\rho)\rho}\right)ds$$
+$$ = \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(\frac{1}{s-1}-l+\sum_{k=1}^{\infty}\frac{s}{(s+2k)2k}-\sum_{\rho}\frac{s}{(s-\rho)\rho}\right)ds$$
 $$ = \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(-\frac{\zeta'(s)}{\zeta(s)}\right)ds = \psi_1(x)$$
 So, it suffices to show that the above limit provides the explicit formula mentioned in the question.
 
@@ -312,8 +317,50 @@ $$\psi_1(x) = \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}
 \hfil
 
 $$ = \lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)(s-1)}ds-\lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{lx^{s+1}}{s(s+1)}ds$$
-$$- \lim_{r\rightarrow\infty}\sum_{k=1}^{\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-2k)2k}ds - \lim_{r\rightarrow\infty}\sum_{\rho}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-\rho)\rho}ds$$
-Which, for each integration, there exists finitely many 
+$$+ \lim_{r\rightarrow\infty}\sum_{k=1}^{\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s+2k)2k}ds - \lim_{r\rightarrow\infty}\sum_{\rho}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-\rho)\rho}ds$$
+Which, for each integration, there exists finitely many points with nontrivial residues. Which for each integration, can assume for some $R>0$, every $r>R$ satisfies $D_r$ containing all points with nontrivial residues. So, as the limit $r\rightarrow\infty$, can assume all the points of residues are contained in the region being integrated.
+\begin{itemize}
+    \item Let $f(s)=\frac{x^{s+1}}{s(s+1)(s-1)}$, which it has simple poles at $s=1,\ 0,\ -1$. Then, for the integration we get:
+    $$\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)(s-1)}ds = \textmd{Res}(f,s=1)+\textmd{Res}(f,s=0)+\textmd{Res}(f,s=-1)$$
+    $$ = \frac{x^{1+1}}{1(1+1)}+\frac{x^{0+1}}{(0+1)(0-1)} + \frac{x^{-1+1}}{-1(-1-1)} = \frac{x^2}{2}-x + \frac{1}{2}$$
+    \item Let $g(s)=\frac{lx^{s+1}}{s(s+1)}$, which has simple poles at $s=0,\ -1$. Then, we get:
+    $$\frac{1}{2\pi i}\int_{\gamma_r}\frac{lx^{s+1}}{s(s+1)}ds = \textmd{Res}(g,s=0)+\textmd{Res}(g,s=-1)$$
+    $$ = \frac{lx^{0+1}}{(0+1)} + \frac{lx^{-1+1}}{-1} = lx - l$$
+    \item For any $k\in\mathbb{N}$, let $h_k(s)=\frac{x^{s+1}}{(s+1)(s+2k)2k}$, which has simple poles at $s=-1,\ -2k$. Then, we get:
+    $$\frac{1}{2\pi i}\int_{\gamma_r}\frac{x^{s+1}}{(s+1)(s+2k)2k}ds = \textmd{Res}(h_k,s=-1)+\textmd{Res}(h_k,s=-2k)$$
+    $$\frac{x^{-1+1}}{(-1+2k)2k}+\frac{x^{-2k+1}}{(-2k+1)2k} = \frac{1}{2k(2k-1)}-\frac{x^{1-2k}}{2k(2k-1)}$$
+    \item For any zero $\rho$ of $\zeta$ in the critical strip, let $p_\rho(s) = \frac{x^{s+1}}{(s+1)(s-\rho)\rho}$, which has simple poles at $s=-1,\ \rho$. Then, we get:
+    $$\frac{1}{2\pi i}\int_{\gamma_r}\frac{x^{s+1}}{(s+1)(s-\rho)\rho}ds = \textmd{Res}(p_{\rho},s=-1)+\textmd{Res}(p_{\rho},s=\rho)$$
+    $$= \frac{x^{-1+1}}{(-1-\rho)\rho}+\frac{x^{\rho+1}}{(\rho+1)\rho} = -\frac{1}{\rho(\rho+1)}+\frac{x^{\rho+1}}{\rho(\rho+1)}$$
+\end{itemize}
+So, $\psi_1(x)$ can be expressed as:
+$$\psi_1(x) = \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(-\frac{\zeta'(s)}{\zeta(s)}\right)ds$$
+
+\hfil
+
+$$ = \lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)(s-1)}ds-\lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{lx^{s+1}}{s(s+1)}ds$$
+$$+ \lim_{r\rightarrow\infty}\sum_{k=1}^{\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s+2k)2k}ds - \lim_{r\rightarrow\infty}\sum_{\rho}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-\rho)\rho}ds$$
+
+\hfil
+
+$$ = \left(\frac{x^2}{2}-x+\frac{1}{2}\right) - \left(lx-l\right)+\left(\sum_{k=1}^{\infty}\frac{1}{2k(2k-1)}-\frac{x^{1-2k}}{2k(2k-1)}\right) - \left(\sum_{\rho}-\frac{1}{\rho(\rho+1)}+\frac{x^{\rho+1}}{\rho(\rho+1)}\right)$$
+
+\hfil
+
+$$\frac{x^2}{2} - \sum_{\rho}\frac{x^{\rho+1}}{\rho(\rho+1)} + x\left(-1-l\right) + \left(\frac{1}{2}+l+\sum_{k=1}^{\infty}\frac{1}{2k(2k-1)}+\sum_{\rho}\frac{1}{\rho(\rho+1)}\right)-\sum_{k=1}^{\infty}\frac{x^{1-2k}}{2k(2k-1)}$$
+Which, consider the previous product formula of $\frac{\zeta'(s)}{\zeta(s)}$, we get the following two expressions:
+$$\frac{\zeta'(0)}{\zeta(0)} = -\frac{1}{0-1}+l+\sum_{k=1}^{\infty}\left(\frac{1}{0+2k}-\frac{1}{2k}\right) + \sum_{\rho}\left(\frac{1}{0-\rho}+\frac{1}{\rho}\right) = 1+l$$
+
+$$\frac{\zeta'(-1)}{\zeta(-1)}=-\frac{1}{-1-1}+l+\sum_{k=1}^{\infty}\left(\frac{1}{-1+2k}-\frac{1}{2k}\right) + \sum_{\rho}\left(\frac{1}{-1-\rho}+\frac{1}{\rho}\right)$$
+$$ = \frac{1}{2}+l + \sum_{k=1}^{\infty}\frac{1}{2k(2k-1)}+\sum_{\rho}\frac{1}{\rho(\rho+1)}$$
+Hence, the previous formula can be rewritten as:
+$$\psi_1(x)= \frac{x^2}{2} - \sum_{\rho}\frac{x^{\rho+1}}{\rho(\rho+1)} + x\left(-1-l\right) + \left(\frac{1}{2}+l+\sum_{k=1}^{\infty}\frac{1}{2k(2k-1)}+\sum_{\rho}\frac{1}{\rho(\rho+1)}\right)-\sum_{k=1}^{\infty}\frac{x^{1-2k}}{2k(2k-1)}$$
+$$ = \frac{x^2}{2}-\sum_{\rho}\frac{x^{\rho+1}}{\rho(\rho+1)} - \frac{\zeta'(0)}{\zeta(0)}x + \frac{\zeta'(-1)}{\zeta(-1)} - \sum_{k=1}^{\infty}\frac{x^{1-2k}}{2k(2k-1)}$$
+Which, if define the error term $E(x)$ as follow:
+$$c_1=\frac{\zeta'(0)}{\zeta(0)},\ c_0=-\frac{\zeta'(-1)}{\zeta(-1)},\quad E(x)=c_1x+c_0+\sum_{k=1}^{\infty}\frac{x^{1-2k}}{2k(2k-1)}$$
+Then, $\psi_1(x)$ has the following explicit formula:
+$$\psi_1(x) = \frac{x^2}{2} - \sum_{\rho}\frac{x^{\rho+1}}{\rho(\rho+1)}-E(x)$$
+Which is the desired formula.
 
 
 \break
