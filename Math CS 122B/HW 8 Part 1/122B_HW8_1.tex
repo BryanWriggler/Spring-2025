@@ -27,13 +27,13 @@ colback=blue!10
 \newtheorem{theorem}{Theorem}
 \newtheorem{question}{Question}
 
-\title{Math CS 122b HW8 Part 1}
+\title{Math CS 122B HW8 Part 1}
 \author{Zih-Yu Hsieh}
 
 \begin{document}
 \maketitle
 
-\section*{1 (need slight modification)}
+\section*{1}
 \begin{myBox}[]{}
     \begin{question}
         Stein and Shakarchi Pg. 201-202 Exercise 8:
@@ -55,7 +55,7 @@ colback=blue!10
 \begin{itemize}
     \item[(a)] Recall that in \textbf{HW 7 Question 1} (\textbf{Freitag Chap. VII.5 Problem 5}), to deduce the functional equation of $\zeta$, we've proven the functional equation $\xi(s')=\xi(1-s')$. As a result, for any $s\in\mathbb{C}$, if treating $F$ as a meromorphic function, we get:
     $$F(s)=\xi\left(\frac{1}{2}+s\right) = \xi\left(1-\left(\frac{1}{2}+s\right)\right) = \xi\left(\frac{1}{2}-s\right) = F(-s)$$
-    Hence, this proves that $F(s)$ is an even function.
+    Hence, this proves that $F(s)$ is an even function. So, there exists $G$, such that $G(s^2)=F(s)$.
 
     \hfil
 
@@ -125,11 +125,14 @@ colback=blue!10
     \end{itemize}
     Finally, back to the original equation, since for any $s'$ with $\textmd{Re}(s')<\frac{1}{2}$, writing $s' = 1-s$ for $\textmd{Re}(s)>\frac{1}{2}$ yields the following expresion:
     $$(s'-1)\zeta(s')=((1-s)-1)\zeta(1-s) = -s\cdot 2(2\pi)^{-s}\Gamma(s)h(s)\cdot (s-1)\zeta(s)$$
-    Then, since $s,\ (2\pi)^{-s},\ \Gamma(s),\ h(s)$ are all with growth order $1$, and $(s-1)\zeta(s)$ has been proven to have growth order $1$ also in the previous part, then the whole product $(s'-1)\zeta(s')$ is with growth order $1$ (with input $s$). However, since $|s| = |1-s'| \leq |s'|+1$ as mentioned before, then it is also with growth order $1$ with respect to $s'$.
+    Then, since $s,\ (2\pi)^{-s},\ \Gamma(s),\ h(s)$ are all with growth order at most $1$, and $(s-1)\zeta(s)$ has been proven to have growth order $1$ also in the previous part, then the whole product $(s'-1)\zeta(s')$ is with growth order $1$ (with input $s$). However, since $|s| = |1-s'| \leq |s'|+1$ as mentioned before, then it is also with growth order $1$ with respect to $s'$.
 
     \hfil
 
-    Regardless of the choise of $s$ (either $\textmd{Re}(s)\geq \frac{1}{2}$ or $\textmd{Re}(s)<\frac{1}{2}$), we eventually get that $(s-1)\zeta(s)$ is with growth order $1$. 
+    Regardless of the choise of $s$ (either $\textmd{Re}(s)\geq \frac{1}{2}$ or $\textmd{Re}(s)<\frac{1}{2}$), we eventually get that $(s-1)\zeta(s)$ is with growth order $1$. Then, since $G(s^2)=F(s)=\xi(1/2+s) = \pi^{-(1/2+s)}\Gamma\left(\frac{(1/2+s)}{2}\right)\zeta(\frac{1}{2}+s)$, the modified version of $F$ given as follow, is in fact an entire function that is even (removing the singularity at $s=\frac{1}{2}$, where $\zeta(\frac{1}{2}+s)$ has a pole for the input $\textmd{Re}(s)\geq 0$; the half plane $\textmd{Re}(s)<0$ follows from the fact that $F$ is even):
+    $$\left(s-\frac{1}{2}\right)\left(s+\frac{1}{2}\right)F(s)=\left(\left(s+\frac{1}{2}\right)-1\right)\left(s+\frac{1}{2}\right)F(s)$$
+    $$ = \left(s+\frac{1}{2}\right)\cdot \pi^{-(1/2+s)}\cdot \Gamma\left(\frac{(1/2+s)}{2}\right)\cdot \left(\left(s+\frac{1}{2}\right)-1\right)\zeta(\frac{1}{2}+s)$$
+    Notice that the modified $F$ is entire, and it's clear from the previous parts, that $\Gamma$, $(s+\frac{1}{2})$, $\pi^{-(1/2+s)}$, and $((s+\frac{1}{2})-1)\zeta(s+\frac{1}{2})$ all have growth order $1$, hence the modified version is still with growth order $1$. So, if $G(s^2)=\left(s-\frac{1}{2}\right)\left(s+\frac{1}{2}\right)F(s)$, then $G$ itself has growth order $\frac{1}{2}$.
     \begin{comment}
     Then, since $F(s)$ defined in the question satisfies the following equation:
     $$F(s)=\xi(1/2+s) = \pi^{-(1/2+s)/2}\Gamma\left(\frac{(1/2+s)}{2}\right)\zeta\left(\frac{1}{2}+s\right)$$
@@ -254,7 +257,7 @@ And, this formula is normally convergent within any compact subset of the domain
 
 \textbf{2. Contour Integration:}
 
-Now, choose any $c_0>1$, and restrict the domain to the open half plane $\textmd{Re}(s)<c_0$. CHoose any $c\in\mathbb{R}$ such that $1<c<c_0$, and define the contour $\gamma_{r}$ as the following semicircle for any $r\in\mathbb{R}_{>0}$:
+Now, choose any $c_0>1$, and restrict the domain to the open half plane $\textmd{Re}(s)<c_0$. Choose any $c\in\mathbb{R}$ such that $1<c<c_0$, and define the contour $\gamma_{r}$ as the following semicircle for any $r\in\mathbb{R}_{>0}$:
 
 \begin{figure}[h!]
     \begin{center}
@@ -318,7 +321,7 @@ $$\psi_1(x) = \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}
 
 $$ = \lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)(s-1)}ds-\lim_{r\rightarrow\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{lx^{s+1}}{s(s+1)}ds$$
 $$+ \lim_{r\rightarrow\infty}\sum_{k=1}^{\infty}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s+2k)2k}ds - \lim_{r\rightarrow\infty}\sum_{\rho}\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{(s+1)(s-\rho)\rho}ds$$
-Which, for each integration, there exists finitely many points with nontrivial residues. Which for each integration, can assume for some $R>0$, every $r>R$ satisfies $D_r$ containing all points with nontrivial residues. So, as the limit $r\rightarrow\infty$, can assume all the points of residues are contained in the region being integrated.
+Which, for each integration, there exists finitely many points with nontrivial residues. Which, can assume for some $R>0$, for every $r>R$, the enclosed region $D_r$ contains all points with nontrivial residues. So, as the limit $r\rightarrow\infty$, can assume all the points of residues are contained in the region being integrated.
 \begin{itemize}
     \item Let $f(s)=\frac{x^{s+1}}{s(s+1)(s-1)}$, which it has simple poles at $s=1,\ 0,\ -1$. Then, for the integration we get:
     $$\frac{1}{2\pi i}\int_{\gamma_{r}}\frac{x^{s+1}}{s(s+1)(s-1)}ds = \textmd{Res}(f,s=1)+\textmd{Res}(f,s=0)+\textmd{Res}(f,s=-1)$$
@@ -347,7 +350,7 @@ $$ = \left(\frac{x^2}{2}-x+\frac{1}{2}\right) - \left(lx-l\right)+\left(\sum_{k=
 
 \hfil
 
-$$\frac{x^2}{2} - \sum_{\rho}\frac{x^{\rho+1}}{\rho(\rho+1)} + x\left(-1-l\right) + \left(\frac{1}{2}+l+\sum_{k=1}^{\infty}\frac{1}{2k(2k-1)}+\sum_{\rho}\frac{1}{\rho(\rho+1)}\right)-\sum_{k=1}^{\infty}\frac{x^{1-2k}}{2k(2k-1)}$$
+$$= \frac{x^2}{2} - \sum_{\rho}\frac{x^{\rho+1}}{\rho(\rho+1)} + x\left(-1-l\right) + \left(\frac{1}{2}+l+\sum_{k=1}^{\infty}\frac{1}{2k(2k-1)}+\sum_{\rho}\frac{1}{\rho(\rho+1)}\right)-\sum_{k=1}^{\infty}\frac{x^{1-2k}}{2k(2k-1)}$$
 Which, consider the previous product formula of $\frac{\zeta'(s)}{\zeta(s)}$, we get the following two expressions:
 $$\frac{\zeta'(0)}{\zeta(0)} = -\frac{1}{0-1}+l+\sum_{k=1}^{\infty}\left(\frac{1}{0+2k}-\frac{1}{2k}\right) + \sum_{\rho}\left(\frac{1}{0-\rho}+\frac{1}{\rho}\right) = 1+l$$
 
@@ -378,12 +381,36 @@ Which is the desired formula.
 
 \textbf{Pf:}
 
-\textbf{1. Equivalent Conditions on the Asymtotic Bound of $\psi(x)$:}
+First, if consider the fact that $\textmd{Li}(x)=\frac{x}{\log(x)}+O(\frac{x}{(\log(x))^2})$ (proven in \textbf{Question 2}), then for some $x_0>0$, every $x>x_0$ satisfies $x\geq \textmd{Li}(x)$.
 
-THe following condition should be equivalent:
+Similarly, provide the Tchebychev $\theta$ Function $\theta(x)=\sum_{p\leq x}\log(p)$ and the Tchebychev Function $\psi(x)=\sum_{p^m\leq x}\log(p)$ (where $\psi(x)\geq \theta(x)$), in \textbf{Freitag}, the \textbf{Prime Number Theorem} has stated that $\theta(x)=x+o(x)$, while $\pi(x) leq \frac{x}{\log(x)}(1+R(x))$ for some $R(x)$ satisfying $\lim_{x\rightarrow\infty} R(x)=0$. Hence, for some $x_1>0$, every $x>x_1$ satisfies $\theta(x)\geq \pi(x)$.
 
-1. $\psi(x)=x+O(x^{\alpha+\epsilon})$ for all $\epsilon>0$
+Hence, for $x>\max\{x_0,x_1\}$, the following inequality is true:
+$$\pi(x)-\textmd{Li}(x)\leq \theta(x)-x \leq \psi(x)-x$$
+Hence, if proving the equivalence between $\psi(x)-x=O(x^{\alpha+\epsilon})$ for all $\epsilon>0$, and $\zeta(s)$ has no zeros in $\alpha<\textmd{Re}(s)<1$, it automatically provides the desired statement.
 
-2. $\zeta(s)$ has no zeros in the strip $\alpha<\textmd{Re}(s)<1$ for given $\frac{1}{2}\leq \alpha$.
+\begin{itemize}
+    \item[$\implies:$] We'll prove the contrapositive. Suppose for given $\frac{1}{2}\leq \alpha<1$, there exists nontrivial zero $\rho$ of $\zeta(s)$ that appears in 
+    
+    \hfil
+
+    \item[$\impliedby:$] Now, suppose $\zeta(s)$ has no zeros in the strip $\alpha<\textmd{Re}(s)<1$, then all nontrivial zeros $\rho$ in the critical strip satisfies $\textmd{Re}(\rho)\leq \alpha$. Then, if consider the explicit formula of $\psi_1(x)$ we got:
+    $$\psi_1(x)=\frac{x^2}{2}-\sum_{\rho}\frac{x^{\rho+1}}{\rho(\rho+1)}-\frac{\zeta'(0)}{\zeta(0)}x+\frac{\zeta'(-1)}{\zeta(-1)}-\sum_{k=1}^{\infty}\frac{x^{1-2k}}{2k(2k-1)}$$
+    For all $x>1$, any $k\in\mathbb{N}$ satisfies $1-2k<0$, which $x^{1-2k}<1$; also, since $\textmd{Re}(\rho+1)=\textmd{Re}(\rho)+1 \leq \alpha+1$, then $\left|x^{\rho+1}\right| = x^{\textmd{Re}(\rho)+1} \leq x^{\alpha+1}$. Hence, we get the following inequality:
+    $$\psi_1(x) \leq \frac{x^2}{2}+\sum_{\rho}\left|\frac{x^{\rho+1}}{\rho(\rho+1)}\right| + \left|\frac{\zeta'(0)}{\zeta(0)}\right|x + \left|\frac{\zeta'(-1)}{\zeta(-1)}\right| + \sum_{k=1}^{\infty}\left|\frac{x^{1-2k}}{2k(2k-1)}\right|$$
+    $$ \leq \frac{x^2}{2}+\sum_{\rho}\frac{x^{\alpha+1}}{|\rho(\rho+1)|}+\left|\frac{\zeta'(0)}{\zeta(0)}\right|x + \left|\frac{\zeta'(-1)}{\zeta(-1)}\right| + \sum_{k=1}^{\infty}\frac{1}{2k(2k-1)}$$
+    So, let $C = \sum_{\rho}\frac{1}{|\rho(\rho+1)|}$, $D=\left|\frac{\zeta'(0)}{\zeta(0)}\right|$, and $E = \left|\frac{\zeta'(-1)}{\zeta(-1)}\right| + \sum_{k=1}^{\infty}\frac{1}{2k(2k-1)}$ (which $C,D,E> 0$), we get:
+    $$\psi_1(x) \leq \frac{x^2}{2}+Cx^{\alpha+1}+Dx + E$$
+    So, as $\frac{1}{2}\leq \alpha <1$ (or $\frac{3}{2}\leq \alpha+1<2$), the above implies that $\psi_1(x)=\frac{x^2}{2} +O(x^{\alpha+1})$.
+
+    As a consequence, since $\psi(x)$ is increasing, and $\psi_1(x)$ is a function based on its integral, then we get the following for all $x>1$:
+    $$\psi(x)\leq \int_{x}^{x+1}\psi(t)dt = \int_{0}^{x+1}\psi(t)dt - \int_{0}^{x}\psi(t)dt = \psi_1(x+1)-\psi_1(x)$$
+    $$\leq \left(\frac{(x+1)^2}{2}+C(x+1)^{\alpha+1}+D(x+1)+E\right)-\left(\frac{x^2}{2}+Cx^{\alpha+1}+Dx+E\right)$$
+    $$ = \frac{2x+1}{2} + C\left((x+1)^{\alpha+1}-x^{\alpha+1}\right) + D$$
+    Since $t^{\alpha+1}$ is an antiderivative of $(\alpha+1)t^{\alpha}$ (which is increasing for $t>1$), then we get:
+    $$\psi(x)\leq x + C'\int_{x}^{x+1}t^{\alpha}dt + (D+1/2) \leq x+C(\alpha+1)\int_{x}^{x+1}(x+1)^{\alpha}dt + D'$$
+    $$\leq x + C'(x+1)^\alpha + D' \leq x+C'(2x)^\alpha + D' = x+C''x^\alpha + D'$$
+    So, as $\alpha<1$, the above shows that $\psi(x) = x+O(x^{\alpha})$, or $\psi(x)-x=O(x^{\alpha})$. Hence, for all $\epsilon>0$, $\psi(x)-x = O(x^{\alpha+\epsilon})$.
+\end{itemize}
 
 \end{document}
