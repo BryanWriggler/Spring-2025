@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin = 2.54cm]{geometry}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myBox}[3]{
+arc=5mm,
+lower separated=false,
+fonttitle=\bfseries,
+%colbacktitle=green!10,
+%coltitle=green!50!black,
+enhanced,
+attach boxed title to top left={xshift=0.5cm,
+        yshift=-2mm},
+colframe=blue!50!black,
+colback=blue!10
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\linespread{1.2}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{question}{Question}
+
+\title{Math 118C HW5}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $R_1\subset R_2\subset\mathbb{R}^n$ be finite rectangles. Using the definition of volume, prove that the set $R_2\setminus R_1$ is Riemann-Measurable and $\textmd{Vol}(R_2\setminus R_1)=\textmd{Vol}(R_2)-\textmd{Vol}(R_1)$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{2}
+\begin{myBox}[]{}
+    \begin{question}
+
+        \hfil
+
+        \begin{itemize}
+            \item[1.] Let $R,R_1,R_2,...,R_m\subset \mathbb{R}^n$ be finite rectangles such that $R\subset\bigcup_{i=1}^{m}R_i$. Without using characteristic functions and integration, prove that $\textmd{Vol}(R)\leq \sum_{i=1}^{m}\textmd{Vol}(R_i)$.
+            \item[2.] Let $\tilde{R_1},\tilde{R_2},...,\tilde{R_k}\subset \mathbb{R}^n$ be finite rectangles and let $R_1,R_2,...,R_m\subset\mathbb{R}^n$ be nonoverlapping finite rectangles such that $\bigcup_{i=1}^{m}R_i\subset\bigcup_{j=1}^{k}\tilde{R_j}$. Without using characteristic functions and integration, prove that $\sum_{i=1}^{m}\textmd{Vol}(R_i)\leq\sum_{j=1}^{k}\textmd{Vol}(\tilde{R_j})$. 
+        \end{itemize}
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{3}
+\begin{myBox}[]{}
+    \begin{question}
+        Prove that a bounded set $A\subset\mathbb{R}^n$ has zero volume, if and only if for any $\epsilon>0$, there exist cubes $Q_1,Q_2,...,Q_m\subset\mathbb{R}^n$ such that $A\subset\bigcup_{i=1}^{m}Q_i$ and $\sum_{i=1}^{m}\textmd{Vol}(Q_i)<\epsilon$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{4}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $a\in\mathbb{R}^2$ and $r>0$. Prove that the disc $D_r(a)=\{x\in\mathbb{R}^2\ |\ |x-a|<r\}\subset\mathbb{R}^2$ is Riemann-measurable and $\textmd{Vol}(D_r(a))=\pi r^2$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\break
+
+\section*{5}
+\begin{myBox}[]{}
+    \begin{question}
+        Let $R\subset\mathbb{R}^n$ be a finite rectangle and let $F:R\rightarrow[0,\infty)$ be Riemann-integrable. Prove that if $\int_Rf(x)dx = 0$, then for any $\epsilon>0$, the set $\{x\in R\ |\ f(x)\neq 0\}$ can be covered by an infinite sequence of rectangles $\{R_k\}_{k=1}^{\infty}\subset R$ such that $\sum_{k=1}^{\infty}\textmd{Vol}(R_k)<\epsilon$.
+    \end{question}
+\end{myBox}
+
+\textbf{Pf:}
+
+\end{document}
