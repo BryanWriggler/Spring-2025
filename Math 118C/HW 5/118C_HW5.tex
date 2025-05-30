@@ -3,7 +3,7 @@
 \usepackage[margin = 2.54cm]{geometry}
 \usepackage[most]{tcolorbox}
 
-\newtcolorbox{myBox}[3]{
+\newtcolorbox{myBox}[3]{ %for question
 arc=5mm,
 lower separated=false,
 fonttitle=\bfseries,
@@ -16,6 +16,8 @@ colframe=blue!50!black,
 colback=blue!10
 }
 
+\definecolor{myEmerald}{RGB}{50.4, 130, 90}
+
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{verbatim}
@@ -26,6 +28,12 @@ colback=blue!10
 \newtheorem{proposition}{Proposition}
 \newtheorem{theorem}{Theorem}
 \newtheorem{question}{Question}
+\newtheorem{lemma}{Lemma}
+
+\tcolorboxenvironment{lemma}{
+    enhanced, colframe=myEmerald!50!myEmerald, colback=myEmerald!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries
+}
 
 \title{Math 118C HW5}
 \author{Zih-Yu Hsieh}
@@ -85,6 +93,9 @@ Because $\chi$ is the characteristic function of $R_2\setminus R_1$, then being 
 \end{myBox}
 
 \textbf{Pf:}
+\subsection*{1.}
+
+\subsection*{2.}
 
 \break
 
@@ -97,6 +108,68 @@ Because $\chi$ is the characteristic function of $R_2\setminus R_1$, then being 
 
 \textbf{Pf:}
 
+Recall that a bounded set $A\subset\mathbb{R}^n$ satisfies $\textmd{Vol}(A)=0$, iff for all $\epsilon>0$ there exists finitely many rectangles $R_1,...,R_m\subset \mathbb{R}^n$ such that $A\subseteq \bigcup_{i=1}^{m}R_i$ and $\sum_{i=1}^{m}\textmd{Vol}(R_i)<\epsilon$. 
+
+Also, notice that every cube $Q\subseteq\mathbb{R}^n$ is a rectangle.
+\begin{itemize}
+    \item[$\implies$:] Suppose $A\subset\mathbb{R}^n$ has zero volume, by the equivalent condition, for any $\epsilon>0$, there eixsts finitely many rectangles $R_1,...,R_m\subset\mathbb{R}^n$, such that $A\subseteq \bigcup_{i=1}^{m}R_i$ and $\sum_{i=1}^{m}\textmd{Vol}(R_i)<\epsilon$. Which, consider the following lemmas:
+
+    \begin{lemma}
+        Given finite rectangle $R\subset\mathbb{R}^n$ with side lengths $l_1,...,l_k\in\mathbb{R}_{>0}$, if all side length is rational, then $R$ can be partitioned into finitely many cubes.
+    \end{lemma}
+    \textit{Proof of Lemma 1:} Suppose $l_1,...,l_k\in\mathbb{Q}_{>0}$, then for each index $i\in\{1,...,k\}$, there exists $m_i,n_i\in\mathbb{N}$ (and $\gcd(m_i,n_i)=1$), such that $l_i=\frac{m_i}{n_i}$. Then, take length $l=\frac{1}{m_1...m_kn_1...n_k}$, for each index $i\in\{1,...,k\}$, ghe division shows the following:
+    \begin{equation}
+        \frac{l_i}{l} = \frac{m_i}{n_i}(m_1...m_kn_1...n_k) = m_i(m_1...m_k)\cdot \prod_{\substack{j=1\\j\neq i}}^{k}n_j \in\mathbb{N}
+    \end{equation}
+    So, since each side length $l_i$ can be partitioned into integer copies of $l$, then each side has a partition $P_i$, where all interval has length $l$. Unify all partitions for each side, we get a partition $P$ on $R$, where each subrectangle has side length provided by an interval of each $P_i$, which each side length is $l$. Hence, all subrectangle is in fact a cube, so $P$ partitions $R$ into finitely many cubes.
+
+    \begin{lemma}
+        Given finite rectangle $R\subset\mathbb{R}^n$, for all $\epsilon>0$, there exists a larger rectangle $R'\subset\mathbb{R}^n$ with rational side lengths containing $R$, and $\textmd{Vol}(R')-\textmd{Vol}(R)<\epsilon$.
+    \end{lemma}
+    \textit{Proof of Lemma 2:} If $R$ has all side lengths being rational, then $R'=R$ provides the solution. So, can assume $R$ has at least one side length being irrational.
+
+    Let $R = [a_1,b_1]\times ...\times [a_n,b_n]$, and for each index $i\in\{1,...,n\}$, let $l_i=b_i-a_i$ (the $i^{th}$ side length of $R$).  For $x\in\mathbb{R}_{\geq 0}$, define $R_x=[a_1,b_1+x]\times...\times[a_n,b_n+x]$. Then, $\textmd{Vol}(R_x)$ is given by:
+    \begin{eqnarray}
+        \textmd{Vol}(R_x)=\prod_{i=1}^{n}((b_i+x)-a_i) = \prod_{i=1}^{n}(l_i+x) \in \mathbb{R}[x]
+    \end{eqnarray}
+    (Note: by the definition of $R_x$ with $x\geq 0$, it's clear that $R\subseteq R_x$; and since each side length of $R_x$ has $l_i+x\geq l_i$, this also implies $\textmd{Vol}(R_x)\geq \textmd{Vol}(R)$).
+
+    Since $\textmd{Vol}(R_x)$ for $x\geq 0$ can be expressed as a real polynomial, then as a function of $x$, it is continuous. Notice that given $x=0$, we have $R_0 = R$, hence $\textmd{Vol}(R_0)=\textmd{Vol}(R)$. Which, by continuity, for all $\epsilon>0$, there exists $\delta>0$, such that $0\leq x<\delta$ implies $|\textmd{Vol}(R_x)-\textmd{Vol}(R_0)| = \textmd{Vol}(R_x)-\textmd{Vol}(R)<\epsilon$.
+
+    Now, for each index $i\in\{1,...,n\}$, consider the interval $[l_i,l_i+\delta)$: By the denseness of $\mathbb{Q}$ in $\mathbb{R}$, there exists rational number within this interval. Hence, there exists $x_i\in [0,\delta)$, such that $l_i+x_i\in [l_i,l_i+\delta)$ and $l_i+x_i\in\mathbb{Q}$. So, if we consider the rectangle $R' = [a_1,a_1+l_1+x_1]\times ...\times[a_n,a_n+l_n+x_n] = [a_1,b_1+x_1]\times [a_n,b_n+x_n]$, and the number $x=\max\{x_1,...,x_n\}$ (note: since each $0\leq x_i<\delta$, then $0\leq x<\delta$), then one can see $R\subseteq R' \subseteq R_x$ (since $R_x=[a_1,b_1+x]\times...\times[a_n,b_n+x]$, and each side of $R'$ is given by $[a_i,b_i+x_i]$ with $0\leq x_i\leq x$). 
+    
+    Hence, such inclusion implies $\textmd{Vol}(R)\leq \textmd{Vol}(R')\leq \textmd{Vol}(R_x)$; with $0\leq x<\delta$, this also shows that $0\leq \textmd{Vol}(R')-\textmd{Vol}(R)\leq \textmd{Vol}(R_x)-\textmd{Vol}(R)<\epsilon$.
+    On the other hand, since $R'$ has side length $(b_i+x_i)-a_i = l_i+x_i\in\mathbb{Q}$, it satisfies all desired conditions, and this finishes the proof.
+
+    \hfil
+
+    Now, with the above two lemmas in mind, we can prove the statement.
+
+    Given $\textmd{Vol}(A)=0$, using the equivalent condition of zero volume, for all $\epsilon>0$, since $\frac{\epsilon}{2}>0$, then there exists finite rectangles $R_1,...,R_m\subset\mathbb{R}^n$, such that $A\subseteq\bigcup_{i=1}^{m}R_i$, and $\sum_{i=1}^{m}\textmd{Vol}(R_i)<\frac{\epsilon}{2}$.
+
+    Notice that because $\frac{\epsilon}{2m}>0$, then using \textbf{Lemma 2} from above, each index $i\in\{1,...,m\}$ has a corresponding $R_i'$ with rational side lengths, such that $R_i\subseteq R_i'$, and $\textmd{Vol}(R_i')-\textmd{Vol}(R_i)<\frac{\epsilon}{2m}$. Then, the collection $\{R_1',...,R_m'\}$ satisfies $A\subseteq\bigcup_{i=1}^{m}R_i\subseteq \bigcup_{i=1}^{m}R_i'$, and the sum of volume satisfies the following:
+    \begin{equation}
+        \begin{split}
+            \sum_{i=1}^{m}&\textmd{Vol}(R_i') - \sum_{i=1}^{m}\textmd{Vol}(R_i) = \sum_{i=1}^{m}(\textmd{Vol}(R_i')-\textmd{Vol}(R_i)) < \sum_{i=1}^{m}\frac{\epsilon}{2m} = \frac{\epsilon}{2}\\
+            &\implies \sum_{i=1}^{m}\textmd{Vol}(R_i') < \sum_{i=1}^{m}\textmd{Vol}(R_i)+\frac{\epsilon}{2} < \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+        \end{split}
+    \end{equation}
+    On the other hand, each $R_i'$ has rational side lengths, hence by \textbf{Lemma 1}, it can be partitioned into finitely many cubes $\{Q_1^{(i)},...,Q_{l_i}^{(i)}\}$, such that $R_i' = \bigcup_{j=1}^{l_i}R_j^{(i)}$, and $\sum_{j=1}^{l_i}\textmd{Vol}(R_j^{(i)})=\textmd{Vol}(R_i')$.
+    
+    Hence, take the finite collection of cubes $\mathcal{F}=\bigcup_{i=1}^{m}\{Q_1^{(i)},...,Q_{l_i}^{(i)}\}$, we get the following two relationships:
+    \begin{equation}
+        A\subseteq \bigcup_{i=1}^{m}R_i' = \bigcup_{i=1}^{m}\left(\bigcup_{j=1}^{l_i}Q_j^{(i)}\right) = \bigcup_{Q\in \mathcal{F}}Q
+    \end{equation}
+    \begin{equation}
+        \sum_{Q\in\mathcal{F}}\textmd{Vol}(Q) = \sum_{i=1}^{m}\left(\sum_{j=1}^{l_i}\textmd{Vol}(Q_j^{(i)})\right) = \sum_{i=1}^{m}\textmd{Vol}(R_i') < \epsilon
+    \end{equation}
+    Hence, $\mathcal{F}$ is a desired collection of cubes with all satisfying properties.
+    
+    \hfil
+
+    \item[$\impliedby:$] Suppose for any $\epsilon>0$, there exist cubes $Q_1,...,Q_m\subset\mathbb{R}^n$ with $A\subseteq\bigcup_{i=1}^{m}Q_i$ and $\sum_{i=1}^{m}\textmd{Vol}(Q_i)<\epsilon$, then since each cube is also a rectangle, this satisfies the equivalent condition for $\textmd{Vol}(A)=0$. Hence, $A$ has zero volume.
+\end{itemize}
+
 \break
 
 \section*{4}
@@ -108,7 +181,7 @@ Because $\chi$ is the characteristic function of $R_2\setminus R_1$, then being 
 
 \textbf{Pf:}
 
-Let $a = (a_x,a_y)\in\mathbb{R}^2$.
+Let $a = (a_x,a_y)\in\mathbb{R}^2$. We'll break the proofs into following sections:
 \subsection*{1. $D_r(a)$ is Riemann-Measurable:}
 Given $D_r(a)=\{x\in\mathbb{R}^2\ |\ |x-a|<r\}$, then its boundary $\partial D_r(a) = \{x\in\mathbb{R}^2\ |\ |x-a|=r\}$. Which, if consider the map $\varphi:\mathbb{R}^2\rightarrow\mathbb{R}^2$ defined as follow:
 \begin{equation}
