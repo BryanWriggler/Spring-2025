@@ -42,6 +42,33 @@ colback=blue!10
 
 \textbf{Pf:}
 
+First, since $R_1,R_2,(R_2\setminus R_1) \subseteq R_2$, let $\chi_{R_1},\chi_{R_2}, \chi:R_2\rightarrow\mathbb{R}$ be the characteristic functions of $R_1,R_2,R_1\setminus R_2$ respectively. Then, they take the following form:
+\begin{equation}
+    \chi_{R_1}(x)=\begin{cases}
+        1 & x\in R_1\\
+        0 & x\notin R_1
+    \end{cases},\quad \chi_{R_2}(x)=1,\quad \chi(x)=\begin{cases}
+        1 & x\in R_2\setminus R_1\\
+        0 & x \in R_2\setminus(R_2\setminus R_1) = R_1
+    \end{cases}
+\end{equation}
+Which, if consider the function $\chi_{R_2}-\chi_{R_1}$, we get:
+\begin{equation}
+    \begin{split}
+        x\in R_2\setminus R_1 &\implies \chi_{R_2}(x)-\chi_{R_1}(x) = 1-0 = 1 = \chi(x) \\
+        x\in R_1\subseteq R_2 &\implies \chi_{R_2}(x)-\chi_{R_1}(x) = 1-1 = 0 = \chi(x)
+    \end{split}
+\end{equation}
+Hence, $\chi_{R_2}-\chi_{R_1} = \chi$ (the characteristic function of $R_2\setminus R_1$), so since $R_2,R_1$ are rectangles, then $\chi_{R_2},\chi_{R_1}$ are both Riemann-Integrable over $R_2$, then $\chi = \chi_{R_2}-\chi_{R_1}$ is also Riemann-Integrable over $R_2$.
+
+Because $\chi$ is the characteristic function of $R_2\setminus R_1$, then being Riemann-Integrable implies $R_2\setminus R_1$ is Riemann-Measurable. Furthermore, its volume is given as follow:
+\begin{equation}
+    \begin{split}
+        \textmd{Vol}(R_2\setminus R_1) &= \int_{R_2}\chi(x)dx = \int_{R_2}(\chi_{R_2}(x)-\chi_{R_1}(x))dx \\
+         &= \int_{R_2}\chi_{R_2}(x)dx - \int_{R_2}\chi_{R_1}(x)dx = \textmd{Vol}(R_2)-\textmd{Vol}(R_1)
+    \end{split}
+\end{equation}
+
 \break
 
 \section*{2}
@@ -75,22 +102,189 @@ colback=blue!10
 \section*{4}
 \begin{myBox}[]{}
     \begin{question}
-        Let $a\in\mathbb{R}^2$ and $r>0$. Prove that the disc $D_r(a)=\{x\in\mathbb{R}^2\ |\ |x-a|<r\}\subset\mathbb{R}^2$ is Riemann-measurable and $\textmd{Vol}(D_r(a))=\pi r^2$.
+        Let $a\in\mathbb{R}^2$ and $r>0$. Prove that the disc $D_r(a)=\{x\in\mathbb{R}^2\ |\ |x-a|<r\}\subset\mathbb{R}^2$ is Riemann-Measurable and $\textmd{Vol}(D_r(a))=\pi r^2$.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
+
+Let $a = (a_x,a_y)\in\mathbb{R}^2$.
+\subsection*{1. $D_r(a)$ is Riemann-Measurable:}
+Given $D_r(a)=\{x\in\mathbb{R}^2\ |\ |x-a|<r\}$, then its boundary $\partial D_r(a) = \{x\in\mathbb{R}^2\ |\ |x-a|=r\}$. Which, if consider the map $\varphi:\mathbb{R}^2\rightarrow\mathbb{R}^2$ defined as follow:
+\begin{equation}
+    \varphi(\rho,\theta) = (a_x+\rho\cos(\theta),a_y+\rho\sin(\theta))
+\end{equation}
+Then, $\varphi$ is continuously differentiable. If we take a straight line segment $I = \{(x,y)\in\mathbb{R}^2\ |\ x=r,\ 0\leq y\leq 2\pi\}$, then since this line segment is bounded, $D\varphi$ as a continuous function is bounded on any compact subset containing $I$, hence $\varphi$ is in fact Lipschitz on some compact subset containing $I$.
+
+Also, since for all $\epsilon>0$, choose the rectangle $R=[r,r+\frac{\epsilon}{2\pi}]\times [0,2\pi]$, then it's clear that $I\subseteq R$, and since $\textmd{Vol}(R) = \frac{\epsilon}{2\pi}\cdot 2\pi = \epsilon$, then $I$ can be covered by rectangle with arbitrary volume, showing that $\textmd{Vol}(I)=0$.
+
+Which, if consider the image $\varphi(I)$, since any $(x,y)\in I$ has $(x,y)=(r,\theta)$ for some $\theta\in [0,2\pi]$, hence $\varphi(x,y)=(a_x+r\cos(\theta),a_y+r\sin(\theta))$, which $|\varphi(x,y)-a| = |(r\cos(\theta),r\sin(\theta))| = r$, showing that $\varphi(x,y)\in \partial D_r(a)$, or $\varphi(I)\subseteq \partial D_r(a)$; 
+
+on the other hand, for any $x\in \partial D_r(a)$, since $|x-a|=r$, then there exists $\theta\in[0,2\pi]$, such that $x-a = (r\cos(\theta),r\sin(\theta))$, hence $(r,\theta)\in I$ satisfies $\varphi(r,\theta)=(a_x+r\cos(\theta),a_y+r\sin(\theta)) = a+(x-a) = x$, showing that $\partial D_r(a)\subseteq \varphi(I)$, or $\partial D_r(a)=\varphi(I)$.
+
+As a conclusion, since $\varphi$ is Lipschitz on some compact subset containing $I$, $\textmd{Vol}(I)=0$, and $\partial D_r(a)=\varphi(I)$, this shows that $\textmd{Vol}(\partial D_r(a)) = 0$, which is equivalent to $D_r(a)$ is Riemann-Measurable.
+
+\subsection*{2. Volume of $D_r(a)$:}
+For this part, we'll utilize Change of Variable. 
+
+Let $I=\{(x,y)\in\mathbb{R}^2\ |\ y=a_y,\ a_x\leq x < (a_x+r)\}$ (a straight line segment cutting through the disk $D_r(a)$ containing the center), and open set $D' = D_r(a)\setminus I$ (which $D'$ defines a disk cutting out a line). Which, using similar proof from section 1, we know that $\textmd{Vol}(I) = 0$ (volume of a bounded straight line always has volume $0$); also, since $\partial D' = \partial D_r(a)\cup I$, with both having volume $0$, then $\textmd{Vol}(D') = 0$, showing that $D'$ is Riemann-Measurable.
+Then, because $D_r(a)= D' \sqcup I$, then we get the following equation: 
+\begin{equation}
+    \textmd{Vol}(D_r(a))=\textmd{Vol}(D') + \textmd{Vol}(I) = \textmd{Vol}(D')
+\end{equation}
+
+\hfil
+
+Now, to find $\textmd{Vol}(D')$, we'll utilize the function $\varphi$ defined in Section $1$: Define rectangle $R=[0,r]\times [0,2\pi]\subset\mathbb{R}^2$, and consider the interior $R^\circ = (0,r)\times (0,2\pi)$: For any $(\rho,\theta)\in R^\circ$, $\varphi(\rho,\theta)=(a_x+\rho\cos(\theta),a_y+\rho\sin(\theta))$, hence $|\varphi(\rho,\theta)-a| = |(\rho\cos(\theta),\rho\sin(\theta))| = \rho <r$, so $\varphi(\rho,\theta)\in D_r(a)$.
+
+On the other hand, if $a_y+\rho\sin(\theta) = a_y$, then $\rho\sin(\theta) = 0$, which enforces $\theta = \pi$; but, this implies $a_x+\rho\cos(\theta) = a_x+\rho\cos(\pi) = a_x-\rho<a_x$, this shows that $\varphi(\rho,\theta)\notin I$ (since it doesn't satisfy the set axiom of $I$), hence $\varphi(\rho,\varphi)\in D_r(a)\setminus I = D'$, showing that $\varphi:R^\circ\rightarrow D'$ is a well-defined $C^1$ continuous map.
+
+\hfil
+
+Then, notice that $\varphi$ is bijective after the restriction: 
+
+Suppose $(\rho_1,\theta_1)$ and $(\rho_2,\theta_2)$ have the same output, then we know since $|\varphi(\rho,\theta)-a| = \rho$ based on some calculations above, then $\varphi(\rho_1,\theta_1)=\varphi(\rho_2,\theta_2)$ enforces $\rho_1 = \rho_2 = \rho$. Then, this implies that $\varphi(\rho,\theta_1) = (a_x+\rho\cos(\theta_1),a_y+\rho\sin(\theta_1))=\varphi(\rho,\theta_2)=(a_x+\rho\cos(\theta_2),a_y+\rho\sin(\theta_2))$, or $\rho\cos(\theta_1)=\rho\cos(\theta_2)$ and $\rho\sin(\theta_1)=\rho\sin(\theta_2)$. Which, since $\theta_1,\theta_2\in (0,2\pi)$, we must have $\theta_1=\theta_2$, which proves the injectivity.
+
+Now, for each $(x,y)\in D'$, since $(x,y)\notin I$, which implies that $(x,y)-a$ is not on the positive $x$-axis ($I$ is a horizontal straight line going to the right of the disk from the center); together with the fact that $|(x,y)-a|<r$, then $(x,y)-a$ can be represented with some $(\rho,\theta)\in R^\circ = (0,r)\times (0,2\pi)$ under polar coordinates, or $(x,y)-a = (\rho\cos(\theta),\rho\sin(\theta))$. This shows that $(x,y) = (a_x+\rho\cos(\theta),a_y+\rho\sin(\theta)) = \varphi(\rho,\theta)$, which proves the surjectivity. 
+
+Moreover, $\varphi$ is in fact a diffeomorphism on $R^\circ$: For all $(\rho,\theta)\in R^\circ$, we have $\rho>0$. Which, $\varphi$ has its differential and determinant given as follow:
+\begin{equation}
+    \varphi(\rho,\theta) = (\varphi_1,\varphi_2)= (a_x+\rho\cos(\theta),a_y+\rho\sin(\theta))
+\end{equation}
+\begin{equation}
+    \begin{split}
+        D\varphi(\rho,\theta)=\begin{pmatrix}
+            \frac{\partial \varphi_1}{\partial \rho} & \frac{\partial \varphi_1}{\partial \theta}\\
+            \frac{\partial \varphi_2}{\partial \rho} & \frac{\partial \varphi_2}{\partial \theta}
+        \end{pmatrix} = \begin{pmatrix}
+            \cos(\theta) & -\rho\sin(\theta)\\
+            \sin(\theta) & \rho\cos(\theta)
+        \end{pmatrix}\\ 
+        \implies \left|\det(D\varphi(\rho,\theta))\right| = |\rho\cos^2(\theta)+\rho\sin^2(\theta)| = |\rho| = \rho >0
+    \end{split}
+\end{equation}
+Since at each $(\rho,\theta)$, the differential has nonzero determinant, then the differential is invertible. Since $\varphi:R^\circ\rightarrow D'$ is bijective, with the differential being invertible at all point of $R^\circ$, then $\varphi$ forms a diffeomorphism.
+
+\hfil
+
+With all the tools established above, using \textbf{Change of Variable}, we get the following:
+\begin{equation}
+    \textmd{Vol}(D') = \int_{\varphi(R^\circ) = D'}1 dy = \int_{R^\circ}1\circ \varphi(x)\cdot|\det(D\varphi(x))|dx = \int_{R^\circ}\rho dx
+\end{equation}
+Our final goal is to do this estimation.
+
+First, we'll prove that $\textmd{Vol}(D')\leq \pi r^2$: Let $\chi_{R^\circ}$ be the characteristic function of $R^\circ$, then for any $x = (\rho,\theta)\in R$, $\chi_{R^\circ}(x)=1$ if $x\in R^\circ$, and $0$ elsewhere. So, notice that the function $\rho\cdot \chi_{R^\circ}(x) \leq \rho$ for all $x\in R$. Hence, we get the following based on the definition of characteristic function:
+\begin{equation}
+    \textmd{Vol}(D') = \int_{R^\circ}\rho dx = \int_{R}\rho\cdot \chi_{R^\circ}(x)dx \leq \int_{R}\rho dx
+\end{equation}
+Which, the last integral above can be explicitly written as follow using \textbf{Fubini's Theorem}:
+\begin{equation}
+    \int_{R}\rho dx = \int_{\rho =0}^{r}\int_{\theta=0}^{2\pi}\rho d\theta d\rho = 2\pi\int_{\rho=0}^{r}\rho d\rho = 2\pi\cdot \frac{\rho^2}{2}\bigg|_{0}^{r} = \pi r^2
+\end{equation}
+Hence, combining the above two expressions, we get:
+\begin{equation}
+    \textmd{Vol}(D') = \int_{R^\circ}\rho dx \leq \int_R\rho dx = \pi r^2
+\end{equation}
+
+Now, we'll prove that $\textmd{Vol}(D')\geq \pi r^2$: Assume for suitable $K\in\mathbb{N}$, any integer $k\geq K$ satisfies $\frac{1}{2k}, (r-\frac{1}{2k})\in (0,r)$, and $\frac{1}{2k},(2\pi -\frac{1}{2k})\in (0,2\pi)$, and the second value is greater than the first one. Then, the following rectangle $R_k = [\frac{1}{2k},r-\frac{1}{2k}]\times [\frac{1}{2k},2\pi -\frac{1}{2k}]\subset R^\circ$. Which, because $R_k$ is Riemann-Measurable and $\varphi$ is a diffeomorphism, then $\varphi(R_k)\subseteq \varphi(R^\circ)=D'$  is also Riemann-Measurable, with $\textmd{Vol}(\varphi(R_k))\leq \textmd{Vol}(D')$. Again, apply \textbf{Change of Variable} and \textbf{Fubini's Theorem}, we get the following:
+\begin{equation}
+    \begin{split}
+        \textmd{Vol}(\varphi(R_k)) &= \int_{\varphi(R_k)}1 dy = \int_{R_k}1\circ \varphi(x)|\det(D\varphi)(x)|dx = \int_{R_k}\rho dx\\
+        &= \int_{\rho=\frac{1}{2k}}^{r-\frac{1}{2k}}\int_{\theta = \frac{1}{2k}}^{2\pi -\frac{1}{2k}}\rho d\theta d\rho = \left(2\pi-\frac{1}{k}\right)\int_{\rho=\frac{1}{2k}}^{r-\frac{1}{2k}}\rho d\rho = \left(2\pi-\frac{1}{k}\right)\frac{\rho^2}{2}\bigg|_{\frac{1}{2k}}^{r-\frac{1}{2k}}\\
+        &= \left(\pi-\frac{1}{2k}\right)r\left(r-\frac{1}{k}\right) = \pi r^2 - \frac{\pi r}{k} - \frac{r^2}{2k} + \frac{r}{2k^2}
+    \end{split}
+\end{equation}
+With the previous inequality, we get the following:
+\begin{equation}
+    \textmd{Vol}(\varphi(R_k)) = \pi r^2 - \frac{\pi r}{k} - \frac{r^2}{2k} + \frac{r}{2k^2}\leq \textmd{Vol}(D')
+\end{equation}
+Then, if take the limit, we get that $\lim_{k\rightarrow\infty}\textmd{Vol}(\varphi(R_k)) = \pi r^2$, shiwh with the above inequality, we know that the limit $\pi r^2\leq \textmd{Vol}(D')$.
+
+Which, combining both inequalities about $\pi r^2$ and $\textmd{Vol}(D')$, we get that $\textmd{Vol}(D')=\pi r^2$.
 
 \break
 
 \section*{5}
 \begin{myBox}[]{}
     \begin{question}
-        Let $R\subset\mathbb{R}^n$ be a finite rectangle and let $F:R\rightarrow[0,\infty)$ be Riemann-integrable. Prove that if $\int_Rf(x)dx = 0$, then for any $\epsilon>0$, the set $\{x\in R\ |\ f(x)\neq 0\}$ can be covered by an infinite sequence of rectangles $\{R_k\}_{k=1}^{\infty}\subset R$ such that $\sum_{k=1}^{\infty}\textmd{Vol}(R_k)<\epsilon$.
+        Let $R\subset\mathbb{R}^n$ be a finite rectangle and let $f:R\rightarrow[0,\infty)$ be Riemann-integrable. Prove that if $\int_Rf(x)dx = 0$, then for any $\epsilon>0$, the set $\{x\in R\ |\ f(x)\neq 0\}$ can be covered by an infinite sequence of rectangles $\{R_k\}_{k=1}^{\infty}\subset R$ such that $\sum_{k=1}^{\infty}\textmd{Vol}(R_k)<\epsilon$.
     \end{question}
 \end{myBox}
 
 \textbf{Pf:}
-[]
+
+Given all the stated conditions, let $S=\{x\in R\ |\ f(x)\neq 0\}$. WLOG, assume $S\neq \emptyset$. We'll break the proof down into multiple steps with the following order:
+\begin{comment}
+\subsection*{1. $f$ is bounded:}
+We'll approach by contradiction. Suppose $f$ is not bounded instead, then for all $n\in\mathbb{N}$, there exists $x_n\in R$, such that $f(x_n)>n$. Then, since the sequence $(x_n)_{n\in\mathbb{N}}\subset R$, while $R$ as a finite rectangle is compact, there exists a subsequence $(x_{n_k})_{k\in\mathbb{N}}$ that converges to some point $x^*\in R$.
+
+Now, take any partition $P$ of $R$, there exists some subcollection of rectangles $R_1,...,R_j\in P$, such that each mentioned $R_i$ contains $x^*$ (and can assume this list contains all such rectangle). Which, since $x^*$ is the limit of $(x_{n_k})_{k\in\mathbb{N}}\subset R$, then for any radius $r>0$, the open ball $B_r(x^*)$ contains infinitely many points from $(x_{n_k})_{k\in\mathbb{N}}$.
+
+Also, since each $R_i$ as a rectangle has no isolated points, then $x^*\in R_i$, $R_i\cap(B_r(x^*)\setminus x^*)\neq \emptyset$. So, assume $r$ is small enough such that $B_r(x^*)\subseteq \bigcup_{i=1}^{j}R_i$, then at least one of the $R_i$ must contain infinitely many points from $(x_{n_k})_{k\in\mathbb{N}}$. Hence, for this $R_i$, since for every $K\in\mathbb{N}$, there always exists integer $k\geq K$, such that $x_k\in R_i$, then because $f(x_{n_k}) > n_k \geq k \geq K$, this indicates that $f$ is not bounded within $R_i$, hence $\sup_{x\in R_i}(f(x))=\infty$, showing that the upper sum based on $P$ is not defined. 
+
+Yet, this contradicts the fact that $f$ is Riemann-Integrable (since we need the upper sum to be defined for each partition before talkinag about integrability), so our assumption is false, $f$ must be bounded. Hence, $M=\sup_{x\in R}(f(x))$ exists.
+\end{comment}
+
+\subsection*{1. Separate $S$ as infinite subsets, and generate associated functions:}
+First, let $S_1 = \{x\in S\ |\ f(x)\in (\frac{1}{2},\infty)\}$, and for each integer $n\geq 2$, let $S_n=\{x\in S\ |\ f(x)\in (\frac{1}{2^n},\frac{1}{2^{n-1}}]\}$. Then, it is clear that $\bigcup_{n=1}^{\infty}S_n\subseteq S$; also, for each $x\in S$, since $f(x)\neq 0$ and the codomain of $f$ is $[0,\infty)$, hence $f(x)>0$, which there exists smallest $k\in\mathbb{N}$, such that $\frac{1}{2^k}<f(x)$, so $\frac{1}{2^k}<f(x)\leq \frac{1}{2^{k-1}}$, or $s\in S_k\subseteq \bigcup_{n=1}^{\infty}S_n$. Hence, we can claim that $S=\bigcup_{n=1}^{\infty}S_n$.
+
+Now, for each $S_n$, define $f_n:R\rightarrow[0,\infty)$ by the following definition:
+\begin{equation}
+    f_n(x)=\begin{cases}
+        f(x) & x\in S_n\\
+        0 & x\notin S_n
+    \end{cases}
+\end{equation}
+Notice that for all $x\in R$, if $x\in S_n$, then $f_n(x)=f(x)$, otherwise $f_n(x)\leq f(x)$ (since if $x\notin S$, then $f_n(x)=f(x)=0$; else if $s\in S\setminus S_n$, then $f_n(x)=0$, while $f(x)>0$). So, on the domain $R$, $f_n(x)\leq f(x)$.
+Also, notice that $f_n(x)$ is Riemann-Integrable: Since $f$ is Riemann-Integrable with $\int_Rf(x)dx = 0$, then for any $\epsilon>0$, there exists partition $P$ of $R$, such that the following holds:
+\begin{equation}
+    U(f,P) - \int_Rf(x)dx = U(f,P) = \sum_{R_i\in P}\sup_{x\in R_i}(f(x))\cdot \textmd{Vol}(R_i)<\epsilon
+\end{equation}
+Then, since $0\leq f_n(x)\leq f(x)$ on $R$, for any $R_i\in P$, we get $\sup_{x\in R_i}(f_n(x))\leq \sup_{x\in R_i}(f(x))$, hence:
+\begin{equation}
+    \overline{\int}_{R}f_n(x)dx \leq U(f_n,P) = \sum_{R_i\in P}\sup_{x\in R_i}(f_n(x))\cdot \textmd{Vol}(R_i) \leq \sum_{R_i\in P}\sup_{x\in R_i}(f(x))\cdot \textmd{Vol}(R_i)<\epsilon
+\end{equation}
+On the other hand, since $f_n(x)$ is nonnegative, then for every $R_i\in P$, $\inf_{x\in R_i}(f_n(x))\geq 0$, hence:
+\begin{equation}
+    0\leq \sum_{R_i\in P}\inf_{x\in R_i}(f_n(x)) = L(f_n,P) \leq \underline{\int}_{R}f_n(x)dx \leq \overline{\int}_Rf_n(x)dx < \epsilon
+\end{equation}
+Since $\epsilon$ is arbitrary, the above inequality shows that the lower and upper integral of $f_n(x)$ are both equal to $0$, hence $f_n(x)$ is Riemann-Integrable, and $\int_Rf_n(x)dx = 0$.
+
+\subsection*{2. Finite covers for each $S_n$:}
+Fix an arbitrary $\epsilon>0$ for universal purpose. 
+
+Now, for each $n\in\mathbb{N}$, since $\frac{\epsilon}{2^{2n}}>0$, then based on the Rimann Integral of $f_n(x)$, there exists partition $P^{(n)}$ of $R$, such that the following holds true:
+\begin{equation}
+    0\leq U(f_n,P^{(n)})-\int_{R}f_n(x)dx = U(f_n,P) = \sum_{R_i^{(n)}\in P}\sup_{x\in R_i^{(n)}}(f_n(x))\cdot \textmd{Vol}(R_i^{(n)}) < \frac{\epsilon}{2^{2n}}
+\end{equation}
+Since $f_n(x)>0$ iff $x\in S_n$, the above can be rewrite as:
+$$0\leq \sum_{R_i^{(n)}\in P}\sup_{x\in R_i}(f_n(x))\cdot \textmd{Vol}(R_i^{(n)}) = \sum_{\substack{R_i^{(n)}\in P\\R_i^{(n)}\cap S_n\neq \emptyset}}\sup_{x\in R_i^{(n)}}(f_n(x))\cdot \textmd{Vol}(R_i^{(n)})<\frac{\epsilon}{2^{2n}}$$
+Moreover, since for all $x\in S_n$, we have $f(x)>\frac{1}{2^n}$ based on the set axiom, then for each $R_i^{(n)}$ with $R_i^{(n)}\cap S_n\neq\emptyset$, $\sup_{x\in R_i^{(n)}}(f_n(x))>\frac{1}{2^n}$. Hence:
+\begin{equation}
+    0\leq \sum_{\substack{R_i^{(n)}\in P\\R_i^{(n)}\cap S_n\neq \emptyset}}\frac{1}{2^n}\cdot \textmd{Vol}(R_i^{(n)})\leq \sum_{\substack{R_i^{(n)}\in P\\R_i^{(n)}\cap S_n\neq \emptyset}}\sup_{x\in R_i^{(n)}}(f_n(x))\cdot \textmd{Vol}(R_i^{(n)}) < \frac{\epsilon}{2^{2n}}
+\end{equation}
+\begin{equation}
+    \implies \sum_{\substack{R_i^{(n)}\in P\\R_i^{(n)}\cap S_n\neq \emptyset}}\textmd{Vol}(R_i^{(n)})<2^n\cdot \frac{\epsilon}{2^{2n}} = \frac{\epsilon}{2^n}
+\end{equation}
+WLOG, can assume that the partition $p^{(n)}$ has indexed such that the first $j_n$ subrectangles $R_1^{(n)},...,R_{j_n}^{(n)}$ are all the rectangles with nontrivial intersection with $S_n$. Then, based on equation (10), we get:
+\begin{equation}
+    S_n\subseteq\bigcup_{i=1}^{j_n}R_i^{(n)},\quad \sum_{i=1}^{j_n}\textmd{Vol}(R_i^{(n)}) < \frac{\epsilon}{2^n}
+\end{equation}
+
+\subsection*{3. Infinite covers for $S$:}
+In the previous section, for each $n\in\mathbb{N}$, we get a cover $C_n=\{R_1^{(n)},...,R_{j_n}^{(n)}\}$ for $S_n$, such that the sum of the volume is less than $\frac{\epsilon}{2^n}$. Then, let $\mathcal{F}=\bigcup_{n\in\mathbb{N}}C_n$, since each $C_n$ is finite, then $\mathcal{F}$ as a collection of rectangles is at most countable. Which, for all $x\in S$, since there exists $k\in\mathbb{N}$ with $x\in S_k$, then $x\in \bigcup_{i=1}^{j_n}R_i^{(n)}\subseteq \bigcup_{R_l\in \mathcal{F}}R_l$, hence $S\subseteq \bigcup_{R_l\in\mathcal{F}}R_l$, showing that $\mathcal{F}$ is a collection of at most countable rectangles that covers $S$.
+
+Now, because $\mathcal{F}$ is at most countable, it can be indexed as $\{R_l\}_{l\in\mathbb{N}}$. To calculate the sum of volume, we'll consider the partial sum first: For each $N\in\mathbb{N}$, since for each index $l\in \{1,...,N\}$, there exists some $k_l\in \mathbb{N}$, such that $R_l\in C_{k_l}$. Then, let $k_N\in\mathbb{N}$ be the largest integer containing some rectangles from $\{R_1,...,R_N\}$, then $\{R_1,...,R_N\}\subseteq \bigcup_{i=1}^{k_N}C_i$, hence when considering the volume, we get:
+\begin{equation}
+    \begin{split}
+        0\leq \sum_{l=1}^{N}\textmd{Vol}(R_l)\leq \sum_{n=1}^{k_N}&\sum_{R_i^{(n)}\in C_n}\textmd{Vol}(R_i^{(n)}) = \sum_{n=1}^{k_N}\left(\sum_{i=1}^{j_n}\textmd{Vol}(R_i^{(n)})\right) \\
+        &\leq \sum_{n=1}^{k_N}\frac{\epsilon}{2^n} < \sum_{n=1}^{\infty}\frac{\epsilon}{2^n}<\epsilon
+    \end{split}
+\end{equation}
+Which, for all $N\in\mathbb{N}$, $\sum_{l=1}^{N}\textmd{Vol}(R_i)$ is bounded by $\epsilon$; also, since $\textmd{Vol}(R_l)\geq 0$ for all $l\in\mathbb{N}$, then the partial sum of volume is a nondecreasing sequence. Hence, its limit exist, and:
+\begin{equation}
+    \lim_{N\rightarrow\infty}\sum_{l=1}^{N}\textmd{Vol}(R_i) = \sum_{l=1}^{\infty}\textmd{Vol}(R_i) \leq \epsilon
+\end{equation}
+Which, we constructed a sequence $\{R_l\}_{l\in\mathbb{N}}$, such that $S\subseteq \bigcup_{l\in\mathbb{N}}R_l$, and $\sum_{l=1}^{\infty}\textmd{Vol}(R_l)\leq \epsilon$, which finishes the claim.
 
 \end{document}
