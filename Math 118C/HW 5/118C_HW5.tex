@@ -94,8 +94,64 @@ Because $\chi$ is the characteristic function of $R_2\setminus R_1$, then being 
 
 \textbf{Pf:}
 \subsection*{1.}
+Since $R,R_1,...,R_m\subset\mathbb{R}^n$ are all bounded, then there exists a finite rectangle $R^*\subset\mathbb{R}^n$, such that $R,R_1,...,R_m\subset R^*$. Then, we can define a partition $P$ of $R^*$ that is formed by all the sides of $R_j$ and $R$. (i.e. given the $i^{th}$ side of $R^*$, say $[a_i^*,b_i^*]$, if $R$ has the $i^{th}$ side $[a_i,b_i]$ and $R_j$ has the $i^{th}$ side $[a_i^{(j)},b_i^{(j)}]$, the create the $i^{th}$ partition by including $a_i,b_i$ and all $a_i^{(j)},b_i^{(j)}$, and use these partitions of each side to form a partition of $R^*$).
+
+Which, since each endpoints of all $R_i$ is contained in $P$, then some subrectangles form a partition of $R_i$. Similarly, since the endpoints of each side of $R$ is also within the partition $P$, then some of the subrectangles also form a partition of $R$. Let $P'\subseteq P$ collect all the subrectangles of $P$ that is contained in $R$, which it is precisely the partion of $R$ under $P$. Notice they satisfy the following equation:
+\begin{equation}
+    \sum_{R'\in P'}\textmd{Vol}(R') = \textmd{Vol}(R)
+\end{equation}
+Then, because $R\subseteq \bigcup_{i=1}^m R_i$, then each of the subrectangles $R'\in P'$ is contained within some $R_i$ (where $i\in\{1,...,m\}$). Then, consider the following process:
+\begin{itemize}
+    \item[(1)] Let $C_1=\{R_1^{(1)},R_2^{(1)},...,R_{l_1}^{(i)}\}\subseteq P'$ denote all the rectangles contained in $R_1$. Then, since these rectangles are not overlapping while contained in $R_1$, they are part of the partitions of $R_1$ formed by $P$ mentioned before. Hence, because the subrectangles of a partition of a larger rectangle has the sum of volume at most the larger rectangle's volume, we get the following:
+    \begin{equation}
+        \sum_{j=1}^{l_1}\textmd{Vol}(R_j^{(1)})\leq \textmd{Vol}(R_1)
+    \end{equation}
+    Which, take the remaining subrectangles $P'\setminus C_1$ and proceed with the process.
+    \item[(2)] Let $C_2=\{R_1^{(2)},R_2^{(2)},...,R_{l_2}^{(2)}\}\subseteq (P'\setminus C_1)$ denote all the rectangles contained in $R_2$ (which $C_2$ is chosen such that $C_1$ and $C_2$ are disjoint). Again, because they're nonoverlapping, while contained in $R_2$, they're part of the partitions of $R_1$ formed by $P$. Hence, we again get the following:
+    \begin{equation}
+        \sum_{j=1}^{l_2}\textmd{Vol}(R_j^{(2)})\leq \textmd{Vol}(R_2)
+    \end{equation}
+    Now, take $P'\setminus (C_1\sqcup C_2)$ and proceed.
+    \item[(k)] For each step $k\leq m$, let $C_k = \{R_1^{(k)},R_2^{(k)},...,R_{l_k}^{(k)}\}\subseteq P'\setminus(C_1\sqcup C_2\sqcup...\sqcup C_{k-1})$ denote all the remaining rectangles contained in $R_k$. Which, based on similar logics before, due to the properties of partition, we get:
+    \begin{equation}
+        \sum_{j=1}^{l_k}\textmd{Vol}(R_j^{(k)})\leq \textmd{Vol}(R_k)
+    \end{equation}
+\end{itemize} 
+Which, the above process groups the partition $P'$ into disjoint subsets of $C_i$ (which $P' = \sqcup_{i=1}^{m}C_i$), such that each subset $C_i$ is corresponding to a specific rectangle $R_i$ containing the subrectangles in this subset, and each $C_i$ has no intersection, hence no subrectangles in the partition is overcounted. Then, based on the formula from above, we get:
+\begin{equation}
+    \textmd{Vol}(R) = \sum_{R'\in P'}\textmd{Vol}(R') = \sum_{i=1}^{m}\left(\sum_{j=1}^{l_i}\textmd{Vol}(R_j^{(i)})\right)\leq \sum_{i=1}^{m}\textmd{Vol}(R_i)
+\end{equation}
+Which, this is the desired inequality.
 
 \subsection*{2.}
+Since each of the finite rectangles $R_1,...,R_m,\tilde{R_1},...,\tilde{R_k}\subset\mathbb{R}^n$ are bounded, there exists a finite rectangles $R\subset\mathbb{R}^n$ that contains all of $R_i$ and $\tilde{R_j}$. Then, take a partition $P$ of $R$ that is formed with all the endpoints of each sides of every $R_i$ and $\tilde{R_j}$ (the same logic mentioned in the previous section), the partition $P$ contains subrectangles that form partitions for each $R_i$ and $\tilde{R_j}$.
+
+Which, let $P'\subseteq P$ be the collection of all the subrectangles in $P$, that is contained in some $R_i$, then since $P$ contains all the partitions of $R_i$, the subcollection $P'$ contains all the subrectangles that covers $R_1,...,R_m$ with their union. Together with the fact that the $R_i$s are not overlapping, and the collection $P'$ are also formed by nonoverlapping subrectangles, then we get the following:
+\begin{equation}
+    \sum_{R'\in P'}\textmd{Vol}(R') = \sum_{i=1}^{m}\textmd{Vol}(R_i)
+\end{equation}
+Which, notice that the previous section's method can be used:
+\begin{itemize}
+    \item[(1)] Let $C_1\{R_1^{(1)},...,R_{l_1}^{(1)}\}\subseteq P'$ be all the subrectangles contained in $\tilde{R_1}$. Then, since none of the subrectangles in $C_1$ is overlapping, while contained in $\tilde{R_1}$, then they're part of the partitions of $\tilde{R_1}$ formed by $P$. Hence, we get the following inequality:
+    \begin{equation}
+        \sum_{j=1}^{l_1}\textmd{Vol}(R_j^{(1)})\leq\textmd{Vol}(\tilde{R_1})
+    \end{equation}
+    Which, take $P'\setminus C_1$ and proceed.
+    \item[(2)] Let $C_2=\{R_1^{(2)},...,R_{l_2}^{(2)}\}\subseteq (P'\setminus C_1)$ be all the subrectangles contained in $\tilde{R_2}$ (which $C_1,C_2$ are disjoint). Then again, following similar logic from step (1), we get:
+    \begin{equation}
+        \sum_{j=1}^{l_2}\textmd{Vol}(R_j^{(2)})\leq \textmd{Vol}(\tilde{R_2})
+    \end{equation}
+    Which, take $P'\setminus (C_1\sqcup C_2)$ and proceed.
+    \item[(p)] For any step $p\leq k$, let $C_p = \{R_1^{(p)},...,R_{l_p}^{(p)}\}\subseteq (P'\setminus (C_1\sqcup ... \sqcup C_{p-1} ))$ be all the subrectangles contained in $\tilde{R_p}$. Then again, we get the following inequality:
+    \begin{equation}
+        \sum_{j=1}^{l_p}\textmd{Vol}(R_j^{(p)})\leq \textmd{Vol}(\tilde{R_p})
+    \end{equation}
+\end{itemize}
+Hence, $P'$ is separated into disjoint subsets $C_p$ (where $P'=\sqcup_{p=1}^{k}C_p$), such that each $C_p$ corresponds to $\tilde{R_p}$ that contains all the subrectangles in $C_p$, and no subrectangle in the collection $P'$ is overcounted based on this disjoint way of grouping $P'$. Then, based on all the inequalities from above, we get:
+\begin{equation}
+    \sum_{i=1}^{m}\textmd{Vol}(R_i)=\sum_{R'\in P'}\textmd{Vol}(R') = \sum_{p=1}^{k}\left(\sum_{j=1}^{l_p}\textmd{Vol}(R_j^{(p)})\right)\leq \sum_{p=1}^{k}\textmd{Vol}(\tilde{R_p})
+\end{equation}
+Hence, this proves the desired inequality.
 
 \break
 
@@ -117,7 +173,7 @@ Also, notice that every cube $Q\subseteq\mathbb{R}^n$ is a rectangle.
     \begin{lemma}
         Given finite rectangle $R\subset\mathbb{R}^n$ with side lengths $l_1,...,l_k\in\mathbb{R}_{>0}$, if all side length is rational, then $R$ can be partitioned into finitely many cubes.
     \end{lemma}
-    \textit{Proof of Lemma 1:} Suppose $l_1,...,l_k\in\mathbb{Q}_{>0}$, then for each index $i\in\{1,...,k\}$, there exists $m_i,n_i\in\mathbb{N}$ (and $\gcd(m_i,n_i)=1$), such that $l_i=\frac{m_i}{n_i}$. Then, take length $l=\frac{1}{m_1...m_kn_1...n_k}$, for each index $i\in\{1,...,k\}$, ghe division shows the following:
+    \textit{Proof of Lemma 1:} Suppose $l_1,...,l_k\in\mathbb{Q}_{>0}$, then for each index $i\in\{1,...,k\}$, there exists $m_i,n_i\in\mathbb{N}$, such that $l_i=\frac{m_i}{n_i}$. Then, take length $l=\frac{1}{m_1...m_kn_1...n_k}$, for each index $i\in\{1,...,k\}$, the division shows the following:
     \begin{equation}
         \frac{l_i}{l} = \frac{m_i}{n_i}(m_1...m_kn_1...n_k) = m_i(m_1...m_k)\cdot \prod_{\substack{j=1\\j\neq i}}^{k}n_j \in\mathbb{N}
     \end{equation}
@@ -139,7 +195,7 @@ Also, notice that every cube $Q\subseteq\mathbb{R}^n$ is a rectangle.
     Now, for each index $i\in\{1,...,n\}$, consider the interval $[l_i,l_i+\delta)$: By the denseness of $\mathbb{Q}$ in $\mathbb{R}$, there exists rational number within this interval. Hence, there exists $x_i\in [0,\delta)$, such that $l_i+x_i\in [l_i,l_i+\delta)$ and $l_i+x_i\in\mathbb{Q}$. So, if we consider the rectangle $R' = [a_1,a_1+l_1+x_1]\times ...\times[a_n,a_n+l_n+x_n] = [a_1,b_1+x_1]\times [a_n,b_n+x_n]$, and the number $x=\max\{x_1,...,x_n\}$ (note: since each $0\leq x_i<\delta$, then $0\leq x<\delta$), then one can see $R\subseteq R' \subseteq R_x$ (since $R_x=[a_1,b_1+x]\times...\times[a_n,b_n+x]$, and each side of $R'$ is given by $[a_i,b_i+x_i]$ with $0\leq x_i\leq x$). 
     
     Hence, such inclusion implies $\textmd{Vol}(R)\leq \textmd{Vol}(R')\leq \textmd{Vol}(R_x)$; with $0\leq x<\delta$, this also shows that $0\leq \textmd{Vol}(R')-\textmd{Vol}(R)\leq \textmd{Vol}(R_x)-\textmd{Vol}(R)<\epsilon$.
-    On the other hand, since $R'$ has side length $(b_i+x_i)-a_i = l_i+x_i\in\mathbb{Q}$, it satisfies all desired conditions, and this finishes the proof.
+    On the other hand, since $R'$ has side length $(b_i+x_i)-a_i = l_i+x_i\in\mathbb{Q}$, it has all side lengths being rational, and this finishes the proof.
 
     \hfil
 
@@ -154,7 +210,7 @@ Also, notice that every cube $Q\subseteq\mathbb{R}^n$ is a rectangle.
             &\implies \sum_{i=1}^{m}\textmd{Vol}(R_i') < \sum_{i=1}^{m}\textmd{Vol}(R_i)+\frac{\epsilon}{2} < \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
         \end{split}
     \end{equation}
-    On the other hand, each $R_i'$ has rational side lengths, hence by \textbf{Lemma 1}, it can be partitioned into finitely many cubes $\{Q_1^{(i)},...,Q_{l_i}^{(i)}\}$, such that $R_i' = \bigcup_{j=1}^{l_i}R_j^{(i)}$, and $\sum_{j=1}^{l_i}\textmd{Vol}(R_j^{(i)})=\textmd{Vol}(R_i')$.
+    On the other hand, each $R_i'$ has rational side lengths, hence by \textbf{Lemma 1}, it can be partitioned into finitely many cubes $\{Q_1^{(i)},...,Q_{l_i}^{(i)}\}$, such that $R_i' = \bigcup_{j=1}^{l_i}Q_j^{(i)}$, and $\sum_{j=1}^{l_i}\textmd{Vol}(Q_j^{(i)})=\textmd{Vol}(R_i')$.
     
     Hence, take the finite collection of cubes $\mathcal{F}=\bigcup_{i=1}^{m}\{Q_1^{(i)},...,Q_{l_i}^{(i)}\}$, we get the following two relationships:
     \begin{equation}
@@ -200,7 +256,7 @@ As a conclusion, since $\varphi$ is Lipschitz on some compact subset containing 
 \subsection*{2. Volume of $D_r(a)$:}
 For this part, we'll utilize Change of Variable. 
 
-Let $I=\{(x,y)\in\mathbb{R}^2\ |\ y=a_y,\ a_x\leq x < (a_x+r)\}$ (a straight line segment cutting through the disk $D_r(a)$ containing the center), and open set $D' = D_r(a)\setminus I$ (which $D'$ defines a disk cutting out a line). Which, using similar proof from section 1, we know that $\textmd{Vol}(I) = 0$ (volume of a bounded straight line always has volume $0$); also, since $\partial D' = \partial D_r(a)\cup I$, with both having volume $0$, then $\textmd{Vol}(D') = 0$, showing that $D'$ is Riemann-Measurable.
+Let $I=\{(x,y)\in\mathbb{R}^2\ |\ y=a_y,\ a_x\leq x < (a_x+r)\}$ (a horizontal line segment cutting through the disk $D_r(a)$ containing the center), and open set $D' = D_r(a)\setminus I$ (which $D'$ defines a disk cutting out a line). Which, using similar proof from section 1, we know that $\textmd{Vol}(I) = 0$ (volume of a bounded straight line always has volume $0$); also, since $\partial D' = \partial D_r(a)\cup I$, with both having volume $0$, then $\textmd{Vol}(D') = 0$, showing that $D'$ is Riemann-Measurable.
 Then, because $D_r(a)= D' \sqcup I$, then we get the following equation: 
 \begin{equation}
     \textmd{Vol}(D_r(a))=\textmd{Vol}(D') + \textmd{Vol}(I) = \textmd{Vol}(D')
@@ -259,7 +315,7 @@ Hence, combining the above two expressions, we get:
     \textmd{Vol}(D') = \int_{R^\circ}\rho dx \leq \int_R\rho dx = \pi r^2
 \end{equation}
 
-Now, we'll prove that $\textmd{Vol}(D')\geq \pi r^2$: Assume for suitable $K\in\mathbb{N}$, any integer $k\geq K$ satisfies $\frac{1}{2k}, (r-\frac{1}{2k})\in (0,r)$, and $\frac{1}{2k},(2\pi -\frac{1}{2k})\in (0,2\pi)$, and the second value is greater than the first one. Then, the following rectangle $R_k = [\frac{1}{2k},r-\frac{1}{2k}]\times [\frac{1}{2k},2\pi -\frac{1}{2k}]\subset R^\circ$. Which, because $R_k$ is Riemann-Measurable and $\varphi$ is a diffeomorphism, then $\varphi(R_k)\subseteq \varphi(R^\circ)=D'$  is also Riemann-Measurable, with $\textmd{Vol}(\varphi(R_k))\leq \textmd{Vol}(D')$. Again, apply \textbf{Change of Variable} and \textbf{Fubini's Theorem}, we get the following:
+Now, we'll prove that $\textmd{Vol}(D')\geq \pi r^2$: Assume for suitable $K\in\mathbb{N}$, any integer $k\geq K$ satisfies $\frac{1}{2k}, (r-\frac{1}{2k})\in (0,r)$, and $\frac{1}{2k},(2\pi -\frac{1}{2k})\in (0,2\pi)$, and the second value is greater than the first one for both pairs. Then, the following rectangle $R_k = [\frac{1}{2k},r-\frac{1}{2k}]\times [\frac{1}{2k},2\pi -\frac{1}{2k}]\subset R^\circ$. Which, because $R_k$ is Riemann-Measurable and $\varphi$ is a diffeomorphism, then $\varphi(R_k)\subseteq \varphi(R^\circ)=D'$  is also Riemann-Measurable, with $\textmd{Vol}(\varphi(R_k))\leq \textmd{Vol}(D')$. Again, apply \textbf{Change of Variable} and \textbf{Fubini's Theorem}, we get the following:
 \begin{equation}
     \begin{split}
         \textmd{Vol}(\varphi(R_k)) &= \int_{\varphi(R_k)}1 dy = \int_{R_k}1\circ \varphi(x)|\det(D\varphi)(x)|dx = \int_{R_k}\rho dx\\
@@ -271,9 +327,9 @@ With the previous inequality, we get the following:
 \begin{equation}
     \textmd{Vol}(\varphi(R_k)) = \pi r^2 - \frac{\pi r}{k} - \frac{r^2}{2k} + \frac{r}{2k^2}\leq \textmd{Vol}(D')
 \end{equation}
-Then, if take the limit, we get that $\lim_{k\rightarrow\infty}\textmd{Vol}(\varphi(R_k)) = \pi r^2$, shiwh with the above inequality, we know that the limit $\pi r^2\leq \textmd{Vol}(D')$.
+Then, if take the limit, we get that $\lim_{k\rightarrow\infty}\textmd{Vol}(\varphi(R_k)) = \pi r^2$, which with the above inequality, we know that the limit $\pi r^2\leq \textmd{Vol}(D')$.
 
-Which, combining both inequalities about $\pi r^2$ and $\textmd{Vol}(D')$, we get that $\textmd{Vol}(D')=\pi r^2$.
+So, combining both inequalities about $\pi r^2$ and $\textmd{Vol}(D')$, we get that $\textmd{Vol}(D')=\pi r^2$.
 
 \break
 
@@ -287,16 +343,6 @@ Which, combining both inequalities about $\pi r^2$ and $\textmd{Vol}(D')$, we ge
 \textbf{Pf:}
 
 Given all the stated conditions, let $S=\{x\in R\ |\ f(x)\neq 0\}$. WLOG, assume $S\neq \emptyset$. We'll break the proof down into multiple steps with the following order:
-\begin{comment}
-\subsection*{1. $f$ is bounded:}
-We'll approach by contradiction. Suppose $f$ is not bounded instead, then for all $n\in\mathbb{N}$, there exists $x_n\in R$, such that $f(x_n)>n$. Then, since the sequence $(x_n)_{n\in\mathbb{N}}\subset R$, while $R$ as a finite rectangle is compact, there exists a subsequence $(x_{n_k})_{k\in\mathbb{N}}$ that converges to some point $x^*\in R$.
-
-Now, take any partition $P$ of $R$, there exists some subcollection of rectangles $R_1,...,R_j\in P$, such that each mentioned $R_i$ contains $x^*$ (and can assume this list contains all such rectangle). Which, since $x^*$ is the limit of $(x_{n_k})_{k\in\mathbb{N}}\subset R$, then for any radius $r>0$, the open ball $B_r(x^*)$ contains infinitely many points from $(x_{n_k})_{k\in\mathbb{N}}$.
-
-Also, since each $R_i$ as a rectangle has no isolated points, then $x^*\in R_i$, $R_i\cap(B_r(x^*)\setminus x^*)\neq \emptyset$. So, assume $r$ is small enough such that $B_r(x^*)\subseteq \bigcup_{i=1}^{j}R_i$, then at least one of the $R_i$ must contain infinitely many points from $(x_{n_k})_{k\in\mathbb{N}}$. Hence, for this $R_i$, since for every $K\in\mathbb{N}$, there always exists integer $k\geq K$, such that $x_k\in R_i$, then because $f(x_{n_k}) > n_k \geq k \geq K$, this indicates that $f$ is not bounded within $R_i$, hence $\sup_{x\in R_i}(f(x))=\infty$, showing that the upper sum based on $P$ is not defined. 
-
-Yet, this contradicts the fact that $f$ is Riemann-Integrable (since we need the upper sum to be defined for each partition before talkinag about integrability), so our assumption is false, $f$ must be bounded. Hence, $M=\sup_{x\in R}(f(x))$ exists.
-\end{comment}
 
 \subsection*{1. Separate $S$ as infinite subsets, and generate associated functions:}
 First, let $S_1 = \{x\in S\ |\ f(x)\in (\frac{1}{2},\infty)\}$, and for each integer $n\geq 2$, let $S_n=\{x\in S\ |\ f(x)\in (\frac{1}{2^n},\frac{1}{2^{n-1}}]\}$. Then, it is clear that $\bigcup_{n=1}^{\infty}S_n\subseteq S$; also, for each $x\in S$, since $f(x)\neq 0$ and the codomain of $f$ is $[0,\infty)$, hence $f(x)>0$, which there exists smallest $k\in\mathbb{N}$, such that $\frac{1}{2^k}<f(x)$, so $\frac{1}{2^k}<f(x)\leq \frac{1}{2^{k-1}}$, or $s\in S_k\subseteq \bigcup_{n=1}^{\infty}S_n$. Hence, we can claim that $S=\bigcup_{n=1}^{\infty}S_n$.
@@ -319,7 +365,7 @@ Then, since $0\leq f_n(x)\leq f(x)$ on $R$, for any $R_i\in P$, we get $\sup_{x\
 \end{equation}
 On the other hand, since $f_n(x)$ is nonnegative, then for every $R_i\in P$, $\inf_{x\in R_i}(f_n(x))\geq 0$, hence:
 \begin{equation}
-    0\leq \sum_{R_i\in P}\inf_{x\in R_i}(f_n(x)) = L(f_n,P) \leq \underline{\int}_{R}f_n(x)dx \leq \overline{\int}_Rf_n(x)dx < \epsilon
+    0\leq \sum_{R_i\in P}\inf_{x\in R_i}(f_n(x))\cdot \textmd{Vol}(R_i) = L(f_n,P) \leq \underline{\int}_{R}f_n(x)dx \leq \overline{\int}_Rf_n(x)dx < \epsilon
 \end{equation}
 Since $\epsilon$ is arbitrary, the above inequality shows that the lower and upper integral of $f_n(x)$ are both equal to $0$, hence $f_n(x)$ is Riemann-Integrable, and $\int_Rf_n(x)dx = 0$.
 
@@ -328,29 +374,29 @@ Fix an arbitrary $\epsilon>0$ for universal purpose.
 
 Now, for each $n\in\mathbb{N}$, since $\frac{\epsilon}{2^{2n}}>0$, then based on the Rimann Integral of $f_n(x)$, there exists partition $P^{(n)}$ of $R$, such that the following holds true:
 \begin{equation}
-    0\leq U(f_n,P^{(n)})-\int_{R}f_n(x)dx = U(f_n,P) = \sum_{R_i^{(n)}\in P}\sup_{x\in R_i^{(n)}}(f_n(x))\cdot \textmd{Vol}(R_i^{(n)}) < \frac{\epsilon}{2^{2n}}
+    0\leq U(f_n,P^{(n)})-\int_{R}f_n(x)dx = U(f_n,P^{(n)}) = \sum_{R_i^{(n)}\in P^{(n)}}\sup_{x\in R_i^{(n)}}(f_n(x))\cdot \textmd{Vol}(R_i^{(n)}) < \frac{\epsilon}{2^{2n}}
 \end{equation}
 Since $f_n(x)>0$ iff $x\in S_n$, the above can be rewrite as:
-$$0\leq \sum_{R_i^{(n)}\in P}\sup_{x\in R_i}(f_n(x))\cdot \textmd{Vol}(R_i^{(n)}) = \sum_{\substack{R_i^{(n)}\in P\\R_i^{(n)}\cap S_n\neq \emptyset}}\sup_{x\in R_i^{(n)}}(f_n(x))\cdot \textmd{Vol}(R_i^{(n)})<\frac{\epsilon}{2^{2n}}$$
+$$0\leq \sum_{R_i^{(n)}\in P^{(n)}}\sup_{x\in R_i}(f_n(x))\cdot \textmd{Vol}(R_i^{(n)}) = \sum_{\substack{R_i^{(n)}\in P^{(n)}\\R_i^{(n)}\cap S_n\neq \emptyset}}\sup_{x\in R_i^{(n)}}(f_n(x))\cdot \textmd{Vol}(R_i^{(n)})<\frac{\epsilon}{2^{2n}}$$
 Moreover, since for all $x\in S_n$, we have $f(x)>\frac{1}{2^n}$ based on the set axiom, then for each $R_i^{(n)}$ with $R_i^{(n)}\cap S_n\neq\emptyset$, $\sup_{x\in R_i^{(n)}}(f_n(x))>\frac{1}{2^n}$. Hence:
 \begin{equation}
-    0\leq \sum_{\substack{R_i^{(n)}\in P\\R_i^{(n)}\cap S_n\neq \emptyset}}\frac{1}{2^n}\cdot \textmd{Vol}(R_i^{(n)})\leq \sum_{\substack{R_i^{(n)}\in P\\R_i^{(n)}\cap S_n\neq \emptyset}}\sup_{x\in R_i^{(n)}}(f_n(x))\cdot \textmd{Vol}(R_i^{(n)}) < \frac{\epsilon}{2^{2n}}
+    0\leq \sum_{\substack{R_i^{(n)}\in P^{(n)}\\R_i^{(n)}\cap S_n\neq \emptyset}}\frac{1}{2^n}\cdot \textmd{Vol}(R_i^{(n)})\leq \sum_{\substack{R_i^{(n)}\in P^{(n)}\\R_i^{(n)}\cap S_n\neq \emptyset}}\sup_{x\in R_i^{(n)}}(f_n(x))\cdot \textmd{Vol}(R_i^{(n)}) < \frac{\epsilon}{2^{2n}}
 \end{equation}
 \begin{equation}
-    \implies \sum_{\substack{R_i^{(n)}\in P\\R_i^{(n)}\cap S_n\neq \emptyset}}\textmd{Vol}(R_i^{(n)})<2^n\cdot \frac{\epsilon}{2^{2n}} = \frac{\epsilon}{2^n}
+    \implies \sum_{\substack{R_i^{(n)}\in P^{(n)}\\R_i^{(n)}\cap S_n\neq \emptyset}}\textmd{Vol}(R_i^{(n)})<2^n\cdot \frac{\epsilon}{2^{2n}} = \frac{\epsilon}{2^n}
 \end{equation}
-WLOG, can assume that the partition $p^{(n)}$ has indexed such that the first $j_n$ subrectangles $R_1^{(n)},...,R_{j_n}^{(n)}$ are all the rectangles with nontrivial intersection with $S_n$. Then, based on equation (10), we get:
+WLOG, can assume that the partition $P^{(n)}$ has indexed such that the first $j_n$ subrectangles $R_1^{(n)},...,R_{j_n}^{(n)}$ are all the rectangles with nontrivial intersection with $S_n$. Then, based on the above equation, we get:
 \begin{equation}
     S_n\subseteq\bigcup_{i=1}^{j_n}R_i^{(n)},\quad \sum_{i=1}^{j_n}\textmd{Vol}(R_i^{(n)}) < \frac{\epsilon}{2^n}
 \end{equation}
 
 \subsection*{3. Infinite covers for $S$:}
-In the previous section, for each $n\in\mathbb{N}$, we get a cover $C_n=\{R_1^{(n)},...,R_{j_n}^{(n)}\}$ for $S_n$, such that the sum of the volume is less than $\frac{\epsilon}{2^n}$. Then, let $\mathcal{F}=\bigcup_{n\in\mathbb{N}}C_n$, since each $C_n$ is finite, then $\mathcal{F}$ as a collection of rectangles is at most countable. Which, for all $x\in S$, since there exists $k\in\mathbb{N}$ with $x\in S_k$, then $x\in \bigcup_{i=1}^{j_n}R_i^{(n)}\subseteq \bigcup_{R_l\in \mathcal{F}}R_l$, hence $S\subseteq \bigcup_{R_l\in\mathcal{F}}R_l$, showing that $\mathcal{F}$ is a collection of at most countable rectangles that covers $S$.
+In the previous section, for each $n\in\mathbb{N}$, we get a cover $C_n=\{R_1^{(n)},...,R_{j_n}^{(n)}\}$ for $S_n$, such that the sum of the volume is less than $\frac{\epsilon}{2^n}$. Then, let $\mathcal{F}=\bigcup_{n\in\mathbb{N}}C_n$, since each $C_n$ is finite, then $\mathcal{F}$ as a collection of rectangles is at most countable. Which, for all $x\in S$, since there exists $k\in\mathbb{N}$ with $x\in S_k$, then $x\in S_k\subseteq \bigcup_{i=1}^{j_n}R_i^{(n)}\subseteq \bigcup_{R_l\in \mathcal{F}}R_l$, hence $S\subseteq \bigcup_{R_l\in\mathcal{F}}R_l$, showing that $\mathcal{F}$ is a collection of at most countable rectangles that covers $S$.
 
 Now, because $\mathcal{F}$ is at most countable, it can be indexed as $\{R_l\}_{l\in\mathbb{N}}$. To calculate the sum of volume, we'll consider the partial sum first: For each $N\in\mathbb{N}$, since for each index $l\in \{1,...,N\}$, there exists some $k_l\in \mathbb{N}$, such that $R_l\in C_{k_l}$. Then, let $k_N\in\mathbb{N}$ be the largest integer containing some rectangles from $\{R_1,...,R_N\}$, then $\{R_1,...,R_N\}\subseteq \bigcup_{i=1}^{k_N}C_i$, hence when considering the volume, we get:
 \begin{equation}
     \begin{split}
-        0\leq \sum_{l=1}^{N}\textmd{Vol}(R_l)\leq \sum_{n=1}^{k_N}&\sum_{R_i^{(n)}\in C_n}\textmd{Vol}(R_i^{(n)}) = \sum_{n=1}^{k_N}\left(\sum_{i=1}^{j_n}\textmd{Vol}(R_i^{(n)})\right) \\
+        0\leq \sum_{l=1}^{N}\textmd{Vol}(R_l)&\leq \sum_{n=1}^{k_N}\sum_{R_i^{(n)}\in C_n}\textmd{Vol}(R_i^{(n)}) = \sum_{n=1}^{k_N}\left(\sum_{i=1}^{j_n}\textmd{Vol}(R_i^{(n)})\right) \\
         &\leq \sum_{n=1}^{k_N}\frac{\epsilon}{2^n} < \sum_{n=1}^{\infty}\frac{\epsilon}{2^n}<\epsilon
     \end{split}
 \end{equation}
