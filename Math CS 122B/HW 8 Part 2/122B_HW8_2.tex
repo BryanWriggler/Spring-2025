@@ -121,9 +121,25 @@ Now, in terms of the original $L(s)$, recall that $a_n=a_m$ iff $n\equiv m\mod\ 
         &=\sum_{n=0}^{\infty}\frac{a_{q}}{(nq+q)^s}+\sum_{n=0}^{\infty}\sum_{r=1}^{q-1}\frac{a_{r}}{(nq+r)^s} = \sum_{n=0}^{\infty}\sum_{r=1}^{q}\frac{a_r}{(nq+r)^s}
     \end{split}
 \end{equation}
-Then, combining the results in (\ref{eq:4}) and (\ref{eq:5}), we get $L(s)=\frac{1}{\Gamma(s)}\int_{0}^{\infty}\frac{Q(x)x^{s-1}}{e^{qx}-1}dx$.
+Then, combining the results in (\ref{eq:4}) and (\ref{eq:5}), we get $L(s)=\frac{1}{\Gamma(s)}\int_{0}^{\infty}\frac{Q(x)x^{s-1}}{e^{qx}-1}dx$ (for $\textmd{Re}(s)>1$).
 
 \subsection{Continuation to $\mathbb{C}\setminus\{1\}$:}
+With the above integral expression for $\textmd{Re}(s)>1$, one can separate the integration as follow:
+\begin{equation}
+    \label{eq:6}
+    \begin{split}
+        L_1(s):=&\frac{1}{\Gamma(s)}\int_{0}^{1}\frac{q(x)x^{s-1}}{e^{qx}-1}dx,\quad L_2(s):=\frac{1}{\Gamma(s)}\int_{1}^{\infty}\frac{Q(x)x^{s-1}}{e^{qx}-1}dx\\
+        &L(s) = \frac{1}{\Gamma(s)}\int_{0}^{\infty}\frac{Q(x)x^{s-1}}{e^{qx}-1}dx = L_1(s)+L_2(s)
+    \end{split}
+\end{equation}
+Since $Q(x)=\sum_{m=0}^{q-1}a_{q-m}e^{mx}$, it is with the order of $e^{(q-1)x}$. Then, for $x>1$ and $\textmd{Re}(s)>1$, since $qx >1$, then $e^{qx}>e>2$, so $\frac{1}{2}e^{qx}>1$. Then, $L_2(s)$ satisfies the following inequality:
+\begin{equation}
+    \label{eq:7}
+    \begin{split}
+        |L_2(s)|&\leq \frac{1}{|\Gamma(s)|}\int_{1}^{\infty}\frac{|Q(x)|\cdot|x^{s-1}|}{|e^{qx}-1|}dx \leq \frac{1}{|\Gamma(s)|}\int_{1}^{\infty}\frac{Ke^{(q-1)x}\cdot x^{\textmd{Re}(s)-1}}{e^{qx}-1}dx\\
+        &\leq \frac{1}{|\Gamma(s)|}\int_{1}^{\infty}\frac{Ke^{(q-1)x}\cdot x^{Re(s)-1}}{}
+    \end{split}
+\end{equation}
 
 \break
 
