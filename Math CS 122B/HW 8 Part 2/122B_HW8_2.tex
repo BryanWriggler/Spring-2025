@@ -155,4 +155,12 @@ Since $Q(x)=\sum_{m=0}^{q-1}a_{q-m}e^{mx}$, it is with the order of $e^{(q-1)x}$
 
 \textbf{Pf:}
 
+Given $q,l\in\mathbb{N}$ with $\gcd(q,l)=1$. Find an expression of Dirichlet Series, that produces the following formula:
+$$L(s):=\prod_{p}\frac{1}{1-\delta_l(p)p^{-s}}$$
+Where $p$ ranges through all primes, and $\delta_l:\mathbb{N}\rightarrow\mathbb{N}$ is defined as follow:
+$$\delta_l(n)=\begin{cases}
+    1 & n\equiv l\mod\ q\\
+    0 & \textmd{otherwise}
+\end{cases}$$
+
 \end{document}
