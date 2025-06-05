@@ -58,6 +58,26 @@
     pdfpagemode=FullScreen,
 }
 
+%common command (add to template)
+%general
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+%algebra
+\newcommand{\Gal}{\textmd{Gal}}
+\newcommand{\Aut}{\textmd{Aut}}
+
+%analysis
+\newcommand{\Vol}{\textmd{Vol}}
+
+%complex
+\newcommand{\Real}{\textmd{Re}}
+\newcommand{\Imag}{\textmd{Im}}
+
 \title{Math CS 122B HW8 Part 2}
 \author{Zih-Yu Hsieh}
 
@@ -75,7 +95,7 @@
     $$Q(x)=\sum_{m=0}^{q-1}a_{q-m}e^{mx}$$
     Show, as in Exercises $15$ and $16$ of the previous chapter, that 
     $$L(s)=\frac{1}{\Gamma(s)}\int_{0}^{\infty}\frac{Q(x)x^{s-1}}{e^{qx}-1}dx\quad \textmd{for Re}(s)>1$$
-    Prove as a result that $L(s)$ is continuable into the complex plane, with the only possible singularity a pole at $s=1$. In fact, $L(s)$ is regular at $s=1$ if and only if $\sum_{m=0}^{q-1}a_m=0$. Note the conection with the Direchlet $L(s,\chi)$ series, taken up to BOok I Chapter 8, and that as a consequence, $L(s,\chi)$ is regular at $s=1$ if and only if $\chi$ is a non-trivial character.
+    Prove as a result that $L(s)$ is continuable into the complex plane, with the only possible singularity a pole at $s=1$. In fact, $L(s)$ is regular at $s=1$ if and only if $\sum_{m=0}^{q-1}a_m=0$. Note the conection with the Direchlet $L(s,\chi)$ series, taken up to Book I Chapter 8, and that as a consequence, $L(s,\chi)$ is regular at $s=1$ if and only if $\chi$ is a non-trivial character.
 \end{question}
 
 \textbf{Pf:}
@@ -124,22 +144,56 @@ Now, in terms of the original $L(s)$, recall that $a_n=a_m$ iff $n\equiv m\mod\ 
 Then, combining the results in (\ref{eq:4}) and (\ref{eq:5}), we get $L(s)=\frac{1}{\Gamma(s)}\int_{0}^{\infty}\frac{Q(x)x^{s-1}}{e^{qx}-1}dx$ (for $\textmd{Re}(s)>1$).
 
 \subsection{Continuation to $\mathbb{C}\setminus\{1\}$:}
-With the above integral expression for $\textmd{Re}(s)>1$, one can separate the integration as follow:
+With the above integral expression, one can separate the integration as follow:
 \begin{equation}
     \label{eq:6}
     \begin{split}
-        L_1(s):=&\frac{1}{\Gamma(s)}\int_{0}^{1}\frac{q(x)x^{s-1}}{e^{qx}-1}dx,\quad L_2(s):=\frac{1}{\Gamma(s)}\int_{1}^{\infty}\frac{Q(x)x^{s-1}}{e^{qx}-1}dx\\
+        L_1(s):=&\frac{1}{\Gamma(s)}\int_{0}^{\frac{1}{q}}\frac{Q(x)x^{s-1}}{e^{qx}-1}dx,\quad L_2(s):=\frac{1}{\Gamma(s)}\int_{\frac{1}{q}}^{\infty}\frac{Q(x)x^{s-1}}{e^{qx}-1}dx\\
         &L(s) = \frac{1}{\Gamma(s)}\int_{0}^{\infty}\frac{Q(x)x^{s-1}}{e^{qx}-1}dx = L_1(s)+L_2(s)
     \end{split}
 \end{equation}
-Since $Q(x)=\sum_{m=0}^{q-1}a_{q-m}e^{mx}$, it is with the order of $e^{(q-1)x}$. Then, for $x>1$ and $\textmd{Re}(s)>1$, since $qx >1$, then $e^{qx}>e>2$, so $\frac{1}{2}e^{qx}>1$. Then, $L_2(s)$ satisfies the following inequality:
+Since $Q(x)=\sum_{m=0}^{q-1}a_{q-m}e^{mx}$, it is dominated by $e^{(q-1)x}$. Hence, there exists $K>0$, such that $|Q(x)|\leq \sum_{m=0}^{q-1}|a_{q-m}|e^{mx}\leq Ke^{q-1}x$. Then, for $x>\frac{1}{q}$ and any $s\in\mathbb{C}$, since $qx >1$, then $e^{qx}>e>2$, so $\frac{1}{2}e^{qx}>1$, or $\frac{1}{2}e^{qx}=e^{qx}-\frac{1}{2}e^{qx}<e^{qx}-1$. Then, $L_2(s)$ satisfies the following inequality:
 \begin{equation}
     \label{eq:7}
     \begin{split}
-        |L_2(s)|&\leq \frac{1}{|\Gamma(s)|}\int_{1}^{\infty}\frac{|Q(x)|\cdot|x^{s-1}|}{|e^{qx}-1|}dx \leq \frac{1}{|\Gamma(s)|}\int_{1}^{\infty}\frac{Ke^{(q-1)x}\cdot x^{\textmd{Re}(s)-1}}{e^{qx}-1}dx\\
-        &\leq \frac{1}{|\Gamma(s)|}\int_{1}^{\infty}\frac{Ke^{(q-1)x}\cdot x^{Re(s)-1}}{}
+        |L_2(s)|&\leq \frac{1}{|\Gamma(s)|}\int_{\frac{1}{q}}^{\infty}\frac{|Q(x)|\cdot|x^{s-1}|}{|e^{qx}-1|}dx \leq \frac{1}{|\Gamma(s)|}\int_{\frac{1}{q}}^{\infty}\frac{Ke^{(q-1)x}\cdot x^{\textmd{Re}(s)-1}}{e^{qx}-1}dx\\
+        &\leq \frac{1}{|\Gamma(s)|}\int_{\frac{1}{q}}^{\infty}\frac{Ke^{(q-1)x}\cdot x^{Re(s)-1}}{\frac{1}{2}e^{qx}}dx = \frac{2K}{|\Gamma(s)|}\int_{\frac{1}{q}}^{\infty}x^{\Real(s)-1}\cdot e^{-x}dx < \infty
     \end{split}
 \end{equation}
+Hence, $L_2(s)$ is an entire function.
+
+Now, if consider $L_1(s)$, we'll utilize the power series of $e^{mz}$ (for all $z\in\CC$) and $\frac{z}{e^z-1}$ (for $|z|<2\pi$) given as follow:
+\begin{equation}
+    \label{eq:8}
+    e^{mz} = \sum_{k=0}^{\infty}\frac{(mz)^n}{n!},\quad \frac{z}{e^z-1}=\sum_{k=0}^{\infty}\frac{B_k}{k!}z^k
+\end{equation}
+(Note: $\{B_k\}_{k\in\NN}$ denotes the sequence of \textbf{Bernoulli Numbers}, and $B_0=1$).
+
+Then, under the power series, the integral in $L_1(s)$ can be expressed as follow for $\Real(s)>1$:
+\begin{equation}
+    \label{eq:9}
+    \begin{split}
+        \int_{0}^{\frac{1}{q}}\frac{Q(x)x^{s-1}}{e^{qx}-1}dx  &= \sum_{m=0}^{q-1}a_{q-m}\int_{0}^{\frac{1}{q}}\frac{e^{mx}x^{s-1}}{e^{qx}-1}dx\\
+        &= a_q\int_{0}^{\frac{1}{q}}\frac{x^{s-1}}{e^{qx}-1}dx + \sum_{m=1}^{q-1}a_{q-m}\left(\sum_{n=0}^{\infty}\frac{1}{n!}\int_{0}^{\frac{1}{q}}\frac{(mx)^nx^{s-1}}{e^{qx}-1}dx\right)\\
+        &= a_q\int_{0}^{1}\frac{(u/q)^{s-1}}{e^u-1}\frac{du}{q} + \sum_{m=1}^{q-1}\sum_{n=0}^{\infty}\frac{a_{q-m}\cdot m^n}{n!}\int_{0}^{\frac{1}{q}}\frac{x^{s+n-1}}{e^{qx}-1}dx\\
+        &= \frac{a_q}{q^s}\int_{0}^{1}\frac{u\cdot u^{s-2}}{e^u-1}du + \sum_{m=1}^{q-1}\sum_{n=0}^{\infty}\frac{a_{q-m}\cdot m^n}{n!}\int_{0}^{1}\frac{(u/q)^{s+n-1}}{e^u-1}\frac{du}{q}\\
+        &=\frac{a_q}{q^s}\sum_{k=0}^{\infty}\frac{B_k}{k!}\int_{0}^{1}u^{s+k-2}du + \frac{1}{q^s}\sum_{m=1}^{q-1}\sum_{n=0}^{\infty}\frac{a_{q-m}\cdot m^n}{n!\cdot q^n}\int_{0}^{1}\frac{u\cdot u^{s+n-2}}{e^u-1}du\\
+        &= \frac{a_q}{q^s}\sum_{k=0}^{\infty}\frac{B_k}{k!(s+k-1)}u^{s+k-1}\bigg|_{0}^{1} + \frac{1}{q^s}\sum_{m=1}^{q-1}\sum_{n=0}^{\infty}\frac{a_{q-m}\cdot m^n}{n!\cdot q^n}\left(\sum_{k=0}^{\infty}\int_{0}^{1}u^{s+n+k-2}du\right)\\
+        &= \frac{a_q}{q^s}\sum_{k=0}^{\infty}\frac{B_k}{k!(s+k-1)}+\frac{1}{q^s}\sum_{m=1}^{q-1}\sum_{n=0}^{\infty}\sum_{k=0}^{\infty}\frac{a_{q-m}\cdot m^n}{n!\cdot q^n(s+n+k-1)}u^{s+n+k-1}\bigg|_{0}^{1}\\
+        &= \frac{a_q}{q^s}\sum_{k=0}^{\infty}\frac{B_k}{k!(s+k-1)}+\frac{1}{q^s}\sum_{m=1}^{q-1}\sum_{n=0}^{\infty}\sum_{k=0}^{\infty}\frac{a_{q-m}\cdot (m/q)^n}{n!(s+n+k-1)}\\
+        &= \frac{a_q}{q^s(s-1)} + \frac{a_q}{q^s}\sum_{k=1}^{\infty}\frac{B_k}{k!(s+k-1)} + \frac{1}{q^s}\sum_{m=1}^{q-1}\left(\frac{a_{q-m}}{s-1}+\sum_{\substack{n,k=0\\(n,k)\neq (0,0)}}^{\infty}\frac{a_{q-m}(m/q)^n}{n!(s+n+k-1)}\right)\\
+        &= \sum_{m=0}^{q-1}\frac{a_{q-m}}{q^s(s-1)} + \frac{a_q}{q^s}\sum_{k=1}^{\infty}\frac{B_k}{k!(s+k-1)} + \frac{1}{q^s}\sum_{m=1}^{q-1}\sum_{\substack{n,k=0\\(n,k)\neq (0,0)}}^{\infty}\frac{a_{q-m}(m/q)^n}{n!(s+n+k-1)}
+    \end{split}
+\end{equation}
+Which, using the infinite series expression above as the analytic continuation, we see that the integral as potential simple pole at $s=1$ (the first summation), and has simple pole at all integer $\ZZ_{\leq 0}$ (the second and third summation with $(s+k-1)$ or $(s+n+k-1)$ as denominator, for $k\geq 1$ and $(n,k)\neq (0,0)$).
+
+Then, because $\frac{1}{\Gamma(s)}$ only has simple zeros at all $\ZZ_{\leq 0}$, the expression $L_1(s)= \frac{1}{\Gamma(s)}\int_{1}^{\frac{1}{q}}\frac{Q(x)x^{s-1}}{e^{qx}-1}dx$ has all the simple poles of the integral at $\ZZ_{\leq 0}$ cancelled out by $\frac{1}{\Gamma(s)}$, and left with a potential pole at $s=1$.
+
+\hfil
+
+Finally, for the summation expression of the integral in (\ref{eq:9}), we get that the potential pole at $s=1$ is described by $\sum_{m=0}^{q-1}\frac{a_{q-m}}{q^s(s-1)}=\frac{1}{q^s(s-1)}\sum_{m=0}^{q-1}$. Since at $s=1$, $\frac{1}{\Gamma(s)}\neq 0$, then after multiplying with $\frac{1}{\Gamma(s)}$, this expression is regular at $s=1$ iff the coefficient $\sum_{m=0}^{q-1}a_{q-m}=\sum_{r=1}^{q}a_r = 0$. 
+
+Hence, we can conclude that $L(s)$ can be continued onto the whole plane, except possibly at $s=1$. And, with the last information from above, $L(s)$ is regular at $s=1$ iff $\sum_{r=1}^{q}a_r=0$.
 
 \break
 
