@@ -68,6 +68,7 @@
 \newcommand{\CC}{\mathbb{C}}
 
 \newcommand{\Id}{\textmd{Id}}
+\newcommand{\lcm}{\textmd{lcm}}
 
 %algebra
 \newcommand{\Gal}{\textmd{Gal}}
@@ -94,10 +95,10 @@ Since $K/F$ is a finite separable extension, there exists $\alpha_1,...,\alpha_n
 
 Which, fix $\overline{F}$ such that $K\subseteq\overline{F}$, and take $A=\{m_{\alpha_1,F}(x),...,m_{\alpha_n,F}(x)\}\subset F[x]$. Consider $L\subseteq\overline{F}$ to be the splitting field of $A$, then since each polynomial in $A$ must split completely over $L$, it must necessarily contain all the roots of all polynomials in $A$; on the other hand, since each $\alpha_i\in K\subseteq \overline{F}$ is a root of $m_{\alpha_i,F}(x)\in A$, then $\alpha_i\in L$, hence $K=F(\alpha_1,...,\alpha_n)\subseteq L$.
 
-Now, because each $\alpha_i$ is separable, then $m_{\alpha_i,F}(x)\in A$ is also a separable polynomial, hence $A$ is consists of separable polynomials. Then, because $L$ is a splitting field of $A$, then $L/F$ is in fact a finite Galois Extension. Hence, $|\Gal(L/F)| = [L:F]<\infty$.
+Now, because each $\alpha_i$ is separable, then $m_{\alpha_i,F}(x)\in A$ is also a separable polynomial, hence $A$ is consists of finitely many separable polynomials. Then, because $L$ is a splitting field of $A$, then $L/F$ is in fact a finite Galois Extension. Hence, $|\Gal(L/F)| = [L:F]<\infty$.
 
 Which, based on \textbf{Galois Correspondance} of finite Galois Extension, any subfield $F\subseteq E\subseteq L$ corresponds to a unique subgroup $H\leq \Gal(L/F)$ (where $E=L^H$). Then, for any sub-extension of $K$, given as $E$ (where $F\subseteq E\subseteq K\subseteq L$), we know $E$ corresponds to a unique subgroup $H\leq \Gal(L/F)$.
-Then, since $\Gal(L/F)$ is proven to be finite, there are only finitely many subgroups. Hence, this implies that $K/F$ can only have finitely many sub-extensions, since each distinct sub-extension must correspond to a unique subgroup of $\Gal(L/F)$ (which has only finitely many distinct subgroups).
+Then, since $\Gal(L/F)$ is proven to be finite, there are only finitely many subgroups. Hence, this implies that $K/F$ can only have finitely many sub-extensions, since each distinct sub-extension must correspond to a unique subgroup of $\Gal(L/F)$.
 
 So, we concluded that $K/F$ (as a finite separable extension), must have only finitely many sub-extensions.
 
@@ -129,7 +130,7 @@ Hence, $\beta$ satisfies the equation $\alpha x^2+\alpha^2x +1=0$, which is a ro
     \label{eq:2}
     \beta,\gamma = \frac{-\alpha^2\pm \sqrt{(\alpha^2)^2-4\alpha}}{2\alpha} = -\frac{\alpha}{2}\pm \sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}
 \end{equation} 
-WLOG, assume $\beta$ is the root with positive sign. Notice that this implies $L=\QQ\left(\alpha,\beta,\gamma\right) = \QQ\left(\alpha,\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}\right)$ (since $\beta,\gamma$ can be created by combinations of $\alpha$ and $\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}$, while conversely $\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}$ can also be created by $\beta,\gamma$). Also, we get the following relations:
+WLOG, assume $\beta$ is the root with positive sign. Notice that this implies $L=\QQ\left(\alpha,\beta,\gamma\right) = \QQ\left(\alpha,\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}\right)$ (since $\beta,\gamma$ can be created by combinations of $\alpha$ and $\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}$, while conversely $\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}$ can also be created by $\frac{\beta-\gamma}{2}$). Also, we get the following relations:
 \begin{equation}
     \label{eq:3}
     \begin{cases}
@@ -146,16 +147,16 @@ Hence, without considering the "usual" square root in $\RR$, define $\sqrt{D}:=(
         &= \left(\frac{9\alpha^2}{4}-\left(\frac{\alpha^2}{4}-\frac{1}{\alpha}\right)\right)2\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}} = \left(4\alpha^2+\frac{1}{\alpha}\right)\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}
     \end{split}
 \end{equation}
-Which, because $\sqrt{D}$ can be created by $\alpha$ and $\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}$, $\sqrt{D}\in \QQ\left(\alpha,\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}\right)=L$; also, because $D=81\neq 0$, so $\sqrt{D}\neq 0$, which shows that $4\alpha^2+\frac{1}{\alpha}\neq 0$. Hence, $\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}=\sqrt{D}\left(4\alpha^2+\frac{1}{\alpha}\right)^{-1}\in\QQ(\alpha,\sqrt{D})$. These two relations show that $L=\QQ\left(\alpha,\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}\right)=\QQ(\alpha,\sqrt{D})$.
+Which, because $\sqrt{D}$ can be created by $\alpha$ and $\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}$, $\sqrt{D}\in \QQ\left(\alpha,\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}\right)=L$; also, because $D=81\neq 0$, so $\sqrt{D}\neq 0$, which shows that $4\alpha^2+\frac{1}{\alpha}\neq 0$. Hence, $\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}=\sqrt{D}\left(4\alpha^2-\frac{1}{\alpha}\right)^{-1}\in\QQ(\alpha,\sqrt{D})$. These two relations show that $L=\QQ\left(\alpha,\sqrt{\frac{\alpha^2}{4}-\frac{1}{\alpha}}\right)=\QQ(\alpha,\sqrt{D})$.
 
 As a consequence, since $D=81$ for $f(x)$ in this problem, then $\sqrt{D}=\pm 9\in \QQ$ (Note: this $\sqrt{D}$ is what we've defined above, not the actual square root of $\RR$; hence, depending on the arrangement of the roots, $\sqrt{D}$ could be positive or negative). Hence, $L=\QQ(\alpha,\sqrt{D})=\QQ(\alpha)$. On the other hand, because $\alpha$ is a root of $f(x)=x^3-3x+1$, which has proven to be irreducible initially (and monic), then $L=\QQ(\alpha)\cong \QQ[x]/(f(x))$, showing that $[L:\QQ]=[\QQ[x]/(f(x)):\QQ] = \deg(f(x)) = 3$. Hence, $|\Gal(L/\QQ)| = [L:\QQ]=3$.
 \begin{itemize}
-    \item[(a)] First, since for any $\sigma\in \Gal(L/\QQ)$ fixes all elements of $\QQ$, then for all $k\in L$ and the fact that $f(x)\in \QQ[x]$, we have $\sigma(f(k))=f(\sigma(k))$. Hence, any $k\in\{\alpha,\beta,\gamma\}$ (the roots of $f(x)$), we must have $0=\sigma(f(k))= f(\sigma(k))$, showing that $\sigma(k)=0$. Therefore, $\sigma(k)$ is again a root of $f(x)$, showing that $\sigma(k)\in\{\alpha,\beta,\gamma\}$.
+    \item[(a)] First, since for any $\sigma\in \Gal(L/\QQ)$ fixes all elements of $\QQ$, then for all $k\in L$ and the fact that $f(x)\in \QQ[x]$, we have $\sigma(f(k))=f(\sigma(k))$. Hence, for any $k\in\{\alpha,\beta,\gamma\}$ (the roots of $f(x)$), we must have $0=\sigma(f(k))= f(\sigma(k))$, showing that $\sigma(k)=0$. Therefore, $\sigma(k)$ is again a root of $f(x)$, showing that $\sigma(k)\in\{\alpha,\beta,\gamma\}$.
     
-    This shows that $\sigma$ can only send roots of $f(x)$ to roots of $f(x)$, hence it acts on the set $\{\alpha,\beta,\gamma\}$ as a permutation; also, because $L\QQ(\alpha,\beta,\gamma)$, then the structure of $\sigma$ is solely determined by its action on $\{\alpha,\beta,\gamma\}$. Hence, $\sigma$ can be identified by a unique permutation in $S_3$, and therefore $\Gal(L/\QQ)\cong H\leq S_3$ for some subgroup $H$.
+    This shows that $\sigma$ can only send roots of $f(x)$ to roots of $f(x)$, hence it acts on the set $\{\alpha,\beta,\gamma\}$ as a permutation; also, because $L=\QQ(\alpha,\beta,\gamma)$, then the structure of $\sigma$ is solely determined by its action on $\{\alpha,\beta,\gamma\}$. Hence, $\sigma$ can be identified by a unique permutation in $S_3$, and therefore $\Gal(L/\QQ)\cong H\leq S_3$ for some subgroup $H$.
     
-    However, initially we've determined that $|\Gal(L/\QQ)| = 3$, which shows that $|H|=3$. Then, because $S_3$ (with $|S_3|=6$) only has one subgroup with order $\frac{6}{2}=3$, namely $A_3$ (the collection of all $3$-cycles together with identity in this case), then we must have $\Gal(L/\QQ)\cong H=A_3$.
-    \item[(b)] In \textbf{part (a)} we've identified that $\Gal(L/\QQ)\cong A_3\leq S_3$, which shows that every element being the identity or a $3$-cycle, hence there has no transpositions at all. Therefore, as a consequence there is no automorphism in $\Gal(L/\QQ)$ that acts as a transposition $(\alpha,\beta)$ on $\{\alpha,\beta,\gamma\}$.
+    However, initially we've determined that $|\Gal(L/\QQ)| = 3$, which shows that $|H|=3$. Then, because $S_3$ (with $|S_3|=6$) only has one subgroup with order $\frac{6}{2}=3$, namely $A_3$ (the collection of all $3$-cycles together with identity in this case), then we must have $\Gal(L/\QQ)\cong H=A_3\cong \ZZ_3$.
+    \item[(b)] In \textbf{part (a)} we've identified that $\Gal(L/\QQ)\cong A_3\leq S_3$, which shows that every element is either the identity or a $3$-cycle, hence there has no transpositions at all. Therefore, as a consequence there is no automorphism in $\Gal(L/\QQ)$ that acts as a transposition $(\alpha,\beta)$ on $\{\alpha,\beta,\gamma\}$.
 \end{itemize}
 
 \break
@@ -167,16 +168,20 @@ As a consequence, since $D=81$ for $f(x)$ in this problem, then $\sqrt{D}=\pm 9\
 
 \textbf{Pf:}
 
-For this problem, we'll try a different approach (as a practice). For $f(x)$ in the question, to calculate discriminant, we have $a=0,\ b=-4$, and $c=1$. Hence, we get $D = -4(-4)^3-27\cdot 1^2 = 256 - 27 = 229$, this indicates that $f(x)$ has three distinct real roots (which we'll use the same notation $\{\alpha,\beta,\gamma\}$). Notice that by Rational Root Theorem, the only possible rational roots of $f(x)$ are $\pm 1$; but, none of these values are actual roots of $f(x)$ (by manual check), hence $f(x)$ has no rational roots. Since it's with degree $3$, then $f(x)$ is in fact irreducible over $\QQ$.
+For this problem, we'll try a different approach (as a practice). For $f(x)$ in the question, to calculate discriminant, we have $a=0,\ b=-4$, and $c=1$. Hence, we get $D = -4(-4)^3-27\cdot 1^2 = 256 - 27 = 229$, this indicates that $f(x)$ has three distinct real roots (which we'll use the same notation $\{\alpha,\beta,\gamma\}$). 
 
-Now, define $\sqrt{D}:=(\alpha-\beta)(\beta-\gamma)(\gamma-\alpha)$, since $L=\QQ(\alpha,\beta,\gamma)$, then we have $\sqrt{D}\in L$, or $\QQ(\sqrt{D})\subseteq L$. Which, because $D=229$, then $\sqrt{D}=\pm \sqrt{229}\notin \QQ$; which, because $\sqrt{D}$ is a root of $x^2-229\in \QQ[x]$, and this polynomial has no roots in $\QQ$, then it is irreducible over $\QQ$. Hence, $x^2-229$ (which is monic) is the minimal polynomial of $\sqrt{D}$ over $\mathbb{Q}$, so we get that $\QQ(\sqrt{D})\cong \QQ[x]/(x^2-229)$, showing that $[\QQ(\sqrt{D}):\QQ]=2$. As a consequence, because $\QQ\subseteq \QQ(\sqrt{D})\subseteq L$, then $[L:\QQ]$ is divisible by $2$.
+Notice that by Rational Root Theorem, the only possible rational roots of $f(x)$ are $\pm 1$; but, none of these values are actual roots of $f(x)$, hence $f(x)$ has no rational roots. Since it has degree $3$, $f(x)$ is irreducible over $\QQ$.
 
-On the other hand, we also know that $\QQ\subseteq\QQ(\alpha)\subseteq L$, and $\alpha$ is a root of $f(x)$ while $f(x)$ is irreducible and monic over $\QQ$, hence it is the minimal polynomial of $\alpha$. Hence, $\QQ(\alpha)\cong \QQ[x]/(f(x))$, showing that $[\QQ(\alpha):\QQ]=\deg(f(x))=3$. This also implies that $[L:\QQ]$ is divisible by $3$, hence $[L:\QQ]$ is divisible by $6$.
+Now, define $\sqrt{D}:=(\alpha-\beta)(\beta-\gamma)(\gamma-\alpha)$, since $L=\QQ(\alpha,\beta,\gamma)$, then we have $\sqrt{D}\in L$, or $\QQ(\sqrt{D})\subseteq L$. Which, because $D=229$, then $\sqrt{D}=\pm \sqrt{229}\notin \QQ$; because $\sqrt{D}$ is a root of $x^2-229\in \QQ[x]$, and this polynomial has no roots in $\QQ$, then it is irreducible over $\QQ$. Hence, $x^2-229$ (which is monic) is the minimal polynomial of $\sqrt{D}$ over $\mathbb{Q}$, so we get that $\QQ(\sqrt{D})\cong \QQ[x]/(x^2-229)$, showing that $[\QQ(\sqrt{D}):\QQ]=2$. As a consequence, because $\QQ\subseteq \QQ(\sqrt{D})\subseteq L$, then $[L:\QQ]$ is divisible by $[\QQ(\sqrt{D}):\QQ]=2$.
+
+On the other hand, we also know that $\QQ\subseteq\QQ(\alpha)\subseteq L$, and $\alpha$ is a root of $f(x)$ while $f(x)$ is irreducible and monic over $\QQ$, hence it is the minimal polynomial of $\alpha$. Hence, $\QQ(\alpha)\cong \QQ[x]/(f(x))$, showing that $[\QQ(\alpha):\QQ]=\deg(f(x))=3$. With $\QQ\subseteq\QQ(\alpha)\subseteq L$, it implies that $[L:\QQ]$ is divisible by $3$.
+
+Hence, $[L:\QQ]$ is divisible by $6 = \lcm(2,3)$.
 
 \begin{itemize}
     \item[(a)] Again, since $L=\QQ(\alpha,\beta,\gamma)$, then any $\sigma\in \Gal(L/\QQ)$ is purely determined by its action on $\{\alpha,\beta,\gamma\}$; also, since for any $k\in L$, because $f(x)\in \QQ[x]$ (which has coefficients fixed by $\sigma$), then $\sigma(f(k))=f(\sigma(k))$. Hence, for any root $k\in\{\alpha,\beta,\gamma\}$, we must have $0=\sigma(f(k))=f(\sigma(k))$, showing that $\sigma(k)$ is also a root of $f(x)$, or $\sigma(k)\in\{\alpha,\beta,\gamma\}$. Hence, $\sigma$ acts on the three roots as a permutation, showing that $\Gal(L/\QQ)$ has a permutation action on the three roots. So, $\Gal(L/\QQ)\cong H\leq S_3$ (since it acts as a permutation of a $3$-element set, it can be characterized by a subgroup of $S_3$).
     
-    Now, based on the subgroup relation, $[L:\QQ]=|\Gal(L/\QQ)| \leq |S_3| = 6$; also, because we've proven beforehand that $6$ divides $[L:\QQ]$, shiwhc shows that $|\Gal(L/\QQ)|=[L:\QQ]\geq 6$. So, $|\Gal(L/\QQ)| = [L:\QQ]=6$, which enforces $\Gal(L/\QQ)\cong H=S_3$ (since the only subgroup of $S_3$ with order $6$ is $S_3$ itself).
+    Now, based on the subgroup relation, $[L:\QQ]=|\Gal(L/\QQ)| \leq |S_3| = 6$; also, because we've proven beforehand that $6$ divides $[L:\QQ]$, which shows that $|\Gal(L/\QQ)|=[L:\QQ]\geq 6$. So, $|\Gal(L/\QQ)| = [L:\QQ]=6$, which enforces $\Gal(L/\QQ)\cong H=S_3$ (since the only subgroup of $S_3$ with order $6$ is $S_3$ itself).
     \item[(b)] Because in \textbf{part (a)}, $\Gal(L/\QQ)$ is proven to have a permutation action on $\{\alpha,\beta,\gamma\}$ and is isomorphic to $S_3$ as groups, then there exists automorphism that acts as a transposition $(\alpha,\beta)$.
 \end{itemize}
 
@@ -207,48 +212,53 @@ First, $f(x)=(x^2-2)(x^2-3)$ over $\CC$ can be factored as $(x-\sqrt{2})(x+\sqrt
     
     Now, consider the minimal polynomial of $\sqrt{3}$ over $\QQ(\sqrt{2})$: Since it satisfies $x^2-3$, then the minimal polynomial must divide $x^2-3$; then, to prove that $x^2-3$ is the minimal polynomial, we'll show that $x^2-3$ has no roots in $\QQ(\sqrt{2})$. 
     
-    Suppose the contrary that it has roots in $\QQ(\sqrt{2})$, then for some $a,b\in \QQ$, $(a+b\sqrt{2})$ satisfies $(a+b\sqrt{2})^2-3 = 0$, or $(a^2+2b^2)+2ab\sqrt{2} = 3 = 3+0\cdot \sqrt{2}$.Since $1,\sqrt{2}$ forms a basis of $\QQ(\sqrt{2})/\QQ$, this equation implies that $2ab = 0$, which $a = 0$ or $b=0$. Yet, if $b=0$, we have $a^2=3$, or $a=\pm\sqrt{3}\in\QQ$, which violates the fact that $\sqrt{3}$ is irrational; on the other hand, if $a=0$, we have $(b\sqrt{2})^2 = 2b^2 =3$. Since $b = \frac{p}{q}$ for some $p,q\in\mathbb{Z}$, $q\neq 0$, and $\gcd(p,q)=1$, then the equation implies $2\frac{p^2}{q^2}=3$, showing that $2p^2=3q^2$. 
+    Suppose the contrary that it has roots in $\QQ(\sqrt{2})$, then for some $a,b\in \QQ$, $(a+b\sqrt{2})$ satisfies the following: 
+    \begin{equation}
+        \label{eq:6}
+        (a+b\sqrt{2})^2-3 = 0\implies (a^2+2b^2)+2ab\sqrt{2} = 3 = 3+0\cdot \sqrt{2}
+    \end{equation}
+    Since $1,\sqrt{2}$ forms a basis of $\QQ(\sqrt{2})/\QQ$, this equation implies that $2ab = 0$, which $a = 0$ or $b=0$. Yet, if $b=0$, we have $a^2=3$, or $a=\pm\sqrt{3}\in\QQ$, which violates the fact that $\sqrt{3}$ is irrational; on the other hand, if $a=0$, we have $(b\sqrt{2})^2 = 2b^2 =3$. Since $b = \frac{p}{q}$ for some $p,q\in\mathbb{Z}$, $q\neq 0$, and $\gcd(p,q)=1$, then the equation implies $2\frac{p^2}{q^2}=3$, showing that $2p^2=3q^2$. 
     
-    Then, this implies $2\mid 3q^2$, and while $2\nmid 3$, we must have $2\mid q^2$, or $2\mid q$, hence $q = 2k$ for some $k\in\mathbb{Z}$; now, we have $2p^2 = 3q^2 = 3(2k)^2$, then $p^2 = 3\cdot 2k^2$, showing that $2\mid p^2$, or $2\mid p$. Then, we get that $2$ is a common factor of $p$ and $q$, yet this violates the assumption that $\gcd(p,q)=1$, so we reach a contradiction. So, the assumption is false, showing that $x^2-3$ has no roots over $\QQ(\sqrt{2})$, hence it is irreducible over $x^2-3$.
+    Then, this implies $2\mid 3q^2$, and while $2\nmid 3$, we must have $2\mid q^2$, or $2\mid q$, hence $q = 2k$ for some $k\in\mathbb{Z}$; now, we have $2p^2 = 3q^2 = 3(2k)^2$, then $p^2 = 3\cdot 2k^2$, showing that $2\mid p^2$, or $2\mid p$. Therefore, $2$ is a common factor of $p$ and $q$, yet this violates the assumption that $\gcd(p,q)=1$, so we reach a contradiction. Hence, the assumption is false, showing that $x^2-3$ has no roots over $\QQ(\sqrt{2})$, hence it is irreducible over $x^2-3$.
 
     As a consequence, since $x^2-3$ is monic, while $\sqrt{3}$ is a root of it, it is the minimal polynomial of $\sqrt{3}$ over $\QQ(\sqrt{2})$, showing that $\QQ(\sqrt{2},\sqrt{3}) = \QQ(\sqrt{2})(\sqrt{3}) = \QQ(\sqrt{2})[x]/(x^2-3)$, hence $[\QQ(\sqrt{2},\sqrt{3}):\QQ(\sqrt{2})] = 2$.
 
     Together with the initial degree of $[\QQ(\sqrt{2}):\QQ]=2$, we get the following:
     \begin{equation}
-        \label{eq:6}
+        \label{eq:7}
         [L:\QQ]=[\QQ(\sqrt{2},\sqrt{3}):\QQ]=[\QQ(\sqrt{2},\sqrt{3}):\QQ(\sqrt{2})]\cdot [\QQ(\sqrt{2}):\QQ] = 2\cdot 2=4
     \end{equation}
-    \item[(b)] From the degree derive in \textbf{part (a)}, we know $|\Gal(L/\QQ)| = [L:\QQ] = 4$. Then, since $4=2^2$ (which the group has order prime square), then not only $\Gal(L/\QQ)$ is abelian, we know it is isomorphic to either $\ZZ_4$ or $\ZZ_2\times \ZZ_2$.
+    \item[(b)] From the degree derived in \textbf{part (a)}, $|\Gal(L/\QQ)| = [L:\QQ] = 4$. Then, since $4=2^2$ (which has order of a prime square), then not only $\Gal(L/\QQ)$ is abelian, we know it is isomorphic to either $\ZZ_4$ or $\ZZ_2\times \ZZ_2$.
     
     Now, we'll consider $\QQ(\sqrt{2}),\QQ(\sqrt{3})\subseteq L$ respectively: 
     \begin{itemize}
-        \item First, since $[L:\QQ]=4$ and $[\QQ(\sqrt{2}):\QQ]=2$, then we must have $[L:\QQ(\sqrt{2})] = 2$. Hence, $|\Gal(L/\QQ(\sqrt{2}))| = [L:\QQ(\sqrt{2})] = 2$, showing that $\Gal(L/\QQ(\sqrt{2}))\cong \ZZ_2$. Which, 
+        \item First, since $[L:\QQ]=4$ and $[\QQ(\sqrt{2}):\QQ]=2$, then $[L:\QQ(\sqrt{2})] = 2$. Hence, $|\Gal(L/\QQ(\sqrt{2}))| = [L:\QQ(\sqrt{2})] = 2$, showing that $\Gal(L/\QQ(\sqrt{2}))\cong \ZZ_2$. Which, 
         Since $L=\QQ(\sqrt{2},\sqrt{3})=\QQ(\sqrt{2})(\sqrt{3})$ (and we know this is isomorphic to $\QQ(\sqrt{2})[x]/(x^2-3)$ with the map $\overline{x}\mapsto \sqrt{3}$ based on the relation proven in \textbf{part (a)}), hence, since $\QQ(\sqrt{2})[x]/(x^2-3)$ has an automorphism given by $\overline{x}\mapsto -\overline{x}$ (which fixes all elements in $\QQ(\sqrt{2})$), as a consequence, this means it has a corresponding automorphism $\sigma\in \Gal(L/\QQ(\sqrt{2}))$ that is characterized by $\sigma(\sqrt{3}) = \sigma(-\sqrt{3})$.
         \item 
         Then, using similar logic, we know $[L:\QQ]=4$ and $[\QQ(\sqrt{3}):\QQ]=2$, showing that $[L:\QQ(\sqrt{3})]=2$ also, so $|\Gal(L/\QQ(\sqrt{3}))|=[L:\QQ(\sqrt{3})] = 2$, showing that $\Gal(L/\QQ(\sqrt{3}))\cong \ZZ_2$.
         Again, since $L=\QQ(\sqrt{2},\sqrt{3}) = \QQ(\sqrt{3})(\sqrt{2})$, $L/\QQ(\sqrt{3})$ is a degree 2 extension implies that $\sqrt{2}$ has the minimal polynomial over $\QQ(\sqrt{3})$ being degree $2$; then, because it is a root of $x^2-2$ while this polynomial is monic and with degree $2$, then $x^2-2$ must be the minimal polynomial of $\sqrt{2}$ over $\QQ(\sqrt{3})$. Hence, $L=\QQ(\sqrt{3})(\sqrt{2})\cong \QQ(\sqrt{3})[x]/(x^2-2)$. Notice that $\QQ(\sqrt{3})[x]/(x^2-2)$ again has an automorphism given by $\overline{x}\mapsto -\overline{x}$ that fixes $\QQ(\sqrt{3})$, while the field has an isomorphism to $L$ given by $\overline{x}\mapsto \sqrt{2}$, then under suitable compositions, we get that there exists an automorphism $\psi\in \Gal(L/\QQ(\sqrt{3}))$ that satisfies $\psi(\sqrt{2})=-\sqrt{2}$.
     \end{itemize}
-    From the aobve, we have two automorphisms acting on the set of roots $\{\sqrt{2},-\sqrt{2},\sqrt{3},-\sqrt{3}\}$. 
+    From the above, we have two automorphisms acting on the set of roots $\{\sqrt{2},-\sqrt{2},\sqrt{3},-\sqrt{3}\}$. 
     
     $\sigma\in \Aut(L/\QQ(\sqrt{2}))$ fixes $\sqrt{2},-\sqrt{2}$, while acting as a transposition $(\sqrt{3},-\sqrt{3})$; on the other hand, $\psi\in \Aut(L/\QQ(\sqrt{3}))$ fixes $\sqrt{3},-\sqrt{3}$, while acting as a transposition $(\sqrt{2},-\sqrt{2})$.
 
-    Now, if composition the two together, we get that $\psi\circ \sigma \in \Gal(L/\QQ)$ is characterized by the composition of transpositions $(\sqrt{2},-\sqrt{2})(\sqrt{3},-\sqrt{3})$ (which is an order $2$ permutation, since it is composed by two disjoint transpositions, which both have order $2$).
+    Now, if compose the two together, $\psi\circ \sigma \in \Gal(L/\QQ)$ is characterized by the composition of transpositions $(\sqrt{2},-\sqrt{2})(\sqrt{3},-\sqrt{3})$ (which is an order $2$ permutation, since it is composed by two disjoint transpositions, which both have order $2$).
 
     Then, notice that $\sigma,\ \psi,\ \psi\circ \sigma,\ \Id_L\in \Gal(L/\QQ)$ all represents different elements (since they each correspond to a different permutation), together with the fact that $|\Gal(L/\QQ)|=4$, these must be all the elements.
     
-    On the other hand, notice that none of the element has order $4$ (since $\sigma,\psi$ are both transpositions, while $\psi\circ \sigma$ has order 2, since it is a composition of two disjoint transpositions), then this implies that $\Gal(L/\QQ)=\{\Id_L,\ \sigma,\ \psi,\ \psi\circ\sigma\}$ cannot be isomorphic to $\ZZ_4$.
+    On the other hand, notice that none of the element has order $4$ (proved above), then $\Gal(L/\QQ)=\{\Id_L,\ \sigma,\ \psi,\ \psi\circ\sigma\}$ cannot be isomorphic to $\ZZ_4$.
     Then, we must have $\Gal(L/\QQ)\cong \ZZ_2\times \ZZ_2$.
 
     \item[(c)] Finally, since $\sqrt{6} = \sqrt{2}\cdot\sqrt{3}\in L$, and it satisfies $(\sqrt{6})^2-6=0$, hence it is a root of $x^2-6\in\QQ[x]$. However, since this polynomial is irreducible and monic (because the roots $\pm\sqrt{6}\notin \QQ$, so as a degree 2 polynomial with no roots in $\QQ$, it is irreducible), it is the minimal polynomial of $\sqrt{6}$. Then, we have $\QQ(\sqrt{6})\cong \QQ[x]/(x^2-6)$, hence $[\QQ(\sqrt{6}):\QQ]=2$. As a consequence, $[L:\QQ(\sqrt{6})]=2$, showing that $|\Gal(L/\QQ(\sqrt{6}))|=[L:\QQ(\sqrt{6})]=2$.
     
     Now, we know $\Id_L\in \Gal(L/\QQ(\sqrt{6}))$; also, if consider $\psi\circ\sigma\in \Gal(L/\QQ)$, we know it acts on the roots as composition of disjoint transpositions $(\sqrt{2},-\sqrt{2})(\sqrt{3},-\sqrt{3})$. Then, if plug in $\sqrt{6}$, we get:
     \begin{equation}
-        \label{eq:7}
+        \label{eq:8}
         \psi\circ\sigma(\sqrt{6})=\psi\circ\sigma(\sqrt{2})\cdot\psi\circ\sigma(\sqrt{3}) = (-\sqrt{2})(-\sqrt{3})=\sqrt{6}
     \end{equation}
     Then, because $\psi\circ\sigma$ fixes the generator $\sqrt{6}$ of $\QQ(\sqrt{6})$, then $\psi\circ\sigma$ fixes $\QQ(\sqrt{6})$. Hence, it belongs to $\Gal(L/\QQ(\sqrt{6}))$.
 
-    Which, because it is a group of order $2$, and we have the above two distinct elements, then $\Gal(L/\QQ(\sqrt{6}))=\{\Id_L, \psi\circ\sigma\}$ (corresponds to $\{e,(\sqrt{2},-\sqrt{2})(\sqrt{3},-\sqrt{3})\}$ as sets of permutations).
+    Which, because it is a group of order $2$, and we have the above two distinct elements, then $\Gal(L/\QQ(\sqrt{6}))=\{\Id_L,\ \psi\circ\sigma\}$ (corresponds to $\{e,\ (\sqrt{2},-\sqrt{2})(\sqrt{3},-\sqrt{3})\}$ as a set of permutations).
 \end{itemize}
 
 \break
@@ -268,9 +278,9 @@ Also, the roots of the two polynomials above are also related: Let $\alpha$ be a
     \label{eq:8}
     \alpha^2\neq 0,\quad \alpha^2(\alpha^{-2}-\alpha^{-1}+1) = 1-\alpha+\alpha^2 = 0\implies \alpha^{-2}-\alpha^{-1}+1 = 0
 \end{equation}
-Hence, $\alpha^{-1}$ is also a root of $x^2-x+1$. Notice that $\alpha^{-1}\neq \alpha$, since if they're the same (which $\alpha^{-1}=\alpha\implies \alpha^2=1$), then we must have $\alpha=\pm 1$; but since $\pm 1$ are not the roots of $x^2-x+1$, it'll form a contradiction. So, the roots of $x^2-x+1$ are $\alpha,\alpha^{-1}$.
+Hence, $\alpha^{-1}$ is also a root of $x^2-x+1$. Notice that $\alpha^{-1}\neq \alpha$, since if they're the same (which $\alpha^{-1}=\alpha\implies \alpha^2=1$), then we must have $\alpha=\pm 1$; but since $\pm 1$ are not the roots of $x^2-x+1$, it'll form a contradiction. So, the distinct roots of $x^2-x+1$ are $\alpha,\alpha^{-1}$.
 
-On the other hand, if consider $-\alpha$, notice that it satisfies the following equation:
+Now, if consider $-\alpha$, notice that it satisfies the following equation:
 \begin{equation}
     \label{eq:9}
     (-\alpha)^2 + (-\alpha)+1 = \alpha^2-\alpha+1=0
@@ -280,7 +290,7 @@ Hence, $-\alpha$ is a root of $x^2+x+1$. On the other hand, if consider $-\alpha
     \label{eq:10}
     \alpha^2((-\alpha^{-1})^2+(-\alpha^{-1})+1) = \alpha^2(\alpha^{-2}-\alpha^{-1}+1) = 1-\alpha+\alpha^2 = 0 \implies (-\alpha^{-1})^2+(-\alpha^{-1})+1=0
 \end{equation}
-So, this implies that $-\alpha^{-1}$ is also a root of $x^2+x+1$. Beforehand, we alreay know $\alpha^{-1}\neq \alpha$, hence $-\alpha^{-1}\neq -\alpha$. So, the roots of $x^2+x+1$ is then given by $-\alpha,-\alpha^{-1}$.
+So, this implies that $-\alpha^{-1}$ is also a root of $x^2+x+1$. Beforehand, we already know $\alpha^{-1}\neq \alpha$, hence $-\alpha^{-1}\neq -\alpha$. So, the roots of $x^2+x+1$ is then given by $-\alpha,-\alpha^{-1}$.
 
 As a conclusion, the splitting field of $x^2-x+1$ (regardless of the base field) automatically contains all the roots of $x^2+x+1$, hence it forms a splitting field of $x^6-1$ (since the potential nonlinear factors $(x^2-x+1),(x^2+x+1)$ all splits completely over the splitting field of $x^2-x+1$, and it cannot have any smaller fields with this property). So, for the below sections, we'll directly consider the splitting field of $x^2-x+1$.
 
@@ -305,7 +315,7 @@ Recall that $\FF_{5^2}$ is obtained by considering a splitting field of $x^{5^2}
 \begin{equation}
     x^{5^2}-x = x(x^{24}-1) = x(x^{12}-1)(x^{12}+1) = x(x^6-1)(x^6+1)(x^{12}+1)
 \end{equation}
-Then, since $x^{5^2}-x$ splits completely over $\FF_{5^2}$, as a liner factor of it, $x^6-1$ must also split completely over $\FF_{5^2}$. Since this is the base field, then $x^6-1$ has splitting field $\FF_{5^2}$ over the base field that's also the same. Hence, its galois group $\Gal(\FF_{5^2}/\FF_{5^2}) = \{\Id_{\FF_{5^2}}\}$, which is a trivial group.
+Then, since $x^{5^2}-x$ splits completely over $\FF_{5^2}$, as a polynomial factor of it, $x^6-1$ must also split completely over $\FF_{5^2}$. Since this is the base field, then $x^6-1$ has splitting field $\FF_{5^2}$ over the base field that's also the same. Hence, its Galois Group $\Gal(\FF_{5^2}/\FF_{5^2}) = \{\Id_{\FF_{5^2}}\}$, which is a trivial group.
 
 \subsection*{4. Galois Group of $x^6-1$ over $\FF_{5^3}$:}
 First, we need to find the splitting field of $x^2-x+1$ over $\FF_{5^3}$, and we'll claim that it doesn't have a root in $\FF_{5^2}$ (which as a consequence it doesn't split over $\FF_{5^3}$ since it is a degree $2$ polynomial).
@@ -314,5 +324,5 @@ Suppose the contrary that $x^2-x+1$ has roots in $\FF_{5^3}$, since we know the 
 However, since $x^2-x+1$ is proven to be irreducible over $\FF_5$ in \textbf{section 2} of this question, with it being monic and $\alpha$ being its root, it is a minimal polynomial of $\alpha$. Hence, $\FF_5(\alpha)\cong \FF_5[x]/(x^2-x+1)$, showing that $[\FF_5(\alpha):\FF_5]=2$. But, since we know $[\FF_{5^3}:\FF_5]=3$, and $\FF_5\subseteq \FF_5(\alpha)\subseteq \FF_{5^3}$, then we must have $[\FF_5(\alpha):\FF_5]=2\mid 3=[\FF_{5^3}:\FF_5]$, which is a contradiction.
 
 Therefore, our assumption is false, $x^2-x+1$ cannot have a root in $\FF_{5^3}$, which further implies that it is irreducible over $\FF_{5^3}$.
-Now, consider $K=\FF_{5^3}[x]/(x^2-x+1)$, it is the smallest field extension of $\FF_{5^3}$ containing the roots of $x^2-x+1$, which forms a splitting field of it. Hence, $[K:\FF_{5^3}] =\deg(x^2-x+1)= 2$. As a consequence, since it is also a splitting field of $x^6-1$, then the galois group of $x^6-1$ has $|\Gal(K/\FF_{5^3})| = [K:\FF_{5^3}] = 2$, showing that $\Gal(K/\FF_{5^3}) \cong \ZZ_2$.
+Now, consider $K=\FF_{5^3}[x]/(x^2-x+1)$: it is the smallest field extension of $\FF_{5^3}$ containing the roots of $x^2-x+1$, which forms a splitting field of it. Hence, $[K:\FF_{5^3}] =\deg(x^2-x+1)= 2$. As a consequence, since it is also a splitting field of $x^6-1$, then the galois group of $x^6-1$ has $|\Gal(K/\FF_{5^3})| = [K:\FF_{5^3}] = 2$, showing that $\Gal(K/\FF_{5^3}) \cong \ZZ_2$.
 \end{document}
