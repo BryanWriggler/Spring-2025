@@ -77,6 +77,7 @@
 %complex
 \newcommand{\Real}{\textmd{Re}}
 \newcommand{\Imag}{\textmd{Im}}
+\newcommand{\Res}{\textmd{Res}}
 
 \title{Math CS 122B HW8 Part 2}
 \author{Zih-Yu Hsieh}
@@ -85,7 +86,7 @@
 \maketitle
 
 %1
-\section{}
+\section{}%1
 \begin{question}\label{q:1}
     Stein and Shakarchi Pg. 200-201 Exercise 4:
 
@@ -100,7 +101,7 @@
 
 \textbf{Pf:}
 
-\subsection{Integral Representation of $L(s)$:}
+\subsection*{1. Integral Representation of $L(s)$:}
 Given $\textmd{Re}(s)>1$, and $x\in (0,\infty)$, notice that $\frac{1}{e^{qx}-1} = \frac{e^{-qx}}{1-e^{-qx}}$, with the fact that $-qx <0$, then $e^{-qx}<1$. Hence, the following expression is absolutely convergent, and converging normally for any compact subset of $(0,\infty)$:
 \begin{equation}
     \label{eq:1}
@@ -143,7 +144,7 @@ Now, in terms of the original $L(s)$, recall that $a_n=a_m$ iff $n\equiv m\mod\ 
 \end{equation}
 Then, combining the results in (\ref{eq:4}) and (\ref{eq:5}), we get $L(s)=\frac{1}{\Gamma(s)}\int_{0}^{\infty}\frac{Q(x)x^{s-1}}{e^{qx}-1}dx$ (for $\textmd{Re}(s)>1$).
 
-\subsection{Continuation to $\mathbb{C}\setminus\{1\}$:}
+\subsection*{2. Continuation to $\mathbb{C}\setminus\{1\}$:}
 With the above integral expression, one can separate the integration as follow:
 \begin{equation}
     \label{eq:6}
@@ -198,23 +199,149 @@ Hence, we can conclude that $L(s)$ can be continued onto the whole plane, except
 \break
 
 %2
-\section{}
+\section{}%2
 \begin{question}\label{q:2}
     Stein and Shakarchi Pg. 204 Problem 4:
 
-    One can combine ideas from the prime number theorem with the proof of Dirichlet's Theorem about primes in arithmetic progression (given in Book I) to prove the following: Let $q$ and $l$ be relatively prime integers. We consider the primes belonging to the arithmetic progression $\{qk+ll\}_{k\in\mathbb{N}}$, and let $\pi_{q,l}(x)$ denote the number of such primes $\leq x$. Then one has 
+    One can combine ideas from the prime number theorem with the proof of Dirichlet's Theorem about primes in arithmetic progression (given in Book I) to prove the following: Let $q$ and $l$ be relatively prime integers. We consider the primes belonging to the arithmetic progression $\{qk+l\}_{k\in\mathbb{N}}$, and let $\pi_{q,l}(x)$ denote the number of such primes $\leq x$. Then one has 
     $$\pi_{q,l}(x)\sim \frac{x}{\varphi(q)\log(x)}\quad \textmd{as }x\rightarrow\infty$$
     where $\varphi(q)$ denotes the number of positive integers less than $q$ and relatively prime to $q$ (i.e. the Euler Totient Function).
 \end{question}
 
 \textbf{Pf:}
 
-Given $q,l\in\mathbb{N}$ with $\gcd(q,l)=1$. Find an expression of Dirichlet Series, that produces the following formula:
-$$L(s):=\prod_{p}\frac{1}{1-\delta_l(p)p^{-s}}$$
-Where $p$ ranges through all primes, and $\delta_l:\mathbb{N}\rightarrow\mathbb{N}$ is defined as follow:
-$$\delta_l(n)=\begin{cases}
-    1 & n\equiv l\mod\ q\\
-    0 & \textmd{otherwise}
-\end{cases}$$
+Given $q,l\in\NN$ and $\gcd(q,l)=1$.
+\subsection*{1. An analogy to Von Mangoldt Function:}
+Recall that Von Mangoldt Function is defined as follow for all $n\in \NN$:
+\begin{equation}
+    \label{eq:10}
+    \Lambda(n)=\begin{cases}
+        \log p & n=p^v,\ p \textmd{ prime}\\
+        0 & \textmd{otherwise}
+    \end{cases}
+\end{equation}
+Which, consider the following function:
+\begin{equation}
+    \label{eq:11}
+    \delta_l(n)= \begin{cases}
+        1 & \gcd(n,q)=1\\
+        0 & \textmd{otherwise}
+    \end{cases}
+\end{equation}
+Based on Stein and Shakarchi's Fourier Analysis, $\delta_l(n)=\frac{1}{\varphi(q)}\sum_{\chi}\overline{\chi(l)}\chi(n)$, where $\chi$ represents all Dirichlet characters of $\ZZ_q^\times$. Then, if consider the function $\Lambda_{q,l}(n)=\delta_l(n)\cdot\Lambda(n)$, we get the following for $\Real(s)>1$:
+\begin{equation}
+    \label{eq:12}
+    \sum_{n=1}^{\infty}\frac{\Lambda_{q,l}(n)}{n^s}=\sum_{n=1}^{\infty}\frac{\delta_l(n)\cdot\Lambda(n)}{n^s} = \frac{1}{\varphi(q)}\sum_{\chi}\overline{\chi(l)}\sum_{n=1}^{\infty}\frac{\chi(n)\cdot\Lambda(n)}{n^s}
+\end{equation}
+(Note: $L(s,\chi)$ denote the Dirichlet $L$-function for the Dirichlet Character $\chi$).
+
+Which, we'll treat $\Lambda_{q,l}(n)$ as an analogy to the Von Mangoldt Function.
+
+\subsection*{2. An analogy to the Tchebychev's $\psi$-Function:}
+Given $\Lambda_{q,l}(n)$ defined beforehand, we can construct $\psi_{q,l}(x)$ as follow:
+\begin{equation}
+    \label{eq:13}
+    \psi_{q,l}(x) = \sum_{n\leq x}\Lambda_{q,l}(n)
+\end{equation}
+Then, the integrated form can be expressed as:
+\begin{equation}
+    \label{eq:14}
+    \psi_{q,l,1}(x)=\int_{0}^{x}\psi_{q,l}(u)du = \sum_{n\leq x}\Lambda_{q,l}(n)(x-n)
+\end{equation}
+Which, using the similar properties given in the book (about the $\psi_1(x)$), we know the following formula (for $c>1$):
+\begin{equation}
+    \label{eq:15}
+    \begin{split}
+        \psi_{q,l,1}(x)&=\sum_{n\leq x}\Lambda_{q,l}(n)(x-n) = \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(\sum_{n=1}^{\infty}\frac{\Lambda_{q,l}(n)}{n^s}\right)ds\\
+    \end{split}
+\end{equation}
+Combining (\ref{eq:15}) and (\ref{eq:12}), we get:
+\begin{equation}
+    \label{eq:16}
+    \begin{split}
+        \psi_{q,l,1}(x)&=\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(\sum_{n=1}^{\infty}\frac{\Lambda_{q,l}(n)}{n^s}\right)ds\\
+        &=\frac{1}{\varphi(q)}\sum_{\chi}\overline{\chi(l)}\cdot\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(\sum_{n=1}^{\infty}\frac{\chi(n)\cdot\Lambda(n)}{n^s}\right)ds
+    \end{split}
+\end{equation}
+Hence, the goal is to know the asymptotic behavior of each integral.
+
+\subsection*{3. Behavior of Dirichlet $L$-function:}
+Let $\chi$ denote the Dirichlet Characters mod $q$, and $\chi_0$ denote the trivial character. Then, with the Dirichlet $L$-function $L(s,\chi)=\sum_{n=1}^{\infty}\frac{\chi(n)}{n^s} = \prod_{p}(1-\chi(p)p^{-s})^{-1}$ defined on $\Real(s)>1$, the logarithmic derivative is given as follow:
+\begin{equation}
+    \label{eq:17}
+    -\frac{L'(s,\chi)}{L(s,\chi)} = \sum_{p}\frac{\chi(p)\log(p)p^{-s}}{1-\chi(p)p^{-s}} = \sum_{p}\sum_{v=1}^{\infty}\frac{\chi(p)^v\log(p)}{(p^s)^v} = \sum_{n=1}^{\infty}\frac{\chi(n)\Lambda(n)}{n^s}
+\end{equation} 
+(Note: $\chi(p)^v = \chi(p^v)$, and $\Lambda(n)$ denotes the Von Mangoldt Function).
+
+Which, using the formula given in the book, since $-\frac{L'(s,\chi)}{L(s,\chi)}$ has similar summation formula as $-\frac{\zeta'(s)}{\zeta(s)}$, hence for any $x>1$ the following equation holds (if let the part of the integrand $c>1$):
+\begin{equation}
+    \label{eq:18}
+    \begin{split}
+        \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(\sum_{n=1}^{\infty}\frac{\chi(n)\Lambda(n)}{n^s}\right)ds=\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(-\frac{L'(s,\chi)}{L(s,\chi)}\right)ds
+    \end{split}
+\end{equation}
+(Warning: without rigorous proof, based on intuition), since $L(s,\chi)$ is well-defined at $s=1$, then unlike $\zeta(s)$, the integral doesn't have an $\frac{x^2}{2}$ term (since for the original integral with $\zeta$, $\frac{x^2}{2}$ is produced with the pole of $\zeta$ at $s=1$). So, the guess is: \textbf{\label{guess:1}The above integral in (\ref{eq:18}) is with growth order $O(x^{2-\epsilon})$ for some $\epsilon>0$}.
+
+\hfil
+
+On the other hand, let $\chi_0$ denote the trivial character. It is known that $L(s,\chi_0)$ has the following expression:
+\begin{equation}
+    \label{eq:19}
+    L(s,\chi_0)= \zeta(s)\prod_{p\mid q}(1-p^{-s})
+\end{equation}
+Then, its logarithmic derivative can be written as follow:
+\begin{equation}
+    \label{eq:20}
+    -\frac{L'(s,\chi_0)}{L(s,\chi_0)}=-\frac{\zeta'(s)}{\zeta(s)}-\sum_{p\mid q}\frac{\log(p)\cdot p^{-s}}{1-p^{-s}}
+\end{equation}
+Hence, the integral based on $L(s,\chi_0)$ can be expressed as follow:
+\begin{equation}
+    \label{eq:21}
+    \begin{split}
+        &\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(-\frac{L'(s,\chi_0)}{L(s,\chi_0)}\right)ds\\ 
+        = \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}&\left(-\frac{\zeta'(s)}{\zeta(s)}\right)ds -\sum_{p\mid q}\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\cdot \frac{\log(p)\cdot p^{-s}}{1-p^{-s}}ds\\
+        = \psi_1(x)-&\sum_{p\mid q}\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\cdot \frac{\log(p)\cdot p^{-s}}{1-p^{-s}}ds
+    \end{split}
+\end{equation}
+Notice that $(1-p^{-s})= (1-e^{-\log(p)s})$ is entire with growth order $1$, and it has zeros at all $\log(p)s = 2\pi ik$, or $s = \frac{2\pi ik}{\log(p)}$ (where $k\in\ZZ)$. hence based on Hadamard's Factorization Theorem, it can be expressed as the following form:
+\begin{equation}
+    \label{eq:22}
+    1-p^{-s}=e^{c_ps+d_p}\cdot s\prod_{\substack{k=-\infty\\k\neq 0}}^{k=\infty}\left(1-\frac{s}{2\pi ik/\log(p)}\right)e^{\frac{s}{2\pi ik/\log(p)}},\quad c_p,d_p\in \CC
+\end{equation}
+Hence, the logarithmic derivative is given as follow:
+\begin{equation}
+    \label{eq:23}
+    \frac{(1-p^{-s})'}{(1-p^{-s})}=\frac{\log(p)\cdot p^{-s}}{1-p^{-s}} = c_p+\frac{1}{s}+\sum_{\substack{k=-\infty\\k\neq 0}}^{\infty}\left(\frac{1}{s-2\pi ik/\log(p)}+\frac{1}{2\pi ik/\log(p)}\right)
+\end{equation}
+Then, using the same contour described in \textbf{HW 8 Part 1 Question 3} (a semicircle, and let the radius $r\rightarrow\infty$), the integral from $c-i\infty$ to $c+i\infty$ can be turned into the sum of residues of the function. Hence, let $F(s)=\frac{x^{s+1}}{s(s+1)}\cdot\frac{\log(p)\cdot p^{-s}}{1-p^{-s}}$, we get the following relation:
+\begin{equation}
+    \label{eq:24}
+    \begin{split}
+        \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\cdot \frac{\log(p)\cdot p^{-s}}{1-p^{-s}}ds &= \Res(F,s=0)+\Res(F,s=-1)+\sum_{\substack{k=\infty\\k\neq 0}}^{\infty}\Res\left(F,s=\frac{2\pi ik}{\log(p)}\right)\\
+        &= c_px + \frac{\log(p)\cdot p}{p-1} + \sum_{\substack{k-\infty\\k\neq 0}}^{\infty}\frac{x^{1+2\pi ik/\log(p)}}{2\pi ik/\log(p)\cdot (2\pi ik/\log(p)+1)}\\
+        &= c_px+\frac{\log(p)\cdot p}{p-1}+x\sum_{k=1}^{\infty}\cdot 2\Real\left(\frac{x^{2\pi ik/\log(p)}}{2\pi ik/\log(p)\cdot (2\pi ik/\log(p)+1)}\right)
+    \end{split}
+\end{equation}
+(Note: the residues are derived using the infinite series form).
+
+Which, the integral is with the order of $O(x)$. Hence, the integral in (\ref{eq:21}) (given by $\psi_1(x)$ and finite summation of integrals in (\ref{eq:24})), is dominated by $\psi_1(x)$ (which has asymptotic behavior of $\frac{x^2}{2}$). Hence, the asymptotic behavior of $\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(-\frac{L'(s,\chi_0)}{L(s,\chi_0)}\right)ds$ (integral in (\ref{eq:21})) has asymptotic behavior of $\frac{x^2}{2}$.
+
+\subsection*{4. Asymptotic Behavior of $\psi_{q,l}(x)$:}
+Based on (\ref{eq:16}) and (\ref{eq:18}), $\psi_{q,l,1}(x)$ has the following asymptotic behavior:
+\begin{equation}
+    \label{eq:25}
+    \begin{split}
+        \psi_{q,l,1}(x)&=\frac{1}{\varphi(q)}\sum_{\chi}\overline{\chi(l)}\cdot\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(\sum_{n=1}^{\infty}\frac{\chi(n)\cdot\Lambda(n)}{n^s}\right)ds\\
+        &= \frac{1}{\varphi(q)}\cdot\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(-\frac{L'(s,\chi_0)}{L(s,\chi_0)}\right)ds + \frac{1}{\varphi(q)}\sum_{\chi\neq \chi_0}\overline{\chi(l)}\cdot\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^{s+1}}{s(s+1)}\left(-\frac{L'(s,\chi)}{L(s,\chi)}\right)ds\\
+        &\sim \frac{1}{\varphi(q)}\cdot \frac{x^2}{2}+O(x^{1-\epsilon})
+    \end{split}
+\end{equation}
+(Note: the integrals in the second summation based on the guess \ref{guess:1} all have asymptotic behavior of $O(x^{1-\epsilon})$ for some $\epsilon>0$, and the first one has asymptotic behavior of $\frac{x^2}{2}$ before multiplying $\frac{1}{\varphi(q)}$).
+
+Which, $\psi_{q,l,1}(x)\sim \frac{x^2}{\varphi(q)\cdot 2}$, as a consequence, since it is the integral form of $\varphi_{q,l}(x)$, then $\psi_{q,l}(x)\sim \frac{x}{\varphi(q)}$.
+
+The second guess is: \textbf{\label{guess:2} The above asymptotic behavior implies $\pi_{q,l}(x)\sim \frac{x}{\varphi(q)\log(x)}$}.
+
+Unfortunately up till now the two guesses made above are not verified (I couldn't figure out in time). This will temporarily left unanswered. This problem is more of the purpose of documenting my progress.
 
 \end{document}

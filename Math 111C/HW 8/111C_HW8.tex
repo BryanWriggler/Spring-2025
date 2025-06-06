@@ -79,12 +79,18 @@
 \begin{document}
 \maketitle
 
-\section{}
+\section{}%1
 \begin{question}\label{q1}
     Show that every finite separable extension $K/F$ has only finitely many sub-extensions.
 \end{question}
 
 \textbf{Pf:}
+
+Since $K/F$ is a finite separable extension, there exists $\alpha_1,...,\alpha_n\in K$, such that $F(\alpha_1,...,\alpha_n)=K$ (and all $\alpha_i$ are separable over $F$ by definition).
+
+Which, fix $\overline{F}$ such that $K\subseteq\overline{F}$, and take $A=\{m_{\alpha_1,F}(x),...,m_{\alpha_n,F}(x)\}\subset F[x]$. Consider $L\subseteq\overline{F}$ to be the splitting field of $A$, then since each polynomial in $A$ must split completely over $L$, it must necessarily contain all the roots of all polynomials in $A$; on the other hand, since each $\alpha_i\in K\subseteq \overline{F}$ is a root of $m_{\alpha_i,F}(x)\in A$, then $\alpha_i\in L$, hence $K=F(\alpha_1,...,\alpha_n)\subseteq L$.
+
+Now, notice that $L$ is a splitting field of $A\subseteq F[x]$, hence $L/F$ is a normal extension; 
 
 \break
 
