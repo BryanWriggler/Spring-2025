@@ -6,6 +6,7 @@
 \usepackage[most]{tcolorbox} %for creating environments
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{mathtools}
 \usepackage{verbatim}
 \usepackage[utf8]{inputenc}
 \usepackage[dvipsnames]{xcolor} %for importing multiple colors
@@ -69,6 +70,10 @@
 
 \newcommand{\Id}{\textmd{Id}} %identity
 \newcommand{\lcm}{\textmd{lcm}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\paran}{(}{)}%paranthesis
+\DeclarePairedDelimiter{\bracket}{\langle}{\rangle}
 
 %algebra
 \newcommand{\Gal}{\textmd{Gal}}
